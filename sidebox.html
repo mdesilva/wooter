@@ -1,0 +1,29 @@
+<div class="box md-whiteframe-3dp">
+    <div class="header">
+        <div class="price">
+            <md-icon>attach_money</md-icon>
+            <span>{{ currentLeaguePrice.price | number:0 }}</span>
+            <span>{{ currentLeaguePrice.description }}</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <form action="#" method="post" class="form">
+            <md-input-container class="md-block no-errors">
+                <label style="display: none;">Type Join</label>
+                <md-select ng-model="leaguePriceId" ng-change="changeLeaguePrice(leaguePriceId)">
+                    <md-option ng-repeat="leaguePrice in leaguePrices" value="{{ leaguePrice.id }}">{{ leaguePrice.name }}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button ui-href="{{ currentLeaguePrice.url }}" class="full-button join-button md-whiteframe-2dp">Join this league</md-button>
+        </form>
+        <div class="share-holder">
+            <p>Share:</p>
+            <share-button></share-button>
+           
+          
+            </div>
+        </div>
+    </div>
+
+</div>
