@@ -1,0 +1,156 @@
+<!-- <md-dialog class='modal_AV' aria-label='deleteVideo'>
+    <md-toolbar style='background-color: white; color: black;'>
+        <div class='md-toolbar-tools'>
+            <h4>Delete Video</h4>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div layout='row'>
+            <div layout='column' flex='5'>
+            </div>
+
+            <div layout='column' flex='90'>
+                <p>Are you sure you want to delete this game?</p>
+            </div>
+
+            <div layout='column' flex='5'>
+            </div>
+
+        </div>
+        <div class='modal_buttons'>
+            <md-button class='modal_buttons right_button' ng-click='cancel()'>
+                Delete Video
+            </md-button>
+            <md-button class='left_button left_button' ng-click='closeModal()'>
+                Cancel
+            </md-button>
+        </div>
+
+    </md-dialog-content>
+</md-dialog> -->
+
+<md-dialog class='modal_AV' aria-label='deleteVideo' style='min-width: 350px;'>
+    <md-toolbar style='background-color: white; color: black;'>
+        <div class='md-toolbar-tools'>
+            <h4>Delete Video</h4>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <!-- <h4 style='margin-top: 20px;'>Delete Video</h4> -->
+        <form name="uploadForm" ng-submit="cancel()">
+            <div layout='row'>
+                <div layout='column' flex='5'></div>
+
+                <div layout='row'>
+                    <p>Are you sure you want to delete this video?</p>
+                </div>
+
+
+                <div ng-hide='delete' layout='column' flex='40'>
+                    <video width="233" height="150" controls  ng-show = "( videoToDelete.thumbnail_path === null ) && (angular.isUndefined(videoToDelete.youtube_video_thumb) || videoToDelete.youtube_video_thumb === '')">
+                        <source src="{{ truested(videoToDelete.file_path)}}" type="{{ videoToDelete.mime_type}}">
+                    </video>
+                    <img class='results' ng-src="{{ trusted(videoToDelete.thumbnail_path) }}" alt="{{ videoToDelete.file_name }}" title="{{ videoToDelete.file_name }}" ng-show = "( videoToDelete.thumbnail_path != null )  && (angular.isUndefined(videoToDelete.youtube_video_thumb) || videoToDelete.youtube_video_thumb === '')">
+                    <img class='results' ng-src="{{ trusted(videoToDelete.youtube_video_thumb) }}" alt="{{ videoToDelete.file_name }}" title="{{ videoToDelete.file_name }}" ng-show = "(angular.isDefined(videoToDelete.youtube_video_thumb) || videoToDelete.youtube_video_thumb != '')">
+                </div>
+                <div ng-hide='delete' layout='column' flex='50'>
+
+                    <md-input-container class='modal_field' id='addTeamName'>
+                        <label>Title</label>
+                        <input name='videoName' ng-model='uploadVideo[0].videoName' ng-init="uploadVideo[0].videoName = videoToDelete.file_name " value="{{ uploadVideo[0].videoName }}" required aria-label=''>
+                    </md-input-container>
+
+                    <md-input-container class='modal_field' id='setDivision'>
+                        <label>Category</label>
+                        <md-select ng-model='uploadVideo[0].videoCategory' name="videoCategory" aria-label=''>
+                            <md-option ng-repeat='label in labels' value='{{label.id}}' ng-selected = " label.id ==  videoToDelete.label_id">
+                                {{ label.name }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class='modal_field' id='setGame'>
+                        <label>Game</label>
+                        <md-select ng-model='uploadVideo[0].videoGame' name="videoGame" aria-label=''>
+                            <md-option ng-repeat='game in games ' value='{{game.id}}' ng-selected = " game.id ==  videoToDelete.game_id">
+                                {{ game.date | carbonToMMM }} {{ game.date | dateFormat: "/" }}, {{ game.date | carbonToyyyy }} ( {{ game.home_team | limitString:true:5:'...' }} vs {{ game.visiting_team | limitString:true:5:'...'}} )
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class='modal_field hide' id='videoID'>
+
+                        <input type="hidden" name='videoId' ng-model='uploadVideo[0].videoId'  ng-init="uploadVideo[0].videoId = videoToDelete.id " aria-label='false' >
+
+                    </md-input-container>
+                    <md-input-container class='modal_field hide' id='delete'>
+                        <input type="hidden" name='delete' ng-model='delete'  ng-init="delete = true " aria-label='false' >
+                    </md-input-container>
+
+                </div>
+
+                <div layout='column' flex='5'></div>
+            </div>
+            <div ng-hide='delete' layout="row">
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+
+                    <md-input-container class='modal_field' id='setTeam'>
+                        <label>Tag Team:</label>
+                        <md-chips ng-model="selectedTeams" md-autocomplete-snap="" md-transform-chip="transformChip($chip)" md-require-match="autocompleteDemoRequireMatch">
+
+                            <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="team in querySearch(searchText)" md-item-text="team.name" >
+                                <span md-highlight-text="searchText">{{team.name}}</span>
+                            </md-autocomplete>
+
+                            <md-chip-template>
+                                        <span>
+                                          <strong>{{$chip.name}}</strong>
+
+                                        </span>
+                            </md-chip-template>
+                        </md-chips>
+
+                    </md-input-container>
+                    <md-input-container class='modal_field'></md-input-container>
+                    <md-input-container class='modal_field' id='setPlayer'>
+                        <label>Tag Player:</label>
+                        <md-chips ng-model="selectedPlayers" md-autocomplete-snap="" md-transform-chip="playerTransformChip($chip)" md-require-match="autocompletePlayerRequireMatch">
+                            <md-autocomplete md-selected-item="selectedPlayer" md-search-text="searchPlayer" md-items="player in playerSearchQuery(searchPlayer)" md-item-text="player.first_name" >
+                                <span md-highlight-text="searchPlayer"> {{player.first_name}} {{player.last_name}} </span>
+                            </md-autocomplete>
+
+                            <md-chip-template>
+                         <span>
+                             <strong>{{$chip.first_name}}</strong>
+                             <strong>{{$chip.last_name}}</strong>
+                         </span>
+                            </md-chip-template>
+                        </md-chips>
+
+                    </md-input-container>
+
+                    <md-input-container class='modal_field' id='addYoutubeVideo'>
+                        <label>Upload Youtube Video (Optional)</label>
+                        <input name='youTubeUrl' ng-model='uploadVideo[0].youTubeUrl' ng-init="uploadVideo[0].youTubeUrl = videoToDelete.youtube_video_src " value="videoToDelete.youtube_video_src"  aria-label=''>
+                    </md-input-container>
+
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+
+            <div class='button_div'>
+                <md-button class='modal_buttons right_button' ng-click='closeModal()' style='float: right;'>Cancel</md-button>
+                <md-button class='modal_buttons left_button' type='submit' style='float: right;'>Delete Video</md-button>
+            </div>
+
+            <!-- <md-button style='margin-right: 8%; margin-top: 10px!important;' class='modal_buttons' type="submit">
+                Delete Video
+            </md-button>
+            <md-button style='margin-top: 10px!important;' class='modal_buttons' ng-click="closeModal()">
+                Cancel
+            </md-button> -->
+        </form>
+    </md-dialog-content>
+</md-dialog>

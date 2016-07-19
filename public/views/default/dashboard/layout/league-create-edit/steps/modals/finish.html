@@ -1,0 +1,20 @@
+<md-dialog aria-label="Add venue modal" class="dialog-page add-venue">
+    <md-dialog-content>
+        <md-content>
+            <p class="md-title" style="color: transparent !important;">Finish! <md-button ng-click="closeModal()" class="md-icon-button"><md-icon>close</md-icon></md-button></p>
+
+            <div class="success-box">
+                <div class="icon"><md-icon>thumb_up</md-icon></div>
+                <p class="md-title">Congratulations!</p>
+                <p class="md-body-1">This is amazing, now your league is published!</p>
+            </div>
+        </md-content>
+
+    </md-dialog-content>
+    <md-dialog-actions style="padding-top: 20px;">
+        <div layout="row" style="width: 100%;" md-theme="wooter-red">
+            <div flex="50" layout="row" layout-align="start center"><md-button class="md-primary" style="margin: 0 !important;" ng-click="closeModal()" ui-sref="leaguesList()">Back To Dashboard</md-button></div>
+            <div flex="50" layout="row" layout-align="end center"><md-button class="md-primary" style="margin: 0 !important;" ng-click="closeModal()" ui-sref="leagues({league_id: leagueID})">View League</md-button></div>
+        </div>
+    </md-dialog-actions>
+</md-dialog>

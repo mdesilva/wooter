@@ -1,0 +1,218 @@
+.main {
+  font-family: 'Roboto';
+  background-color: #f2f2f2; }
+  .main .md-fab {
+    background-color: #EF5350; }
+  .main .md-button.md-fab:not([disabled]):hover {
+    background-color: #EF5350; }
+  .main .new_teambtn {
+    color: #EF5350; }
+
+.hero_header {
+  color: #fff;
+  background-color: #024F7E; }
+  .hero_header p {
+    opacity: 0.7; }
+  .hero_header .leagueHead {
+    height: calc(162px - 48px);
+    max-width: 1280px;
+    width: 100%; }
+
+.main_tabs {
+  background-color: #024F7E; }
+  .main_tabs .vendor_tabs {
+    max-width: 1280px; }
+    .main_tabs .vendor_tabs .md-tab {
+      color: rgba(255, 255, 255, 0.702); }
+      .main_tabs .vendor_tabs .md-tab .md-active {
+        color: white; }
+
+/* innards of the the sales dashboard */
+.sales_innards {
+  background-color: white;
+  padding: 0px; }
+  .sales_innards .pages_ndots {
+    position: relative;
+    height: 60px; }
+    .sales_innards .pages_ndots .pages {
+      position: absolute;
+      background-color: #f5f5f5;
+      width: 100%;
+      z-index: 10; }
+      .sales_innards .pages_ndots .pages p {
+        text-align: center;
+        margin: 0px;
+        padding: 20px 0px;
+        font-weight: bold; }
+    .sales_innards .pages_ndots .dots {
+      position: absolute;
+      width: 100%;
+      z-index: 20; }
+      .sales_innards .pages_ndots .dots p {
+        text-align: right;
+        margin: 0px;
+        padding: 20px 0px;
+        margin-right: 20px;
+        font-weight: bold; }
+  .sales_innards .pages_search {
+    position: relative;
+    height: 60px;
+    background-color: white;
+    width: 100%; }
+    .sales_innards .pages_search .player_drops {
+      width: 20%;
+      float: left;
+      height: 100%;
+      border-right: 1px solid #eee;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+      @media screen and (max-width: 959px) {
+        .sales_innards .pages_search .player_drops {
+          width: 100%; } }
+      .sales_innards .pages_search .player_drops p {
+        padding: 20px 0px 20px 20px;
+        margin: 0px;
+        font-weight: bold; }
+      .sales_innards .pages_search .player_drops .player_menu {
+        position: absolute;
+        background-color: white;
+        width: 100%;
+        z-index: 30; }
+        .sales_innards .pages_search .player_drops .player_menu ul {
+          padding: 0px;
+          width: 100%;
+          margin: 0px; }
+          .sales_innards .pages_search .player_drops .player_menu ul a {
+            text-decoration: none;
+            color: black; }
+            .sales_innards .pages_search .player_drops .player_menu ul a li {
+              text-align: left;
+              width: 100%;
+              list-style-type: none;
+              padding: 10px 0px 10px 20px; }
+          .sales_innards .pages_search .player_drops .player_menu ul a:hover {
+            background-color: #eee; }
+    .sales_innards .pages_search .player_search {
+      width: 60%;
+      float: left;
+      height: 100%; }
+      @media screen and (max-width: 959px) {
+        .sales_innards .pages_search .player_search {
+          width: 100%;
+          padding-left: 20px; } }
+      .sales_innards .pages_search .player_search p {
+        width: 5%;
+        text-align: center;
+        height: 100%;
+        padding: 20px 0px;
+        margin: 0px;
+        float: left; }
+      .sales_innards .pages_search .player_search input[type='text'] {
+        width: 95%;
+        height: 100%;
+        border: none; }
+    .sales_innards .pages_search .player_add {
+      width: 20%;
+      float: left;
+      height: 100%;
+      border-left: 1px solid #eee;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+      @media screen and (max-width: 959px) {
+        .sales_innards .pages_search .player_add {
+          width: 100%; } }
+      .sales_innards .pages_search .player_add .red {
+        padding: 20px 0px;
+        margin: 0px;
+        font-weight: bold;
+        color: #ed514f;
+        text-align: center;
+        cursor: pointer; }
+  .sales_innards .player_results {
+    width: 100%;
+    overflow-x: scroll;
+    float: left; }
+    .sales_innards .player_results table {
+      width: 100%;
+      min-width: 970px; }
+      .sales_innards .player_results table tbody .table_header {
+        height: 60px;
+        background-color: #f5f5f5; }
+        .sales_innards .player_results table tbody .table_header th {
+          width: 125px;
+          text-align: center;
+          color: rgba(0, 0, 0, 0.5); }
+          .sales_innards .player_results table tbody .table_header th md-checkbox {
+            width: 0px;
+            height: 30px;
+            margin: 15px;
+            padding: 0px; }
+        .sales_innards .player_results table tbody .table_header .team_name {
+          width: 300px; }
+      .sales_innards .player_results table tbody .table_lists {
+        height: 60px;
+        background-color: white; }
+        .sales_innards .player_results table tbody .table_lists td {
+          padding: 0px;
+          margin: 0px;
+          font-weight: normal;
+          text-align: center; }
+          .sales_innards .player_results table tbody .table_lists td md-checkbox {
+            width: 0px;
+            height: 30px;
+            margin: 15px;
+            padding: 0px; }
+          .sales_innards .player_results table tbody .table_lists td img {
+            width: 40px;
+            height: 60px;
+            border-radius: 50%;
+            padding: 10px 0px; }
+        .sales_innards .player_results table tbody .table_lists .team_name {
+          text-align: left; }
+        .sales_innards .player_results table tbody .table_lists .email_message img {
+          width: 20px;
+          height: 60px;
+          border-radius: 0%;
+          padding: 20px 0px; }
+      .sales_innards .player_results table .icons_checks {
+        width: 40px !important;
+        text-align: center; }
+
+.modal_AT h4 {
+  width: 90%;
+  margin: 10px auto; }
+
+.modal_field {
+  margin: 18px 0px 0px !important; }
+
+#addTeamName label {
+  top: -20px; }
+
+#setDivision md-select {
+  font-size: 14px;
+  font-weight: bold; }
+
+.modal_buttons {
+  float: right;
+  margin-top: 20px !important;
+  margin-bottom: -10px !important; }
+  .modal_buttons span {
+    color: rgba(0, 0, 0, 0.4) !important; }
+
+.modal_buttons:hover span {
+  color: black !important; }
+
+md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple {
+  color: #ed514f !important; }
+
+md-input-container.md-default-theme.md-input-invalid .md-input, md-input-container.md-input-invalid .md-input {
+  border-color: #eee !important; }
+
+md-input-container.md-default-theme.md-input-invalid.md-input-focused label, md-input-container.md-input-invalid.md-input-focused label {
+  color: #3f51b5 !important; }
+
+/*# sourceMappingURL=players.css.map */

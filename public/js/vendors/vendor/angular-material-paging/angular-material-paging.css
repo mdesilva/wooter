@@ -1,0 +1,8 @@
+.wan-material-paging .wmp-button {
+  width: 42.5px;
+  min-width: 42.5px;
+  margin: 5px;
+}
+.wan-material-paging button.md-primary{
+	background-color: #00bfa5 !important
+}

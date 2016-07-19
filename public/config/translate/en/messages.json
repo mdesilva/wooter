@@ -1,0 +1,13 @@
+{
+	
+	"error": {
+		"field"			: "Field :field are required|Fields :field, are required",
+		"match"			: "Field :field don't match|Fields :field, doesn't matches",
+		"errors"		: ":error Error|:error Errors"
+	},
+	"success": {
+		"logged"		: "Now you are logged in now",
+		"awesome"	    : "Awesome"
+	}
+
+}

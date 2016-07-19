@@ -1,0 +1,49 @@
+<div class="row section photos" style="border: none !important;">
+    <p class="md-title">Photos ({{ $step.model.gallery.images.photos.length }})</p>
+    <div class="wrapper">
+        <ul class="items">
+            <li class="action">
+                <a href="#" class="md-whiteframe-2dp">
+                    <span class="inner">
+                        <md-icon>add_circle_outline</md-icon>
+                        <span class="text">Add Photo</span>
+                    </span>
+                    <span class="handler">
+                        <input type="file" name="photo[]" accept="image/*" multiple style="display: none !important;" />
+                    </span>
+                </a>
+            </li>
+            <li ng-repeat="image in $step.model.gallery.images.photos track by image.id" class="image-{{ image.id }}">
+                <!-- cssbg="{{ 'api/img.src/'+image.image_id+'?thumbnail' }}" -->
+                <a href="javascript:void(0)" cssbg="{{image.thumbnail_path}}">
+                    <md-button class="md-fab" ng-click="action('delete', 'images', {id: image.id,imageId: image.image_id})"><md-icon>close</md-icon></md-button>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row section videos" style="display: none">
+    <p class="md-title">Videos</p>
+    <div class="wrapper">
+        <ul class="items">
+            <li class="action">
+                <a href="#" class="md-whiteframe-2dp">
+                    <span class="inner">
+                        <md-icon>add_circle_outline</md-icon>
+                        <span class="text">Add Video</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" cssbg="{{ asset('img/test/img-gallery.jpg') }}">
+                    <md-button class="md-fab"><md-icon>close</md-icon></md-button>
+                </a>
+            </li>
+            <li>
+                <a href="#" cssbg="{{ asset('img/test/img-gallery2.jpg') }}">
+                    <md-button class="md-fab"><md-icon>close</md-icon></md-button>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

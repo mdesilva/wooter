@@ -1,0 +1,88 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 ng-show="league.name" class="md-title league-title">{{league.name}}</h1>
+            <p class="md-body-1 league-subtitle">{{competition.name ? competition.name : games_scope}}</p>
+
+            <md-progress-circular md-mode="indeterminate" ng-hide="league.name" class="white-loader" md-diameter="94"></md-progress-circular>
+        </div>
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+
+</header>
+
+<div id="season-creator">
+    <h1>Create a Season here</h1>
+    <form id="create-season-form" data-layout="row">
+        <div data-layout="column">
+        <md-input-container>
+            <label>Sport</label>
+            <md-select ng-model="createSeasonRequest.sportId">
+                <md-option value="{{sport.id}}" ng-repeat="sport in sports">{{sport.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Name</label> 
+            <input type="text" ng-model="createSeasonRequest.name">
+        </md-input-container>
+        <md-input-container>
+            <label>Starts</label> 
+            <input type="text" ng-model="createSeasonRequest.startsAt">
+        </md-input-container>
+        <md-input-container>
+            <label>Ends</label> 
+            <input type="text" ng-model="createSeasonRequest.endsAt">
+        </md-input-container>
+        <md-input-container>
+            <label>Registration Starts</label> 
+            <input type="text" ng-model="createSeasonRequest.registrationOpensAt">
+        </md-input-container>
+        </div>
+        <div data-layout="column">
+        <md-input-container>
+            <label>Registration Ends</label> 
+            <input type="text" ng-model="createSeasonRequest.registrationClosesAt">
+        </md-input-container>
+        <md-input-container>
+            <label>Maximum Teams</label> 
+            <input type="text" ng-model="createSeasonRequest.maxTeams">
+        </md-input-container>
+        <md-input-container>
+            <label>Minimum Teams</label> 
+            <input type="text" ng-model="createSeasonRequest.minTeams">
+        </md-input-container>
+        <md-input-container>
+            <label>Maximum Free Agents</label> 
+            <input type="text" ng-model="createSeasonRequest.maxFreeAgents">
+        </md-input-container>
+        <md-input-container>
+            <label>Minimum Free Agents</label> 
+            <input type="text" ng-model="createSeasonRequest.minFreeAgents">
+        </md-input-container>
+        <md-input-container>
+            <label>Minimum Free Agents</label> 
+            <input type="text" ng-model="createSeasonRequest.price">
+        </md-input-container>
+        </div>
+        
+        <button id="save-season-btn" ng-click="saveSeason(createSeasonRequest)">Save</button>
+    </form>
+</div>
+
+<style>
+    #season-creator {
+        text-align: center;
+    }
+    
+    #create-season-form {
+        width: 600px;
+        margin: auto;
+        background-color: white;
+    }
+    
+    md-input-container {
+        width: 200px;
+        background-color: white;
+    }
+</style>

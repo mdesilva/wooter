@@ -1,0 +1,17 @@
+<div class="container steps-holder" ng-controller='Dashboard/League/CreateEditController''>
+    <ul class="steps" layout-gt-xs="row">
+        <li flex-gt-xs ng-repeat="(index, step) in steps">
+        	<!-- <a href="#" ng-click="stepClick({step: step})" class="step" ng-class="{saved: (isSaved(step) && !$steps.isActive(index)), active: $steps.isActive(index)}" ng-disabled="index != 0 && !leagueID"> -->
+        	<a ng-if="currentState == 'dashboardLeagueCreate'" href="#" ng-click="stepClick({step: step})" class="step" ng-class="{saved: (isSaved(step) && !$steps.isActive(index)), active: $steps.isActive(index)}" ng-disabled="index != 0 && !leagueID">
+                <span class="icon" ng-if="!$step.data[step].saved">{{ index+1 }}</span>
+                <span class="icon" ng-if="$step.data[step].saved"></span>
+                <span class="text">{{ step | capitalize }}</span>
+            </a>
+            <a ng-if="currentState == 'dashboardLeagueEdit'" href="dashboard/leagues/{{leagueID}}/edit?step={{step}}" ng-click="stepClick({step: step})" class="step" ng-class="{saved: (isSaved(step) && !$steps.isActive(index)), active: $steps.isActive(index)}" ng-disabled="index != 0 && !leagueID">
+                <span class="icon" ng-if="!$step.data[step].saved">{{ index+1 }}</span>
+                <span class="icon" ng-if="$step.data[step].saved"></span>
+                <span class="text">{{ step | capitalize }}</span>
+            </a>
+        </li>
+    </ul>
+</div>

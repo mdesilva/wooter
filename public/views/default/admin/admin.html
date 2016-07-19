@@ -1,0 +1,162 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 class="md-title league-title">Admin Panel</h1>
+            <!-- <p class="md-body-1 league-subtitle">Admin Panel</p> -->
+        </div>
+
+        <div class="nav-bar" ng-include="logicTemplate('admin/layout/nav-bar')"></div>
+    </div>
+
+</header>
+
+<div class="container players-content">
+
+    <md-content class="md-whiteframe-2dp">
+        <div class="">
+            <md-list ng-cloak>
+                <md-list-item class="" layout="row" style='background: white;border-bottom: 1px solid #eee;'>
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <!-- div class="stand"  layout="row" flex="100" flex-gt-sm="50">
+                            <div class="team mobile_hidden_600 mobile_hidden_959" flex="20">
+                                <p class="md-body-1 info">Id</p>
+                            </div>
+                            <div class="team mobile_hidden_600 mobile_hidden_959" flex="20">
+                                <p class="md-body-1 info">Name</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="25">
+                                <p class="md-body-1 info">Email</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="20">
+                                <p class="md-body-1 info">Phone</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="30">
+                                <p class="md-body-1 info">Url</p>
+                            </div>
+                            
+                            <div class="payment-status mobile_hidden_600" flex="10" flex-md='10'>
+                                <p class="md-body-1 info">Visibility</p>
+                            </div>
+
+                            <div class="payment-status mobile_hidden_600" flex="25" flex-md='25'>
+                                <p class="md-body-1 info">Created At</p>
+                            </div>
+
+                            <div class="payment-status mobile_hidden_600" flex="50" flex-md='50'>
+                                <p class="md-body-1 info">Actions</p>
+                            </div>
+                        </div> -->
+                        <div class="stand"  layout="row" flex="100" flex-gt-sm="50">
+                            <div class="team mobile_hidden_600 mobile_hidden_959" flex="10">
+                                <p class="md-body-1 info">Id</p>
+                            </div>
+                            
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="50">
+                                <p class="md-body-1 info">Name</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="50">
+                                <p class="md-body-1 info">Description</p>
+                            </div>
+
+                            <div class="team mobile_hidden_600 mobile_hidden_959" flex="25">
+                                <p class="md-body-1 info">Sport</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="25">
+                                <p class="md-body-1 info">Phone</p>
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+ 
+                <md-list-item layout="row" ng-repeat="league in leagues" style='border-bottom: 1px solid #eee;'>
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <!-- div class="stand"  layout="row" flex="100" flex-gt-sm="50">
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="20" flex-md="15">
+                                <p class="md-body-1 info">{{ organization.id }}</p>
+                            </div>
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="20" flex-md="15">
+                                <p class="md-body-1 info">{{ organization.name }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="25" flex-md="15">
+                                <p class="md-body-1 info">{{ organization.email }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="20" flex-md="20">
+                                <p class="md-body-1 info">{{ organization.phone }}</p>
+                            </div>
+
+                            <div style="word-wrap:break-word" class="team teams_table_info mobile_hidden_600" flex="30" flex-md="30">
+                                <p class="md-body-1 info">woozard.dev/api/organizations/{{ organization.code }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="10" flex-md="10">
+                                <p class="md-body-1 info">{{organization.url == '1' ? 'Public' : 'Hidden'}}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="25" flex-md="25">
+                                <p class="md-body-1 info">{{ organization.created_at.date }}</p>
+                            </div>
+
+                            <div ng-if="organization.url == 1" class="team teams_table_info mobile_hidden_600" flex="50" flex-md="50">
+                                <md-button ng-click="editOrganization($event, organization)">Edit</md-button>
+                                <md-button ng-click="removeOrganization($event, organization)">Delete</md-button>
+                                <md-button ng-click="hiddenOrganizationUrl($event, organization)">Hidden</md-button>
+                                <md-button ng-click="loginOrganization($event, organization)">Login</md-button>
+                            </div>
+                            <div ng-if="organization.url == 0" class="team teams_table_info mobile_hidden_600" flex="50" flex-md="50">
+                                <md-button ng-click="editOrganization($event, organization)">Edit</md-button>
+                                <md-button ng-click="removeOrganization($event, organization)">Delete</md-button>
+                                <md-button ng-click="publicOrganizationUrl($event, organization)">Public</md-button>
+                                <md-button ng-click="loginOrganization($event, organization)">Login</md-button>
+                            </div>
+                        </div> -->
+                        <div class="stand"  layout="row" flex="100" flex-gt-sm="50">
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="10" flex-md="10">
+                                <p class="md-body-1 info">{{ league.id }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="50" flex-md="50">
+                                <p class="md-body-1 info">{{ league.name }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="50" flex-md="50">
+                                <p class="md-body-1 info">{{ league.description }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="25" flex-md="25">
+                                <p class="md-body-1 info">{{ league.sport }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="25" flex-md="50">
+                                <p class="md-body-1 info">{{ league.phone }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+
+                <!-- <md-list-item class="no-players" layout="row" ng-if="count(organizations) == 0">
+
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">No organizations found</p>
+                    </div>
+
+                </md-list-item> -->
+                <md-list-item class="no-players" layout="row" ng-if="count(leagues) == 0">
+
+                    <div class="message-error" flex="500">
+                        <p class="md-body-1 name">No leagues found</p>
+                    </div>
+
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+

@@ -1,0 +1,37 @@
+<md-dialog class='management_modals' aria-label='editDivision'>
+    <md-dialog-content>
+
+        <!-- Header -->
+        <div class='modal_header' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div layout='column' flex='90'>
+                <h4>Edit Division</h4>
+            </div>
+            <div layout='column' flex='5'></div>
+        </div>                   
+
+        <form ng-submit='$event'>          
+            <!-- Division -->
+            <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='editAlbum'>
+                        <label>Division Name</label>
+                        <input name='divisionName' ng-model='divisionNameToEdit'>
+                    </md-input-container>
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+                            
+            <!-- buttons -->
+            <div class='modal_button_div'>
+                <md-button class='modal_buttons right_button' ng-click="editDivisionInModal(divisionIdToEdit)">
+                    Save Changes
+                </md-button>                            
+                <md-button class='modal_buttons left_button' ng-click="cancel();">
+                    Cancel
+                </md-button>   
+            </div>
+        </form>
+    </md-dialog-content>
+</md-dialog>

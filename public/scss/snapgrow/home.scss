@@ -1,0 +1,521 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+//HOMEPAGE SCSS
+
+.hero_image{
+	background: url('/img/snapgrow/hero-homepage.png') center center fixed;
+    background-size: cover !important;
+} 
+
+.common{
+	@media only screen and (max-width: 1359px) {
+	    max-width: 960px!important;
+	    width: 960px!important;
+	    margin: 0 calc(50% - 480px)!important;
+    }	
+
+	@media only screen and (max-width: 959px) {
+	    max-width: 600px!important;
+	    width: 600px!important;
+	    margin: 0 calc(50% - 300px)!important;
+    }	
+
+	@media only screen and (max-width: 599px) {
+	    max-width: 300px!important;
+	    width: 300px!important;
+	    margin: 0 calc(50% - 150px)!important;
+    }
+
+	.common_text{
+
+		h1{
+			font-size: 24px;
+			color: #212121;
+			text-align: center;
+			margin: 30px 15px;
+			line-height: 1.4;
+		}
+
+		.custom_hr{
+			width: 50px;
+		    height: 2px;
+		    margin: 0 calc(50% - 25px) 30px;
+		    background: rgba(0, 0, 0, 0.25);
+		}
+
+		p{
+			text-align: center;
+			font-size: 18px;
+			padding: 0px 190px;
+			color: rgba(0,0,0,.54);
+			margin-bottom: 64px;
+			@media only screen and (max-width: 1359px) {
+				padding: 0px 130px;
+	 	    }		
+			@media only screen and (max-width: 959px) {
+				padding: 0px 30px;
+	 	    }		
+			@media only screen and (max-width: 959px) {
+				padding: 0px 20px;
+	 	    }		
+	 	    br{
+				@media only screen and (max-width: 959px) {
+					display: none!important;
+		 	    }			 	    	
+	 	    }
+		}
+	}
+
+	.common_trio{
+		width: 960px;
+		margin: 0 auto;
+		margin-bottom: 40px;
+		padding: 0px 15px;
+	
+		@media only screen and (max-width: 1359px) {   
+		    width: 960px!important;  
+		}	
+
+		@media only screen and (max-width: 959px) {
+			width: 600px!important;
+		}	
+
+		@media only screen and (max-width: 599px) {
+		    width: 300px!important;
+	    }	
+
+		.common_left,
+		.common_center,
+		.common_right{
+			width: 310px;
+			padding: 0px 7.5px;
+			float: left;
+			position: relative;
+
+			@media only screen and (max-width: 1359px) {   
+			    width: 310px!important;  
+		    }	
+
+			@media only screen and (max-width: 959px) {
+			    width: 570px!important;
+			    margin: 20px 0px;
+		    }	
+
+			@media only screen and (max-width: 599px) {   
+			    width: 270px!important;  
+		    }	
+
+			img{
+				width: 54px;
+				margin: 0 calc(50% - 27px);
+				margin-bottom: 20px;
+			}
+
+			p{
+				width: 245px;
+				margin: 0 auto;
+				font-size: 18px;
+				text-align: center;
+				color: rgba(0,0,0,.75);
+				
+				@media only screen and (max-width: 1359px) {   
+				    width: 245px!important;  
+			    }	
+
+				@media only screen and (max-width: 959px) {
+				    width: 325px!important;
+			    }	
+
+				@media only screen and (max-width: 599px) {
+				    width: 250px!important;
+				    margin-bottom: 0px
+			    }			
+			}
+			.special{
+				margin-bottom: 54px;
+			}
+		}
+	}
+}
+
+.level{
+	padding: 48px 0px!important;
+}
+
+.followers{
+	padding: 48px 0px 96px;
+	width: 100%;
+
+	.people{
+		width: 75px;
+		margin: 0 auto;
+		padding: 0px 0px 40px;
+
+		img{
+			width: 75px;
+		}
+	}
+
+	.build{
+		
+		h1{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 500;
+			margin: 0px 0px 30px;
+		}
+
+		.build_text{
+			margin-bottom: 30px;
+		}
+
+		p{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 500;
+
+			@media only screen and (max-width: 699px) {
+				padding: 0 30px;
+		 	}	
+
+			br{
+				@media only screen and (max-width: 699px) {
+					display: none!important;
+		 	    }				
+			}
+		}
+	}
+}
+
+.white_separator_origin{
+
+		.common_text{
+			p{
+				padding: 0 30px;
+			}
+		}
+
+		.white_separator_left{
+
+			.common_text{
+			
+
+				ol{
+					padding:0px;
+					margin: 0px;
+					padding-left: 80px;
+					padding-bottom: 40px;
+
+					@media only screen and (max-width: 1359px) {
+						padding-left: 60px;
+			 	    }	
+
+					@media only screen and (max-width: 959px) {
+						padding-left: 100px;
+			 	    }	
+
+					@media only screen and (max-width: 599px) {
+						padding-left: 50px;
+						padding-right: 50px;
+			 	    }	
+
+					li{
+					    text-align: left;
+					    font-size: 14px;
+					    color: rgba(0, 0, 0, 0.54);
+					    line-height: 2.1;
+					}
+				}
+				img{
+					width: 90px;
+				    padding-bottom: 10px;
+				    margin: -40px calc(50% - 45px) 22px;
+
+					@media only screen and (max-width: 1359px) {
+						width: 70px;
+				    	padding-bottom: 10px;
+				    	margin: -40px calc(50% - 35px) 22px;
+			 	    }	
+
+					@media only screen and (max-width: 959px) {
+						width: 150px;
+				    	padding-bottom: 10px;
+				    	margin: -40px calc(50% - 75px) 22px;
+			 	    }	
+
+					@media only screen and (max-width: 599px) {
+					    display: none!important;
+		 		    }  
+				}
+			}	
+		}
+		
+		.white_separator_right{
+
+			.common_text{
+
+				ol{
+					padding:0px;
+					margin: 0px;
+					padding-left: 80px;
+					padding-bottom: 40px;
+
+					@media only screen and (max-width: 1359px) {
+						padding-left: 60px;
+			 	    }	
+					
+					@media only screen and (max-width: 959px) {
+						padding-left: 100px;
+			 	    }	
+					
+					li{
+					    text-align: left;
+					    font-size: 14px;
+					    color: rgba(0, 0, 0, 0.54);
+					    line-height: 2.1;
+					}
+				}
+
+				img{
+					position: absolute;
+				    bottom: 85px;
+				    right: 60px;
+				    z-index: 0;
+				    width: 200px;
+					
+					@media only screen and (max-width: 1359px) {
+						bottom: 95px;
+		 		    }	
+
+					@media only screen and (max-width: 959px) {
+					    bottom: 60px;
+					    width: 270px;
+		 		    }
+
+					@media only screen and (max-width: 599px) {
+					    display: none!important;
+		 		    }
+				}
+			}	
+		}
+}
+
+.testimonial{
+	padding: 48px 0px 112px;
+	
+	.quote{
+		margin: 0px 0px 40px;
+
+		p{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 600;
+
+			@media only screen and (max-width: 959px) {
+				padding: 0 30px;
+		 	}	
+
+			br{
+				@media only screen and (max-width: 959px) {
+					display: none!important;
+		 	    }				
+			}
+		}
+	}
+
+	.person{
+		width: 340px;
+		margin: 0 auto;
+
+		@media only screen and (max-width: 599px) {
+			width: 170px;
+   		}		
+
+		.company{
+			float: left;
+			
+			img{
+				width: 150px;
+				padding-right: 10px;
+				
+				@media only screen and (max-width: 599px) {
+				    width: 210px;
+				    margin-bottom: 20px;
+		   		}		
+			}
+		}
+
+		.title{
+			width: 170px;
+			padding-left: 10px;
+			float: left;
+
+			p{
+				text-align: left;
+				color: white;
+				font-size: 24px;
+				margin: 0px;
+				font-weight: 600;
+			}
+
+			.shift{
+				margin-left: 16px;
+				font-size: 20px!important;
+				font-weight: normal!important;
+			}
+		}
+	}
+}
+
+.tech{
+	    
+	.tech_text{
+
+		.tech_center{
+			border-left: 1px solid #e0e0e0;
+			border-right: 1px solid #e0e0e0;
+			@media only screen and (max-width: 809px) {
+		    	border-left: none!important;
+				border-right: none!important;
+			}	
+		}		
+	}
+}
+
+.price{
+	
+	.red_number {
+		font-size: 24px;
+		color: #ef5653;
+		font-weight: 700;
+	}
+
+	.price_center{
+		border-left: 1px solid #e0e0e0;
+		border-right: 1px solid #e0e0e0;
+		@media only screen and (max-width: 959px) {
+	    	border-left: none!important;
+			border-right: none!important;
+		}	
+	}	
+
+	.price_sale{
+		width: 100%;
+		margin: 50px 0px;
+		p{
+			width: 100%;
+			text-align: center;
+			font-size: 18px;
+			margin: 0px;
+			color: rgba(0,0,0,.54);
+		}
+	}	
+}
+
+
+		
+.growth {
+	padding: 0 0 80px;
+	background: url('/img/snapgrow/phones.png')!important;
+	background-size: 100% 100% !important;
+	@media only screen and (max-width: 1359px) {
+	   	padding: 0 0 40px;
+	}	
+
+	@media only screen and (max-width: 959px) {
+	   	padding: 0 0 20px;
+	   	background: none!important;
+	}	
+
+	.strategy_text {
+		padding: 0 30px;
+
+		@media only screen and (max-width: 1359px) {
+		   	padding: 0 20px;
+		}	
+
+		@media only screen and (max-width: 959px) {
+		   	padding: 0 30px;
+		}	
+
+
+		h1 {
+			font-size: 24px;
+			color: #212121;
+			text-align: left;
+			padding: 30px 0;
+			margin: 0;
+			
+			@media only screen and (max-width: 599px) {
+		   		text-align: center;
+			}	
+		}
+
+		.custom_hr {
+			width: 50px;
+			height: 2px;
+			margin: 0 0 30px;
+			background: rgba(0, 0, 0, 0.25);
+			
+			@media only screen and (max-width: 599px) {
+		   		margin: 0 calc(50% - 25px) 30px;
+			}	
+		}
+		
+		p {
+			text-align: left;
+			font-size: 18px;
+			color: rgba(0, 0, 0, 0.54);
+			margin-bottom: 32px;
+			
+			@media only screen and (max-width: 599px) {
+		   		text-align: center;
+			}	
+			
+			br{
+				display: none;
+				@media only screen and (max-width: 599px) {
+		   			display: block!important;
+				}	
+			}
+
+		}
+
+		.red_number {
+			font-size: 30px;
+			color: #ef5653;
+			font-weight: 700;
+		}
+		.p_three {
+			padding-bottom: 40px;
+			p {
+				margin: 0;
+			}
+		}
+
+		.p_two p {
+			margin: 0 0 10px;
+			@media only screen and (max-width: 599px) {
+		   		margin: 0 0 30px;
+			}	
+		}
+	}
+}
+
+
+
+
+

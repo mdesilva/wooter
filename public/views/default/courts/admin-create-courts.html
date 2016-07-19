@@ -1,0 +1,325 @@
+<style type="text/css">
+    .pac-container {
+        z-index: 1051 !important;
+    }
+    </style>
+<div class="container">
+
+<div class="aside">
+    <span class='aside_title'>Create court</span>
+       <ul>
+        <li class='' ><a>Edit Location</a>
+            <i class="fa fa-plus" style="float:right; margin-right:20px" ng-if="!locationId"></i>
+            <i class="fa fa-check" style="float:right; margin-right:20px" ng-if="locationId"></i>
+        </li>
+        <li class='' id="add_photos" ><a >Gallery</a>
+            <i class="fa fa-check" style="float:right; margin-right:20px" ng-if="image_uploaded.length"></i>
+            <i class="fa fa-plus" style="float:right; margin-right:20px" ng-if="!image_uploaded.length"></i>
+       </li>
+       </ul>
+</div>
+
+<!--right panel-->
+        <div class="main_section" ng-show="show_add_photos">
+
+            <div class="main_section1">
+                <h2>Add some photos of your court.</h2>
+                <p>Add photos of your facilities or games. You can always add more later.</p>
+            </div>
+            <hr>
+
+            <div>
+                <button type='button' class='btn' id='add_photo' ng-click="clickFile()">
+                <span>
+                    <!-- <img src='images/camera_small.png' style='max-width: 20px' id='photo_img'> -->
+                    <img src='images/camera_small.png' style='width: 20px;' id='photo_img' alt=''>
+                    Add Photo
+                </span>
+                </button>
+            </div>
+            <hr>
+            <!-- Image Gallery -->
+            <div>
+                <h5>Current Photos</h5>
+                <div id='image_gallery'>
+                    <ul>
+                        <li ng-repeat="image in image_uploaded" ng-if="image.type=='image'">
+                            <img src="images/delete.png" class="img_delete" ng-click="deleteImage(image.sr_no, $index)">
+                            <a ng-click="viewGallery(MAIN_REST_URL+image.image)" style="cursor:pointer">
+                                <img ng-src='{{MAIN_REST_URL+image.image}}' class='main_img' alt='something' >
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href=''  ng-click="clickFile()">
+                                <figure class="addition" id='image_addition'>
+                                    <div class='figure_img'>
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="612px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+                                            <g>
+                                              <g>
+                                                <path class="kiwi" d="M581.347,146.42H453.089l-4.336-30.646l-3.326-20.661c-1.343-8.323-5.75-15.224-12.665-20.988
+                                                  c-7.079-5.899-14.655-8.991-22.985-8.991H201.228c-8.33,0-15.991,2.992-22.992,8.991c-6.994,5.999-10.711,13.035-11.99,20.988
+                                                  l-3.333,20.661l-4.663,30.646H30.654C13.66,146.42,0,160.081,0,176.406v339.812c0,16.986,13.66,30.646,30.654,30.646h550.693
+                                                  c16.993,0,30.653-13.66,30.653-30.646V176.406C612,160.081,598.34,146.42,581.347,146.42z M575.021,509.887H36.652V183.065H158.25
+                                                  c18.323,0,34.144-13.632,36.645-31.314l4.329-30.646l3.333-18.991h206.551l3,18.991l4.662,30.646
+                                                  c2.687,17.654,18.656,31.314,36.318,31.314h121.932V509.887z"/>
+                                                <path class="kiwi" d="M515.718,270.016c15.991,0,29.317-13.653,29.317-29.644c0-16.326-12.992-29.986-29.317-29.986
+                                                  s-29.317,13.66-29.317,29.986C486.4,256.363,499.727,270.016,515.718,270.016z"/>
+                                                <path class="kiwi" d="M305.499,192.731c-37.64,0-70.291,13.653-97.277,40.639s-40.646,59.637-40.646,97.285c0,37.64,13.66,70.291,40.646,97.277
+                                                  s59.637,39.751,97.277,40.312c74.634,1.102,138.805-63.625,137.924-137.59c-0.448-37.981-13.66-70.298-40.64-97.285
+                                                  C375.797,206.384,343.48,192.731,305.499,192.731z M376.792,402.282c-19.651,19.651-43.305,29.311-71.293,29.311
+                                                  c-27.647,0-51.3-9.659-70.959-29.311c-19.659-19.659-29.317-43.646-29.317-71.627c0-27.654,9.659-51.642,29.317-71.3
+                                                  c19.659-19.652,43.312-29.645,70.959-29.645c27.988,0,51.642,9.993,71.293,29.645c19.658,19.659,29.651,43.646,29.651,71.3
+                                                  C406.443,358.637,396.45,382.623,376.792,402.282z"/>
+                                              </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <figcaption>
+                                      
+                                      <p class="captions" id='image_caption'>+ Add Photo</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <!-- Video Gallery -->
+            <div>
+                <h5>Current Videos</h5>
+                <div id='video_gallery'>
+                    <ul>
+                        <li ng-repeat="image in image_uploaded" ng-if="image.type=='video'" style="width:300px; height:200px; margin-right:20px">
+                          <embed-video ng-if="image.type=='video'" id="image.sr_no" loop=1 ng-href="{{image.image}}" class="video"><a href="{{image.image}}">Watch</a></embed-video>
+                          <button class="btn btn-danger delete_vid" ng-click="deleteVideo(image.sr_no, $index)">Delete</button>
+                        </li>
+                        <li>
+                            <a href='' data-toggle='modal' data-target='#addVideoModal'>
+                               <figure class="addition" id='add_video_btn'>
+                                   <div class='figure_img' id='add_video_thing'>
+                                        <!-- <img src='images/video_play.png' class='add_video'> -->
+                                        <svg version="1.1" id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 265.404 265.404" style="enable-background:new 0 0 265.404 265.404;" xml:space="preserve">
+                                            <g>
+                                            <path class="svg_white_bg" d="M194.172,123.684l-78.081-51.122c-1.921-1.257-4.032-1.922-6.106-1.922
+                                                c-5.521,0-9.686,4.496-9.686,10.458v103.207c0,5.962,4.164,10.458,9.685,10.458c2.075,0,4.187-0.665,6.106-1.923l78.082-51.129
+                                                c3.251-2.129,5.117-5.415,5.116-9.014C199.289,129.098,197.424,125.814,194.172,123.684z M115.3,175.429V89.973l65.256,42.725
+                                                L115.3,175.429z"/>
+                                            <path class="svg_white_bg" d="M132.702,0.001C59.53,0.001,0,59.53,0,132.702c0,73.172,59.53,132.702,132.702,132.702
+                                                s132.702-59.53,132.702-132.702C265.404,59.53,205.875,0.001,132.702,0.001z M132.702,250.404
+                                                C67.801,250.404,15,197.603,15,132.702C15,67.801,67.801,15.001,132.702,15.001s117.702,52.8,117.702,117.701
+                                                C250.404,197.603,197.604,250.404,132.702,250.404z"/>
+                                            </g>
+                                        </svg>
+                                   </div>
+                                   <figcaption>
+                                      <p class="captions" id='video_caption'>+ Add Video</p>
+                                   </figcaption>
+                               </figure>
+                           </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id='large'></div>
+            <div id='background'></div>
+<input type="file" id="fileInput" img-cropper-fileread image="cropper.sourceImage" style="display:none" />
+    <div class="modal fade" id="add_photo_modal">
+        <div class="modal-dialog modal-lg" style="width:1100px;">
+        <div class="modal-content">
+            <div class="modal-header clearfix">
+                <div class="col-xs-12">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    Add photos<br>
+                </div>
+            </div>
+            <div class="modal-body">
+                  <div ng-show="cropper.croppedImage!=null">
+                    <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="1000" crop-height="350" min-width="100" min-height="50" keep-aspect="true" ></canvas>
+                  </div>
+                  <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>
+            </div>
+            
+            <div class="modal-footer">
+              <button ng-click="upload()" class="btn btn-primary" id="upload_button" ng-show="cropper.croppedImage">Upload</button>
+            </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    <!-- view images -->
+    <div class="modal fade" id="view_photo_modal">
+        <div class="modal-dialog modal-lg" style="width:1100px;">
+        <div class="modal-content">
+            <div class="modal-body">
+                  <div><img ng-src="{{current_gallery_image}}" /></div>
+            </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    <div class='modal fade' id='addVideoModal' tab-index='-1' role='dialog' aria-labelledby='addVideoModal'>
+                <div class='modal-dialog' role='document'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <div class='row'>
+                                <div class='col-lg-11'>
+                                    <h4>Add Video</h4>
+                                </div>
+                                <div class='col-lg-1'>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='modal-body'>
+                            <div class='row'>
+                                <div class='col-lg-2'>
+                                </div>
+                                <div class='col-lg-3'>
+                                    <a href=''><img src='images/youtube_btn.png' id='youtube_btn'></a>
+                                    <h5 id='video_prov'>Youtube</h5>
+                                </div>
+                                <div class='col-lg-1' id='orTxt'>
+                                    <h5>or</h5>
+                                </div>
+                                <div class='col-lg-1'>
+                                </div>
+                                <div class='col-lg-2'>
+                                    <img src='images/vimeo_btn.png' id='vimeo_btn'>
+                                    <h5 id='video_prov'>Vimeo</h5>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-lg-12'>
+                                    <h5>Add Video URL</h5>
+                                    <input type='text' ng-model="videoUrl" class='form-control' placeholder='e.g. Vimeo.com/789787'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='modal-footer'>
+                            <div class='row'>
+                                <div class='col-lg-10'>
+                                </div>
+                                <div class='col-lg-2'>
+                                    <button type='button' ng-click="addVideo()" class='btn pull-right' id='addVideoBtn'>
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+<!-- End new design-->
+ <!--right panel-->
+        <div class="main_section" ng-show="show_location_info">
+
+            <div class="main_section1">
+                <h2>Edit location for your court.</h2>
+                <p>You can edit information about your court here.</p>
+            </div>
+            <div>
+                <!-- <button type='button' class='btn button-edit-address' id='edit_location'>
+                <span>
+                    
+                    Edit location
+                </span>
+                </button> -->
+            </div>
+            <hr>
+            <!-- Image Gallery -->
+            <div id="schedule-location-modal">
+                <h5>Current Location</h5>
+                <div class="step-1">
+                    <form class="step-1-form form-horizontal span8" >
+                        <div class="controls ">
+                            <label >Privacy Type</label> 
+  
+                            <select class="form-control" ng-model="court_privacy_type" name="court_privacy_type">
+                              <option value="public">Public</option>
+                              <option value="private">Private</option>
+                            </select><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls ">
+                            <label >Location Type</label> 
+  
+                            <select class="form-control" ng-model="court_or_field" name="court_or_field" ng-change="changeLocationType()">
+                              <option value=''>Select Type</option>
+                              <option value="court">Court</option>
+                              <option value="field">Field</option>
+                            </select><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls ">
+                            <label >Location type category</label> 
+                            <select class="form-control" ng-model="court_or_field_type" name="court_or_field_type">
+                              <option ng-repeat="court_or_field_type in locationCategories" value="{{court_or_field_type}}">{{court_or_field_type}}</option>
+                            </select><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls ">
+                            <label >{{court_or_field | capitalize}} Name</label> <input type="text" name="name" ng-model="LocationData.name" class="form-control" id="location_title" placeholder="Add Court Name"><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls ">
+                            <label>Description </label><input type="text" class="form-control" name="description" ng-model="LocationData.description" id="location_desc" placeholder="add description"><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls">
+                            <label>Street Address</label>
+                            <input type="text" name="street" ng-model="LocationData.address" class="street address-autocomplete form-control" placeholder="e.g. 123 Main St." autocomplete="off"><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls">
+                            <label>Apt, Suite, Bldg. (optional)</label>
+                            <input type="text" name="apartments" ng-model="LocationData.apartments" class="form-control apartments" placeholder="e.g. Apt #7"><br>
+                        </div>
+                        <div class="controls">
+                            <label>City</label>
+                            <input type="text" name="city" ng-model="LocationData.city" class="form-control city" placeholder="e.g. San Francisco"><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls">
+                            <label>State</label>
+                            <input type="text" name="state" ng-model="LocationData.state" class="form-control state" placeholder="e.g. CA"><br>
+                            <div class="validation-error text-danger hide">Required</div>
+                        </div>
+                        <div class="controls">
+                            <label>ZIP Code</label>
+                            <input type="text" name="zip" ng-model="LocationData.zip" class="form-control zip" placeholder="e.g. 94103"><br>
+                            <div class="validation-error text-danger hide">Valid zip required</div>
+                        </div>
+                       <!--  <button type="button" class="btn btn-danger step1_submit">Next</button>
+                       <button type="button" data-dismiss="modal" class="btn btn-default" aria-hidden="true">Cancel</button> -->
+                    </form>
+                </div>
+                <div class="step-2" >
+                    <div class="map" style="width: 570px; height: 380px"></div>
+                    <form class="step-2-form">
+                        <input type="hidden" class="title" name="title" value="">
+                        <input type="hidden" class="description" name="description" value="">
+                        <input type="hidden" class="street" name="street" value="">
+                        <input type="hidden" class="apartments" name="apartments" value="">
+                        <input type="hidden" class="city" name="city" value="">
+                        <input type="hidden" class="state" name="state" value="">
+                        <input type="hidden" class="zip" name="zip" value="">
+                        <input type="hidden" class="x" name="lat" value="">
+                        <input type="hidden" class="y" name="lng" value="">
+                        <input type="hidden" class="name" name="name" value="">
+                        <input type="hidden" class="name" name="court_or_field_type" value="">
+                        <input type="hidden" class="name" name="court_or_field" value="">
+                        <input type="hidden" class="name" name="court_privacy_type" value="">
+                        <button type="button" class="btn btn-danger step2_submit">Create</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+</div>
+<!-- End new design-->
+
+
+
+</div>

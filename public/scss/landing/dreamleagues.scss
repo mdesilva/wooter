@@ -1,0 +1,265 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+.hero_image{
+	background: url('/img/landings/hero-dreamleagues.png');
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-position: 100% 100%;
+	@media only screen and (max-width: 1079px) {
+    	background-position: 90% 100%;
+	}
+	
+	@media only screen and (max-width: 599px) {
+    	background-position: 30% 100%;
+	}	
+	
+	.hero_text{
+		top: 50%!important;
+		width: 1080px;
+		margin: 0 auto;
+
+		.text_half{
+			width: 60%;
+			float: left;
+			@media only screen and (max-width: 1079px) {
+				width: 100%;
+			}
+			@media only screen and (max-width: 399px) {
+				width: 320px;
+				margin: 0 calc(50% - 160px);
+			}
+
+			
+			h1, p{
+				text-align: left;
+				color: white;
+
+				@media only screen and (max-width: 1079px) {
+					text-align: center;
+				}
+			}
+
+			h1{
+				font-size: 48px;
+				margin: 0px 0px 40px;
+			}
+
+			p{
+				font-size: 18px;	
+				margin: 0px 0px 5px;	
+
+				@media only screen and (max-width: 399px) {
+					display: none;
+				}
+
+			}
+
+			.mobile_p{
+				display: none;
+
+				@media only screen and (max-width: 399px) {
+					display: block!important;
+					line-height: 1.7;
+				}
+
+			}
+
+			button{
+			    width: 150px!important;
+			    margin: 30px 0px 0px!important;
+
+				@media only screen and (max-width: 1079px) {
+					width: 150px!important;
+			    	margin: 30px calc(50% - 75px) 0px!important;
+				}
+			}
+		}
+	
+		.video_half{
+			width: 40%;
+			float: left;
+			@media only screen and (max-width: 1079px) {
+				display: none;		
+			}
+
+			img{
+				width: 120%;
+				position: absolute;
+			}
+		}
+	}
+
+	button{
+		width: 120px!important;
+		margin: 30px calc(50% - 60px) 0px!important;
+	}
+}
+
+.commissioners, .athletes{
+	padding: 48px 0px 112px;
+	width: 100%;
+	margin: 0 auto;
+	
+	.red_pics{
+		width: 100%;
+		.image{
+			width: 40px;
+			margin: 0 auto;
+			padding: 0px 0px 15px;
+
+			img{
+				height: 60px;
+			}
+		}
+
+		.faq{
+			p{
+				margin: 0 0 3px;
+				font-size: 24px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+			}
+		}		
+	}
+}
+
+.white_separator_origin{
+	
+	.white_separator_3{
+	    top: 0px !important;
+	    position: relative !important;
+	    margin: 0px calc(50% - 540px);
+	
+		@media only screen and (max-width: 1079px) {
+		    margin: 0px calc(50% - 360px);
+		    width: 720px;
+		}
+	
+		@media only screen and (max-width: 719px) {
+		    margin: 0px calc(50% - 180px);
+		    width: 360px;
+		}	
+
+	    .pricing_text{
+			padding-bottom: 0px;
+				
+			h1{
+				font-size: 24px;
+				color: #212121;
+				text-align: center;
+				padding: 40px 0px 0px;
+				margin: 0px;
+			}
+
+			.custom_hr{
+				width: 60px;
+			    height: 2px;
+			    margin: 30px calc(50% - 30px) 10px;
+			    background: #ef5350;
+			}
+
+			p{
+				text-align: center;
+				font-size: 16px;
+				padding: 0px 185px;
+				color: rgba(0,0,0,.54);
+				margin-bottom: 0px;
+			}
+		}
+		
+		.ws_margin{
+
+			.ws{
+				width: 350px;
+				float: left;
+				position: relative;
+				margin: 20px 5px;
+
+				.social_image{
+					position: absolute;
+				    left: 15px;
+				    top: -25px;
+
+					img{
+						width: 50px;
+					}
+				}
+				
+	        	.league_results{
+	        		width:100%; 
+	        		position:absolute; 
+	        		left:0; 
+	        		top: 0; 
+	        		z-index:100; 
+	        		padding: 10px 15px; 
+	        		color:white;
+
+					p{
+						font-size: 14px;
+						color: white;
+					}
+	        	}
+
+	       		.league_results > img{
+	       			width:48px; 
+	       			float:left;
+	       		}
+
+	       		.league_desc{
+	       			float:left; 
+	       			padding-left: 10px;
+	       		}
+
+	       		.league_location{
+	       			float:right;
+	       		}
+
+				.league{
+					position: relative;
+
+					img{
+						width: 100%;
+					}
+				}
+
+				.white_info{
+					padding: 15px;
+
+					p{
+						color: rgba(0,0,0,.64);
+						font-size: 14px;
+					}
+					.ls_full{
+						width: 100%;
+						text-align: left;
+					}
+					.ls_left{
+						float: left;
+					}
+					.ls_right{
+						float: right;
+					}
+				}
+			}
+		}
+	}	
+}
+
+.white_button{
+
+	p{
+		padding: 70px 0px 70px;
+	}
+}

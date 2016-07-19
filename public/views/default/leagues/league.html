@@ -1,0 +1,101 @@
+<div id="leaguePage">
+    <header class="league-header">
+        <div class="ng-loader white-loader" ng-show="!(loaded.details && loaded.basics)">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <div class="container" ng-show="loaded.details && loaded.basics">
+            <div class="content-inner">
+                <div class="brand" >
+                    <a href="#" class="md-whiteframe-2dp img" >
+                        <img src="{{league_logo}}" width="150" height="155" alt="Company Logo">
+                    </a>
+                    <stars ng-if="review" amount="review"></stars>
+                </div>
+                <!-- <div class="brand" ng-if="organization.picture == null">
+                    <a href="#" class="md-whiteframe-2dp img" >
+                        <span class="hover">
+                            <span class="text">See Organization</span>
+                        </span>
+                    </a>
+                    <stars ng-if="review" amount="review"></stars>
+                </div> -->
+                <div class="info">
+                    <div class="name">
+                        <p class="md-title">{{ title }} <stars ng-if="review" amount="review"></stars></p>
+                    </div>
+                    <div class="details">
+                        <ul>
+                            <li>
+                                <img ng-if="basics.gender == 'male'" ng-src="{{ svg('icons/leagues/person.svg', '#000', '#fff')}}" alt="male">
+                                <p ng-if="basics.gender == 'male'">Men's</p>
+                                <img ng-if="basics.gender == 'female'" ng-src="{{ svg('icons/leagues/person.svg', '#000', '#fff')}}" alt="female">
+                                <p ng-if="basics.gender == 'female'">Womens's</p>
+                            </li>
+                            <li>
+                                <img ng-src="{{svg('icons/leagues/sports/balls.svg', '#000', '#fff')}}" alt="">
+                                <p>{{ sportName }}</p>
+                            </li>
+                            <li ng-if="details.playersPerTeam != false">
+                                <img ng-src="{{svg('icons/leagues/people.svg', '#000', '#fff')}}" alt="">
+                                <p>{{ details.playersPerTeam }}</p>
+                            </li>
+                            <li>
+                                <img ng-src="{{svg('icons/leagues/calendar.svg', '#000', '#fff')}}" alt="">
+                                <p>{{ startDate }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="navigation-holder md-whiteframe-3dp">
+        <div class="container">
+            <div class="navigation desktop">
+                <ul layout="row">
+                    <li class="active"><a href="#">About</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Map</a></li>
+                </ul>
+            </div>
+            <div class="navigation mobile">
+                <ul layout="row">
+                    <li flex class="dropdown">
+                        <md-menu>
+                            <md-button class="md-fab" ng-click="showMenu($mdOpenMenu, $event)"><md-icon>menu</md-icon></md-button>
+                            <md-menu-content>
+                                <md-menu-item><md-button href="#">About</md-button></md-menu-item>
+                                <md-menu-item><md-button href="#">Features</md-button></md-menu-item>
+                                <md-menu-item><md-button href="#">Photos</md-button></md-menu-item>
+                                <md-menu-item><md-button href="#">Videos</md-button></md-menu-item>
+                                <md-menu-item><md-button href="#">Reviews</md-button></md-menu-item>
+                                <md-menu-item><md-button href="#">Map</md-button></md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="container box-holder" ng-include="logicTemplate('leagues/layout/league-sections/sidebox')"></div>
+        <div class="container main-holder" layout="row">
+            <div class="main">
+
+                <section class="about" data-section="about" ng-include="logicTemplate('leagues/layout/league-sections/about')"></section>
+                <section class="features" data-section="features" ng-include="logicTemplate('leagues/layout/league-sections/features')"></section>
+                <section class="photos" data-section="photos" ng-include="logicTemplate('leagues/layout/league-sections/photos')"></section>
+                <!--<section class="videos" data-section="videos" ng-include="logicTemplate('leagues/layout/league-sections/videos')"></section>-->
+                <section class="reviews" data-section="reviews" ng-include="logicTemplate('leagues/layout/league-sections/reviews')"></section>
+
+            </div>
+            <div class="side" ng-include="logicTemplate('leagues/layout/league-sections/sidebox')"></div>
+        </div>
+        <div class="container map-container-holder" ng-show="location">
+            <section class="map" data-section="map" ng-include="logicTemplate('leagues/layout/league-sections/map')"></section>
+        </div>
+    </div>
+</div>

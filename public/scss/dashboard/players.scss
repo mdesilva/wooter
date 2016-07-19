@@ -1,0 +1,382 @@
+/*
+ * Created by Dumitrana Alinus.
+ * User: alin.designstudio
+ * For: Dashboard/players styles
+ * License: Wooter LLC.
+ * Date: 2016.02.11
+ * Description: Dashboard player styles
+ *
+ */
+
+@import "../engine/_init";
+@import "shared";  
+
+body, html {
+    background: #eeeeee;
+}
+.players-content{
+    margin-bottom: 0%;
+    z-index: 2;
+    position: relative;
+    @include mq($max-width: 959px) {
+        padding: 0 !important;
+    }
+    md-content{
+        overflow: hidden !important;
+        > .header{
+            background: #f5f5f5;
+            color: #212121;
+            text-align: center;
+            padding: 12px 0;
+            margin: 0;
+            p{ 
+                width: 100%;
+                text-align: center;
+                margin: 0 !important;
+            }
+            md-menu{
+                position: absolute;
+                top: 50%;
+                right: 0;
+                @include translate(0, -50%);
+            }
+        }
+
+        .filter_borders{     
+            border-bottom-width: 0px!important;
+        }
+
+        .hidden_filters{     
+            border-top-width: 0px!important;
+            @media only screen and (max-width: 959px) {
+                height: 120px!important;
+            }
+            @media only screen and (max-width: 599px) {
+                height: 180px!important;
+            }
+        }
+
+        .controls{
+            padding: 7px 0;
+            border-color: #e0e0e0;
+            border-style: solid;
+            border-width: 1px 0;
+            height: 48px;
+            background-color: #f5f5f5;
+
+            .filters{
+                md-input-container{
+                    min-height: 32px !important;
+                    margin: 0 !important;
+                    padding: 0 20px;
+                    *{
+                        border-color: transparent !important;
+                    }
+                }
+                .select{
+                    border-right: 1px solid #e0e0e0;
+                    margin-right: 12px;
+                }
+            } 
+            .filters, .buttons, .select, .search {
+                max-height: 32px !important;
+            }
+            .md-errors-spacer{
+                display: none;
+            }
+            .separator{
+                height: 32px;
+                width: 1px;
+                display: inline-block;
+                padding: 0 !important;
+                background: #e0e0e0;
+                margin: 0 12px;
+                @include mq($max-width: 959px) {
+                    margin-left: 12px;
+                    margin-right: 12px;
+                }
+            }
+            .buttons{
+                text-align: right;
+                padding-right: 12px;
+            }
+            .search{
+                md-input-container{
+                    padding-left: 32px;
+                    @include mq($max-width: 959px) {
+                        padding-left: 44px;
+                        md-icon{
+                            margin-left: 12px !important;
+                        }
+                    }
+                }
+                md-icon{
+                    @include transition();
+                    line-height: 24px !important;
+                    font-size: 20px !important;
+                    color: rgba(0,0,0,.54)!important;
+                }
+                input{
+                    height: 32px;
+                }
+            }
+            .md-button{
+                margin: 0 !important;
+                max-height: 32px !important;
+                line-height: 32px !important;
+                font-size: 14px !important;
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                md-icon{
+                    margin-right: 6px;
+                    line-height: 32px !important;
+                    height: 32px !important;
+                    font-size: 20px !important;
+                }
+                &, md-icon{
+                    color: $md-wooter-red !important;
+                }
+            }
+        }
+        .players-list{
+            position: relative;
+            min-height: 285px;
+            max-height: 570px;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            .message-error{
+                text-align: center; padding: 0 !important;
+                @include mq($max-width: 959px){
+                    p{
+                        line-height: 48px !important;
+                    }
+                }
+            }
+            md-list{
+                padding: 0 !important;
+                position: relative;
+                md-checkbox{
+                    position: absolute;
+                    top: 50%;
+                    right: 20px;
+                    margin: 0 !important;
+                    @include translate(0, -50%);
+                }
+                .header-row{
+                    background: #f5f5f5;
+                    .md-list-item-inner{
+                        min-height: 48px;
+                        @include mq($max-width: 959px){
+                            min-height: 48px !important;
+                        }
+                    }
+                    .s-all{
+                        display: none;
+                        padding-left: 32px;
+                    }
+                    md-checkbox{
+                        right: -10px !important;
+                    }
+
+                }
+                md-list-item{
+                    color: #9a9a9a;
+
+                    .md-list-item-inner{
+                        min-height: 48px;
+                        padding: 12px 24px !important;
+                        @media only screen and (max-width: 599px) {
+                            padding: 12px 12px !important;
+                        }
+                    }
+                    .player{
+                        height: 100%;
+                        position: relative;
+                        padding-left: 64px !important;
+                        .img{
+                            display: block;
+                            position: absolute;
+                            @include size(38px);
+                            position: absolute;
+                            top: 50%;
+                            left: 0px;
+                            margin-left: 64px!important;
+                            background-position: center center;
+                            -webkit-background-size: cover;
+                            background-size: cover;
+                            @include radius(50%);
+                            @include translate(0, -50%);
+                        }
+                        @include mq($max-width: 959px){
+                            padding-left: 40px !important;
+
+                            .img {
+                                left: 0px;
+                            }
+                        }
+                        @media only screen and (max-width: 599px) {
+                            padding-left: 40px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 
+
+/*
+ * Created by Carlos Marra.
+ * User: alin.designstudio
+ * For: Mobilization of Dashboard
+ * License: Wooter LLC.
+ * Date: 2016.04.7
+ * Description: Dashboard player mobile styles
+ *
+ */
+
+.checking_boxes{
+    left:0; 
+    width: 60px;
+    @media only screen and (max-width: 599px) {
+        width: 20px;
+    }
+}
+
+.teams_table_info{
+    min-width: 42px;
+    padding: 0 0px 0 0!important;
+} 
+
+.team_display{
+    min-height: 56px;
+    
+    .md-list-item-inner{
+        min-height: 56px!important;
+        padding: 12px 24px !important;
+        @media only screen and (max-width: 599px) {
+            padding: 16px 12px !important;
+        }
+    }
+    
+    .teams_table_name{
+        min-width: 250px;
+
+        .team_image{
+            margin: 2px 0px;
+            margin-left: 60px;
+            width: 44px !important;
+            height: 44px !important;
+            @media only screen and (max-width: 959px) {
+                margin-left: 30px;
+            }
+        }   
+    }
+
+    .teams_table_info{
+        p{
+            font-size: 16px;
+        }
+    }
+
+    .teams_table_options{
+        min-width: 120px;
+        padding: 0 0px 0 0!important;
+        @media only screen and (max-width: 959px) {
+            max-width: 120px;
+        }
+
+        .pencils{
+            width: 58px; 
+            float:left; 
+            padding: 2px 20px;
+            @media only screen and (max-width: 959px) {
+                width: 48px;
+                padding: 2px 15px            
+            }
+        }
+        .garbages{
+            width: 54px; 
+            float:left; 
+            padding: 2px 20px;
+            @media only screen and (max-width: 959px) {
+                width: 44px;
+                padding: 2px 15px
+            }
+        }
+    }
+
+    .team_name{
+        margin-left: 60px; 
+        color: black; 
+        font-size:16px;
+    }
+
+}
+
+@media only screen and (max-width: 599px) {
+    .mobile_fits{
+        width: 145px!important;
+    }
+
+    .mobile_fits_video{
+        width: 120px!important;
+    }
+
+    .mobile_fits_cats{
+        width: 160px!important;
+    
+        .switching_management.md-button.md-ink-ripple.md-wooter-black-theme{
+            padding: 0px!important;
+        }
+    }
+}
+
+.players_modals {
+    min-width: 400px;
+    
+    md-dialog-content {
+    
+        .modal_header {
+            padding: 20px 0;
+    
+            h4 {
+                margin: 0;
+            }
+        }
+    
+        form {
+
+            .modal_field{
+                md-select-value{
+                    span{
+                        tranform: translate3d(0, 0px, 0)!important;
+                    }
+                }
+            }
+    
+            .modal_button_div {
+                width: 90%;
+                margin: 20px 5% 0;
+    
+                .modal_buttons {
+                    float: right;
+                    margin: 10px 0;
+                    padding: 0;
+                }
+    
+                .left_button {
+                    margin-right: 5px;
+                }
+    
+                .right_button {
+                    margin-left: 5px;
+                }
+    
+            }
+    
+            .modal_info .modal_field {
+                margin: 10px 0 0;
+            }
+        }
+    }
+} 

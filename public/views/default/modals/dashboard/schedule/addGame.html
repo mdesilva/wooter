@@ -1,0 +1,132 @@
+<md-dialog class='addGame_modal' aria-label='addGame' style='min-width: 900px;' ng-cloak>
+
+	<md-toolbar style='background-color: white; color: black'>
+		<div class='md-toolbar-tools'>
+			<h4>Add Game</h4>
+			<span flex></span>
+		</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+            <md-list> 
+                <md-list-item>
+                    <md-select-container style='width: 50%;'>
+                        <md-select ng-model='homeTeamId' placeholder='Home Team'>
+                            <md-option class="team-option" ng-repeat='team in teams' value='{{ team.id }}' ng-selected="team.id === game.home_team_id">
+                                <div class="team-option-content">
+                                    <span class="team-option-name">{{ team.name }}</span> <span class="team-option-division">{{ '(' + team.divisions[0].name + ')' }}</span>
+                                </div>
+                            </md-option>
+                        </md-select>
+                    </md-select-container>
+                    <md-select-container style='width: 50%'>
+                        <md-select ng-model='visitingTeamId' placeholder='Visiting Team'>
+                            <md-option class="team-option" ng-repeat='team in teams' value='{{ team.id }}'  ng-selected="team.id === game.visiting_team_id">
+                                <div class="team-option-content">
+                                    <span class="team-option-name">{{ team.name }}</span> <span class="team-option-division">{{ '(' + team.divisions[0].name + ')' }}</span>
+                                </div>
+                            </md-option> 
+                        </md-select>
+                    </md-select-container>
+                </md-list-item>
+
+                <md-list-item>
+                    <md-select-container style="width: 50%;">
+                        <md-select ng-model="leagueGameVenueId" placeholder="Select Venue">
+                            <md-option ng-repeat="leagueGameVenue in leagueGameVenues" value="{{leagueGameVenue.id}}" ng-selected="leagueGameVenue.id === game.game_venue.id">
+                                {{leagueGameVenue.game_venue.location.name}}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="addGame['leagueGameVenueId'].$error">
+                            <div ng-message="required">Game Venue is required.</div>
+                        </div>
+                    </md-select-container>
+                </md-list-item>
+                <md-list-item>
+                    <md-button ng-click="addGameVenue($event, 'add')">
+                        <md-icon>add</md-icon> ADD VENUE
+                    </md-button>
+                </md-list-item>
+                <md-list-item>
+                    <div flex="" layout="row" id="datepicker">
+                        <label class="vertical-center">Date:</label>
+                        
+                        <md-datepicker class="md-block season-datepicker vertical-center"
+                                       ng-model="date"
+                                       name="date" required md-placeholder="Date">
+                        </md-datepicker>
+                    </div>
+                </md-list-item>
+                <md-list-item>
+                    <div flex="" layout="row" id="timepicker">
+                        <label class="vertical-center">Time:</label>
+                        <md-input-container id="timepicker-input" class="vertical-center">
+                            <input class="vertical-center" type='time' ng-model='time'>
+                        </md-input-container>
+                    </div>
+                </md-list-item>
+                <md-list-item id="edit-game-footer">
+                    <div style="width:100%;">
+                        <md-button class='md-raised wooter-btn-primary' ng-click='addGameInModal()'>Save</md-button>
+                        <md-button ng-click="hideModal()">Cancel</md-button>
+                    </div>
+                </md-list-item>
+	    </md-list>
+	</md-dialog-content>
+</md-dialog>
+
+<style>
+    .vertical-center {
+        position : relative;
+        top:50%;
+        transform: translateY(-50%);
+    }
+    
+    #datepicker, #timepicker {
+        height : 50px;
+    }
+    
+    #datepicker label,
+    #timepicker label {
+        max-height : 20px;
+    }
+    
+    #timepicker-input {
+        height : 40px;
+        margin : 0px;
+    }
+    
+    #edit-game-footer {
+        text-align : right;
+    }
+    
+    .team-option {
+        width : 400px;
+        padding : 0px;
+    }
+    
+    .team-option-content {
+         width : 400px;
+    }
+    
+    .team-option-name {
+        color : #585858;
+    }
+    
+    .team-option-division {
+        color : #7f7f7f;
+        float : right;
+    }
+    
+</style>
+
+<script>
+    $(document).ready(function(){
+        $('.team-option-content').click(function() {
+            alert('ok');
+            $(this).css('width', '200px');
+        });
+    });
+    
+    
+</script>

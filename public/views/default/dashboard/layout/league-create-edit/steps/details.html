@@ -1,0 +1,130 @@
+<div class="row">
+    <md-input-container class="md-block">
+        <label>Describe your league</label>
+        <textarea ng-model="$step.model.details.description" name="description" md-maxlength="250" maxlength="250" required ng-blur="cacheLeagueData()" title="Describe your league"></textarea>
+        <div ng-messages="StepForm['description'].$error">
+            <div ng-message="required">Description is required.</div>
+        </div>
+    </md-input-container>
+</div>
+<div class="row no-errors" layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Number of Teams</label>
+            <md-select ng-model="$step.model.details.number_of_teams" name="number_of_teams" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="i in range(1, 50)" value="{{ i }}">{{ i }} {{ (i>1)?'teams':'team' }}</md-option>
+            </md-select>
+            <div ng-messages="StepForm['number_of_teams'].$error">
+                <div ng-message="required">Number of teams is required.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div flex="10"></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Games per Team</label>
+            <md-select ng-model="$step.model.details.games_per_team" required name="games_per_team" ng-change="cacheLeagueData()">
+                <md-option ng-repeat="i in range(1, 15)" value="{{ i }}">{{ i }} {{ (i>1)?'games':'game' }}</md-option>
+            </md-select>
+            <div ng-messages="StepForm['games_per_team'].$error">
+                <div ng-message="required">Games per team is required.</div>
+            </div>
+        </md-input-container>
+    </div>
+</div>
+
+<div class="row no-errors" layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Players per Team</label>
+            <md-select ng-model="$step.model.details.players_per_team" name="players_per_team" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="i in range(1, 15)" value="{{ i }}">{{ i }} {{ (i>1)?'players':'player' }}</md-option>
+            </md-select>
+            <div ng-messages="StepForm['players_per_team'].$error">
+                <div ng-message="required">Players per team is required.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div flex="10"></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Game Duration</label>
+            <md-select ng-model="$step.model.details.game_duration" name="game_duration" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="i in (range(1, 8))" value="{{ (i*15) }}">{{ (i*15) }} minutes</md-option>
+            </md-select>
+            <div ng-messages="StepForm['game_duration'].error">
+                <div ng-message="required">Game duration is required</div>
+            </div>
+        </md-input-container>
+    </div>
+</div>
+
+<!-- <div class="row no-errors" layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Season Structure</label>
+            <md-select ng-model="$step.model.details.seasonStructure" name="seasonStructure" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="structure in seasonStructures" value="{{ structure.id }}">{{ structure.name }}</md-option>
+            </md-select>
+            <div ng-messages="StepForm['seasonStructure'].$erorr">
+                <div ng-message="required">Season structure is required</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div flex="10"></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Playoff Structure</label>
+            <md-select ng-model="$step.model.details.playoffStructure" name="playoffStructure" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="structure in playoffStructures" value="{{ structure.id }}">{{ structure.name }}</md-option>
+            </md-select>
+            <div ng-messages="StepForm['playoffStructure'].$erorr">
+                <div ng-message="required">Play off structure is required</div>
+            </div>
+        </md-input-container>
+    </div>
+</div> -->
+
+<!-- <div class="row no-errors" layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Game Structure</label>
+            <md-select ng-model="$step.model.details.gameStructure" name="gameStructure" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="structure in gameStructures" value="{{ structure.id }}">{{ structure.name }}</md-option>
+            </md-select>
+            <div ng-messages="StepForm['gameStructure'].$erorr">
+                <div ng-message="required">Game structure is required</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div flex="10"></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Game Duration</label>
+            <md-select ng-model="$step.model.details.duration" name="duration" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="i in (range(1, 8))" value="{{ (i*15) }}">{{ (i*15) }} minutes</md-option>
+            </md-select>
+            <div ng-messages="StepForm['duration'].$erorr">
+                <div ng-message="required">Game duration is required</div>
+            </div>
+        </md-input-container>
+    </div>
+</div> -->
+
+<div class="row checkboxes-line" layout="row">
+    <div flex="100">
+        <div class="fk-line">
+            <p class="md-body tx">Select all the features that your league offers.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row no-errors checkboxes" layout-xs="column" layout-gt-xs="row" style="padding-bottom:8px;">
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-checkbox ng-repeat="(key, val) in features.sectionLeft" ng-true-value="true" ng-false-value="false" ng-model="$step.model.features[val.id]" ng-change="saveFeature(val.id)" aria-label="{{ val.text }}">{{ val.text }}</md-checkbox>
+    </div>
+    <div flex="10"><div style="height: 20px;"></div></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-checkbox ng-repeat="(key, val) in features.sectionRight" ng-true-value="true" ng-false-value="false" ng-model="$step.model.features[val.id]" ng-change="saveFeature(val.id)" aria-label="{{ val.text }}">{{ val.text }}</md-checkbox>
+    </div>
+</div>

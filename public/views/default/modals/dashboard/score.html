@@ -1,0 +1,25 @@
+<div id="score">
+    <div ng-show="show_main">
+        <form id="score-form">
+            <div>
+                <label>{{game.home_team}}</label>
+                <input ng-model="home_score" type="text" name="home_team_points">
+            </div>
+            <div>
+                <label>{{game.visiting_team}}</label>
+                <input ng-model="visiting_score" type="text" name="visiting_team_points">
+            </div>
+            <div>
+                <button id="set-score" ng-click="setScore(home_score, visiting_score, type); show_main = !show_main">Set Score</button>
+            </div>
+            <div>
+                <button id="cancel-score" ng-click="hideScore()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="set-score-success" ng-show="!show_main">
+        <p>Success</p>
+        <button id="score-close" ng-click="hideScore()">Close</button>
+    </div>
+</div>

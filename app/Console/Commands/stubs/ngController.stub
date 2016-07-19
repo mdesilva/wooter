@@ -1,0 +1,26 @@
+/**
+ * Created by {your name}.
+ * User: {slack, skype}
+ * For: {package}
+ * License: Wooter LLC.
+ * Date: {{date}}
+ * Description:
+ *
+ */
+__Wooter.controller('{{name}}', ['$scope', 'Page', function ($scope, Page) {
+	/*
+	 * Clean page (title, assets, favicon badge, etc.)
+	 */
+	Page.reset();
+
+	/*
+     * Set Title Page
+     */
+	Page.title('Wooter');
+
+    /*
+     * Put here Action and Scopes
+     */
+
+
+}]);

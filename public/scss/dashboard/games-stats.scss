@@ -1,0 +1,541 @@
+/*
+ * Created by Dumitrana Alinus.
+ * User: alin.designstudio@gmail.com
+ * For: leagues/games
+ * License: Wooter LLC.
+ * Date: 2016.05.02
+ * Description:
+ *
+ */
+
+@import '../engine/init';
+@import 'shared';
+
+.games-content{
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+    @include mq($max-width: 959px) {
+        padding: 0 !important;
+    }
+    md-content{
+        background: #f5f5f5;
+        overflow: hidden !important;
+        > .header{
+            background: #f5f5f5;
+            color: #212121;
+            margin: 0;
+            padding: 12px 0;
+            text-align: center;
+            p{
+                width: 100%;
+                text-align: center;
+                margin: 0 !important;
+            }
+            md-menu{
+                position: absolute;
+                top: 50%;
+                right: 0;
+                @include translate(0, -50%);
+            }
+        }
+
+        .filter_borders{
+            border-bottom-width: 0 !important;
+        }
+
+        .hidden_filters{
+            border-top-width: 0 !important;
+            @media only screen and (max-width: 959px) {
+                height: 120px!important;
+            }
+            @media only screen and (max-width: 599px) {
+                height: 180px!important;
+            }
+        }
+
+        .controls{
+            padding: 7px 0;
+            border-color: transparent;
+            height: 48px;
+            background-color: #fff;
+            margin-bottom: 48px;
+            .filters{
+                md-input-container{
+                    min-height: 32px !important;
+                    margin: 0 !important;
+                    padding: 0 20px;
+                    *{
+                        border-color: transparent !important;
+                    }
+                    &.md-input-has-value{
+                        label{
+                            display: none !important;
+                        }
+                    }
+                }
+                .select{
+                    border-right: 1px solid #e0e0e0;
+                    margin-right: 12px;
+                }
+            }
+            .filters, .buttons, .select, .search {
+                max-height: 32px !important;
+            }
+            .md-errors-spacer{
+                display: none;
+            }
+            .separator{
+                height: 32px;
+                width: 1px;
+                display: inline-block;
+                padding: 0 !important;
+                background: #e0e0e0;
+                margin: 0 12px;
+                @include mq($max-width: 959px) {
+                    margin-left: 12px;
+                    margin-right: 12px;
+                }
+            }
+            .buttons{
+                text-align: right;
+                padding-right: 12px;
+                height: 36px;
+            }
+            .md-button{
+                margin: 1px 0 !important;
+                max-height: 32px !important;
+                line-height: 36px !important;
+                font-size: 14px !important;
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                position: absolute;
+                right: 8px;
+                top: 50%;
+                @include translate(0, -50%);
+
+                md-icon{
+                    font-size: 20px !important;
+                    height: 32px !important;
+                    line-height: 32px !important;
+                    margin-right: 6px;
+                }
+                &, md-icon{
+                    color: $md-wooter-red !important;
+                }
+            }
+        }
+    }
+}
+
+.weeks{
+    .week-title{
+        @include roboto(18px);
+        color: $md-wooter-red;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+.games-list{
+    margin-bottom: 30px;
+    position: relative;
+    p.date {
+        @include roboto(14px, 500);
+        color: #6e6e6e;
+        padding: 14px 0 14px 20px;
+        &.full{
+            padding: 14px 0 !important;
+            text-align: center;
+            width: 100%;
+        }
+    }
+    md-content{
+        @include radius(3px);
+        .list{
+            padding: 0;
+            .item{
+                border-bottom: 1px solid #e0e0e0;
+                &:last-child{
+                    border-bottom: none !important;
+                }
+                .left, .vs-vs, .right{
+                    @include clearfix();
+                    min-height: 56px;
+                    @include mq($max-width: 630px){
+                        display: block;
+                        padding: 0 20px !important;
+                        width: 100% !important;
+                    }
+                }
+
+                .left.time{
+                    padding-left: 24px;
+                    p, .md-body-1{
+                        line-height: 56px;
+                        @include roboto(16px, 500);
+                        color: transparentize(#000, .46);
+                        @include mq($max-width: 630px){
+                            text-align: center;
+                        }
+                    }
+                }
+                .vs-vs{
+                    padding: 0 12px;
+                    .team{
+                        float: left;
+                        width: calc(50% - 50px);
+                        @include clearfix();
+
+                        &.home{
+                            text-align: left;
+                            .name{
+                                padding-left: 20px;
+                            }
+                        }
+                        &.away{
+                            text-align: right;
+                            .name{
+                                padding-right: 20px;
+                            }
+                        }
+
+                        .icon, .name{
+                            float: left;
+                            min-height: 24px;
+                            line-height: 24px;
+                            margin: 16px 0;
+                        }
+                        .name{
+                            width: calc(100% - 24px);
+                            @include roboto(14px, 500);
+                            color: transparentize(#000, .13);
+                            white-space: nowrap;
+                            overflow: hidden;
+                            position: relative;
+                            text-overflow: ellipsis;
+                        }
+                        .icon{
+                            @include size(24px);
+                            @include radius(50%);
+                            @include setupBG(transparent);
+                        }
+                    }
+                    .score{
+                        min-height: 24px;
+                        line-height: 24px;
+                        margin: 16px 0;
+                        white-space: nowrap;
+                        float: left;
+                        width: 100px;
+                        text-align: center;
+                        @include roboto(14px, 500);
+                        color: transparentize(#000, .13);
+                    }
+                }
+                .right{
+                    padding-left: 24px;
+                    position: relative;
+                    .name{
+                        width: calc(100% - 42px);
+                        white-space: nowrap;
+                        min-height: 24px;
+                        line-height: 24px;
+                        margin: 16px 0;
+                        overflow: hidden;
+                        position: relative;
+                        text-overflow: ellipsis;
+                    }
+                    .md-button{
+                        position: absolute;
+                        margin: 0;
+                        right: 6px;
+                        top: 50%;
+                        @include roboto(14px, 500);
+                        color: transparentize(#000, .46);
+                        @include translate(0, -50%);
+                        @include size(30px);
+                        padding: 0;
+                        text-align: center;
+                        line-height: 30px;
+                        min-width: 30px;
+                        min-height: 30px;
+                        @include mq($max-width: 630px){
+                            right: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.game-pagination{
+    margin-bottom: 60px;
+    .inner{
+        text-align: center;
+        @include radius(3px);
+        .disabled-button{
+            pointer-events: none !important;
+            color: #888 !important;
+            b{
+                color: #000;
+            }
+        }
+        .md-button{
+            md-icon{
+                @include transition();
+            }
+            &:hover:not(:disabled) {
+                md-icon{
+                    color: $md-wooter-red;
+                }
+            }
+        }
+    }
+}
+
+.md-dialog-container{
+    @include mq($max-width: 840px){
+        overflow-x: auto !important;
+        justify-content: flex-start;
+    }
+}
+
+.dialog-page{
+    width: 100%;
+    max-width: 1400px;
+    min-width: 840px !important;
+    padding-bottom: 64px;
+    md-dialog-actions {
+        position: absolute;
+        padding: 20px 18px;
+        height: 64px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        text-align: center;
+        //border-top: 1px solid #dedede;
+        @include shadow(-2px 0 6px -2px transparentize(#000, .25));
+        @include mq($max-width: 840px){
+            justify-content: center !important;
+        }
+        .md-button {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+    }
+    .utilis{
+        display: none !important;
+    }
+    md-content{
+        padding: 0;
+        .md-title{
+            padding: 14px 20px;
+            width: 100%;
+            position: relative;
+            margin: 0;
+            .md-button{
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                @include translate(25%, -50%);
+            }
+        }
+        .md-errors-spacer{
+            display: none !important;
+        }
+        .team-list{
+            position: relative;
+            padding: 0;
+            margin-bottom: 20px;
+            .item{
+                @include clearfix();
+                border-bottom: 1px solid #e0e0e0;
+                &:first-child{
+                    border-top: 1px solid #e0e0e0;
+                }
+                &.header{
+                    background: #eaeaea;
+                    p{
+                        @include roboto(16px);
+                        color: transparentize(#000, .62);
+                    }
+                    .start, .end{
+                        padding: 0 10px;
+                    }
+                }
+                .start, .end{
+                    float: left;
+                }
+                .start{
+                    width: calc(100% - 50px);
+                }
+                .end{
+                    width: 50px !important;
+                    padding: 0 10px 0 0 !important;
+                }
+                &:not(.header){
+                    .start{
+                        p{
+                            @include roboto(14px, 500);
+                            color: #000;
+                            padding-left: 10px !important;
+                        }
+                    }
+                }
+                md-input-container{
+                    position: relative;
+                    left: 50%;
+                    margin: 0;
+                    @include translate(-50%, 0);
+                    input{
+                        position: relative;
+                        color: #000;
+                        @include size(36px);
+                        text-align: center;
+                        border: 1px solid #e0e0e0 !important;
+                        @include radius(3px);
+                        background: #fff !important;
+                    }
+                }
+            }
+        }
+
+        .game-stats{
+            .team{
+                margin-bottom: 20px;
+                .header{
+                    padding: 0 30px;
+                    margin-bottom: 20px;
+                    .title{
+                        p{
+                            @include roboto(18px, 500);
+                            color: transparentize(#000, .12);
+                        }
+                    }
+                    .md-button.clean{
+                        pointer-events: none !important;
+                    }
+                    .md-button:not(.clean){
+                        background: $md-wooter-red;
+                        color: #fff !important;
+                        margin-right: 0 !important;
+                        min-width: 0;
+                        min-height: 0;
+                        display: inline-block;
+                        width: auto;
+                        padding: 0 14px;
+                        height: 30px;
+                        line-height: 30px;
+                    }
+                }
+                .players-list{
+                    margin: 0;
+                    padding: 0;
+                    .item{
+                        padding: 0 14px;
+                        .inner{
+                            padding: 0;
+                            width: 100%;
+                            position: relative;
+                            @include clearfix();
+                            &.footer{
+                                padding: 10px !important;
+                                .md-button{
+                                    margin: 0 20px;
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                    md-icon{
+                                        margin-right: 12px;
+                                    }
+                                }
+                            }
+                        }
+                        .checkbox{
+                            md-checkbox{
+                                margin: 0 0 5px 0;
+                                width: 20px !important;
+                            }
+                            .md-button{
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                @include size(24px);
+                                min-height: 0;
+                                @include radius(0, forced);
+                                md-icon{
+                                    &.checked{
+                                        color: $md-wooter-red !important;
+                                    }
+                                }
+                            }
+                        }
+                        .col{
+                            text-align: center;
+                            &.text-left{
+                                text-align: left !important;
+                                p{
+                                    padding-left: 8px;
+                                }
+                            }
+                            &.root{
+                                &.starting,
+                                &.final{
+                                    float: left;
+                                }
+                                &.starting{
+                                    width: 30%;
+                                }
+                                &.final{
+                                    width: 70%;
+                                }
+                                .col{
+                                    md-input-container{
+                                        padding: 0;
+                                        margin: 0;
+                                    }
+                                }
+                                .end{
+                                    position: relative;
+                                    left: 50%;
+                                    @include translate(-50%, 0);
+                                    padding: 0 !important;
+                                    width: 36px !important;
+                                    &.full{
+                                        width: 100% !important;
+                                        md-input-container{
+                                            width: 100%;
+                                            input{
+                                                width: 100%;
+                                                text-align: left;
+                                                padding-left: 5px;
+                                                padding-right: 5px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.header{
+                            padding: 0 !important;
+                            margin: 0 !important;
+                            .col{
+                                text-align: center;
+                                p{
+                                    @include roboto(12px);
+                                }
+                            }
+                        }
+                        &:not(.header){
+                            .checkbox{
+                                md-checkbox{
+                                    margin: 0 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

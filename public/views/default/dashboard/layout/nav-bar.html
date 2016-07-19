@@ -1,0 +1,12 @@
+<nav ng-controller="Dashboard/NavigationController">
+    <div class="left">
+        <ul>
+            <li ui-sref-active="active" ng-repeat="nav in navigation">
+                <md-button ui-sref="{{nav.route + '({league_id: league_id, season_id: seasonID})'}}">{{nav.name}}</md-button>
+            </li>
+            <li class="separator mobile_hidden_959"></li>
+            <li><md-button ui-sref="{{ 'leagues' + '({league_id: league_id})'}}" class="preview"><span style='color: white'>View</span></md-button></li>
+            <li><md-button ui-sref="{{ 'dashboardLeagueEdit' + '({league_id: league_id})'}}" class="edit"><span style='color: white'>Edit</span></md-button></li>
+        </ul>
+    </div>
+</nav>

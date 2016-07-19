@@ -1,0 +1,339 @@
+@mixin radius($radius, $i:0) {
+    @if( $i != 0){
+        -webkit-border-radius: $radius !important;
+        -moz-border-radius: $radius !important;
+        -ms-border-radius: $radius !important;
+        border-radius: $radius !important;
+    } @else {
+        -webkit-border-radius: $radius;
+        -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+        border-radius: $radius;
+    }
+}
+
+@mixin transition($time: 300ms, $prop: all, $delay:0) {
+    -webkit-transition: $prop $time;
+    -moz-transition: $prop $time;
+    -ms-transition: $prop $time;
+    transition: $prop $time;
+    @if($delay != 0){
+        -webkit-animation-delay: $delay;
+        -moz-animation-delay: $delay;
+        -o-animation-delay: $delay;
+        animation-delay: $delay;
+    }
+}
+
+@mixin size($w, $h:$w){
+    width: $w;
+    height: $h;
+}
+
+@mixin sans-serif($sz, $fw: 400, $ff: "Roboto"){
+    font-family: $ff, sans-serif;
+    font-size: $sz;
+    font-weight: $fw;
+}
+@mixin scale($x, $y:$x){
+    -webkit-transform: scale($x, $y);
+    -moz-transform: scale($x, $y);
+    -ms-transform: scale($x, $y);
+    -o-transform: scale($x, $y);
+    transform: scale($x, $y);
+}
+@mixin translate($x:-50%, $y:$x){
+    -webkit-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+    transform: translate($x, $y);
+}
+@mixin absoluteCenter(){
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate();
+}
+
+@mixin cubicAnim(){
+    -webkit-transition-timing-function: cubic-bezier(0.14, 0.83, 0.49, 1.58);
+    -moz-transition-timing-function: cubic-bezier(0.14, 0.83, 0.49, 1.58);
+    -o-transition-timing-function: cubic-bezier(0.14, 0.83, 0.49, 1.58);
+    transition-timing-function: cubic-bezier(0.14, 0.83, 0.49, 1.58);
+}
+
+@mixin animation-duration($s){
+    -webkit-animation-duration: $s;
+    -moz-animation-duration: $s;
+    -o-animation-duration: $s;
+    animation-duration: $s;
+}
+
+@mixin animation-name($s){
+    -webkit-animation-name: $s;
+    -moz-animation-name: $s;
+    -o-animation-name: $s;
+    animation-name: $s;
+}
+
+@mixin animation-timing-function($s){
+    -webkit-animation-timing-function: $s;
+    -moz-animation-timing-function: $s;
+    -o-animation-timing-function: $s;
+    animation-timing-function: $s;
+}
+
+@mixin animation-delay($s){
+    -webkit-animation-delay: $s;
+    -moz-animation-delay: $s;
+    -o-animation-delay: $s;
+    animation-delay: $s;
+}
+
+@mixin animation-direction($s){
+    -webkit-animation-direction: $s;
+    -moz-animation-direction: $s;
+    -o-animation-direction: $s;
+    animation-direction: $s;
+}
+
+@mixin animation-iteration-count($s){
+    -webkit-animation-iteration-count: $s;
+    -moz-animation-iteration-count: $s;
+    -o-animation-iteration-count: $s;
+    animation-iteration-count: $s;
+}
+
+@mixin animation-fill-mode($s){
+    -webkit-animation-fill-mode: $s;
+    -moz-animation-fill-mode: $s;
+    -o-animation-fill-mode: $s;
+    animation-fill-mode: $s;
+}
+
+@mixin animation-play-state($s){
+    -webkit-animation-play-state: $s;
+    -moz-animation-play-state: $s;
+    -o-animation-play-state: $s;
+    animation-play-state: $s;
+}
+
+@mixin animation($name, $duration, $timing: ease-in, $delay: 0s, $direction: alternate, $iteration: infinite, $fill: both, $state: running){
+    @include animation-name($name);
+    @include animation-play-state($state);
+    @include animation-duration($duration);
+    @include animation-timing-function($timing);
+    @include animation-delay($delay);
+    @include animation-direction($direction);
+    @include animation-iteration-count($iteration);
+    @include animation-fill-mode($fill);
+}
+
+@mixin anim-frames($name){
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin placeholder($color: #aaa) {
+    &::-moz-placeholder {
+        color: $color;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder { color: $color; }
+    &::-webkit-input-placeholder  { color: $color; }
+    &::input-placeholder  { color: $color; }
+}
+
+@mixin opacity($opacity: 75, $i: 0) {
+    $op: ($opacity / 100);
+    @if($i != 0){
+        opacity: $op !important;
+        filter: alpha(opacity=$opacity) !important;
+    } @else {
+        opacity: $op;
+        filter: alpha(opacity=$opacity);
+    }
+}
+
+@mixin text-transform($f: uppercase){
+    text-transform: $f;
+}
+
+@mixin center-block() {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin rotate($deg){
+    -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+    -ms-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    transform: rotate($deg);
+}
+
+@mixin shadow($query){
+    -webkit-box-shadow: $query;
+    -moz-box-shadow: $query;
+    -ms-box-shadow: $query;
+    -o-box-shadow: $query;
+    box-shadow: $query;
+}
+
+@mixin setupBG($bgc:#fff, $bgs:cover, $bgr:no-repeat, $bgp:center center, $bga:scroll){
+    background-repeat: $bgr;
+    background-color: $bgc;
+    -webkit-background-size: $bgs;
+    -moz-background-size: $bgs;
+    -ms-background-size: $bgs;
+    -o-background-size: $bgs;
+    background-size: $bgs;
+    background-position: $bgp;
+    background-attachment: $bga;
+}
+
+@mixin fadeHover($op:.75, $h:hover){
+    &{
+        @include transition();
+    }
+    &:hover{
+        @include opacity($op);
+    }
+}
+
+@mixin alegreya($fw:400){
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: $fw;
+}
+@mixin fira($fw:400){
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: $fw;
+}
+
+@mixin gray(){
+    filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+    -webkit-filter: grayscale(100%);
+}
+@mixin no-gray(){
+    filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+    -webkit-filter: grayscale(0%);
+}
+
+@mixin scaleX($ratio) {
+    -webkit-transform: scaleX($ratio);
+    -ms-transform: scaleX($ratio);
+    -o-transform: scaleX($ratio);
+    transform: scaleX($ratio);
+}
+@mixin scaleY($ratio) {
+    -webkit-transform: scaleY($ratio);
+    -ms-transform: scaleY($ratio);
+    -o-transform: scaleY($ratio);
+    transform: scaleY($ratio);
+}
+@mixin translateX($sz) {
+    -webkit-transform: translateX($sz);
+    -ms-transform: translateX($sz);
+    -o-transform: translateX($sz);
+    transform: translateX($sz);
+}
+@mixin translateY($sz) {
+    -webkit-transform: translateY($sz);
+    -ms-transform: translateY($sz);
+    -o-transform: translateY($sz);
+    transform: translateY($sz);
+}
+@mixin skew($x, $y) {
+    -webkit-transform: skewX($x) skewY($y);
+    -ms-transform: skewX($x) skewY($y);
+    -o-transform: skewX($x) skewY($y);
+    transform: skewX($x) skewY($y);
+}
+@mixin translate3d($x, $y, $z) {
+    -webkit-transform: translate3d($x, $y, $z);
+    transform: translate3d($x, $y, $z);
+}
+@mixin rotateX($degrees) {
+    -webkit-transform: rotateX($degrees);
+    -ms-transform: rotateX($degrees);
+    -o-transform: rotateX($degrees);
+    transform: rotateX($degrees);
+}
+@mixin rotateY($degrees) {
+    -webkit-transform: rotateY($degrees);
+    -ms-transform: rotateY($degrees);
+    -o-transform: rotateY($degrees);
+    transform: rotateY($degrees);
+}
+@mixin transform-origin($origin) {
+    -webkit-transform-origin: $origin;
+    -moz-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    transform-origin: $origin;
+}
+@mixin user-select($select) {
+    -webkit-user-select: $select;
+    -moz-user-select: $select;
+    -ms-user-select: $select;
+    user-select: $select;
+}
+
+@mixin clearfix(){
+    &:after, &:before{
+        display:table;
+        content:" ";
+    }
+    &:after{
+        clear: both;
+    }
+}
+
+@mixin blur ($radius) {
+    -webkit-filter: blur($radius+px);
+    -ms-filter: blur($radius+px);
+    filter: blur($radius+px);
+    filter: url("data:image/svg+xml;utf8,<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><filter id=\"blur\"><feGaussianBlur stdDeviation=\"#{$radius}\" /></filter></svg>#blur");
+    filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
+}
+
+@mixin roboto($s:14px, $w:400){
+    font-family: 'Roboto', sans-serif;
+    font-weight: $w;
+    font-size: $s;
+}
+
+@mixin md-shadow ($level) {
+    @if $level == 1 {
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level == 2 {
+        -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level == 3 {
+        -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        -moz-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    } @else if $level == 4 {
+        -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        -moz-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    } @else if $level == 5 {
+        -webkit-box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        -moz-box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+}

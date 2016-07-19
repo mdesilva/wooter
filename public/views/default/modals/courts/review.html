@@ -1,0 +1,13 @@
+<md-dialog style="z-index: 9999!important;position: relative;min-width:300px; max-width:500px; width: 100%; padding: 20px 20px 12px 20px;">
+    <md-dialog-content style="width: 100%;">
+        <input type="hidden" ng-model="reviewModel.id">
+        <md-input-container class="md-block">
+            <label>Create a review for "Court Name"</label>
+            <textarea ng-model="reviewModel.message" md-maxlength="500" maxlength="500" rows="5"></textarea>
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" style="padding-right: 0 !important;">
+        <md-button ng-click="cancel()" >Cancel</md-button>
+        <md-button ng-click="send()" style="margin-right: 0 !important;">Send Review</md-button>
+    </md-dialog-actions>
+</md-dialog>

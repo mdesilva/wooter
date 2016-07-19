@@ -1,0 +1,26 @@
+<div class="fullpage exc" layout="column" ng-cloak>
+    <div layout="row" class="fullpage exc" layout-align-xs="center start" layout-align-gt-xs="center center">
+        <div md-theme="auth-form" class="loginForm md-whiteframe-7dp form" flex-xs="100" flex-gt-xs="50">
+            <div class="inner">
+                <md-button class="full-btn no-margin fb md-raised" href="/auth/facebook"><i class="fa fa-facebook"></i> Log in with Facebook</md-button>
+                <p class="or">or</p>
+                <form ng-submit="loginForm.submitHandler()" autocomplete="off" ng-cloak>
+                    <formly-form model="loginForm.model" fields="loginForm.fields" novalidate ng-cloak>
+                        <div layout="row" layout-align="end">
+                            <md-button id="login-button" type="submit" class="top-space submit full-btn no-margin">Log in</md-button>
+                        </div>
+                        <div layout="row" class="top-space" layout-align="center">
+                            <div flex="45">
+                                <md-button ui-sref="register" class="options full-btn no-margin">Sign Up</md-button>
+                            </div>
+                            <div flex="10"><div class="md-btn-sep"></div></div>
+                            <div flex="45">
+                                <md-button class="options full-btn no-margin" ui-sref="forgot-password">Forgot Password?</md-button>
+                            </div>
+                        </div>
+                    </formly-form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

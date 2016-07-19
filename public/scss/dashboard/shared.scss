@@ -1,0 +1,230 @@
+/*
+ * Created by Alinus
+ * User: alin.designstudio
+ * For: dashboard/styles
+ * License: Wooter LLC.
+ * Date: 2016.02.11
+ * Description: here are stored all shared styles into dashboard styles
+ *
+ */
+
+html, body{
+    background: #eee;
+}
+
+@include mq($max-width: 959px){
+    .mobile_hidden_959 {
+        display: none!important;
+    }
+} 
+
+@include mq($max-width: 600px){
+    .mobile_hidden_600 {
+        display: none!important;
+    }
+} 
+
+.md-body-2{
+    font-size: 16px!important;
+}
+ 
+@include mq($min-width: 1366px){
+    .container {
+        width: 1080px!important;
+    }
+} 
+@include mq($max-width: 959px){
+    .container {
+        width: 600px!important;
+    }
+} 
+@include mq($max-width: 630px){
+    .container {
+        width: 100% !important;
+    }
+}
+
+md-sidenav{
+    z-index: 20 !important;
+}
+#dashboardHeader{
+    background: #303030;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+    .info{
+        padding: 27px 0; 
+
+        .league-title{
+            font-family: "Roboto", sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+        .league-subtitle{
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: transparentize(#fff, .3);
+        }
+    }
+    .nav-bar{
+        position: relative;
+        @include clearfix();
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            @include clearfix();
+            li {
+                line-height: 0 !important;
+                margin: 0 15px;
+                float: left;
+                > .md-button {
+                    line-height: 48px !important;
+                    padding: 0 !important;
+                    @include radius(0 !important);
+                    margin: 0 !important;
+                    font-family: "Roboto", sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    min-width: 0 !important;
+                    min-height: 48px !important;
+                    color: transparentize(#fff, .3);
+                    border-bottom: 2px solid transparent;
+                    @include transition();
+                    &:hover{
+                        background: transparent;
+                        color: #fff;
+                        border-bottom-color: $md-wooter-red;
+                    }
+                    .md-ripple-container{
+                        @include radius(0 !important);
+                    }
+                }
+                &.active{
+                    .md-button{
+                        color: #fff;
+                        border-bottom-color: $md-wooter-red;
+                    }
+                }
+            }
+            @include mq($max-width: 959px) {
+                width: 100%;
+                margin: 0 !important;
+                li{
+                    width: 50%;
+                    text-align: center;
+                    margin: 0 !important;
+                    .md-button{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        .left {
+            float: left;
+            display: inline-block;
+            min-width: 800px;
+            ul{
+                margin-left: -12px !important;
+            }
+            @include mq($max-width: 959px) {
+                width: 100%;
+                min-width: 0 !important;
+                margin: 0 !important;
+                ul{
+                    width: 100%;
+                    margin-left: 0 !important;
+                }
+            }
+
+            .separator{
+                height: 17px;
+                width: 2px;
+                display: inline-block;
+                padding: 0 !important;
+                background: rgba(255,255,255,.5);
+                margin: 16px 12px;
+                @include mq($max-width: 959px) {
+                    margin-left: 35px;
+                    margin-right: 12px;
+                }
+            }
+        }
+        .right{
+            float: right;
+            padding-left: 100px;
+            @include mq($max-width: 959px) {
+                width: 100%;
+                float: none;
+                padding-left: 0 !important;
+            }
+            .fab-button{
+                position: absolute;
+                left: 0;
+                top: 10px;
+                @include size(72px);
+                @include mq($max-width: 959px) {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    left: auto;
+                    top: auto;
+                    @include translate(0);
+                }
+                .md-trigger{
+                    margin: 0 !important;
+                    line-height: 56px !important;
+                    height: 56px !important;
+                    width: 56px !important;
+                    @include shadow(0 2px 10px 2px rgba(0,0,0,.25));
+                    md-icon{
+                        font-size: 22px !important;
+                        @include transition();
+                    }
+                    &:hover{
+                        background: #fff;
+                        md-icon{
+                            color: $md-wooter-red;
+                        }
+                    }
+                }
+                md-fab-actions{
+                    pointer-events: none !important;
+                    @include transition();
+                    @include opacity(0);
+                    md-icon{
+                        color: $md-wooter-red !important;
+                    }
+                }
+                md-fab-speed-dial{
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    top: 0;
+                    @include mq($max-width: 959px) {
+                        bottom: 0;
+                        top: auto;
+                    }
+                    &.md-is-open{
+                        md-fab-actions {
+                            @include opacity(100);
+                            pointer-events: all !important;
+                        }
+                    }
+                }
+            }
+            .view-controls{
+                float: left;
+                @include mq($max-width: 959px) {
+                    width: 100%;
+                    float: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+<div class="row">
+    <md-input-container class="md-block">
+        <label>League Name</label>
+        <input type="text" name="league_name" ng-model="$step.model.basics.league_name" required ng-blur="cacheLeagueData()" title="League Name">
+        <div ng-messages="StepForm['league_name'].$error">
+            <div ng-message="required">League name is required.</div>
+        </div>
+    </md-input-container>
+</div>
+<div class="row" layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="70">
+        <md-input-container class="md-block">
+            <label>Select Sport</label>
+            <md-select ng-model="$step.model.basics.sport" name="sport" required ng-change="cacheLeagueData()">
+                <md-option ng-repeat="sport in sports" value="{{sport.id}}">{{sport.name}}</md-option>
+            </md-select>
+            <div ng-messages="StepForm['sport'].$error">
+                <div ng-message="required">League name is required.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div flex-xs="100" flex-gt-xs="30">
+        <md-input-container class="md-block">
+            <label>Gender</label>
+            <md-select ng-model="$step.model.basics.gender" name="gender" required ng-change="cacheLeagueData()">
+                <md-option value="male" selected>Male</md-option>
+                <md-option value="female">Female</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>
+
+<div class="row" layout="row">
+    <div flex-xs="50" flex-gt-xs="25">
+        <md-input-container class="md-block">
+            <label>Min age</label>
+            <md-select ng-model="$step.model.basics.min_age" name="min_age" ng-change="cacheLeagueData()">
+                <md-option value="{{i}}" ng-repeat="i in range(0, (intval($step.model.basics.max_age))?(intval($step.model.basics.max_age)-1):99)">{{ i }}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div flex-xs="50" flex-gt-xs="25">
+        <md-input-container class="md-block">
+            <label>Max age</label>
+            <md-select ng-model="$step.model.basics.max_age" name="max_age" ng-change="cacheLeagueData()">
+                <md-option value="{{j}}" ng-repeat="j in range((intval($step.model.basics.min_age))?(intval($step.model.basics.min_age)+1):0, 99)">{{ j }}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>
+
+<div class='row' layout='row' class='company_image'>
+    <img src="{{$step.model.basics.logo.thumbnail_path}}" style="width:200px !important;height:200px !important;" alt="League Logo">
+    <!-- <md-input-container class='modal_field' id='logo'>
+        <input type="file" name="logo" fileread="fileread">
+    </md-input-container> -->
+    <input type="file" fileread="fileread" file-model="logo" id="logo" style="width:210px"/>
+    <!-- <md-button ng-click="fileUpload()">Upload</md-button> -->
+</div>
+
+<div class="row" layout="row" ng-if="!leagueID" layout-align="end center">
+    <md-button ng-click="saveOnly(StepForm)">Create league</md-button>
+</div>
+
+<div class="row" layout="row">
+    <div flex="100">
+        <div class="fk-line">
+            <div class="back-face" ng-if="!isLeagueCreated()">
+                <md-tooltip md-direction="top">First need to create league</md-tooltip>
+            </div>
+            <p class="md-body tx">Add the venue(s) where your league will play.</p>
+            <md-button ng-click="showModal($event,'add-venue')" ng-disabled="!leagueID" title="{{ (leagueID)?'Add venue':'Create league First' }}">
+                <span>Add venue</span>
+            </md-button>
+        </div>
+    </div>
+</div>
+
+<div class="row list-holder" layout="row">
+    <div flex="100">
+        <div class="mdin" ng-show="venues && count(venues) > 0">
+            <md-progress-circular md-mode="indeterminate" md-theme="wooter-red" class="center-loader" md-diameter="94" ng-class="{show:venuesLoading}"></md-progress-circular>
+            <ul class="items animated" ng-if="venues && count(venues) > 0" ng-class="{show: !venuesLoading}">
+                <li ng-repeat="val in venues track by val.id" class="venue-{{ val.id }}">
+                    <div class="item">
+                        <md-button class="md-fab delete-button" ng-click="action('delete', 'venues', {id: val.id})"><md-icon>delete</md-icon></md-button>
+                        <div class="info">
+                            <p class='md-title'>{{ val.game_venue.location.name }}</p>
+                            <p class='md-subtitle'>{{ val.game_venue.location.full_address }}</p>
+                        </div>
+                        <md-button class="md-fab edit-button" ng-click="action('edit', 'venues', {id: val.id, event: $event})"><md-icon>mode_edit</md-icon></md-button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="msg" ng-if="count(venues) == 0 && (!venuesError || !venuesLoading)">
+            <p class="md-body-1">No Venues</p>
+        </div>
+        <div class="msg error" ng-if="venuesError" ng-class="{small: !venues && count(venues) == 0}">
+            <div class="msg-inner">
+                <p class="md-body-1">Can't update venues</p>
+                <md-button ng-click="action('update', 'venues')">try again!</md-button>
+            </div>
+        </div>
+    </div>
+</div>

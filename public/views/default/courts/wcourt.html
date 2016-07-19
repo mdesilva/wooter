@@ -1,0 +1,223 @@
+<div class="item-card" ng-class="{'text-cursor-pointer': !isDetails}" style="position:relative">
+
+    <div ng-if="!isDetails" class="item-body md-whiteframe-2dp no-padding" ng-class="{'item-body-lg': isDetails}" style="position:relative">
+        <header class="clearfix card_header" ng-click="clickAction(item);" style="position: absolute; width:100%; z-index:9">
+            <div class="col-xs-12 clearfix">
+                <div class="txt-overlay" style="width:100%; padding-left: 0; padding-right: 0; padding-top: 0 !important;" >
+                    <b style="color:rgba(255, 255, 255,.75); font-size: 17px; text-transform: lowercase; font-weight: 400;"> <i class="fa fa-map-marker" style="margin-right: 5px;"></i> <span class="tx">{{getMiles(item.court_data.DISTANCE)}}</span></b>
+                    <stars amount="rate" class="item-stars" all-stars="true"></stars>
+                </div>
+            </div>
+        </header>
+        <img ng-src="assets/images/5592f31a0983f.png" style="margin:auto;" ng-hide="item.images.length || isDetails" ng-click="clickAction(item);">
+        <div class="court_img"  style="background-image:url('assets/images/5592f31a0983f.png'); margin:auto;" ng-show="isDetails" ng-hide="item.images.length" ng-click="clickAction(item);"></div>
+        <uib-carousel interval="0" disable-animation="true">
+            <uib-slide ng-repeat="slide in item.images | orderBy: '-type'" active="slide.active">
+                <embed-video ng-if="slide.type=='video'" id="slide.sr_no" loop=1 ng-href="{{slide.image}}" class="video"><a href="{{slide.image}}">Watch</a></embed-video>
+                <iframe ng-if="slide.type=='image' && slide.image.indexOf('www.dermandar.com')!==-1 && isDetails==true" type="text/html" ng-src="{{trustSrc(slide.image)}}" style="margin:auto;" ng-click="clickAction(item);"></iframe>
+                <img ng-src="assets/images/5592f31a0983f.png" style="margin:auto;" ng-if="!isDetails && slide.type=='image' && slide.image.indexOf('www.dermandar.com')!==-1 && isDetails==false" ng-click="clickAction(item);">
+                <img ng-if="!isDetails && slide.type=='image' && slide.image.indexOf('http')===-1" ng-src="{{'rest_services/'+slide.image}}" style="margin:auto;" ng-click="clickAction(item);">
+                <img ng-if="!isDetails && slide.type=='image' && slide.image.indexOf('http')!==-1 && slide.image.indexOf('www.dermandar.com')===-1" ng-src="{{slide.image}}" style="margin:auto;" ng-click="clickAction(item);">
+                <div style="margin:auto; background:url('assets/images/5592f31a0983f.png');" class="court_img" ng-if="isDetails && slide.type=='image' && slide.image.indexOf('www.dermandar.com')!==-1 && isDetails==false" ng-click="clickAction(item);"></div>
+                <div ng-if="isDetails && slide.type=='image' && slide.image.indexOf('http')===-1" style="background:url({{'rest_services/'+slide.image}});" class="court_img" ng-click="clickAction(item);">
+                </div>
+                <div ng-if="isDetails && slide.type=='image' && slide.image.indexOf('http')!==-1 && slide.image.indexOf('www.dermandar.com')===-1" style="background:url({{slide.image}});" class="court_img" ng-click="clickAction(item);"></div>
+            </uib-slide>
+        </uib-carousel>
+        <div class="card_footer" style="position:absolute; width:100%; z-index: 80; color:#fff; bottom:0;">
+
+            <div class="card-footer-overlay" ng-click="clickAction(item);">
+                <b style=" font-weight: 500" ng-show="!isDetails">{{item.court_data.name | limitTo:50}}</b><br>
+                <b style=" font-weight: 300" ng-show="!isDetails">{{item.court_data.neighborhood}}, {{item.court_data.city}}</b>
+                <b style=" font-weight: 500" ng-show="isDetails">{{item.court_data.name}}</b><br>
+                <b style=" font-weight: 300" ng-show="isDetails">{{item.court_data.neighborhood}}, {{item.court_data.city}}</b>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="isDetails">
+        
+        <!-- <div class="item-preview-details" style="background-image:url('assets/images/5592f31a0983f.png'); margin:auto;"> -->
+        <div class="item-preview-details">
+            <div class="court_img"  style="background-image:url('assets/images/5592f31a0983f.png'); margin:auto; min-height:420px" ng-show="isDetails" ng-hide="item.images.length" ng-click="viewImagePopup($event, 'assets/images/5592f31a0983f.png');"></div>
+            <uib-carousel interval="0" disable-animation="true">
+            <uib-slide ng-repeat="slide in item.images | orderBy: '-type'" active="slide.active" style="min-height:420px">
+                <embed-video ng-if="slide.type=='video'" id="slide.sr_no" loop=1 ng-href="{{slide.image}}" class="video"><a href="{{slide.image}}">Watch</a></embed-video>
+                <iframe ng-if="slide.type=='image' && slide.image.indexOf('www.dermandar.com')!==-1 && isDetails==true" type="text/html" ng-src="{{trustSrc(slide.image)}}" style="margin:auto; min-height:420px;" ng-click="viewImagePopup($event, trustSrc(slide.image));"></iframe>
+                <div style="margin:auto; background:url('assets/images/5592f31a0983f.png'); min-height:420px" class="court_img" ng-if="isDetails && slide.type=='image' && slide.image.indexOf('www.dermandar.com')!==-1 && isDetails==false" ng-click="viewImagePopup($event, 'assets/images/5592f31a0983f.png');"></div>
+                <div ng-if="isDetails && slide.type=='image' && slide.image.indexOf('http')===-1" style="background:url({{'rest_services/'+slide.image}}); min-height:420px" class="court_img" ng-click="viewImagePopup($event, 'rest_services/'+slide.image);">
+                </div>
+                <div ng-if="isDetails && slide.type=='image' && slide.image.indexOf('http')!==-1 && slide.image.indexOf('www.dermandar.com')===-1" style="background:url({{slide.image}}); min-height:420px" class="court_img" ng-click="viewImagePopup($event, slide.image);"></div>
+            </uib-slide>
+            </uib-carousel>
+            <md-button class="watch-live-button" ng-click="watchLiveAction($event, item)"><md-icon>play_circle_filled</md-icon> Watch Live</md-button>
+            <div class="content-details">
+                <p class="title md-title">{{item.court_data.name}} <stars amount="rate" class="item-stars" all-stars="true" style="float: none; padding-top: ;"></stars></p>
+                <p class="address-description">{{item.court_data.neighborhood}}, {{item.court_data.state}}</p>
+            </div>
+        </div>
+        <b ng-if="isDetails && item.time_slots=='' && item.court_data.court_privacy_type=='private'" style="padding:20px; font-size: 18px">Bookings are not available for this court yet.<br><br></b>
+        <div class="item-booking-details md-whiteframe-2dp clearfix" ng-show="(isDetails && item.time_slots!='') && item.court_data.court_privacy_type=='private'">
+
+            <div class="header" layout="row">
+                <div class="left" flex="50">
+                    <p class="md-title address">{{item.court_data.address}}</p>
+                    <p class="md-body-1 state-zip">{{item.court_data.city}}, {{item.court_data.state}} {{item.court_data.zip}}</p>
+                </div>
+                <div class="right" flex="50">
+                    <p class="price">
+                        <span class="dolar"><md-icon>attach_money</md-icon></span>
+                        <span class="price">{{item.court_data.price}}</span>
+                        <span class="per">/hr</span>
+                    </p>
+                    <!-- <input type="hidden" required ng-model="booking.price" ng-init="booking.price=item.court_data.price"> -->
+                </div>
+            </div>
+
+            <div class="selects clearfix">
+
+                <div class="box">
+                     <md-datepicker class="md-block" ng-model="searchObj.date" md-placeholder="Enter date" md-min-date="minDate" ng-change="dateSelected()" ng-click="ctrl.openCalendarPane($event)"></md-datepicker>
+                </div>
+
+                <div class="box">
+                    <md-input-container class="md-block">
+                        <label style="display: none;">Start Time</label>
+                        <md-select ng-model="searchObj.start" class="md-block">
+                            <!-- <md-option selected ng-value="">Start Time</md-option> -->
+                            <md-option ng-repeat="time1 in timesSelect" ng-selected="searchObj.start.value==time1.value" ng-value="time1">
+                                {{time1.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                
+                <div class="box">
+                    <md-input-container class="md-block">
+                        <label style="display: none;">Booking Date</label>
+                        <md-select ng-model="searchObj.end" class="md-block">
+                            <!-- <md-option selected ng-value="">Duration</md-option> -->
+                            <md-option ng-repeat="time in durationArray | filter: $select.search" ng-value="time">
+                                {{time.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+            </div>
+
+            <div class="booking-container" style="margin-top:20px">
+                <!-- <div class="booking" data-start="09:00 AM" data-end="08:00 PM" layout="row">
+                    <div class="hour first" data-hour="9" flex="">
+                        <div class="minutes"></div>
+                        <div class="minutes"></div>
+                    </div>
+                
+                    <div class="hour" ng-repeat="time in time_slots_available" data-hour="{{time.value}}" flex="" ng-class="{'noon': time.value == 12}">
+                       <div class="minutes" data-minutes="{{m}}" ng-repeat="m in [30, 60]" ng-click="selectHalfHourtBooking($event)"></div>
+                        <div class="minutes" data-minutes="60" ng-mouseleave="booking = false;" ng-mouseup="booking = false;"  ng-class="{'is-selected': time.selected, 'is-booked': time.booked, 'text-cursor-pointer': !time.booked, 'is_not_available': time.not_available, 'text-cursor-pointer': !time.not_available}" ng-mouseenter="bookSlot(time);" ng-mousedown="startBooking();bookSlot(time);" ></div>
+                    </div>
+                
+                    <div class="hour last" data-hour="7" flex="">
+                        <div class="minutes"></div>
+                        <div class="minutes"></div>
+                    </div>
+                </div> -->
+
+                <div class="row">
+      <div class="availability-bar-open pull-left">{{startTimeDisplay}}</div>
+      <div class="availability-bar-close pull-right">{{endTimeDisplay}}</div>
+    </div>
+    <div class="item-availability-bar-holder"  style="margin-bottom:20px">
+      <div class="item-availability-bar-wrap" ng-mouseup="booking = false;" ng-mouseleave="booking = false;" ng-mousemove="mouseMoveOnOuter($event);">
+        <span class="item-availability-bar" ng-repeat="time in time_slots_available" ng-class="{'is-selected': time.selected, 'is-booked': time.booked, 'text-cursor-pointer': !time.booked, 'is_not_available': time.not_available, 'text-cursor-pointer': !time.not_available}" ng-mouseenter="bookSlot(time);" ng-mousedown="startBooking();bookSlot(time);">
+            <span ng-if="time.value%1===0 && ($index!=0 && $index!=time_slots_available.length)" style="color:#444b53; position:absolute; top:-14px; left:-20px; font-size:11px; user-select:none; line-height: 16px;">{{time.name.replace(':00', '')}}</span>
+        </span>
+      </div>
+    </div>
+
+                <md-button class="book-btn" ng-disabled="cantBook" ng-click="makeBooking()">{{totalPrice | currency}} <span>|</span> BOOK</md-button>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="can-not-book-notice" ng-show="noTimeSlot">
+              <p class="text-danger">No rentals available for this day.</p>
+            </div>
+
+        </div>
+
+        <div class="all-details">
+            <section class="details-item about" ng-if="item.court_data.description!=''">
+                <div class="md-title title section-title">About</div>
+                <md-content>
+                    <p style="margin: 0;">{{item.court_data.description}} </p>
+                </md-content>
+                <md-button class="text-uppercase" style="margin: auto; display:none">Read More</md-button>
+            </section>
+
+            <section class="details-item features" ng-if="courtFeatures!='' || item.facility.length">
+                <div class="md-title title section-title">Features</div>
+                <md-content>
+                    <div class="feature-item" ng-repeat="feature in courtFeatures" ng-if="item.court_data.court_privacy_type=='private'">
+                        <img ng-src="images/features/{{feature | removeSpaces | limitTo:4}}.png" alt="">
+                        <p>{{feature}}</p>
+                    </div>
+                    <div class="feature-item" ng-repeat="facility in item.facility" ng-if="item.court_data.court_privacy_type=='public'">
+                        <img ng-src="images/facility_icon/{{facility.facility}}.png" alt="">
+                        <p>{{facility.facility}}</p>
+                    </div>
+                </md-content>
+            </section>
+
+            <section class="details-item leagues">
+                <div class="md-title title section-title">Leagues</div>
+                <md-content>
+                    <div class="league-item" ng-repeat="league in leagues">
+                        <a href="#" class="inner" style="background-image: url({{league.img}});">
+                            <div class="content clearfix">
+                                <div class="logo">
+                                    <div class="img"><img ng-src="{{league.logo}}" alt=""></div>
+                                </div>
+                                <div class="txt">
+                                    <p class="md-title">{{league.text.league}}</p>
+                                    <p class="md-body-1">{{league.text.company}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </md-content>
+            </section>
+
+            <section class="details-item review-container about" ng-controller="ReviewsController">
+                <div class="md-block header" layout="row">
+                    <div class="text-left" flex="50"><p class="md-title section-title">Reviews</p></div>
+                    <div class="text-right" flex="50"><md-button ng-click="showReviewModal()">Add Review</md-button></div>
+                </div>
+                <div class="md-block reviews">
+                    <ul class="items">
+                        <li ng-repeat="review in reviews" class="item clearfix row">
+                            <div class="col-xs-12 clearfix">
+                                <div class="image">
+                                    <img ng-src="{{review.image}}" alt="{{review.image}}">
+                                </div>
+                                <div class="txt">
+                                    <p class="md-title">
+                                        <span class="title" ng-bind="review.name"></span>
+                                        <stars amount="review.rating"></stars>
+                                    </p>
+                                    <p class="description" ng-bind="review.review"></p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <md-button style="margin-left:100px">Load More</md-button>
+            </section>
+        </div>
+
+        <div class="item-footer text-muted text-normal text-center">
+            Check out more about this place @ 
+        </div>
+    </div>
+
+</div>

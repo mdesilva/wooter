@@ -1,0 +1,528 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+    <div class="container">
+        <div class="info">
+            <h1 class="md-title league-title">{{ leagueName }}</h1>
+            <p class="md-body-1 league-subtitle">{{ leagueSubtitle }}</p>
+        </div>
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+</header>
+
+<div class="container players-content">
+    <md-content class="md-whiteframe-2dp">
+        <header class="header">
+            <img class='back' src="../../img/dashboard/back.png" alt="">        
+            <img class='team_icon' src="/img/landing/schedule/devils.png" alt="">
+                <div class="credentials">
+                    <h4><b>Wooter</b></h4>
+                    <p>Division 1 &nbsp;&nbsp;|&nbsp;&nbsp; 35-17</p>                   
+                </div>    
+                <div class="clear"></div>
+            
+                <md-menu md-position-mode="target-right target">
+                    <md-button md-menu-origin ng-click="showMenu($mdOpenMenu, $event)" class="md-icon-button"><md-icon>more_vert</md-icon></md-button>
+                    <md-menu-content>
+                        <md-menu-item><md-button>Action 1</md-button></md-menu-item>
+                        <md-menu-item><md-button>Action 2</md-button></md-menu-item>
+                        <md-menu-item><md-button>Action 3</md-button></md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+                <div class="buttons mobile_hidden_600">
+                    <p class="section_add"><md-button class='wooter-primary' ng-click="createVideo($event)">Add Player</md-button></p>
+                </div>   
+                <div class="clear"></div>
+        </header>
+
+        <div class="players-list">
+            <md-list ng-cloak>
+                <md-list-item class="header-row" layout="row">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="player" layout="row" flex="100" flex-md='40' flex-gt-md="30">
+                            <md-checkbox ng-model="selectAll" ng-click="checkAllPlayers()" aria-label="Select all players" class='checking_boxes'></md-checkbox>                            
+                            <p class="md-body-1 name">Players</p>
+                        </div>
+                        <div class="stand"  layout="row" flex="100" flex-md='60' flex-gt-md="70">
+                            <div class="team mobile_hidden_600" flex="20">
+                                <p class="md-body-1 info">Captain</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600" flex="30" flex-md='40'>
+                                <p class="md-body-1 info">Email</p>
+                            </div>
+
+                            <div class="payment-status mobile_hidden_600 mobile_hidden_959" flex="30">
+                                <p class="md-body-1 info">Phone Number</p>
+                            </div>
+
+                            <div class="interactive mobile_hidden_600" flex="20" flex-md='40'>
+
+                                <img src="../img/dashboard/move.png" 
+                                     alt="Edit Can"   
+                                     style="width: 58px; float:left; padding: 3px 18px;"
+                                     ng-click="movePlayer($event)"> 
+
+                                <img src="../img/dashboard/garbage.png" 
+                                 alt="Delete Can"   
+                                 style="width: 54px; float:right; padding: 3px 20px;"
+                                 ng-click="removeTeam($event)"> 
+
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+<!-- ng-repeat="player in players.getPlayers()"
+ -->                <md-list-item layout="row" class='team_display' style='border-bottom: 1px solid #eee;'>
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row" style='height: 16px;'>
+                        <div class="player teams_table_name" layout="row" flex="100" flex-md='40' flex-gt-md="30">       
+                            <md-checkbox ng-model="selectAll" ng-click="" aria-label="" class='checking_boxes'></md-checkbox> 
+                            <span class="img team_image" cssbg="{{player.img}}"></span>
+                            <p class="md-body-1 name team_name">dsadsadsada<!-- {{ player.name }} --></p>
+                        </div>
+
+                        <div class="stand"  layout="row" flex="100" flex-md='60' flex-gt-md="70">
+                            <div class="team mobile_hidden_600" flex="20">
+                                <p class="md-body-1 info">dsadsadsa<!-- {{ player.team }} --></p>
+                            </div>
+
+                            <div class="division mobile_hidden_600" flex="30" flex-md='40'>
+                                <p class="md-body-1 info">dsadsa<!-- {{ player.email }} --></p>
+                            </div>
+
+                            <div class="payment-status mobile_hidden_600 mobile_hidden_959" flex="30">
+                                <p class="md-body-1 info">dsadas<!-- {{ player.payment_status }} --></p>
+                            </div>
+
+                            <div class="interactive mobile_hidden_600" flex="20" flex-md='40'>
+
+                                <img src="../img/dashboard/move.png" 
+                                     alt="Edit Can"   
+                                     style="width: 58px; float:left; padding: 7px 18px;"
+                                     ng-click="movePlayer($event)"> 
+
+                                <img src="../img/dashboard/garbage.png" 
+                                 alt="Delete Can"   
+                                 style="width: 54px; float:right; padding: 7px 20px;"
+                                 ng-click="removeTeam($event)"> 
+
+                            </div>
+
+                        </div>
+                    </div>
+                </md-list-item>
+                <md-list-item class="no-players" layout="row" ng-if="count(players.getPlayers()) == 0">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">No players founded.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+
+        <div class="players-list">
+            <md-list ng-cloak>
+                <md-list-item class="header-row" layout="row">
+                    <div class="inner"  flex="100" layout-gt-sm="row" layout-sm="row">
+                        <div class="player" layout="row" flex="100" flex-sm='50' flex-gt-sm="50" style='padding-left: 4px!important;'>                          
+                            <p class="md-body-1 section_name">Photos</p>
+                        </div>
+                        <div class="stand mobile_hidden_600"  layout="row" flex="100" flex-sm='50' flex-gt-sm="50">
+                            <p class="section_add"><md-button class='wooter-primary' ng-click="createVideo($event)">Add Photos</md-button></p>
+                        </div>
+                    </div>
+                </md-list-item>
+
+                <md-list-item class="Photos" layout="row">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        
+                        <div class="back">
+                            <img src="../../img/dashboard/left_arrow.png" alt="">
+                        </div>
+                        
+                        <div class="stand standing" layout="row" flex="100" flex-gt-sm="100">
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+                            
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+                        </div>
+                <div class="forth">
+                    <img src="../../img/dashboard/right_arrow.png" alt="">
+                </div>
+                    </div>
+                </md-list-item> 
+
+
+                 <md-list-item layout="row" ng-repeat="photo in photo.getPhotos()">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        
+                        <div class="back">
+                            <img src="../../img/dashboard/left_arrow.png" alt="">
+                        </div>
+                        
+                        <div class="stand standing" layout="row" flex="100" flex-gt-sm="100">
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="{{photo.thumbnail}}">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>{{photo.title}}</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="forth">
+                            <img src="../../img/dashboard/right_arrow.png" alt="">
+                        </div>
+
+                    </div>
+                    <md-checkbox aria-label="Select player" ng-model="model[player.id]"></md-checkbox>
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="count(players.getPlayers()) == 0">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">Upload A Photo.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+
+
+
+        <div class="players-list">
+            <md-list ng-cloak>
+
+                <md-list-item class="header-row" layout="row">
+                    <div class="inner" flex="100" layout-gt-sm="row" layout-sm="row">
+                        <div class="player" layout="row" flex="100" flex-gt-sm="50" style='padding-left: 4px!important;'>                          
+                            <p class="md-body-1 section_name">Videos</p>
+                        </div>
+                        <div class="stand mobile_hidden_600"  layout="row" flex="100" flex-gt-sm="50">
+                            <p class="section_add"><md-button class='wooter-primary' ng-click="addVideo($event)">Add Videos</md-button></p>
+                        </div>
+                    </div>
+
+                </md-list-item>
+
+<!-- 
+                <md-list-item class="Photos" layout="row">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        
+                        <div class="back2">
+                            <img src="../../img/dashboard/left_arrow.png" alt="">
+                        </div>
+                        
+                        <div class="stand2 standing" layout="row" flex="100" flex-gt-sm="100">
+                            <div class="team" flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+                            
+                            <div class="team" flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+
+                            <div class="team" flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>Photo Title</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+                        </div>
+                <div class="forth2">
+                    <img src="../../img/dashboard/right_arrow.png" alt="">
+                </div>
+                    </div>
+                </md-list-item>  -->
+
+
+                 <md-list-item layout="row" ng-repeat="video in videos.getPhotos()">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        
+                        <div class="back2">
+                            <img src="../../img/dashboard/left_arrow.png" alt="">
+                        </div>
+                        
+                        <div class="stand2 standing" layout="row" flex="100" flex-gt-sm="100">
+                            <div class="team" flex-sm='100' flex-md='33' flex="20">
+                                <div class="images">
+                                    <img class='results' src="" alt="{{photo.thumbnail}}">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editVideo($event)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event)"><strong>{{video.title}}</strong></p>
+                                        </div> 
+                                    </div>      
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="forth2">
+                            <img src="../../img/dashboard/right_arrow.png" alt="">
+                        </div>
+
+                    </div>
+                    <md-checkbox aria-label="Select player" ng-model="model[player.id]"></md-checkbox>
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="count(players.getPlayers()) == 0">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">Upload A Video.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+
+<div class="check_select">
+    <ul>
+        <li>
+            <div>
+                <p>(0) Player(s) Selected</p>
+            </div>
+        </li>
+        <li style='padding: 2px 0px;'>
+            <div>
+             <md-button ng-click="movePlayer($event)" style='color: #ed514f'><img style='width: 16px; margin-top: 10px;' src="../img/dashboard/move.png" alt=""> MOVE</md-button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script>
+$( document ).ready(function() {
+    $('md-tabs-canvas').addClass('container');
+    $('.toggle_dropdown').click(function(){
+        $( '.player_menu' ).toggleClass('hide');
+    });
+
+    $('.back').click(function () {
+        var leftPos = $('.stand').scrollLeft();
+        console.log(leftPos);
+        $(".stand").animate({
+            scrollLeft: leftPos - 230
+        }, 800);
+    });
+
+    $('.forth').click(function () {
+        var leftPos = $('stand').scrollLeft();
+        console.log(leftPos);
+        $(".stand").animate({
+            scrollLeft: leftPos + 230
+        }, 800);
+    });
+
+    $('.back2').click(function () {
+        var leftPos = $('.stand2').scrollLeft();
+        console.log(leftPos);
+        $(".stand").animate({
+            scrollLeft: leftPos - 230
+        }, 800);
+    });
+
+    $('.forth2').click(function () {
+        var leftPos = $('stand2').scrollLeft();
+        console.log(leftPos);
+        $(".stand").animate({
+            scrollLeft: leftPos + 230
+        }, 800);
+    });
+
+
+});
+</script>
+

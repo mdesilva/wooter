@@ -1,0 +1,23 @@
+<div id="team-description-editor">
+    <div ng-show="show_main">
+        <h1>Edit Description</h1>
+        
+        <form id="description-editor-form">
+            <div>
+                <label>Team Description<label>
+                <input type="text" name="team_description" value="{{description}}">
+            </div>
+            <div>
+                <button id="edit-description-submit" ng-click="editDescription(); show_main = !show_main">Submit</button>
+            </div>
+            <div>
+                <button id="edit-description-cancel" ng-click="hideModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="edit-description-success" ng-show="!show_main">
+        <p>Success!</p>
+        <button id="edit-description-close" ng-click="hideModal(); show_main = !show_main">Close</button>
+    </div>
+</div>

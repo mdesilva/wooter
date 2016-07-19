@@ -1,0 +1,29 @@
+md-dialog {
+  min-width: 75%;
+  min-height: 83%;
+}
+
+md-dialog md-toolbar .md-toolbar-tools {
+  background-color: white;
+  color: black;
+}
+
+md-dialog md-dialog-content div.titleDiv {
+  height: 63px;
+  background-color: #f5f5f5;
+}
+
+md-dialog md-dialog-content div.titleDiv h2 {
+  margin-left: 20px;
+  font-weight: 400;
+}
+
+md-dialog md-dialog-content div.packageField {
+  height: 63px;
+}
+
+md-dialog md-dialog-content div.rowField.checkFields {
+  height: 25%;
+  top: 50%;
+  tarnsform: translateY(-50%);
+}

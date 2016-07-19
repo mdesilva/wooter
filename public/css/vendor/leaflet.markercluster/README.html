@@ -1,0 +1,108 @@
+<h1 id="leaflet-markercluster">Leaflet.markercluster</h1>
+<p>Provides Beautiful Animated Marker Clustering functionality for <a href="http://leafletjs.com">Leaflet</a>, a JS library for interactive maps.</p>
+<p><em>Requires Leaflet 0.7.0 or newer.</em></p>
+<p>For a Leaflet 0.5 compatible version, <a href="https://github.com/Leaflet/Leaflet.markercluster/archive/b128e950d8f5d7da5b60bd0aa9a88f6d3dd17c98.zip">Download b128e950</a><br>
+For a Leaflet 0.4 compatible version, <a href="https://github.com/Leaflet/Leaflet.markercluster/archive/0.2.zip">Download the 0.2 release</a></p>
+<h2 id="using-the-plugin">Using the plugin</h2>
+<p>See the included examples for usage.</p>
+<p>The <a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.388.html">realworld example</a> is a good place to start, it uses all of the defaults of the clusterer.
+Or check out the <a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html">custom example</a> for how to customise the behaviour and appearance of the clusterer</p>
+<h3 id="usage">Usage</h3>
+<p>Create a new MarkerClusterGroup, add your markers to it, then add it to the map</p>
+<pre><code class="lang-javascript">var markers = new L.MarkerClusterGroup();
+markers.addLayer(new L.Marker(getRandomLatLng(map)));
+... Add more layers ...
+map.addLayer(markers);
+</code></pre>
+<h3 id="defaults">Defaults</h3>
+<p>By default the Clusterer enables some nice defaults for you:</p>
+<ul>
+<li><strong>showCoverageOnHover</strong>: When you mouse over a cluster it shows the bounds of its markers.</li>
+<li><strong>zoomToBoundsOnClick</strong>: When you click a cluster we zoom to its bounds.</li>
+<li><strong>spiderfyOnMaxZoom</strong>: When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers.</li>
+<li><strong>removeOutsideVisibleBounds</strong>: Clusters and markers too far from the viewport are removed from the map for performance.</li>
+</ul>
+<p>You can disable any of these as you want in the options when you create the MarkerClusterGroup:</p>
+<pre><code class="lang-javascript">var markers = new L.MarkerClusterGroup({ spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false });
+</code></pre>
+<h3 id="customising-the-clustered-markers">Customising the Clustered Markers</h3>
+<p>As an option to MarkerClusterGroup you can provide your own function for creating the Icon for the clustered markers.
+The default implementation changes color at bounds of 10 and 100, but more advanced uses may require customising this.
+You do not need to include the .Default css if you go this way.
+You are passed a MarkerCluster object, you&#39;ll probably want to use getChildCount() or getAllChildMarkers() to work out the icon to show</p>
+<pre><code class="lang-javascript">var markers = new L.MarkerClusterGroup({
+    iconCreateFunction: function(cluster) {
+        return new L.DivIcon({ html: &#39;&lt;b&gt;&#39; + cluster.getChildCount() + &#39;&lt;/b&gt;&#39; });
+    }
+});
+</code></pre>
+<p>Check out the <a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html">custom example</a> for an example of this.</p>
+<h3 id="all-options">All Options</h3>
+<p>Enabled by default (boolean options):</p>
+<ul>
+<li><strong>showCoverageOnHover</strong>: When you mouse over a cluster it shows the bounds of its markers.</li>
+<li><strong>zoomToBoundsOnClick</strong>: When you click a cluster we zoom to its bounds.</li>
+<li><strong>spiderfyOnMaxZoom</strong>: When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers.</li>
+<li><strong>removeOutsideVisibleBounds</strong>: Clusters and markers too far from the viewport are removed from the map for performance.</li>
+</ul>
+<p>Other options</p>
+<ul>
+<li><strong>animateAddingMarkers</strong>: If set to true then adding individual markers to the MarkerClusterGroup after it has been added to the map will add the marker and animate it in to the cluster. Defaults to false as this gives better performance when bulk adding markers. addLayers does not support this, only addLayer with individual Markers.</li>
+<li><strong>disableClusteringAtZoom</strong>: If set, at this zoom level and below markers will not be clustered. This defaults to disabled. <a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld-maxzoom.388.html">See Example</a></li>
+<li><strong>maxClusterRadius</strong>: The maximum radius that a cluster will cover from the central marker (in pixels). Default 80. Decreasing will make more smaller clusters.</li>
+<li><strong>polygonOptions</strong>: Options to pass when creating the L.Polygon(points, options) to show the bounds of a cluster</li>
+<li><strong>singleMarkerMode</strong>: If set to true, overrides the icon for all added markers to make them appear as a 1 size cluster</li>
+<li><strong>spiderfyDistanceMultiplier</strong>: Increase from 1 to increase the distance away from the center that spiderfied markers are placed. Use if you are using big marker icons (Default:1)</li>
+<li><strong>iconCreateFunction</strong>: Function used to create the cluster icon <a href="https://github.com/Leaflet/Leaflet.markercluster/blob/15ed12654acdc54a4521789c498e4603fe4bf781/src/MarkerClusterGroup.js#L542">See default as example</a>.</li>
+</ul>
+<h2 id="events">Events</h2>
+<p>If you register for click, mouseover, etc events just related to Markers in the cluster.
+To recieve events for clusters listen to &#39;cluster&#39; + &#39;eventIWant&#39;, ex: &#39;clusterclick&#39;, &#39;clustermouseover&#39;.</p>
+<p>Set your callback up as follows to handle both cases:</p>
+<pre><code class="lang-javascript">markers.on(&#39;click&#39;, function (a) {
+    console.log(&#39;marker &#39; + a.layer);
+});
+
+markers.on(&#39;clusterclick&#39;, function (a) {
+    console.log(&#39;cluster &#39; + a.layer.getAllChildMarkers().length);
+});
+</code></pre>
+<h2 id="methods">Methods</h2>
+<h3 id="getting-the-bounds-of-a-cluster">Getting the bounds of a cluster</h3>
+<p>When you recieve an event from a cluster you can query it for the bounds.
+See <a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-convexhull.html">example/marker-clustering-convexhull.html</a> for a working example.</p>
+<pre><code class="lang-javascript">markers.on(&#39;clusterclick&#39;, function (a) {
+    map.addLayer(new L.Polygon(a.layer.getConvexHull()));
+});
+</code></pre>
+<h3 id="zooming-to-the-bounds-of-a-cluster">Zooming to the bounds of a cluster</h3>
+<p>When you recieve an event from a cluster you can zoom to its bounds in one easy step.
+If all of the markers will appear at a higher zoom level, that zoom level is zoomed to instead.
+See <a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-zoomtobounds.html">marker-clustering-zoomtobounds.html</a> for a working example.</p>
+<pre><code class="lang-javascript">markers.on(&#39;clusterclick&#39;, function (a) {
+    a.layer.zoomToBounds();
+});
+</code></pre>
+<h3 id="getting-the-visible-parent-of-a-marker">Getting the visible parent of a marker</h3>
+<p>If you have a marker in your MarkerClusterGroup and you want to get the visible parent of it (Either itself or a cluster it is contained in that is currently visible on the map).
+This will return null if the marker and its parent clusters are not visible currently (they are not near the visible viewpoint)</p>
+<pre><code>var visibleOne = markerClusterGroup.getVisibleParent(myMarker);
+console.log(visibleOne.getLatLng());
+</code></pre><h3 id="adding-and-removing-markers">Adding and removing Markers</h3>
+<p>addLayer, removeLayer and clearLayers are supported and they should work for most uses.</p>
+<h3 id="bulk-adding-and-removing-markers">Bulk adding and removing Markers</h3>
+<p>addLayers and removeLayers are bulk methods for adding and removing markers and should be favoured over the single versions when doing bulk addition/removal of markers. Each takes an array of markers</p>
+<p>If you are removing a lot of markers it will almost definitely be better to call clearLayers then call addLayers to add the markers you don&#39;t want to remove back in. See <a href="https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628">#59</a> for details.</p>
+<h3 id="other-methods">Other Methods</h3>
+<pre><code>hasLayer(layer): Returns true if the given layer (marker) is in the MarkerClusterGroup
+zoomToShowLayer(layer, callback): Zooms to show the given marker (spidifying if required), calls the callback when the marker is visible on the map
+addLayers(layerArray): Adds the markers in the given array from the MarkerClusterGroup in an efficent bulk method.
+removeLayers(layerArray): Removes the markers in the given array from the MarkerClusterGroup in an efficent bulk method.
+</code></pre><h2 id="handling-lots-of-markers">Handling LOTS of markers</h2>
+<p>The Clusterer can handle 10000 or even 50000 markers (in chrome). IE9 has some issues with 50000.
+<a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.10000.html">realworld 10000 example</a>
+<a href="http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.50000.html">realworld 50000 example</a>
+Performance optimizations could be done so these are handled more gracefully (Running the initial clustering over multiple JS calls rather than locking the browser for a long time)</p>
+<h3 id="license">License</h3>
+<p>Leaflet.markercluster is free software, and may be redistributed under the MIT-LICENSE.</p>
+<p><a href="https://travis-ci.org/Leaflet/Leaflet.markercluster"><img src="https://travis-ci.org/Leaflet/Leaflet.markercluster.png?branch=master" alt="Build Status"></a></p>

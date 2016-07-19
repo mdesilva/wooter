@@ -1,0 +1,197 @@
+/*
+* Created by Dumitrana Alinus.
+* User: alin.designstudio@gmail.com
+* For: Notifications
+* License: Wooter LLC.
+* Date: 2016.01.07
+* Description:
+*
+*/
+
+#notify-container {
+    width: 100%;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none !important;
+    position: relative;
+    z-index: 100000;
+    display: block;
+    .notify-inner {
+        width: 100%;
+        position: relative;
+        height: auto;
+        margin: 0;
+        li {
+            width: 100%;
+            padding: 0 !important;
+            margin: 0;
+            background: #fff;
+            pointer-events: none !important;
+            @include radius(0);
+            @include opacity(0);
+            @include transition(300ms);
+            -webkit-transform: perspective(600px) rotateX(90deg) translate(0, -350%);
+            -moz-transform: perspective(600px) rotateX(90deg) translate(0, -350%);
+            -o-transform: perspective(600px) rotateX(90deg) translate(0, -350%);
+            transform: perspective(600px) rotateX(90deg) translate(0, -350%);
+            color: #444;
+            cursor: default;
+            border-bottom: 1px solid #dedede !important;
+            &:last-child{
+                border-bottom: none !important;
+            }
+            &.h0{
+                height: 0 !important;
+            }
+            .inner{
+                min-width: calc(100% - 60px);
+                padding-right: 25px;
+            }
+            .content{
+                width: 100%;
+            }
+            &.open {
+                padding: 15px 0 !important;
+                height: auto;
+                @include translate(0, 0);
+                @include opacity(100);
+                pointer-events: all !important;
+                &:active {
+                    @include scale(1.1);
+                }
+            }
+            &[theme], a , .material-icons{
+                color: #fff;
+            }
+            &[theme="info"] {
+                background: material-color('blue', '300');
+            }
+            &[theme="success"] {
+                background: material-color('teal', '300');
+            }
+            &[theme="warning"] {
+                background: material-color('orange', '300');
+            }
+            &[theme="danger"], &[theme="error"] {
+                background: material-color('red', '300');
+            }
+            &.inverse {
+                background: #fff;
+                &[theme="info"] {
+                    &, a, .material-icons{
+                        color: material-color('blue', '300');
+                    }
+                }
+                &[theme="success"] {
+                    &, a, .material-icons{
+                        color: material-color('teal', '300');
+                    }
+                }
+                &[theme="warning"] {
+                    &, a, .material-icons{
+                        color: material-color('orange', '300');
+                    }
+                }
+                &[theme="danger"], &[theme="error"] {
+                    &, a, .material-icons{
+                        color: material-color('red', '300');
+                    }
+                }
+            }
+            .notify-close {
+                position: absolute;
+                display: block;
+                z-index: 9920;
+                cursor: pointer;
+                width: 25px;
+                height: 25px;
+                line-height: 23px;
+                text-align: center;
+                padding: 0;
+                margin: 0;
+                top: 50%;
+                right: 5px;
+                text-decoration: none;
+                @include transition(400ms);
+                @include opacity(75);
+                @include radius(3px);
+                @include translate(0, -50%);
+                border: 1px solid transparent;
+                md-icon{
+                    @include absoluteCenter();
+                }
+                &:hover {
+                    @include opacity(100);
+                    background: transparentize(#fff, .85);
+                    border-color: transparentize(#fff, .50);
+                }
+                &:active {
+                    background: #fff;
+                    color: #444;
+                }
+            }
+            .icon{
+                max-width: 60px;
+            }
+            .icon, i {
+                text-align: center;
+                width: 100%;
+                border: none !important;
+            }
+            md-icon{
+                border: none !important;
+            }
+            p {
+                @include roboto();
+                margin: 0;
+                z-index: 9915;
+                &.title {
+                    line-height: 24px;
+                    margin-top: 0;
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                }
+                a {
+                    border-bottom: dotted 1px;
+                    @include transition(500ms);
+                    &:hover {
+                        border-bottom-style: solid;
+                    }
+                }
+            }
+            &.no-icon {
+                .inner{
+                    padding: 0 15px;
+                    text-align: center;
+                }
+            }
+            &.have-title {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                .icon {
+                    line-height: 26px;
+                    .material-icons{
+                        font-size: 22px !important;
+                        line-height: 20px !important;
+                    }
+                }
+                .inner{
+                    text-align: left;
+                }
+            }
+            &.have-buttons{
+                padding: 15px 0 10px 0;
+                .buttons{
+                    margin-top: 10px;
+                    padding: 0 15px 0 0
+                }
+                .notify-close {
+                    display: none;
+                }
+            }
+        }
+    }
+}

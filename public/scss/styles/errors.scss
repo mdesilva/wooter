@@ -1,0 +1,102 @@
+html.errPage{
+	&, body{
+		height: 100% !important;
+		width: 100% !important;
+		position: relative;
+		color: #fff;
+		display: block;
+		@include transition(2.5s);
+	}
+	div.pg{
+		width: 100%;
+		height: 100%;
+		position: relative;
+		display: none;
+		color: #fff;
+		h1{
+			color: #fff !important;
+		}
+	}
+	body{
+		background: #2a3e50;
+		color: #fff;
+		@include opacity(0);
+	}
+	h1{
+		display: inline-block;
+		color: #fff !important;
+		text-align: center;
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include sans-serif(48px, 300, "Raleway");
+		@include translate(-50%, 0);
+	}
+	h1 span{
+		display: block;
+		margin-top: 20px;
+		color: transparent;
+		@include opacity(70);
+		@include transition(1s);
+		@include sans-serif(14px, 500, "Raleway");
+		text-align: center;
+	}
+	h1 span.show{
+		color: #fff;	
+	}
+
+	h1 span i{
+
+	}
+	h2{
+		position: absolute;
+		display: inline-block;
+		bottom: 10px;
+		margin: 0;
+		left: 50%;
+		color: #fff;
+		text-align: center;
+		@include sans-serif(14px, 300, "Raleway");
+		@include translate(-50%, 0);
+	}
+	h2 a{
+		color: #fff !important;
+	}
+
+	.cap{
+		@include rotate(-45deg);
+		@include sans-serif(48px, 300, "Raleway");
+		display: inline-block;
+		position: absolute;
+		left: -10px;
+		top: 10px;
+		margin: 0;
+		color: #fff;
+		text-align: center;
+	}
+	.icon{
+		position: absolute;
+		top: 25%;
+		left: 50%;
+		@include size(148px);
+		font-size: 100px;
+		@include translate();
+	}
+	.icon a svg{
+		@include opacity(60);
+		@include transition(1s);
+	}
+	.icon a:hover svg{
+		@include opacity(100);
+		@include transition();
+	}
+
+	.icon a:active svg{
+		@include opacity(100);
+		@include scale(1.2);
+	}
+	.entypo{
+		@include entypo(128px);
+	}
+}

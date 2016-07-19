@@ -1,0 +1,100 @@
+<h1 id="leaflet-plugin-authoring-guide">Leaflet Plugin Authoring Guide</h1>
+<p>One of the greatest things about Leaflet is its powerful plugin ecosystem.
+The <a href="http://leafletjs.com/plugins.html">Leaflet plugins page</a> lists dozens of awesome plugins, and more are being added every week.</p>
+<p>This guide lists a number of best practices for publishing a Leaflet plugin that meets the quality standards of Leaflet itself.</p>
+<ol>
+<li><a href="#presentation">Presentation</a><ul>
+<li><a href="#repository">Repository</a></li>
+<li><a href="#name">Name</a></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#readme">Readme</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+</li>
+<li><a href="#code">Code</a><ul>
+<li><a href="#file-structure">File Structure</a></li>
+<li><a href="#code-conventions">Code Conventions</a></li>
+<li><a href="#plugin-api">Plugin API</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="presentation">Presentation</h2>
+<h3 id="repository">Repository</h3>
+<p>The best place to put your Leaflet plugin to is a separate <a href="http://github.com">GitHub</a> repository.
+If you create a collection of plugins for different uses,
+don&#39;t put them in one repo &mdash;
+it&#39;s usually easier to work with small, self-contained plugins in individual repositories.</p>
+<h3 id="name">Name</h3>
+<p>Most existing plugins follow the convention of naming plugins (and repos) like this: <code>Leaflet.MyPluginName</code>.
+You can use other forms (e.g. &quot;leaflet-my-plugin-name&quot;),
+just make sure to include the word &quot;Leaflet&quot; in the name so that it&#39;s obvious that it&#39;s a Leaflet plugin.</p>
+<h3 id="demo">Demo</h3>
+<p>The most essential thing to do when publishing a plugin is to include a demo that showcases what the plugin does &mdash;
+it&#39;s usually the first thing people will look for.</p>
+<p>The easiest way to put up a demo is using <a href="http://pages.github.com/">GitHub Pages</a>.
+A good <a href="https://help.github.com/articles/creating-project-pages-manually">starting point</a> is creating a <code>gh-pages</code> branch in your repo and adding an <code>index.html</code> page to it  &mdash;
+after pushing, it&#39;ll be published as <code>http://&lt;user&gt;.github.io/&lt;repo&gt;</code>.</p>
+<h3 id="readme">Readme</h3>
+<p>The next thing you need to have is a descriptive <code>README.md</code> in the root of the repo (or a link to a website with a similar content).
+At a minimum it should contain the following items:</p>
+<ul>
+<li>name of the plugin</li>
+<li>a simple, concise description of what it does</li>
+<li>requirements<ul>
+<li>Leaflet version</li>
+<li>other external dependencies (if any)</li>
+<li>browser / device compatibility</li>
+</ul>
+</li>
+<li>links to demos</li>
+<li>instructions for including the plugin</li>
+<li>simple usage code example</li>
+<li>API reference (methods, options, events)</li>
+</ul>
+<h3 id="license">License</h3>
+<p>Every open source repository should include a license.
+If you don&#39;t know what open source license to choose for your code,
+<a href="http://opensource.org/licenses/MIT">MIT License</a> and <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause License</a> are both good choices.
+You can either put it in the repo as a <code>LICENSE</code> file or just link to the license from the Readme.</p>
+<h2 id="code">Code</h2>
+<h3 id="file-structure">File Structure</h3>
+<p>Keep the file structure clean and simple,
+don&#39;t pile up lots of files in one place  &mdash;
+make it easy for a new person to find their way in your repo.</p>
+<p>A barebones repo for a simple plugin would look like this:</p>
+<pre><code>my-plugin.js
+README.md
+</code></pre><p>An example of a more sophisticated plugin file structure:</p>
+<pre><code>/src        - JS source files
+/dist       - minified plugin JS, CSS, images
+/spec       - test files
+/lib        - any external libraries/plugins if necessary
+/examples   - HTML examples of plugin usage
+README.md
+LICENSE
+package.json
+</code></pre><h3 id="code-conventions">Code Conventions</h3>
+<p>Everyone&#39;s tastes are different, but it&#39;s important to be consistent with whatever conventions you choose for your plugin.</p>
+<p>For a good starting point, check out <a href="https://github.com/airbnb/javascript">Airbnb JavaScript Guide</a>.
+Leaflet follows pretty much the same conventions
+except for using smart tabs (hard tabs for indentation, spaces for alignment)
+and putting a space after the <code>function</code> keyword.</p>
+<h3 id="plugin-api">Plugin API</h3>
+<p>Never expose global variables in your plugin.<br>
+If you have a new class, put it directly in the <code>L</code> namespace (<code>L.MyPlugin</code>).<br>
+If you inherit one of the existing classes, make it a sub-property (<code>L.TileLayer.Banana</code>).<br>
+If you want to add new methods to existing Leaflet classes, you can do it like this: <code>L.Marker.include({myPlugin: …})</code>.</p>
+<p>Function, method and property names should be in <code>camelCase</code>.<br>
+Class names should be in <code>CapitalizedCamelCase</code>.</p>
+<p>If you have a lot of arguments in your function, consider accepting an options object instead
+(putting default values where possible so that users don&#39;t need specify all of them):</p>
+<pre><code class="lang-js">// bad
+marker.myPlugin(&#39;bla&#39;, &#39;foo&#39;, null, {}, 5, 0);
+
+ // good
+marker.myPlugin(&#39;bla&#39;, {
+    optionOne: &#39;foo&#39;,
+    optionThree: 5
+});
+</code></pre>
+<p>And most importantly, keep it simple. Leaflet is all about <em>simplicity</em>.</p>

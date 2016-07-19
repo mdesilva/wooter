@@ -1,0 +1,23 @@
+<md-dialog class='modal_AV' aria-label='createMatch' style='min-width: 640px; min-height: 480px;' >
+
+
+    <!-- <video width="233" height="150" controls  ng-show = "(angular.isUndefined(videoToPlay.youtube_video_thumb) || videoToPlay.youtube_video_thumb === '')"> -->
+
+    <video width="640" height="480" controls poster="{{ trusted(videoToEdit.thumbnail_path) }}" ng-show = "( videoToEdit.thumbnail_path != null )  && (angular.isUndefined(videoToEdit.youtube_video_thumb) || videoToEdit.youtube_video_thumb === '')">
+        <source src="{{ trusted(videoToEdit.file_path)}}" type="{{ videoToEdit.mime_type}}">
+    </video>
+    <video width="640" height="480" controls poster="{{ trusted(videoToEdit.youtube_video_thumb) }}"  ng-show = "(angular.isDefined(videoToEdit.youtube_video_thumb) || videoToEdit.youtube_video_thumb != '')">
+        <source src="{{ trusted(videoToEdit.file_path)}}" type="{{ videoToEdit.mime_type}}">
+    </video>
+     <video width="640" height="480" controls poster="{{asset('img/landings/logo-v2.png')}}"  ng-show = "videoToEdit.thumbnail_path === null  && (angular.isUndefined(videoToEdit.youtube_video_thumb) || videoToEdit.youtube_video_thumb === '')  ">
+        <source src="{{ trusted(videoToEdit.file_path)}}" type="{{ videoToEdit.mime_type}}">
+    </video>
+
+    <iframe width="640" height="480"
+            ng-src="{{ trusted(videoToPlay.youtube_video_src) }}"
+            src="{{ trusted(videoToPlay.youtube_video_src) }}"
+            ng-show = "(angular.isDefined(videoToPlay.youtube_video_thumb) || videoToPlay.youtube_video_thumb != '')">
+    </iframe>
+
+
+</md-dialog>

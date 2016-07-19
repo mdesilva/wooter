@@ -1,0 +1,621 @@
+array(11) {
+  [0]=>
+  array(28) {
+    ["PTS"]=>
+    string(2) "20"
+    ["FG"]=>
+    string(0) ""
+    ["FGA"]=>
+    string(0) ""
+    ["FG%"]=>
+    string(0) ""
+    ["2FG"]=>
+    string(0) ""
+    ["2FGA"]=>
+    string(0) ""
+    ["2FG%"]=>
+    string(0) ""
+    ["3FG"]=>
+    string(0) ""
+    ["3FGA"]=>
+    string(0) ""
+    ["3FG%"]=>
+    string(0) ""
+    ["FT"]=>
+    string(0) ""
+    ["FTA"]=>
+    string(0) ""
+    ["FT%"]=>
+    string(0) ""
+    ["Player"]=>
+    string(9) "0  Jordan"
+    ["AST"]=>
+    string(0) ""
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(0) ""
+    ["RBD"]=>
+    string(0) ""
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(0) ""
+    ["STL"]=>
+    string(0) ""
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(0) ""
+    ["TURN"]=>
+    string(0) ""
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(0) ""
+  }
+  [1]=>
+  array(13) {
+    ["PTS"]=>
+    string(1) "0"
+    ["FG"]=>
+    string(0) ""
+    ["FGA"]=>
+    string(0) ""
+    ["FG%"]=>
+    string(0) ""
+    ["2FG"]=>
+    string(0) ""
+    ["2FGA"]=>
+    string(0) ""
+    ["2FG%"]=>
+    string(0) ""
+    ["3FG"]=>
+    string(0) ""
+    ["3FGA"]=>
+    string(0) ""
+    ["3FG%"]=>
+    string(0) ""
+    ["FT"]=>
+    string(0) ""
+    ["FTA"]=>
+    string(0) ""
+    ["FT%"]=>
+    string(0) ""
+  }
+  [2]=>
+  array(28) {
+    ["PTS"]=>
+    string(1) "0"
+    ["FG"]=>
+    string(0) ""
+    ["FGA"]=>
+    string(0) ""
+    ["FG%"]=>
+    string(0) ""
+    ["2FG"]=>
+    string(0) ""
+    ["2FGA"]=>
+    string(0) ""
+    ["2FG%"]=>
+    string(0) ""
+    ["3FG"]=>
+    string(0) ""
+    ["3FGA"]=>
+    string(0) ""
+    ["3FG%"]=>
+    string(0) ""
+    ["FT"]=>
+    string(0) ""
+    ["FTA"]=>
+    string(0) ""
+    ["FT%"]=>
+    string(0) ""
+    ["Player"]=>
+    string(8) "5  Fazio"
+    ["AST"]=>
+    string(0) ""
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(0) ""
+    ["RBD"]=>
+    string(0) ""
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(0) ""
+    ["STL"]=>
+    string(0) ""
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(0) ""
+    ["TURN"]=>
+    string(0) ""
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(0) ""
+  }
+  [3]=>
+  array(28) {
+    ["PTS"]=>
+    string(1) "0"
+    ["FG"]=>
+    string(0) ""
+    ["FGA"]=>
+    string(0) ""
+    ["FG%"]=>
+    string(0) ""
+    ["2FG"]=>
+    string(0) ""
+    ["2FGA"]=>
+    string(0) ""
+    ["2FG%"]=>
+    string(0) ""
+    ["3FG"]=>
+    string(0) ""
+    ["3FGA"]=>
+    string(0) ""
+    ["3FG%"]=>
+    string(0) ""
+    ["FT"]=>
+    string(0) ""
+    ["FTA"]=>
+    string(0) ""
+    ["FT%"]=>
+    string(0) ""
+    ["Player"]=>
+    string(8) "7  Pinto"
+    ["AST"]=>
+    string(0) ""
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(0) ""
+    ["RBD"]=>
+    string(0) ""
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(0) ""
+    ["STL"]=>
+    string(0) ""
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(0) ""
+    ["TURN"]=>
+    string(0) ""
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(0) ""
+  }
+  [4]=>
+  array(28) {
+    ["PTS"]=>
+    string(2) "23"
+    ["FG"]=>
+    string(2) "10"
+    ["FGA"]=>
+    string(2) "15"
+    ["FG%"]=>
+    string(3) "66%"
+    ["2FG"]=>
+    string(1) "8"
+    ["2FGA"]=>
+    string(2) "12"
+    ["2FG%"]=>
+    string(3) "66%"
+    ["3FG"]=>
+    string(1) "2"
+    ["3FGA"]=>
+    string(1) "3"
+    ["3FG%"]=>
+    string(3) "66%"
+    ["FT"]=>
+    string(1) "1"
+    ["FTA"]=>
+    string(1) "2"
+    ["FT%"]=>
+    string(3) "50%"
+    ["Player"]=>
+    string(11) "15  Oginsky"
+    ["AST"]=>
+    string(1) "3"
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(1) "1"
+    ["RBD"]=>
+    string(1) "9"
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(2) "10"
+    ["STL"]=>
+    string(1) "1"
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(1) "2"
+    ["TURN"]=>
+    string(1) "1"
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(5) "40:00"
+  }
+  [5]=>
+  array(28) {
+    ["PTS"]=>
+    string(1) "0"
+    ["FG"]=>
+    string(1) "0"
+    ["FGA"]=>
+    string(1) "6"
+    ["FG%"]=>
+    string(2) "0%"
+    ["2FG"]=>
+    string(1) "0"
+    ["2FGA"]=>
+    string(1) "2"
+    ["2FG%"]=>
+    string(2) "0%"
+    ["3FG"]=>
+    string(1) "0"
+    ["3FGA"]=>
+    string(1) "4"
+    ["3FG%"]=>
+    string(2) "0%"
+    ["FT"]=>
+    string(0) ""
+    ["FTA"]=>
+    string(0) ""
+    ["FT%"]=>
+    string(0) ""
+    ["Player"]=>
+    string(9) "27  Fusco"
+    ["AST"]=>
+    string(1) "2"
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(0) ""
+    ["RBD"]=>
+    string(1) "6"
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(1) "6"
+    ["STL"]=>
+    string(0) ""
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(1) "1"
+    ["TURN"]=>
+    string(0) ""
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(5) "40:00"
+  }
+  [6]=>
+  array(28) {
+    ["PTS"]=>
+    string(2) "15"
+    ["FG"]=>
+    string(1) "6"
+    ["FGA"]=>
+    string(2) "12"
+    ["FG%"]=>
+    string(3) "50%"
+    ["2FG"]=>
+    string(1) "6"
+    ["2FGA"]=>
+    string(2) "12"
+    ["2FG%"]=>
+    string(3) "50%"
+    ["3FG"]=>
+    string(0) ""
+    ["3FGA"]=>
+    string(0) ""
+    ["3FG%"]=>
+    string(0) ""
+    ["FT"]=>
+    string(1) "3"
+    ["FTA"]=>
+    string(1) "9"
+    ["FT%"]=>
+    string(3) "33%"
+    ["Player"]=>
+    string(12) "30  Lombardi"
+    ["AST"]=>
+    string(1) "2"
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(1) "4"
+    ["RBD"]=>
+    string(1) "4"
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(1) "8"
+    ["STL"]=>
+    string(1) "3"
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(1) "4"
+    ["TURN"]=>
+    string(1) "2"
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(5) "40:00"
+  }
+  [7]=>
+  array(28) {
+    ["PTS"]=>
+    string(2) "23"
+    ["FG"]=>
+    string(1) "8"
+    ["FGA"]=>
+    string(2) "15"
+    ["FG%"]=>
+    string(3) "53%"
+    ["2FG"]=>
+    string(1) "8"
+    ["2FGA"]=>
+    string(2) "15"
+    ["2FG%"]=>
+    string(3) "53%"
+    ["3FG"]=>
+    string(0) ""
+    ["3FGA"]=>
+    string(0) ""
+    ["3FG%"]=>
+    string(0) ""
+    ["FT"]=>
+    string(1) "7"
+    ["FTA"]=>
+    string(2) "11"
+    ["FT%"]=>
+    string(3) "63%"
+    ["Player"]=>
+    string(13) "42  Villaroel"
+    ["AST"]=>
+    string(1) "1"
+    ["BLK"]=>
+    string(1) "3"
+    ["RBO"]=>
+    string(1) "5"
+    ["RBD"]=>
+    string(0) ""
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(1) "5"
+    ["STL"]=>
+    string(0) ""
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(1) "5"
+    ["TURN"]=>
+    string(1) "3"
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(5) "40:00"
+  }
+  [8]=>
+  array(28) {
+    ["PTS"]=>
+    string(1) "0"
+    ["FG"]=>
+    string(0) ""
+    ["FGA"]=>
+    string(0) ""
+    ["FG%"]=>
+    string(0) ""
+    ["2FG"]=>
+    string(0) ""
+    ["2FGA"]=>
+    string(0) ""
+    ["2FG%"]=>
+    string(0) ""
+    ["3FG"]=>
+    string(0) ""
+    ["3FGA"]=>
+    string(0) ""
+    ["3FG%"]=>
+    string(0) ""
+    ["FT"]=>
+    string(0) ""
+    ["FTA"]=>
+    string(0) ""
+    ["FT%"]=>
+    string(0) ""
+    ["Player"]=>
+    string(12) "90  Boshnack"
+    ["AST"]=>
+    string(0) ""
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(0) ""
+    ["RBD"]=>
+    string(0) ""
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(0) ""
+    ["STL"]=>
+    string(0) ""
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(0) ""
+    ["TURN"]=>
+    string(0) ""
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(0) ""
+  }
+  [9]=>
+  array(28) {
+    ["PTS"]=>
+    string(1) "7"
+    ["FG"]=>
+    string(1) "3"
+    ["FGA"]=>
+    string(1) "8"
+    ["FG%"]=>
+    string(3) "37%"
+    ["2FG"]=>
+    string(1) "2"
+    ["2FGA"]=>
+    string(1) "3"
+    ["2FG%"]=>
+    string(3) "66%"
+    ["3FG"]=>
+    string(1) "1"
+    ["3FGA"]=>
+    string(1) "5"
+    ["3FG%"]=>
+    string(3) "20%"
+    ["FT"]=>
+    string(0) ""
+    ["FTA"]=>
+    string(0) ""
+    ["FT%"]=>
+    string(0) ""
+    ["Player"]=>
+    string(9) "90  Villa"
+    ["AST"]=>
+    string(1) "2"
+    ["BLK"]=>
+    string(0) ""
+    ["RBO"]=>
+    string(0) ""
+    ["RBD"]=>
+    string(1) "4"
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(1) "4"
+    ["STL"]=>
+    string(1) "1"
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(1) "1"
+    ["TURN"]=>
+    string(1) "2"
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(5) "40:00"
+  }
+  [10]=>
+  array(28) {
+    ["PTS"]=>
+    string(2) "68"
+    ["FG"]=>
+    string(2) "27"
+    ["FGA"]=>
+    string(2) "56"
+    ["FG%"]=>
+    string(3) "48%"
+    ["2FG"]=>
+    string(2) "24"
+    ["2FGA"]=>
+    string(2) "44"
+    ["2FG%"]=>
+    string(3) "54%"
+    ["3FG"]=>
+    string(1) "3"
+    ["3FGA"]=>
+    string(2) "12"
+    ["3FG%"]=>
+    string(3) "25%"
+    ["FT"]=>
+    string(2) "11"
+    ["FTA"]=>
+    string(2) "22"
+    ["FT%"]=>
+    string(3) "50%"
+    ["Player"]=>
+    string(8) "0  Total"
+    ["AST"]=>
+    string(2) "10"
+    ["BLK"]=>
+    string(1) "3"
+    ["RBO"]=>
+    string(2) "15"
+    ["RBD"]=>
+    string(2) "26"
+    ["RBDB"]=>
+    string(0) ""
+    ["RBT"]=>
+    string(2) "41"
+    ["STL"]=>
+    string(1) "5"
+    ["DFL"]=>
+    string(0) ""
+    ["FL"]=>
+    string(2) "13"
+    ["TURN"]=>
+    string(1) "8"
+    ["+FL"]=>
+    string(0) ""
+    ["+TO"]=>
+    string(0) ""
+    ["-BLK"]=>
+    string(0) ""
+    ["TIME"]=>
+    string(6) "200:00"
+  }
+}

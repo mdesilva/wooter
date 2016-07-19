@@ -1,0 +1,1003 @@
+/**
+ * Created by Dumitrana Alinus.
+ * User: alin.designstudio
+ * For: /dashboard/leagues/:league_id/edit?step
+ * License: Wooter LLC.
+ * Date: 2016.03.13
+ * Description: Style for league edit page
+ */
+@import "../engine/_init";
+
+body{
+    background: #eee;
+}
+
+#league-edit-page{
+
+    padding-bottom: 100px;
+
+    .page-header{
+        padding: 36px 0 24px 0;
+        position: relative;
+        background: #fff;
+        z-index: 2;
+        .steps-holder{
+            position: relative;
+            .steps{
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                @include mq($max-width: 599px){
+                    @include clearfix();
+                }
+                li{
+                    position: relative;
+                    text-align: center;
+                    @include mq($max-width: 599px){
+                        width: 33.33334%;
+                        float: left;
+                        margin: 20px 0;
+                        &:nth-child(4){
+                            margin-left: 15.16%; // if have just 5 steps
+                        }
+                    }
+                    &:before{
+                        content: '';
+                        display: block;
+                        @include size(100%, 1px);
+                        background: #b2b2b2;
+                        position: absolute;
+                        top: 15px;
+                        left: 0;
+                        right: 0;
+                    }
+                    &:first-child:before, &:last-child:before{
+                        width: 50% !important;
+                    }
+                    @include mq($max-width: 599px){
+                        &:nth-child(3), &:nth-child(4){
+                            &:before{
+                                width: 50% !important;
+                            }
+                        }
+                        &:first-child:before, &:nth-child(4):before{
+                            left: auto;
+                        }
+                        &:last-child:before, &:nth-child(3):before{
+                            right: auto;
+                        }
+                    }
+                    &:first-child:before{
+                        left: auto;
+                    }
+                    &:last-child:before{
+                        right: auto;
+                    }
+                    .step{
+                        display: inline-block;
+                        padding: 0;
+                        margin: 0;
+                        span{
+                            display: block;
+                            text-align: center;
+                            width: 100%;
+                        }
+                        .icon{
+                            @include size(31px);
+                            line-height: 31px;
+                            text-align: center;
+                            margin: 0 auto;
+                            @include roboto(14px, 500);
+                            color: #fff;
+                            background: #999;
+                            @include transition();
+                            @include radius(50%);
+                            @include shadow(0 0 0 10px #fff);
+                            md-icon{
+                                font-size: 16px;
+                                width: auto !important;
+                                height: auto !important;
+                                @include absoluteCenter();
+                                color: #fff;
+                            }
+                        }
+                        .text{
+                            @include transition();
+                            margin-top: 10px;
+                            @include roboto(14px, 500);
+                            color: transparentize(#212121, .46);
+                        }
+                        &.active{
+                            .icon{
+                                color: transparent !important;
+                                &:before{
+                                    content: 'mode_edit';
+                                    font-family: 'Material Icons';
+                                    font-weight: normal;
+                                    font-style: normal;
+                                    line-height: 1;
+                                    letter-spacing: normal;
+                                    text-transform: none;
+                                    display: inline-block;
+                                    white-space: nowrap;
+                                    word-wrap: normal;
+                                    direction: ltr;
+                                    -webkit-font-feature-settings: 'liga';
+                                    -webkit-font-smoothing: antialiased;
+                                    font-size: 16px;
+                                    width: auto !important;
+                                    height: auto !important;
+                                    @include absoluteCenter();
+                                    color: #fff;
+                                }
+                            }
+                        }
+                        &.saved{
+                            .icon{
+                                color: transparent !important;
+                                &:before{
+                                    content: 'check';
+                                    font-family: 'Material Icons';
+                                    font-weight: normal;
+                                    font-style: normal;
+                                    line-height: 1;
+                                    letter-spacing: normal;
+                                    text-transform: none;
+                                    display: inline-block;
+                                    white-space: nowrap;
+                                    word-wrap: normal;
+                                    direction: ltr;
+                                    -webkit-font-feature-settings: 'liga';
+                                    -webkit-font-smoothing: antialiased;
+                                    font-size: 16px;
+                                    width: auto !important;
+                                    height: auto !important;
+                                    @include absoluteCenter();
+                                    color: #fff;
+                                }
+                            }
+                        }
+                        &.active, &:hover{
+                            .icon{
+                                background: $md-wooter-red;
+                            }
+                            .text{
+                                color: #000;
+                            }
+                        }
+                        &:disabled, &[disabled]{
+                            pointer-events: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .content-holder{
+        z-index: 1;
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 10px !important;
+        .content-keeper{
+            background: #fff;
+            @include radius(0 0 5px 5px);
+            padding: 0 !important;
+            position: relative;
+            display: block;
+            @include mq($max-width: 989px){
+                @include radius(0);
+            }
+            .left{
+                background: #f5f5f5;
+                @include mq($min-width: 990px){
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    @include radius(0 0 0 5px);
+                    width: 50%;
+                    height: 100%;
+                }
+                position: relative;
+                .inner{
+                    @include mq($min-width: 990px) {
+                        position: absolute;
+                        top: 40px;
+                        left: 50%;
+                        right: 0;
+                        display: block;
+                        width: 60%;
+                        @include translate(-50%, 0);
+                        padding: 20px;
+                    }
+                    @include mq($max-width: 989px) {
+                        width: 100%;
+                        padding: 60px 20px;
+                    }
+                    text-align: center;
+                    .md-title{
+                        margin-bottom: 24px;
+                        @include roboto(24px);
+                        color: transparentize(#000, .13);
+                    }
+                    .md-body-1{
+                        @include roboto(16px);
+                        color: transparentize(#000, .13);
+                        line-height: 24px;
+                    }
+                }
+            }
+            .right{
+                position: relative;
+                width: 50%;
+                float: right;
+                @include mq($max-width: 990px) {
+                    float: none;
+                    display: block;
+                    width: 100% !important;
+                    -webkit-box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.1), 0 -2px 2px 0 rgba(0, 0, 0, 0.1), 0 -3px 1px -2px rgba(0, 0, 0, 0.1);
+                    -moz-box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.1), 0 -2px 2px 0 rgba(0, 0, 0, 0.1), 0 -3px 1px -2px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.1), 0 -2px 2px 0 rgba(0, 0, 0, 0.1), 0 -3px 1px -2px rgba(0, 0, 0, 0.1);
+                }
+                .inner{
+                    width: 100%;
+                    padding: 24px 24px 12px 24px;
+                    min-height: 300px;
+                    .row{
+                        [flex], .flex{
+                            &:first-child{
+                                padding-right: 10px;
+                            }
+                            &:last-child{
+                                padding-left: 10px;
+                            }
+                        }
+                        md-input-container{
+                            label{
+                                color: #343434;
+                            }
+                            md-select-value{
+                                padding-bottom: 6px;
+                                color: #343434;
+                                border-bottom-width: 1px !important;
+                                span{
+                                    max-width: calc(100% - 32px) !important;
+                                }
+                            }
+                        }
+                        .fk-line{
+                            margin-top: 24px;
+                            border-bottom: 1px solid #e0e0e0;
+                            padding-bottom: 10px;
+                            line-height: 34px;
+                            min-height: 34px;
+                            position: relative;
+                            .back-face{
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                top: 0;
+                                bottom: 0;
+                                width: 100%;
+                                height: 100%;
+                                z-index: 3;
+                                & + *{
+                                    @include gray();
+                                }
+                            }
+                            [flex]{
+                                padding: 0 !important;
+                            }
+                            p{
+                                position: relative;
+                                z-index: 2;
+                                float: left;
+                                @include roboto(12px, 500);
+                                color: transparentize(#000, .46);
+                            }
+                            .md-button{
+                                position: relative;
+                                z-index: 2;
+                                margin: 5px 0 !important;
+                                min-height: 24px !important;
+                                height: 24px !important;
+                                padding: 0 8px !important;
+                                line-height: 24px !important;
+                                @include roboto(14px !important, 500);
+                                float: right;
+                                @include transition();
+                                &:hover:not([disabled]), &:hover:not(:disabled){
+                                    color: $md-wooter-red !important;
+                                }
+                                &, .md-ripple-container{
+                                    background: transparent !important;
+                                }
+                            }
+                        }
+                        &.list-holder{
+                            margin: 10px 0;
+                            position: relative;
+                            .mdin{
+                                min-height: 100px;
+                            }
+                            .center-loader{
+                                @include transition(300ms);
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                pointer-events: none !important;
+                                @include translate();
+                                @include opacity(0);
+                                &.show{
+                                    height: 96px !important;
+                                    @include opacity(100);
+                                    pointer-events: all !important;
+                                }
+                            }
+                            .msg{
+                                padding: 10px 10px 0 10px;
+                                text-align: center;
+                                color: #ccc;
+                                position: relative;
+                                &.small{
+                                    border-top: none !important;
+                                    margin-top: 0 !important;
+                                    padding-top: 10px !important;
+                                }
+                                &.error{
+                                    border-top: 1px solid #dedede;
+                                    margin-top: 12px;
+                                    padding: 20px 0 0 0;
+                                    .msg-inner{
+                                        min-height: 30px;
+                                        &:hover{
+                                            p{
+                                                color: $md-wooter-red;
+                                            }
+                                        }
+                                    }
+                                    p{
+                                        width: 100%;
+                                        pointer-events: none !important;
+                                        text-align: left;
+                                        z-index: 3;
+                                        @include transition(300ms, color);
+                                        padding: 0;
+                                        margin: 0;
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 8px;
+                                        @include translate(0, -50%);
+                                    }
+                                    .md-button{
+                                        z-index: 2 !important;
+                                        position: absolute;
+                                        height: 100%;
+                                        text-align: right;
+                                        top: 50%;
+                                        width: 100% !important;
+                                        right: 0;
+                                        left: 0;
+                                        @include translate(0, -50%);
+                                        margin: 0;
+                                        min-height: 0;
+                                        min-width: 0;
+                                        padding: 0 8px;
+                                        line-height: 20px;
+                                        display: inline-block;
+                                        color: $md-wooter-red;
+                                        @include roboto(12px, 500);
+                                        &:hover{
+                                            background: transparentize(#212121, .95) !important;
+                                        }
+                                    }
+                                }
+                                p{
+                                    margin: 0;
+                                }
+                            }
+                            .items{
+                                margin: 0;
+                                padding: 0;
+                                list-style-type: none;
+                                width: 100%;
+                                &.animated{
+                                    @include transition();
+                                    @include opacity(0);
+                                    position: absolute;
+                                    &.show{
+                                        @include opacity(100);
+                                        position: relative;
+                                    }
+                                }
+                                li{
+                                    width: 100%;
+                                    .item{
+                                        width: 100%;
+                                        padding: 12px 52px;
+                                        position: relative;
+                                        .md-button{
+                                            @include size(40px);
+                                            margin: 0 !important;
+                                            position: absolute;
+                                            top: 50%;
+                                            @include translate(0,-50%);
+                                            @include shadow(none !important);
+                                            background: transparent !important;
+                                            @include transition();
+                                            &:hover{
+                                                md-icon{
+                                                    color: $md-wooter-red;
+                                                }
+                                            }
+                                            md-icon{
+                                                @include transition();
+                                                color: #757575;
+                                                display: inline-block !important;
+                                                width: auto !important;
+                                                height: auto !important;
+                                                @include absoluteCenter();
+                                            }
+                                            &.delete-button{
+                                                left: -10px;
+                                            }
+                                            &.edit-button{
+                                                right: -10px;
+                                            }
+                                        }
+                                        .info{
+                                            .md-title{
+                                                @include roboto(16px);
+                                                color: #212121;
+                                            }
+                                            .md-subtitle{
+                                                @include roboto(14px);
+                                                color: transparentize(#000,.46);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.checkboxes-line{
+                            [flex]{
+                                padding: 0 2px;
+                                .fk-line{
+                                    margin-top: 12px;
+                                    padding: 0 2px;
+                                }
+                            }
+                        }
+                        &.checkboxes{
+                            padding: 20px 0 0 0;
+                            md-checkbox{
+                                display: block;
+                                width: 100%;
+                                margin: 0 2px 18px 2px !important;
+                                &:last-child{
+                                    margin-bottom: 0 !important;
+                                }
+                                .md-label{
+                                    margin-left: 52px;
+                                    @include roboto(16px);
+                                    &, span{
+                                        color: transparentize(#000, .46) !important;
+                                    }
+                                }
+                                &.md-checked{
+                                    .md-label{
+                                        color: #000 !important;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.section{
+                            padding: 24px 0;
+                            @include clearfix();
+                            .md-title{
+                                @include roboto(18px, 400);
+                                color: transparentize(#000,.13);
+                            }
+                            .wrapper{
+                                width: 100%;
+                                margin-top: 20px;
+                                @include clearfix();
+                                .items{
+                                    @include clearfix();
+                                    margin: 0;
+                                    padding: 0;
+                                    list-style-type: none;
+                                    width: 100%;
+                                    li{
+                                        $w: (100/3)/100;
+                                        float: left;
+                                        padding: 6px;
+                                        position: relative;
+                                        width: percentage($w);
+                                        @include transition(300ms);
+                                        @include mq($max-width: 599px){
+                                            width: 50%;
+                                        }
+                                        a{
+                                            width: 100%;
+                                            overflow: hidden;
+                                            @include radius(3px);
+                                            display: block;
+                                            @include setupBG();
+                                            position: relative;
+                                            @include transition(350ms);
+                                            padding-bottom: 75%;
+                                            @include md-shadow(1);
+                                            &:before{
+                                                content: '';
+                                                display: block;
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                right: 0;
+                                                @include linear-gradient(to bottom, transparentize(#000,.25), transparentize(#000,1));
+                                                width: 100%;
+                                                height: 10px;
+                                                @include opacity(0);
+                                                @include transition();
+                                            }
+                                            .dz-image-preview{
+                                                display: none !important;
+                                                pointer-events: none !important;
+                                            }
+                                            .md-button{
+                                                position: absolute;
+                                                margin: 0 !important;
+                                                top: 0;
+                                                background: transparent;
+                                                @include shadow(none !important);
+                                                right: 0;
+                                                pointer-events: none !important;
+                                                @include opacity(0);
+                                                min-height: 32px;
+                                                @include size(32px);
+                                                padding: 0 !important;
+                                                line-height: 32px;
+                                                @include transition();
+                                            }
+                                            .inner{
+                                                display: inline-block;
+                                                position: absolute;
+                                            }
+                                            &:hover{
+                                                .md-button{
+                                                    @include opacity(100);
+                                                    pointer-events: all !important;
+                                                }
+                                                &:before{
+                                                    height: 40px;
+                                                    @include opacity(100);
+                                                }
+                                            }
+                                        }
+                                        &.removing{
+                                            a{
+                                                position: absolute;
+                                                top: 6px;
+                                                left: 6px;
+                                                @include opacity(0);
+                                                pointer-events: none !important;
+                                            }
+                                        }
+                                        &.remove{
+                                            width: 0 !important;
+                                            padding: 0;
+                                            a{
+                                                position: absolute;
+                                                top: 6px;
+                                                left: 6px;
+                                                @include opacity(0);
+                                            }
+                                        }
+                                        &:not(.action){
+                                            a{
+                                                padding-bottom: calc(75% + 4px);
+                                            }
+                                        }
+                                        &.action{
+                                            .handler{
+                                                position: absolute;
+                                                background-color: transparent;
+                                                @include opacity(0);
+                                                pointer-events: all;
+                                                width: 100%;
+                                                height: 100%;
+                                                top: 0;
+                                                right: 0;
+                                                left: 0;
+                                                bottom: 0;
+                                            }
+                                            a{
+                                                position: relative;
+                                                border: 2px solid transparentize(#000, .13);
+                                                color: transparentize(#000, .13);
+                                                @include transition();
+                                                &:before{
+                                                    display: none !important;
+                                                }
+                                                .inner{
+                                                    display: inline-block;
+                                                    min-height: 0 !important;
+                                                    padding: 0 !important;
+                                                    text-align: center;
+                                                    @include absoluteCenter();
+                                                    .text, md-icon{
+                                                        display: block;
+                                                        @include transition();
+                                                    }
+                                                    md-icon{
+                                                        color: transparentize(#000, .13) !important;
+                                                        font-size: 36px !important;
+                                                        width: auto !important;
+                                                        height: auto !important;
+                                                        margin-bottom: 6px;
+                                                    }
+                                                    .text{
+                                                        @include roboto(14px, 500);
+                                                        color: transparentize(#000, .46) !important;
+                                                    }
+                                                }
+                                                &:hover{
+                                                    border-color: $md-wooter-red !important;
+                                                    .text, md-icon{
+                                                        color: $md-wooter-red !important;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.photos{
+                                border-bottom: 1px solid #e0e0e0;
+                            }
+                        }
+                        .validation-message{
+                            font-size: 12px;
+                            color: #DD2C00;
+                            position: absolute;
+                            left: 3px;
+                            bottom: 0;
+                            right: 3px;
+                        }
+                        .season-datepicker{
+                            width: 100%;
+                            display: block;
+                            position: relative;
+                            margin: 18px 0;
+                            padding: 2px !important;
+                            .md-datepicker-button{
+                                position: absolute;
+                                float: none;
+                                display: block;
+                                padding: 0 !important;
+                                margin: 0 !important;
+                                height: 30px;
+                                line-height: 30px;
+                                width: 100%;
+                                top: -2px;
+                                background-color: transparent !important;
+                                right: 0;
+                                z-index: 3;
+                                @include radius(3px);
+                                md-icon{
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                    width: 20px !important;
+                                    height: 20px !important;
+                                    display: inline-block !important;
+                                    position: absolute;
+                                    top: 5px;
+                                    right: 5px;
+                                }
+                            }
+                            .md-datepicker-input-container{
+                                padding: 0 !important;
+                                border-color: #e0e0e0;
+                                input{
+                                    z-index: 2;
+                                    height: 29px;
+                                    width: 100%;
+                                    line-height: 29px;
+                                    @include roboto(16px !important);
+                                    color: #343434 !important;
+                                    @include placeholder(#343434);
+                                }
+                                width: 100% !important;
+                                margin: 0 !important;
+                                button{
+                                    display: none !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .controls-holder{
+        padding: 20px 0;
+        @include mq($max-width: 989px){
+            padding: 20px;
+        }
+        .md-button{
+            &[disabled], &:disabled{
+                background: #ccc;
+                cursor: not-allowed;
+            }
+            &:not([disabled]), &:not(:disabled){
+                background: #818181;
+                color: #fff;
+                margin: 0 !important;
+                @include transition();
+                &:hover{
+                    background: $md-wooter-red;
+                }
+            }
+        }
+    }
+}
+
+.md-datepicker-input-mask{
+    display: none;
+}
+.md-calendar-date.md-focus span{
+    background-color: transparent !important;
+}
+.md-calendar-date-today span{
+    border-color: $md-wooter-red !important;
+}
+.md-calendar-selected-date.md-focus span{
+    background: $md-wooter-red !important;
+    color: #fff !important;
+}
+.md-wooter-black-theme .md-calendar-day-header{
+    background: $md-wooter-red !important;
+    color: #fff !important;
+}
+
+.dialog-page{
+    width: 100%;
+    max-width: 500px;
+    .success-box{
+        text-align: center;
+        margin-bottom: 40px;
+        .icon{
+            @include size(128px);
+            @include radius(50%);
+            text-align: center;
+            line-height: 128px;
+            border: 5px solid $emerald;
+            left: 50%;
+            @include translate(-50%, 0);
+            margin-bottom: 20px;
+            .md-title{
+                color: $emerald;
+                margin-bottom: 0;
+            }
+            .md-body-1{
+                margin: 0;
+            }
+            md-icon{
+                color: $emerald;
+                width: auto !important;
+                height: auto !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 36px;
+                @include absoluteCenter();
+            }
+        }
+    }
+    md-content{
+        padding: 20px 20px 0 20px;
+        .md-title{
+            width: 100%;
+            position: relative;
+            margin: 0 0 20px 0;
+            .md-button{
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                @include translate(25%, -50%);
+            }
+        }
+        md-input-container{
+            &.md-has-icon{
+                padding-left: 26px !important;
+                label{
+                    left: 26px !important;
+                }
+            }
+            md-icon{
+                font-size: 16px;
+                text-align: center;
+                line-height: 24px;
+            }
+            .hint{
+                position: absolute;
+                left: 2px;
+                right: auto;
+                bottom: -14px;
+                @include roboto(12px, 300);
+                line-height: 14px;
+                transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+                color: #aaa;
+                &.ng-hide, &.ng-enter, &.ng-leave.ng-leave-active {
+                    bottom: 7px;
+                    opacity: 0;
+                }
+                &.ng-leave, &.ng-enter.ng-enter-active {
+                    bottom: 7px;
+                    opacity: 1;
+                }
+            }
+        }
+        .md-errors-spacer{
+            display: none !important;
+        }
+        label{
+            color: #555;
+        }
+        md-select-value{
+            padding-bottom: 5px !important;
+            color: #555 !important;
+            @include transition();
+        }
+        .row{
+            margin-left: -14px;
+            margin-right: -14px;
+            max-width: none !important;
+            & > [flex], & > .flx{
+                padding: 0 14px;
+            }
+            &.row-icon{
+                .ct-holder{
+                    width: calc(100% - 60px) !important;
+                }
+                .icon-holder{
+                    padding-left: 0 !important;
+                    width: 60px !important;
+                    .md-button{
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        @include size(36px);
+                        text-align: center !important;
+                        line-height: 34px !important;
+                    }
+                }
+            }
+            p{
+                color: #999;
+                margin: 0;
+                @include roboto(12px);
+            }
+        }
+    }
+    md-dialog-actions {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        .md-button {
+            margin-bottom: 0;
+        }
+    }
+}
+
+#photoLoader{
+    display: inline-block;
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    padding: 20px 20px 0 20px;
+    z-index: 9000;
+    overflow: hidden;
+    @include radius(3px);
+    @include translate(-50%, 0);
+    @include cubicAnim();
+    @include transition(500ms, all, 2s);
+    &.done{
+        @include translate(-50%, 120%);
+    }
+
+    md-progress-linear{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    &.success{
+        .procent, md-icon{
+            color: #009688 !important;
+        }
+        .md-bar2{
+            background: #009688 !important;
+        }
+        .md-inner .md-left .md-half-circle{
+            border-left-color: #009688 !important;
+            border-top-color: #009688 !important;
+        }
+        .md-inner .md-right .md-half-circle{
+            border-right-color: #009688 !important;
+            border-top-color: #009688 !important;
+        }
+        .md-inner .md-gap{
+            border-bottom-color: #009688 !important;
+            border-top-color: #009688 !important;
+        }
+    }
+    &.error{
+        .procent, md-icon{
+            color: $md-wooter-red !important;
+        }
+        .md-bar2{
+            background: $md-wooter-red !important;
+        }
+        .md-inner .md-left .md-half-circle{
+            border-left-color: $md-wooter-red !important;
+            border-top-color: $md-wooter-red !important;
+        }
+        .md-inner .md-right .md-half-circle{
+            border-right-color: $md-wooter-red !important;
+            border-top-color: $md-wooter-red !important;
+        }
+        .md-inner .md-gap{
+            border-bottom-color: $md-wooter-red !important;
+            border-top-color: $md-wooter-red !important;
+        }
+    }
+    .md-title{
+        text-align: center;
+        @include roboto(14px, 300);
+        padding: 0;
+        margin: 0;
+    }
+    .inner{
+        display: inline-block;
+        position: relative;
+        left: 50%;
+        margin: 0;
+        @include translate(-50%, 0);
+        .procent{
+            display: inline-block;
+            @include roboto(12px);
+            margin: 0;
+            @include absoluteCenter();
+        }
+        md-icon{
+            display: inline-block;
+            margin: 0;
+            @include absoluteCenter();
+        }
+    }
+    .procent, md-icon{
+        color: #00adf2 !important;
+    }
+    .md-bar2{
+        background: #00adf2 !important;
+    }
+    .md-inner .md-left .md-half-circle{
+        border-left-color: #00adf2 !important;
+        border-top-color: #00adf2 !important;
+    }
+    .md-inner .md-right .md-half-circle{
+        border-right-color: #00adf2 !important;
+        border-top-color: #00adf2 !important;
+    }
+    .md-inner .md-gap{
+        border-bottom-color: #00adf2 !important;
+        border-top-color: #00adf2 !important;
+    }
+}

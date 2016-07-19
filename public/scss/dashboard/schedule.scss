@@ -1,0 +1,276 @@
+/*
+ * Created by Eric Rho.
+ * User: slack: erho87, skype: eric.rho
+ * For: {package}
+ * License: Wooter LLC.
+ * Date: 2016.03.22
+ * Description:
+ *
+ */
+
+// add @import scss engine here
+@import "../engine/_init";
+@import "shared";
+
+body, html {
+	font-family: 'Roboto';
+	background-color: rgb(242, 242, 242);
+
+	.schedule_filter {
+		max-width: 1280px;
+		margin: 0 auto;
+		background-color: rgb(242, 242, 242);
+		overflow: visible;
+
+		md-list {
+			background-color: #fff;
+			padding: 0;
+			box-shadow: 0px 2px 7.84px 0.16px rgba(0, 0, 0, 0.16);
+		}
+
+		md-input-container {
+			font-size: 16px;
+			margin: 0;
+		}
+
+		md-select-value, md-select.md-default-theme:not([disabled]):focus .md-select-value, md-select:not([disabled]):focus .md-select-value {
+			border: none;
+			text-transform: capitalize;
+		}
+	}
+
+	// SCHEDULE FILTERS ANIMATIONS
+	.schedule_filter.ng-enter, .schedule_filter.ng-leave {
+		-webkit-transition: 1s linear all;
+		-moz-transition: 1s linear all;
+		-ms-transition: 1s linear all;
+		-o-transition: 1s linear all;
+		transition: 1s linear all;
+	}
+
+	.schedule_filter.ng-enter {
+		max-height: 0;
+		opacity: 0;
+	}
+
+	.schedule_filter.ng-enter.ng-enter-active {
+		max-height: 999px;
+		opacity: 1;
+	}
+
+	.schedule_filter.ng-leave {
+		max-height: 999px;
+		opacity: 1;
+	}
+
+	.schedule_filter.ng-leave.ng-leave-active {
+		max-height: 0;
+		opacity: 0;
+	}
+	// END SCHEDULE FILTERS ANIMATIONS
+
+	// GENERATE SCHEDULE 
+	.schedulePage {
+		margin-top: 20px;
+		height: 500px;
+		// position: absolute;
+		right: 0;
+		left: 0;
+		margin: 20 auto;
+
+		.createSchedule {
+			border: 2px dashed rgb(200, 200, 200);
+			text-align: center;
+			background-color: rgb(250, 250, 250);
+			
+		}
+	}
+
+	// GENERATION SCHEDULE ANIMATIONS
+	.schedulePage.ng-enter, .schedulePage.ng-leave {
+	    -webkit-transition: 0.5s linear all;
+	    -moz-transition: 0.5s linear all;
+	    -ms-transition: 0.5s linear all;
+	    -o-transition: 0.5s linear all;
+	    transition: 0.5s linear all;
+	}
+
+	.schedulePage.ng-enter {
+		-webkit-transform: translate(200%);
+		-webkit-transform-origin: 0px;
+	}
+
+	.schedulePage.ng-enter.ng-enter-active {
+		-webkit-transform: translate(0%);
+	}
+
+	.schedulePage.ng-leave {
+		-webkit-transform: translate(0%);
+	}
+
+	.schedulePage.ng-leave-active {
+		-webkit-transform: translate(-200%);
+	}
+	// END GENERATE SCHEDULE ANIMATIONS
+
+	// SCHEDULE INPUT FORM
+	.gen_schedule {
+		max-width: 500px;
+		margin-top: 20px;
+		position: relative;
+		right: 0;
+		left: 0;
+		margin: 20px auto;
+
+		md-list {
+			padding-top: 0px;
+
+			.list-header {
+				justify-content: center;
+				background-color: rgb(245, 245, 245);
+				color: rgba(0, 0, 0, 0.871);
+			}
+
+			.weekdayTimeslots {
+				color: black !important;
+				.md-title {
+					font-family: 'Roboto', sans-serif;
+					font-weight: 400;
+					font-size: 16px;
+					color: #212121;
+				}
+
+				.md-subtitle {
+				  	font-family: 'Roboto', sans-serif;
+				  	font-weight: 400;
+				  	font-size: 14px;
+				  	color: rgba(0, 0, 0, 0.54);
+				}
+
+			}
+		}
+	}
+
+	// SCHEDULE INPUT FORM ANIMATIONS
+	.gen_schedule.ng-enter, .gen_schedule.ng-leave {
+		-webkit-transition: 0.5s linear all;
+	    -moz-transition: 0.5s linear all;
+	    -ms-transition: 0.5s linear all;
+	    -o-transition: 0.5s linear all;
+	    transition: 0.5s linear all;
+	}
+
+	.gen_schedule.ng-enter {
+		-webkit-transform: translate(200%);
+	}
+
+	.gen_schedule.ng-enter-active {
+		-webkit-transform: translate(0%);
+	}
+	.gen_schedule.ng-leave {
+		-webkit-transform: translate(0%);
+	}
+	.gen_schedule.ng-leave-active {
+		-webkit-transform: translate(200%);
+	}
+	// END SCHEDULE INPUT FORM ANIMATIONS
+
+	.schedule_list {
+		text-transform: capitalize;
+		max-width: 1280px;
+		justify-content: center;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 15px;
+
+		md-list {
+
+			p.matchDate {
+				margin-bottom: 10px;
+			}
+
+			div {
+
+				md-list-item {
+					justify-content: center;
+
+					.gameDate {
+						background-color: rgb(245, 245, 245);
+						color: rgba(1, 1, 1, 0.541);
+					}
+
+					p {
+
+					}
+				}
+
+				md-list-item.gameInfo {
+					background-color: white;
+				}
+			}
+		}
+
+		// p.matchDate {
+		// 	margin-bottom: 10px;
+		// }
+
+		.schedule_date {
+			display: flex;
+			margin: 16px 0;
+			padding: 0 16px;
+			background-color: rgb(242, 242, 242);
+
+			p {
+				margin: 0;
+				color: rgba(0, 0, 0, 0.541);
+			}
+		}
+
+		.time {
+			text-transform: capitalize;
+			opacity: 0.541;
+			font-size: 16px;
+		}
+
+		.league_img {
+			width: 24px;
+			height: 24px;
+			margin-right: 0;
+			margin-left: 16px;
+		}
+	}
+
+	// SCHEDULE LIST ANIMATIONS
+
+	.schedules_list.ng-enter, .schedules_list.ng-leave  {
+		-webkit-transition: 0.5 linear all;
+		-moz-transition: 0.5 linear all;
+		-ms-transition: 0.5 linear all;
+		-o-transition: 0.5 linear all;
+		transition: 0.5 linear all;
+	}
+
+	.schedules_list.ng-enter {
+		max-height: 0;
+		opacity: 0;
+	}
+
+	.schedules_list.ng-enter-active {
+		max-height: 1000px;
+		opacity: 1
+	}
+
+	.schedules_list.ng-leave {
+		max-height: 1000px;
+		opacity: 1;
+	}
+
+	.schedules_list.ng-leave-active {
+		max-height: 0;
+		opacity: 0;
+	}
+
+	//  END SCHEDULE LIST ANIMATIONS
+}

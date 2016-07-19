@@ -1,0 +1,24 @@
+<div id="team-cover-editor">
+    <div ng-show="show_main">
+        <h1>Change Cover Photo</h1>
+        <img src="{{img}}">
+
+        <form id="edit-cover-form">
+            <div>
+                <input type="file">
+            </div>
+            <div>
+                <button id="edit-cover-submit" ng-click="editCoverPhoto(); show_main = !show_main">Submit</button>
+            </div>
+            <div>
+                <button id="team-cover-cancel" ng-click="hideModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="edit-cover-success" ng-show="!show_main">
+        <p>Success!</p>
+        <button id="cover-editor-close-btn" ng-click="hideModal(); show_main = !show_main">Close</button>
+    </div>
+    
+</div>

@@ -1,0 +1,18 @@
+<div layout="column">
+    <md-content flex="100" layout-padding layout-align="center center">
+        <p>{{ trans('home.team') }} <span ng-show="authenticated">Authenticated as {{ User('email') }} <a href="#" ui-sref="logout">logout <i class="fa fa-sign-out"></i></a></span>
+            {{code}}
+        </p>
+    </md-content>
+
+
+
+    <md-content flex="100" layout-padding layout-align="center center">
+        <md-button ui-sref="results">Results</md-button>
+        <md-button ui-sref="register">Register</md-button>
+        <md-button ui-sref="login">Login</md-button>
+        <md-button href="/dashboard/leagues/1/teams">League Management</md-button>
+        <md-button href="/league/1">League</md-button>
+        <md-button href="/dashboard/leagues">League List</md-button>
+    </md-content>
+</div>

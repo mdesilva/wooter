@@ -1,0 +1,240 @@
+<h1 id="angular-bootstrap-calendar">Angular Bootstrap Calendar</h1>
+<p><a href="https://gitter.im/mattlewis92/angular-bootstrap-calendar?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
+<a href="https://travis-ci.org/mattlewis92/angular-bootstrap-calendar"><img src="https://travis-ci.org/mattlewis92/angular-bootstrap-calendar.svg?branch=master" alt="Build Status"></a>
+<a href="http://badge.fury.io/bo/angular-bootstrap-calendar"><img src="https://badge.fury.io/bo/angular-bootstrap-calendar.svg" alt="Bower version"></a>
+<a href="http://badge.fury.io/js/angular-bootstrap-calendar"><img src="https://badge.fury.io/js/angular-bootstrap-calendar.svg" alt="npm version"></a>
+<a href="https://david-dm.org/mattlewis92/angular-bootstrap-calendar#info=peerDependencies"><img src="https://david-dm.org/mattlewis92/angular-bootstrap-calendar/peer-status.svg" alt="peerDependency Status"></a>
+<a href="https://david-dm.org/mattlewis92/angular-bootstrap-calendar#info=devDependencies"><img src="https://david-dm.org/mattlewis92/angular-bootstrap-calendar/dev-status.svg" alt="devDependency Status"></a>
+<a href="https://github.com/mattlewis92/angular-bootstrap-calendar/issues"><img src="https://img.shields.io/github/issues/mattlewis92/angular-bootstrap-calendar.svg" alt="GitHub issues"></a>
+<a href="https://github.com/mattlewis92/angular-bootstrap-calendar/stargazers"><img src="https://img.shields.io/github/stars/mattlewis92/angular-bootstrap-calendar.svg" alt="GitHub stars"></a>
+<a href="https://raw.githubusercontent.com/mattlewis92/angular-bootstrap-calendar/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a></p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#development">Development</a></li>
+<li><a href="#licence">License</a></li>
+</ul>
+<h2 id="about">About</h2>
+<p>This plugin is an AngularJS port of the original jQuery bootstrap calendar that can be found here:
+<a href="http://bootstrap-calendar.azurewebsites.net/">http://bootstrap-calendar.azurewebsites.net/</a></p>
+<p>The layout and functionality is intended to be exactly the same, but without the overhead of including jQuery just for a calendar. </p>
+<p>All credits for the UI/UX and the less files of the calendar go to the original author.</p>
+<p>Pull requests are welcome.</p>
+<h2 id="installation">Installation</h2>
+<p>The calendar has a few dependencies, these are as follows, and must be included BEFORE the plugin files:</p>
+<ul>
+<li><a href="https://angularjs.org/">AngularJS</a> 1.3.x or 1.4.x are supported</li>
+<li><a href="http://getbootstrap.com/">Bootstrap</a> 3+ (CSS only)</li>
+<li><a href="http://momentjs.com/">Moment.js</a></li>
+<li><a href="http://angular-ui.github.io/bootstrap/">ui-bootstrap</a> (0.14.0+, optional, include for collapse animations and tooltips.</li>
+<li><a href="http://interactjs.io/">interact.js</a> (optional, include to allow drag and drop on the calendar)</li>
+<li><a href="https://docs.angularjs.org/api/ngTouch">ngTouch</a> (optional, include if using the calendar on mobile devices)</li>
+</ul>
+<p>You can install through bower:</p>
+<pre><code>bower install --save angular-bootstrap-calendar
+</code></pre><p>You will then need to include the JS and CSS files for the plugin:</p>
+<pre><code>&lt;link href=&quot;bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>And finally add the module dependency in your AngularJS app (you can remove ui.bootstrap if you don&#39;t want the extra dependency - it is only required for collapse animations and tooltips):</p>
+<pre><code class="lang-javascript">angular.module(&#39;myApp&#39;, [&#39;mwl.calendar&#39;, &#39;ui.bootstrap&#39;]);
+</code></pre>
+<p>Alternatively you can install through npm:</p>
+<pre><code>npm install --save angular-bootstrap-calendar
+</code></pre><p>Or if using npm 3+ where peer dependencies aren&#39;t automatically installed:</p>
+<pre><code>npm install --save angular-bootstrap-calendar angular bootstrap moment angular-ui-bootstrap
+</code></pre><p>Then add as a dependency to your app:</p>
+<pre><code class="lang-javascript">angular.module(&#39;myApp&#39;, [require(&#39;angular-bootstrap-calendar&#39;), require(&#39;angular-ui-bootstrap&#39;)]);
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<p>There is a single directive exposed to create the calendar, use it like so:</p>
+<pre><code class="lang-javascript">&lt;mwl-calendar
+    view=&quot;calendarView&quot;
+    current-day=&quot;calendarDay&quot;
+    events=&quot;events&quot;
+    view-title=&quot;calendarTitle&quot;
+    on-event-click=&quot;eventClicked(calendarEvent)&quot;
+    on-event-times-changed=&quot;calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd&quot;
+    edit-event-html=&quot;&#39;&lt;i class=\&#39;glyphicon glyphicon-pencil\&#39;&gt;&lt;/i&gt;&#39;&quot;
+    delete-event-html=&quot;&#39;&lt;i class=\&#39;glyphicon glyphicon-remove\&#39;&gt;&lt;/i&gt;&#39;&quot;
+    on-edit-event-click=&quot;eventEdited(calendarEvent)&quot;
+    on-delete-event-click=&quot;eventDeleted(calendarEvent)&quot;
+    cell-is-open=&quot;true&quot;&gt;
+&lt;/mwl-calendar&gt;
+</code></pre>
+<p>An explanation of the properties is as follows:</p>
+<h3 id="view-required-attribute-">view (required attribute)</h3>
+<p>This variable is a string that can be either <code>year</code>, <code>month</code>, <code>week</code> or <code>day</code>. Changing it will change the view of the calendar.</p>
+<p>For the calendar to display this variable needs to be set like so:</p>
+<pre><code class="lang-javascript">$scope.calendarView = &#39;month&#39;;
+</code></pre>
+<h3 id="current-day-required-attribute-">current-day (required attribute)</h3>
+<p>This variable holds the current day the calendar is centralised on. Each view will decide on its current year / month / week / day depending on the value of this variable.</p>
+<h3 id="events-required-attribute-">events (required attribute)</h3>
+<p>An array of events to display on the calendar. For example:</p>
+<pre><code class="lang-javascript">$scope.events = [
+  {
+    title: &#39;My event title&#39;, // The title of the event
+    type: &#39;info&#39;, // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+    startsAt: new Date(2013,5,1,1), // A javascript date object for when the event starts
+    endsAt: new Date(2014,8,26,15), // Optional - a javascript date object for when the event ends
+    editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
+    deletable: false, // If delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+    draggable: true, //Allow an event to be dragged and dropped
+    resizable: true, //Allow an event to be resizable
+    incrementsBadgeTotal: true, //If set to false then will not count towards the badge total amount on the month and year view
+    recursOn: &#39;year&#39;, // If set the event will recur on the given period. Valid values are year or month
+    cssClass: &#39;a-css-class-name&#39; //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
+  }
+];
+</code></pre>
+<p><code>title</code>, <code>type</code> and <code>startsAt</code> are required for all events.</p>
+<h3 id="view-title">view-title</h3>
+<p>This variable will be assigned to the calendar title. If you want to change the formatting you can use the <code>calendarConfigProvider</code> or just override the appropriate method in the <code>calendarTitle</code> factory.</p>
+<h3 id="on-event-click">on-event-click</h3>
+<p>This expression is called when an event is clicked on the calendar. <code>calendarEvent</code> can be used in the expression and contains the calendar event that was clicked on.</p>
+<h3 id="on-event-times-changed">on-event-times-changed</h3>
+<p>This expression is called when an event is dragged and dropped or resized into a different date / time on the calendar. The available values that are passed to the expression are: <code>calendarEvent</code>, <code>calendarNewEventStart</code> and <code>calendarNewEventEnd</code>. The directive won&#39;t change the event object and leaves that up to you to implement. Please note drag and drop is only available by including the <a href="http://interactjs.io/">interact.js</a> library.</p>
+<h3 id="edit-event-html">edit-event-html</h3>
+<p>If provided this piece of html will be displayed next to an event on the year and month view and will fire the function passed to edit-event-click.</p>
+<h3 id="delete-event-html">delete-event-html</h3>
+<p>If provided this piece of html will be displayed next to an event on the year and month view and will fire the function passed to delete-event-click.</p>
+<h3 id="on-edit-event-click">on-edit-event-click</h3>
+<p>This expression is called when an event edit link is clicked on the calendar. <code>calendarEvent</code> can be used in the expression and contains the calendar event that was clicked on.</p>
+<h3 id="on-delete-event-click">on-delete-event-click</h3>
+<p>This expression is called when an event delete link is clicked on the calendar. <code>calendarEvent</code> can be used in the expression and contains the calendar event that was clicked on.</p>
+<h3 id="on-timespan-click">on-timespan-click</h3>
+<p>This expression is called when a month, day or hour on the calendar is clicked on the year, month and day views respectively. <code>calendarDate</code> can be used in the expression and contains the start of the month, day or hour that was clicked on.</p>
+<h3 id="cell-is-open">cell-is-open</h3>
+<p>A 2 way bound variable that when set to true will open the year or month view cell that corresponds to the date passed to the date object passed to <code>current-day</code>.</p>
+<h3 id="day-view-start">day-view-start</h3>
+<p>An interpolated string in the form of hh:mm to start the day view at, e.g. setting it to 06:00 will start the day view at 6am</p>
+<h3 id="day-view-end">day-view-end</h3>
+<p>An interpolated string in the form of hh:mm to end the day view at, e.g. setting it to 22:00 will end the day view at 10pm</p>
+<h3 id="day-view-split">day-view-split</h3>
+<p>The number of chunks to split the day view hours up into. Can be either 10, 15 or 30. Default: 30</p>
+<h3 id="on-drill-down-click">on-drill-down-click</h3>
+<p>An optional expression that is evaluated when the drilldown (clicking on a date to change the view) is triggered. Return false from the expression function to disable the drilldown. <code>calendarDate</code> can be used in the expression and contains the date that was selected. <code>calendarNextView</code> is the view that the calendar will be changed to.  </p>
+<h3 id="cell-modifier">cell-modifier</h3>
+<p>An optional expression that is evaluated on each cell generated for the year and month views. <code>calendarCell</code> can be used in the expression and is an object containing the current cell data which you can modify (see the <code>calendarHelper</code> service source code or just console.log it to see what data is available). If you add the <code>cssClass</code> property it will be applied to the cell.</p>
+<h3 id="month-cell-template-url">month-cell-template-url</h3>
+<p>An interpolated string template url that can be used to override the default month cell template.</p>
+<h3 id="month-cell-events-template-url">month-cell-events-template-url</h3>
+<p>An interpolated string template url that can be used to override the default month cell events.</p>
+<h2 id="custom-directive-templates">Custom directive templates</h2>
+<p>All templates apart from the month cell templates are linked to directives so you can change any template and use your own using a decorator like so:</p>
+<pre><code>//This will change the slide box directive template to one of your choosing
+app.config([&#39;$provide&#39;, function($provide) {
+  $provide.decorator(&#39;mwlCalendarSlideBoxDirective&#39;, [&#39;$delegate&#39;, function($delegate) {
+    var directive = $delegate[0];
+    delete directive.template; //the calendar uses template instead of template-url so you need to delete this
+    directive.templateUrl = &#39;path/to/my/slide/box/template.html&#39;;
+    return $delegate;
+  }]);
+}]);
+</code></pre><p>For more info on using decorators see this <a href="http://angular-tips.com/blog/2013/09/experiment-decorating-directives/">great guide</a>.</p>
+<h2 id="the-mwl-date-modifier-directive">The mwl-date-modifier directive</h2>
+<p>There is also a helper directive that you can use for the next, today and previous buttons. Use it like so:</p>
+<pre><code class="lang-html">&lt;button
+  class=&quot;btn btn-primary&quot;
+  mwl-date-modifier
+  date=&quot;calendarDay&quot;
+  decrement=&quot;calendarView&quot;&gt;
+  Previous
+&lt;/button&gt;
+
+&lt;button
+  class=&quot;btn btn-default&quot;
+  mwl-date-modifier
+  date=&quot;calendarDay&quot;
+  set-to-today&gt;
+  Today
+&lt;/button&gt;
+
+&lt;button
+  class=&quot;btn btn-primary&quot;
+  mwl-date-modifier
+  date=&quot;calendarDay&quot;
+  increment=&quot;calendarView&quot;&gt;
+  Next
+&lt;/button&gt;
+</code></pre>
+<h2 id="internationalization-and-localization">Internationalization and localization</h2>
+<p>You can either use angular&#39;s date filter or moment.js to format dates. The default is to use angular. You can change the formatter to be moment like so:</p>
+<pre><code class="lang-javascript">angular.module(&#39;myModule&#39;)
+  .config(function(calendarConfigProvider) {
+
+    calendarConfigProvider.setDateFormatter(&#39;moment&#39;); // use moment to format dates
+
+  });
+</code></pre>
+<p>Then you just need to include the appropriate locale files for your app. </p>
+<p>If you want to dynamically change the locale for angular and not include all of the available angular locale files <a href="https://github.com/lgalfaso/angular-dynamic-locale">try this library</a>.</p>
+<p>Otherwise if using moment you can call <code>moment.locale(&#39;YOUR_LOCALE_STRING&#39;)</code> to change the locale and the calendar will auto update.</p>
+<p>To set Monday as the first day of the week, configure it in moment like so (even if using angular for formatting dates):</p>
+<pre><code class="lang-javascript">moment.locale(&#39;en&#39;, {
+  week : {
+    dow : 1 // Monday is the first day of the week
+  }
+});
+</code></pre>
+<h2 id="configuring-date-formats">Configuring date formats</h2>
+<p>You can easily customise the date formats and i18n strings used throughout the calendar by using the <code>calendarConfigProvider</code>. Please note that these example formats are those used by moment.js and these won&#39;t work if using angular as the date formatter. Example usage:</p>
+<pre><code class="lang-javascript">angular.module(&#39;myModule&#39;)
+  .config(function(calendarConfigProvider) {
+
+    calendarConfigProvider.setDateFormatter(&#39;moment&#39;); // use either moment or angular to format dates on the calendar. Default angular. Setting this will override any date formats you have already set.
+
+    calendarConfigProvider.setDateFormats({
+      hour: &#39;HH:mm&#39; // this will configure times on the day view to display in 24 hour format rather than the default of 12 hour
+    });
+
+    calendarConfigProvider.setTitleFormats({
+      day: &#39;ddd D MMM&#39; //this will configure the day view title to be shorter
+    });
+
+    calendarConfigProvider.setI18nStrings({
+      eventsLabel: &#39;Events&#39;, //This will set the events label on the day view
+      timeLabel: &#39;Time&#39; //This will set the time label on the time view
+    });
+
+    calendarConfigProvider.setDisplayAllMonthEvents(true); //This will display all events on a month view even if they&#39;re not in the current month. Default false.
+
+    calendarConfigProvider.setDisplayEventEndTimes(true); //This will display event end times on the month and year views. Default false.
+
+  });
+</code></pre>
+<p>For a full list of all available formats and their defaults see <a href="https://github.com/mattlewis92/angular-bootstrap-calendar/blob/master/src/services/calendarConfig.js">calendarConfig.js</a></p>
+<h2 id="demo">Demo</h2>
+<p><a href="http://mattlewis92.github.io/angular-bootstrap-calendar/">http://mattlewis92.github.io/angular-bootstrap-calendar/</a></p>
+<h2 id="development">Development</h2>
+<h3 id="prepare-your-environment">Prepare your environment</h3>
+<ul>
+<li>Install <a href="http://nodejs.org/">Node.js</a> and NPM (should come with)</li>
+<li>Install local dev dependencies: <code>npm install</code> while current directory is this repo</li>
+</ul>
+<h3 id="development-server">Development server</h3>
+<p>Run <code>npm start</code> to start a development server on port 8000 with auto reload + run tests. </p>
+<h3 id="testing">Testing</h3>
+<p>Run <code>npm test</code> to run tests once or <code>npm run test:watch</code> to continually run tests (this is automatic when you run <code>npm start</code>). </p>
+<h3 id="build">Build</h3>
+<p>Run <code>npm run build</code> to build the project files in the dist folder</p>
+<h2 id="license">License</h2>
+<p>The MIT License</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>

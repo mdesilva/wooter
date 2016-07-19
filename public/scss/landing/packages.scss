@@ -1,0 +1,516 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */  
+
+@import "shared";
+
+.hero_image{
+	background: url('/img/landings/hero-packages.png') center center fixed;
+    background-size: cover !important;
+
+	.hero_text{
+		top: 50%!important;
+	
+		@media only screen and (max-width: 599px) {
+		    width: 300px!important;
+		}
+	}
+}
+
+.running_image{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 350px;
+
+	img{
+		width: 100%;
+	}
+
+	@media only screen and (max-width: 959px) {
+	    display: none!important;
+	}	
+}
+
+.white_separator_origin {
+	height: 734px;
+}
+
+.white_separator_3{
+
+	.white_separator_left,
+	.white_separator_center,
+	.white_separator_right{
+		background: white;
+		float: left;
+		@media only screen and (max-width: 959px) {
+		    margin: 0px!important;
+		    width: 600px!important;
+		}		
+		@media only screen and (max-width: 599px) {
+		    margin: 0px!important;
+		    width: 300px!important;
+		}
+	}
+	.white_separator_center{
+		width: 345px!important;
+		@media only screen and (max-width: 1359px) {
+		    width: 310px!important;
+		} 
+		@media only screen and (max-width: 959px) {
+		    margin: 0px!important;
+		    width: 600px!important;
+		}	
+	}
+
+
+	.ws{
+
+		.social_image{
+			position: absolute;
+		    right: 15px;
+		    top: -25px;
+
+			img{
+				width: 50px;
+			}
+		}
+
+		img{
+			width: 54px;
+			margin: 0 calc(50% - 27px);
+			margin-bottom: 20px;
+		}
+
+		.social_label{
+			color: #212121;
+			font-weight: 500;
+			font-size: 24px;
+		}
+
+		.followers{
+			width: 100%;
+			margin: 0 auto;
+			font-size: 18px;
+			text-align: center;
+			color: rgba(0,0,0,.6);
+			line-height: 1.8;
+		}
+		
+		.custom_hr{
+			width: 100%;
+		    height: 3px;
+		    background: #eee;
+			margin: 30px auto;	    
+		}		
+
+		p{
+			width: 270px;
+			margin: 0 auto;
+			font-size: 18px;
+			text-align: center;
+			color: #212121;
+			line-height: 1.8;
+			@media only screen and (max-width: 599px) {
+			    width: 240px!important;
+			}			
+		}
+
+		.red{
+			color: #ef5653;
+	    }
+
+		ul{
+			padding: 0px;
+			margin: 0px;
+
+			li{
+				width: 270;
+				margin: 0 auto;
+				font-size: 18px;
+				text-align: center;
+				color: #212121;
+				line-height: 2.8;
+				list-style-position: inside;
+				
+				@media only screen and (max-width: 599px) {
+				    width: 240px!important;
+				}	
+			}
+		}
+	}
+
+	button{
+		width: 100%;
+		margin: 0px 0px;
+	}	
+}
+
+.commissioners{
+	padding: 48px 0px 112px;
+	width: 100%;
+	margin: 0 auto;
+	
+	.red_pics{
+		width: 100%;
+		.image{
+			width: 70px;
+			margin: 0 auto;
+			padding: 0px 0px 15px;
+
+			img{
+				height: auto;
+				width: 70px
+			}
+		}
+
+		.faq{
+			p{
+				margin: 0 0 3px;
+				font-size: 24px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+			}
+		}		
+	}
+}
+
+
+.pricing_text{
+	padding: 20px 40px;
+	
+	.feature_header{
+		h1{
+			font-size: 24px;
+			color: #212121;
+			font-weight: 500;
+			text-align: left;
+			margin: 0px;
+		}
+
+		p{
+			font-size: 11px;
+			color: rgba(0,0,0,.75);
+			text-align: left;
+		}
+
+		.short_hr{
+			float: left;
+			width: 50px;
+			height: 3px;
+			background: #ef5653;
+			margin: 0px 0px 30px;
+		}
+	}
+	
+	.split_one{
+		margin: 15px 0px;
+
+		.thirds{
+			float: left;
+			width: 33%;
+			padding-right: 30px;
+
+			@media only screen and (max-width: 959px) {
+				width: 100%;
+				padding-right: 0px;
+				padding-bottom: 30px;
+			}
+			
+			h1{
+				font-size: 20px;
+				color: rgba(0,0,0,.75);
+				font-weight: 500;
+				text-align: left;
+				margin: 0px 0px 15px;
+
+			}
+
+			p{
+				font-size: 18px;
+				color: rgba(0,0,0,.54);
+				text-align: left;
+				line-height: 1.8;
+			}				
+		}
+	}
+
+	.custom_hr{
+		float: left;
+		width: 100%;
+		height: 3px;
+		background: #eee;		
+	}
+
+	.baseball_split{
+		
+		.picture{
+			width: 35%;
+			float: left;
+
+			@media only screen and (max-width: 1359px) {
+				width: 30%;
+			}
+
+			@media only screen and (max-width: 959px) {
+				display: none;
+			}
+
+			img{
+				width: 100%;
+				margin-top: 50px;
+
+				@media only screen and (max-width: 1359px) {
+					margin-top: 160px;
+				}
+			}
+		}
+
+		.media_coverage{
+			width: 65%;
+			float: left;
+			padding-left: 50px;
+
+			@media only screen and (max-width: 1359px) {
+				width: 70%;
+			}
+
+			@media only screen and (max-width: 959px) {
+				width: 100%;
+				padding-left: 0px;
+			}
+
+			.mc_title{
+
+				h1{
+					font-size: 24px;
+					color: #212121;
+					font-weight: 500;
+					text-align: left;
+					margin: 40px 0px 10px;
+				}
+
+				.short_hr{
+					float: left;
+					width: 50px;
+					height: 3px;
+					background: #ef5653;
+					margin: 25px 0px;
+				}				
+			}
+
+			.mc_text{
+				
+				@media only screen and (max-width: 959px) {
+					padding-bottom: 20px;
+				}	
+				
+				.halves{
+					float: left;
+					width: 50%;
+					padding-right: 25px;
+					margin-top: 20px;
+
+					@media only screen and (max-width: 959px) {
+						padding-right: 20px;
+					}
+					
+					@media only screen and (max-width: 959px) {
+						padding-right: 10px;
+						width: 100%;
+						padding-bottom: 30px;
+					}
+
+					h1{
+						font-size: 20px;
+						color: rgba(0,0,0,.75);
+						font-weight: 500;
+						text-align: left;
+						margin: 0px 0px 15px;
+
+					}
+
+					p{
+						font-size: 18px;
+						color: rgba(0,0,0,.54);
+						text-align: left;
+						line-height: 1.8;
+					}					
+				}				
+			}
+		}
+	}
+
+	.football_split{
+			
+		.marketing{
+			width: 49%;
+			float: left;
+
+			@media only screen and (max-width: 959px) {
+				padding-right: 10px;
+				width: 100%;
+				padding-bottom: 30px;
+			}
+			
+			.market_title{
+					
+				h1{
+					font-size: 24px;
+					color: #212121;
+					font-weight: 500;
+					text-align: left;
+					margin: 25px 0px 0px;
+				}
+
+				.short_hr{
+					float: left;
+					width: 50px;
+					height: 3px;
+					background: #ef5653;
+					margin: 30px 0px 20px;
+				}				
+			}
+			
+			.market_text{
+	
+				.thirds{
+					float: left;
+					width: 100%;
+					padding-right: 120px;
+					margin: 15px 0px;
+
+					@media only screen and (max-width: 959px) {
+						padding-right: 30px;
+					}					
+					
+					h1{
+						font-size: 20px;
+						color: rgba(0,0,0,.75);
+						font-weight: 500;
+						text-align: left;
+						margin: 0px 0px 15px;
+
+					}
+
+					p{
+						font-size: 18px;
+						color: rgba(0,0,0,.54);
+						text-align: left;
+						line-height: 1.8;
+					}				
+				}
+			}
+		}
+
+		.separators{
+			width: 2%;
+			float: left;
+					
+			@media only screen and (max-width: 959px) {
+				display: none;
+			}				
+	
+			.line{
+			    width: 2px;
+			    margin: 40px calc(100% - 2px) 0px 0px;
+			    height: 460px;
+			    background: #eee;
+			}
+		}
+
+		.highlight{
+			width: 49%;
+			float: left;
+
+			@media only screen and (max-width: 959px) {
+				padding-right: 10px;
+				width: 100%;
+				padding-bottom: 30px;
+			}
+
+			.text{
+				margin-top: 25px;
+
+				h1{
+					font-size: 24px;
+					color: #212121;
+					font-weight: 500;
+					text-align: left;
+					margin: 0px;
+				}
+
+				p{
+					font-size: 11px;
+					color: rgba(0,0,0,.75);
+					text-align: left;
+				}
+
+				.short_hr{
+					float: left;
+					width: 50px;
+					height: 3px;
+					background: #ef5653;
+					margin: 0px 0px 30px;
+				}
+
+				.normal{
+					font-size: 18px;
+					color: rgba(0,0,0,.54);
+					text-align: left;
+					line-height: 1.8;
+				}	
+			}
+			.picture{
+				position: relative;
+		
+				@media only screen and (max-width: 959px) {
+					display: none;
+				}
+			
+				img{
+				    position: absolute;
+				    top: 30px;
+				    right: 0;
+				    width: 60%;
+
+					@media only screen and (max-width: 1359px) {
+						width: 70%;
+					}
+				}
+			}
+		}
+	}
+}
+
+.package{
+	padding: 64px 0px 64px!important;
+	width: 100%;
+	margin: 0 auto;
+	
+	.red_pics{
+		width: 100%;
+
+		.faq{
+			p{
+				margin: 0 0 3px;
+				font-size: 24px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+			}
+
+			button{
+				width: 220px;
+				margin: 0 calc(50% - 110px);
+			}
+		}		
+	}
+}

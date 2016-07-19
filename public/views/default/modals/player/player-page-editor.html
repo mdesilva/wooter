@@ -1,0 +1,44 @@
+<div id="player-page-editor">
+    <div ng-show="show_main">
+        <h1>Edit Account Information</h1>
+        <form id="player-page-editor-form">
+            <ul>
+                <li>
+                    <label for="edit-picture">Picture</label>
+                    <img id="edit-picture" src="{{img}}">
+                </li>
+                <li>
+                    <label for="edit-firstname">First Name</label>
+                    <input id="edit-firstname" type="text" name="first_name" value="{{first_name}}">
+                </li>
+                <li>
+                    <label for="edit-lastname">Last Name</label>
+                    <input id="edit-lastname" type="text" name="last_name" value="{{last_name}}">
+                </li>
+                <li>
+                    <label for="edit-gender">Gender</label>
+                    <input id="edit-gender" type="text" name="gender" value="{{gender}}">
+                </li>
+                <li>
+                    <label for="edit-height">Height</label>
+                    <input id="edit-height" type="text" name="height" value="{{height}}">
+                </li>
+                <li>
+                    <label for="edit-weight">Weight</label>
+                    <input id="edit-weight" type="text" name="weight" value="{{weight}}">
+                </li>
+                <li>
+                    <button id="edit-submit" ng-click="editPlayerInfo(); show_main = !show_main">Edit</button>
+                </li>
+                <li>
+                    <button id="edit-cancel" ng-click="hideModal()">Cancel</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+    
+    <div id="player-edit-success" ng-show="!show_main">
+        <p>Success!</p>
+        <button id="player-editor-close-btn" ng-click="hideModal(); show_main = !show_main">Close</button>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+.hero_image{
+	background: url('/img/landings/hero-referees.png') center center fixed;
+    background-size: cover !important;
+	background-position: 65% 100%;
+
+	.hero_text{
+		top: 50%!important;
+	}
+
+	button{
+		width: 120px!important;
+		margin: 30px calc(50% - 60px) 0px!important;
+	}
+}
+
+.commissioners, .athletes{
+	padding: 48px 0px 112px;
+	width: 100%;
+	margin: 0 auto;
+	
+	.red_pics{
+		width: 100%;
+		.image{
+			width: 40px;
+			margin: 0 auto;
+			padding: 0px 0px 15px;
+
+			img{
+				height: 60px;
+			}
+		}
+
+		.faq{
+			p{
+				margin: 0 0 3px;
+				font-size: 24px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+			}
+		}		
+	}
+	
+}
+
+.pricing_text{
+	padding-bottom: 40px;
+	
+	h1{
+		font-size: 24px;
+		color: #212121;
+		text-align: center;
+		margin: 40px 0px 20px;
+	}
+
+	.custom_hr{
+		width: 60px;
+	    height: 2px;
+	    margin: 30px calc(50% - 30px) 30px;
+	    background: #ef5350;
+	}
+
+	p{
+		text-align: center;
+		font-size: 16px;
+		padding: 0px 185px;
+		color: rgba(0,0,0,.54);
+		margin-bottom: 0px;
+	}
+}
+
+.pricing_subtext{
+	margin-bottom: 40px;
+
+	.custom_hr{
+		width: 60px;
+	    height: 2px;
+	    margin: 30px calc(50% - 30px) 50px;
+	    background: #ef5350;
+	}
+
+	p{
+		text-align: center;
+		font-size: 14px;
+		padding: 0px 185px;
+		color: rgba(0,0,0,.54);
+		margin-bottom: 0px;
+	}
+}
+
+.sports_list{
+	width: 720px;
+	margin: 0 auto;
+
+	p{
+		width: 240px;
+		text-align: center;
+		float: left;
+		font-size: 18px;
+		color: #212121;
+		margin-bottom: 15px;
+	}
+}

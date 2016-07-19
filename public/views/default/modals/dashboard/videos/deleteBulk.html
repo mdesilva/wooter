@@ -1,0 +1,37 @@
+<md-dialog class='inspection_modals' aria-label='inspectPhoto'>
+    <md-toolbar style='background-color: white; color: black;'>
+        <div class='md-toolbar-tools'>
+            <h4>Delete {{ count(selected) }} Video(s)</h4>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+
+
+            <!-- Division -->
+            <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <p>Are you sure you want to delete video(s)?</p>
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+
+
+
+        <input type="hidden" name='delete' ng-model='delete'  ng-init="delete = true " aria-label='false' >
+            <!-- buttons -->
+            <div class='modal_button_div'>
+                <md-button class='modal_buttons right_button' ng-click='closeModal()'>
+                    Cancel
+                </md-button>
+                <md-button class='modal_buttons left_button'  ng-click="removeBulkVideos()">
+                    Delete Video(s)
+                </md-button>
+            </div>
+
+
+
+    </md-dialog-content>
+
+
+</md-dialog>

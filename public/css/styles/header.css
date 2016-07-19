@@ -1,0 +1,235 @@
+.site_header {
+    background-color: #212121;
+    box-shadow: 0px 4px 6.58px 0.42px rgba(0, 0, 0, 0.24);
+    position: relative;
+    z-index: 100;
+}
+
+.site_header a:focus, .site_header a:hover {
+    color: inherit !important;
+}
+
+.site_logo img {
+    height: 30px;
+}
+
+.site_header svg {
+    padding: 3px;
+    height: inherit !important;
+    transform: translate(0, 0) !important;
+    /*fill: #fff !important;*/
+}
+
+.header_search md-autocomplete {
+    background-color: #212121;
+}
+
+.header_search input {
+    color:#ccc;
+    /* background-color: #ffffff; */
+}
+.header_search input:focus {
+    color:#ccc;
+    /* background-color: #ffffff; */
+}
+.headerSearch input{
+    padding-left:40px !important;
+}
+
+.header_search input:focus .search_icon {
+    fill: #fff;
+}
+
+.header_search button {
+    /* background-color: #ffffff; */
+    border-radius: 0;
+    height: 40px;
+    margin: 0;
+}
+
+.header_search .search_icon svg{
+    fill: rgba(255, 255, 255, 0.702) !important;
+}
+
+.header_menu {
+    color: rgba(255, 255, 255, 0.702);
+    text-transform: uppercase;
+    font-size: 14px;
+    background-color: #212121;
+}
+
+.header_menu md-list {
+    background-color: #212121;
+}
+
+.menu_list button {
+    padding: 0 12px;
+    min-width: 50px;
+}
+
+.login {
+    color: #00bfa5 !important;
+}
+
+.signup {
+    background-color: #00bfa5 !important;
+    color: #fff !important;
+}
+
+.menu_content {
+    background-color: #3c3c3c;
+    color: rgba(255, 255, 255, 0.702);
+    font-size: 14px;
+    text-transform: uppercase;
+    box-shadow: 0px 26px 37.6px 2.4px rgba(0, 0, 0, 0.24);
+}
+
+.menu_content button {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.site_header md-list {
+    padding: 0 !important;
+    height: 64px;
+}
+
+.site_header md-list md-list-item:hover {
+    color: #fff;
+}
+
+.site_header md-list-item:hover .custom_dropdown_list {
+    color: rgba(255, 255, 255, 0.702) !important;
+}
+
+.header_menu .custom_dropdown md-icon {
+    color: inherit;
+    width: 12px;
+}
+
+.custom_dropdown {
+    position: relative;
+    height: 64px;
+}
+
+.custom_dropdown button {
+    top: 50%;
+    /* 3 */
+    transform: translate(0, -50%);
+    padding: 0 15px;
+}
+
+.custom_dropdown_list {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    -webkit-transition: max-height 0.8s;
+    -moz-transition: max-height 0.8s;
+    transition: max-height 0.8s;
+    overflow: hidden;
+}
+
+.custom_dropdown_list a:hover {
+    color: #fff !important;
+}
+
+.custom_dropdown .active {
+    list-style: none;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    width: 120%;
+    max-height: 600px;
+    background-color: #3c3c3c;
+    animation-name: custom_slideIn;
+    animation-timing-function: ease-out;
+    animation-duration: 0.3s;
+    box-shadow: 0px 26px 37.6px 2.4px rgba(0, 0, 0, 0.24);
+}
+
+.custom_dropdown .active:before {
+    content: '';
+    display: block;
+    border-top: 1px solid #00bfa5;
+    z-index: 100000;
+    width: 88%;
+    transform: translateY(-10px);
+}
+
+.custom_dropdown_list a {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    padding-left: 12px;
+}
+
+.section_separator span {
+    width: 1px;
+    height: 40px;
+    background-color: #CECECE;
+    opacity: 0.4;
+}
+
+.user_profile_img {
+    border: 2px solid #bcbcbc;
+}
+
+@keyframes custom_slideIn {
+    0% {
+        max-height: 0;
+    }
+    100% {
+        max-height: 600px;
+    }
+}
+
+.header_menu .user_section md-icon {
+    color: inherit;
+}
+
+.site_sidenav {
+    width: 270px;
+    z-index: 10000;
+}
+
+.site_sidenav a:focus, .site_sidenav a:hover {
+    color: inherit;
+}
+
+.site_sidenav, .site_sidenav md-content {
+    background-color: #212121;
+    color: #bcbcbc;
+}
+
+.site_sidenav .md-button {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    padding: 3px 16px 3px 24px;
+    border-radius: 0;
+    font-size: 12px;
+}
+
+.site_sidenav md-icon {
+    height: 17px !important;
+    width: 11px !important;
+}
+
+.site_sidenav svg path, .header_menu svg path {
+    fill: #bcbcbc;
+}
+
+.site_header ul, .siteside_nav ul{
+    padding:0
+}
+.md-autocomplete-suggestions li {
+  border-bottom: 1px solid #ccc !important;
+  height: auto !important;
+  padding: 0px;
+  white-space: normal; }
+.autocompletedemoCustomTemplate .autocomplete-custom-template li:last-child {
+  border-bottom-width: 0; }

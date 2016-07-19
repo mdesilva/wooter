@@ -1,0 +1,64 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+    <div class="container">
+        <div class="info">
+            <h1 class="md-title league-title">{{ leagueName }}</h1>
+            <p class="md-body-1 league-subtitle">{{ leagueSubtitle }}</p>
+        </div>
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+</header>
+
+<div class="container players-content">
+    <md-content class="md-whiteframe-2dp">
+        <header class="header">
+            <p class="md-body-2"><i class="fa fa-arrow-left"></i> &nbsp;&nbsp;Manage Categories</p>
+        </header>
+        <div class="controls" layout="column" layout-gt-sm="row" style="border-bottom: none;">
+            <div class="filters" flex="100" flex-gt-sm="60" layout="row">
+                <p>Create, edit, or delete video categories.</p>
+            </div>
+            <div class="buttons" flex="100" flex-gt-sm="40" layout-align="start center" layout-align-gt-sm="end center" layout="row">
+                <md-button ng-click="createCategory($event)">New Category</md-button>
+            </div>
+        </div>
+
+        <div class="hr_custom"></div>
+
+        <div class="players-list">
+            <md-list ng-cloak>
+
+
+                <md-list-item layout="row" ng-repeat="label in leagues.loadLeagueLabels()">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="player" layout="row" flex="100" flex-gt-sm="80">
+                            <img src="../img/dashboard/garbage.png"
+                                 alt="Delete Can"
+                                 style="width: 14px; height: 47px; padding: 14px 0px;"
+                                 ng-click="removeCategory($event, label)">
+                            <p class="md-body-1 name">{{ label.name }}</p>
+                        </div>
+                        <div class="stand"  layout="row" flex="100" flex-gt-sm="20">
+                            <div class="team" flex="100">
+                                <p class="md-body-1 info">
+                                <img src="../img/dashboard/pencil.png"
+                                     alt="Edit Can"
+                                     style="width: 18px; height: 47px; padding: 14px 0px;"
+                                     ng-click="editCategory($event, label)">
+                            </div>
+                        </div>
+                    </div>
+
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="count(leagues.loadLeagueLabels()) == 0"
+                style="border-bottom: none;">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">Create Your First Video Category.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+
+
+</div>

@@ -1,0 +1,308 @@
+<header id='dashboardHeader' class='md-whiteframe-2dp' ng-init='setup()'>
+	<div class='container'>
+	    <div class='info'>
+                <h1 ng-show="league.name" class="md-title league-title">{{league.name}}</h1>
+                <p class="md-body-1 league-subtitle">{{season.starts_at | carbonToMMM }} - {{season.ends_at | carbonToMMM }} {{season.ends_at | carbonToyyyy }}</p>
+		<md-progress-circular md-mode="indeterminate" ng-hide="league.name" class="white-loader" md-diameter="94"></md-progress-circular>
+            </div>
+	    <div class='nav-bar' ng-include="logicTemplate('dashboard/layout/nav-bar')">
+            </div>
+	</div>
+</header>
+
+<div class='container players-content main_listing schedule_filter'>
+	<md-content class='md-whiteframe-2dp'>
+		<header class='header'>
+			<p class='md-body-2'>Schedule</p>
+		</header>
+		<div class='controls' layout='row' layout-gt-sm='row'>
+            <div class='select teamSelect' flex='15'>
+                <md-input-container>
+                    <label>Teams</label>
+                    <md-select class='black_placeholder' ng-model='team_to_filter' name="team_to_filter" ng-change="synchronize({team_to_filter:team_to_filter, venue_to_filter:venue_to_filter})">
+                        <md-option value='{{ team.id }}' ng-repeat='team in teams'>
+                            {{ team.name }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class='separator'></div>
+            <div class='select teamSelect' flex='15'>
+                <md-input-container>
+                    <label>Venues</label>
+                    <md-select class='black_placeholder' ng-model='venue_to_filter' name='venue_to_filter' ng-change="synchronize({team_to_filter:team_to_filter, venue_to_filter:venue_to_filter})">
+                        <md-option value='{{venue.game_venue.id}}' ng-repeat='venue in venues'>
+                            {{ venue.game_venue.location.name }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+			<div flex></div>
+			<div class='schedManBtns' layout='row' layout-align='end center'>
+				<md-button class='md-secondary md-accent' ng-click='clearSchedule()'>CLEAR SCHEDULE</md-button>
+				<div class='separator'></div>
+				<md-button class='md-secondary md-accent' ng-click='addGame()'>NEW GAME</md-button>
+			</div>
+		</div>
+	</md-content>
+</div>
+
+<div ng-if='(teams.length != 0 && games.length == 0) && (otherThing === false && createSchedule === false)' class='container schedulePage'>
+	<div layout='row'>
+		<div layout='column' flex='30'>
+		</div>
+		<div layout='column'flex='40'>
+			<div class='createSchedule'>
+				<p>
+					You haven't schedule any games yet.
+				</p>
+				<br>
+				<md-button class='md-raised wooter-btn-primary' ng-click='genScheduleAction()'>GENERATE SCHEDULE</md-button>
+				<br>
+				<p>or</p>
+				<br>
+				<md-button class='md-secondary md-accent' ng-click='addGame()'>CREATE A GAME</md-button>
+			</div>
+		</div>
+		<div layout='column' flex='30'>
+		</div>
+	</div>
+</div>
+
+<div ng-if='teams.length === 0' class='container schedulePage'>
+	<div layout='row'>
+		<div layout='column' flex='30'>
+		</div>
+		<div layout='column'flex='40'>
+			<div class='createSchedule' style='border: 2px dashed rgb(200,200,200); text-align: center; background-color: rgb(250, 250, 250)'>
+				<p>
+					You don't have any teams in your league.
+				</p>
+				<br>
+				<h1>CREATE SOME TEAMS</h1>
+			</div>
+		</div>
+		<div layout='column' flex='30'>
+		</div>
+	</div>
+</div>
+
+<div ng-if='teams.length !== 0 && createSchedule == true' ng-model='createSchedule' class='container gen_schedule'>
+	<md-content class='md-whiteframe-2dp'>
+		<md-list>
+			<md-list-item class='list-header'>
+				<p class='md-body-2'>
+					<img class='switching_mains' src='../../img/dashboard/back.png' style='width: 16px;' ng-click='undoThing()'> &nbsp;&nbsp;Generate Schedule
+				</p>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item>
+				<div layout='row' style='width: 100%;'>
+					<md-input-container style='width: 100%;'>
+						<md-select ng-model='pickDivision' aria-label='pickDivision' placeholder='Pick Division to Create a Schedule For'>
+							<md-option value=''>
+								Entire League
+							</md-option>
+							<md-option ng-repeat='division in divisions' value='{{ division.id }}'>
+								{{ division.name }}
+							</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+			</md-list-item>
+			<md-list-item>
+				<div layout='row' style='width: 100%'>
+					<md-datepicker ng-model='startDate' placeholder='Season Starts' style='width: 50%'></md-datepicker>
+					<md-datepicker ng-model='endDate' placeholder='Season Ends' style='width: 50%'></md-datepicker>
+				</div>
+			</md-list-item>
+			<md-list-item>
+				<md-input-container style='width: 50%'>
+					<label>Number of Teams</label>
+					<input ng-model='numTeams' type='number'>
+				</md-input-container>
+				<md-input-container style='width: 50%;'>
+					<label>Games Per Week (per team)</label>
+					<input type='number' ng-model='gamesPerTeamPerWeek'>
+				</md-input-container>
+			</md-list-item>
+		</md-list>
+	</md-content>
+	<div class='scheduleBtns' style='margin-top: 10px;'>
+		<ul style='list-style: none; display: inline-flex; float:right;'>
+			<li>
+				<md-button ng-click='undoThing()'>CANCEL</md-button>
+			</li>
+			<li>
+				<md-button class='md-raised wooter-btn-primary' ng-click='genSchedule()'>GENERATE</md-button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+<div ng-if='games.length > 0' ng-repeat='match in matches' class='schedule_list container'>
+    <md-list>
+        <p ng-model='week' class='matchDate'>
+            Week {{ match.week }}  ({{ match.schedule[0].day | date:'MMM d'}} - {{ match.schedule[6].day | date:'MMM d' }})
+        </p>
+
+        <div class='md-whiteframe-2dp' ng-repeat='week in match'>
+            <div ng-repeat='stuff in week'>
+                <md-list-item class='gameDate' ng-if='stuff.showWeek'>
+                    {{ stuff.day | date:'EEEE MMM dd, yyyy'}}
+                </md-list-item>
+                <md-divider></md-divider>
+                <div ng-repeat='game in stuff.slots'>
+
+                    <md-list-item class='gameInfo' layout='row'>
+                        <div class='info' layout-xs='column' flex='100' layout-gt-sm='row'>
+                            <div layout='row' flex='100' layout-align='start center'>
+                                <!--
+                                <div class='checkbox' flex='5'>
+                                    <md-checkbox style='margin: auto;'></md-chec    kbox>
+                                </div>
+                                -->
+                                <div class='gameTime' flex='20'>
+                                    <p>{{ game.game.datetimeJs | date:'shortTime'}}</p>
+                                </div>
+                                <div class='homeTeam' flex='25'>
+                                    <p>{{ game.game.home_team }}</p>
+                                </div>
+                                <div flex>
+                                    <p>vs.</p>
+                                </div>
+                                <div class='awayTeam' flex='25'>
+                                    {{ game.game.visiting_team }}
+                                </div>
+                                <div class='venue' flex='10'>
+                                    <p>{{ game.slot.league_game_venue_name }}</p>
+                                </div>
+                                <div class='schedBtns' flex='10'>
+                                    <p>
+                                        <md-icon class='material_icons md-secondary' aria-label='deleteGame' ng-click='deleteGame($event, game)'>
+                                            delete
+                                        </md-icon>
+                                    </p>
+                                    <p>
+                                        <md-icon class='material_icons md-secondary' aria-label='editGame' ng-click='editGame($event, game)' style='margin-right: 10px;'>
+                                            mode_edit
+                                        </md-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </div>
+            </div>
+        </div>
+    </md-list>
+</div>
+
+<div ng-repeat='(yearId, year) in years' class='schedule_list container'>
+    {{ year.year }}
+    <div ng-repeat='(weekId, week) in year.weeks' class='schedule_list container'>
+        <md-list>
+            <p ng-model='week' class='matchDate'>
+                Week {{ week.week_of_year }}  ({{ week.start_day }} {{ week.start_month | monthNameShort }} - {{ week.end_day }} {{ week.end_month | monthNameShort}})
+            </p>
+
+            <div class='md-whiteframe-2dp' ng-repeat='(games_by_day_id, games_by_day) in week.games_by_day track by $index'>
+                <md-divider></md-divider>
+                <md-list-item class='gameDate'>
+                    {{ games_by_day.month | monthNameLong }} {{ games_by_day.day }}, {{ games_by_day.year }}
+                </md-list-item>
+                <div ng-repeat='game in games_by_day.games'>
+                    <md-list-item class='gameInfo' layout='row'>
+                        <div class='info' layout-xs='column' flex='100' layout-gt-sm='row'>
+                            <div layout='row' flex='100' layout-align='start center'>
+                                <div class='checkbox' flex='5'>
+                                    <md-checkbox style='margin: auto;'></md-checkbox>
+                                </div>
+                                <div class='gameTime' flex='15'>
+                                    <p>{{ game.hour }}:{{ game.minute }}</p>
+                                </div>
+                                <div class="homeTeamLogo" flex="5">
+                                    <img class="teamLogo" src="{{game.home_team_logo}}" alt="">
+                                </div>
+                                <div class='homeTeam' flex='20'>
+                                    <p>{{ game.home_team }}</p>
+                                </div>
+                                <div class="versus" flex="5">
+                                    <p>vs.</p>
+                                </div>
+                                <div class='awayTeam' flex='20'>
+                                    {{ game.visiting_team }}
+                                </div>
+                                <div class="awayTeamLogo" flex="5">
+                                    <img class="teamLogo" src="{{game.visiting_team_logo}}" alt="">
+                                </div>
+                                <div class='venue' flex='15'>
+                                    <p>{{ game.game_venue.location.name }}</p>
+                                </div>
+                                <div flex="5">
+                                    <md-icon  ng-click='editGame($event, game)'>
+                                        mode_edit
+                                    </md-icon>
+                                </div>
+                                <div flex="5">
+                                    <md-icon ng-click='deleteGame($event, game)'>
+                                        delete
+                                    </md-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </div>
+            </div>
+        </md-list>
+    </div>
+</div>
+
+<div class="container game-pagination" style="text-align:center;">
+    <div class="inner">
+        <md-button ng-click="navFirst()" ng-disabled="!(gamesIndex > 1)" class="md-icon-button"><md-icon>skip_previous</md-icon></md-button>
+        <md-button ng-click="navPrev()" ng-disabled="!(gamesIndex > 1)" class="md-icon-button"><md-icon>chevron_left</md-icon></md-button>
+        <md-button class="disabled-button"><b>{{ gamesIndex }}</b> / {{ pages }}</md-button>
+        <md-button ng-click="navNext()" ng-disabled="gamesIndex == pages" class="md-icon-button"><md-icon>chevron_right</md-icon></md-button>
+        <md-button ng-click="navLast()" ng-disabled="gamesIndex == pages" class="md-icon-button"><md-icon>skip_next</md-icon></md-button>
+    </div>
+</div>
+
+<style>
+    .matchDate {
+        margin-left : 20px;
+    }
+    
+    .gameDate,
+    .gameTime, 
+    .venue,
+    .versus {
+        color : #8c8c8c;
+    }
+    
+    .homeTeam {
+        text-align : left;
+        margin-left : 10px;
+    }
+    
+    .awayTeam {
+        text-align : right;
+        margin-right : 10px;
+    }
+    
+    .homeTeam, .awayTeam {
+        color : #4d4d4d;
+    }
+    
+    .teamLogo {
+        width : 100%;
+        width : 40px;
+        height : 40px;
+        border-radius : 20px;
+    }
+</style>

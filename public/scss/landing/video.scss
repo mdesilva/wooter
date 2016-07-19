@@ -1,0 +1,329 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+.hero_image{
+	background: url('/img/landings/hero-statsvideo.png') center center fixed;
+    background-size: cover !important;
+    background-position: 50% 100%;
+
+	.hero_text{
+		top: 50%!important;
+		width: 1080px;
+		margin: 0 auto;
+		
+		@media only screen and (max-width: 1359px) {
+			width: 960px;
+		}
+
+		@media only screen and (max-width: 1359px) {
+			width: 600px;
+		}
+		
+		@media only screen and (max-width: 599px) {
+			width: 300px;
+		}
+		
+		.text_half{
+			width: 60%;
+			float: left;
+			@media only screen and (max-width: 1359px) {
+				width: 100%;
+			}
+			
+			@media only screen and (max-width: 599px) {
+				width: 300px;
+			}
+
+			h1, p{
+				text-align: left;
+				color: white;
+				@media only screen and (max-width: 1359px) {
+					text-align: center;
+				}
+			}
+
+			h1{
+				font-size: 48px;
+				margin: 0px 0px 40px;
+			}
+
+			p{
+				font-size: 18px;	
+				margin: 0px 0px 5px;	
+			}
+
+			button{
+			    width: 150px!important;
+			    margin: 30px 0px 0px!important;
+				@media only screen and (max-width: 1359px) {
+					margin: 30px calc(50% - 75px) 0px!important;
+				}
+			}
+		}
+	
+		.video_half{
+			width: 40%;
+			float: left;
+			@media only screen and (max-width: 1359px) {
+				display: none;
+			}
+
+			img{
+				width: 100%;
+				cursor: pointer;
+			}
+		}
+	}
+
+	button{
+		width: 120px!important;
+		margin: 30px calc(50% - 60px) 0px!important;
+	}
+}
+
+.commissioners{
+	
+	.red_pics{
+		width: 100%;
+		.image{
+			width: 66px;
+			margin: 0 auto;
+			padding: 0px 0px 20px;
+
+			img{
+				width: 66px;
+				height: auto;
+			}
+		}
+
+		.faq{
+			@media only screen and (max-width: 1359px) {
+				padding: 0px 15px;
+			}
+
+			p{
+				margin: 0 0 3px;
+				font-size: 24px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+			}
+		}		
+	}
+}
+
+.pricing_text{
+	padding: 40px 115px 40px;
+	
+	@media only screen and (max-width: 1079px) {
+		padding: 40px 45px 40px;
+	}	
+	@media only screen and (max-width: 809px) {
+		padding: 40px 15px 40px;
+	}	
+
+	.header_half{
+		width: 30%;
+		float: left;
+
+		@media only screen and (max-width: 809px) {
+			width: 100%;
+		}	
+
+		h1{
+			font-size: 24px;
+			color: #212121;
+			text-align: right;
+			margin: 0px 0px 10px;
+			width:100%;
+			padding-right: 30px;
+			
+			@media only screen and (max-width: 809px) {
+				text-align: center;
+				padding: 0px!important;
+			}	
+		}
+
+		.custom_hr{
+			width: 60px;
+		    height: 3px;
+		    float: right;
+		    background: #ef5350;
+			margin: 10px 31px 20px 0px;
+			@media only screen and (max-width: 809px) {
+				margin: 10px calc(50% - 30px) 20px;
+			}	    
+		}		
+	}
+
+	.blob_half{
+		width: 70%;
+		float: left;
+
+		@media only screen and (max-width: 809px) {
+			width: 100%;
+		}	
+
+		p{
+			text-align: justify;
+			font-size: 16px;
+			padding-left: 30px;
+			color: rgba(0,0,0,.54);
+			margin-bottom: 0px;
+
+			@media only screen and (max-width: 809px) {
+				padding: 0px 15px!important;
+			}		
+		}
+	}
+}
+
+.pricing{
+	top: -32px!important;
+
+	.pricing_pictures{
+
+		@media only screen and (max-width: 959px) {
+		    width: 300px!important;
+		    padding: 10px 15px 50px!important; 	
+		}
+
+		.pricing_image_left,
+		.pricing_image_center,
+		.pricing_image_right{
+
+			@media only screen and (max-width: 959px) {
+			    width: 270px!important;
+			    margin: 20px 0px!important;
+			    padding: 0px 15px!important;
+			}	
+
+			img{
+				width: 54px;
+				margin: 20px calc(50% - 27px);
+			}
+		
+			.custom_hr{
+				width: 30px;
+			    height: 2px;
+			    margin: 20px calc(50% - 15px) 20px;
+			    background: #ef5350;
+			}
+		
+			.social_label{
+				color: #212121;
+				font-weight: 500;
+				font-size: 24px;
+				width: 100%!important;
+			}
+
+			p{
+				width: 210px;
+				margin: 0 auto;
+				font-size: 18px;
+				text-align: center;
+				color: rgba(0,0,0,.6);
+				line-height: 1.8;
+			}
+
+			.ends{
+				margin-bottom: 20px;
+			}
+
+			.red_number{
+				font-size: 24px;
+				font-weight: 500;
+				color: #ef5653;
+		    	font-weight: 700;
+			}
+		}
+
+		.pricing_image_center{
+			border-left: 1px solid #e0e0e0;
+			border-right: 1px solid #e0e0e0;
+			@media only screen and (max-width: 809px) {
+		    	border-left: none!important;
+				border-right: none!important;
+			}	
+		}
+
+		.separator{
+			width: 960px;
+		    height: 2px;
+		    background: #e0e0e0;
+		    margin: 0px calc(50% - 480px);
+			@media only screen and (max-width: 1359px) {
+		    	width: 960px;
+			    margin: 0px calc(50% - 480px);
+			}	
+
+			@media only screen and (max-width: 809px) {
+		    	display: none!important;
+			}	
+
+
+		}
+	}
+}
+
+.white_button{
+
+	p{
+		padding: 38px 0px 70px!important;
+	}
+}
+
+.mvp{
+	padding: 48px 0px 48px!important;
+	width: 100%;
+	margin: 0 auto;
+	
+	.red_pics{
+		width: 100%;
+		.image{
+			width: 40px;
+			margin: 0 auto;
+			padding: 0px 0px 30px;
+
+			img{
+				width: 40px;
+				height: auto;
+			}
+		}
+
+		.faq{
+			p{
+				margin: 0 0 3px;
+				font-size: 16px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+			}
+			.red{
+				color: #ef5350!important;
+			}
+		}		
+	}
+}
+
+.pricing, .strategy{
+	@media only screen and (max-width: 1359px) {
+		max-width: 960px!important;
+    	width: 960px!important;
+    	margin: 0 calc(50% - 480px)!important;
+	}	
+	@media only screen and (max-width: 809px) {
+		max-width: 300px!important;
+    	width: 300px!important;
+    	margin: 0 calc(50% - 150px)!important;
+	}	
+}

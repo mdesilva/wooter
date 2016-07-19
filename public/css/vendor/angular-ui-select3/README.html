@@ -1,0 +1,117 @@
+<h1 id="ui-select2-build-status-https-travis-ci-org-angular-ui-ui-select2-png-https-travis-ci-org-angular-ui-ui-select2-">ui-select2   <a href="https://travis-ci.org/angular-ui/ui-select2"><img src="https://travis-ci.org/angular-ui/ui-select2.png" alt="Build Status"></a></h1>
+<p>This directive allows you to enhance your select elements with behaviour from the <a href="http://ivaynberg.github.io/select2/">select2</a> library.</p>
+<h1 id="requirements">Requirements</h1>
+<ul>
+<li><a href="http://angularjs.org/">AngularJS</a></li>
+<li><a href="http://jquery.com/">JQuery</a></li>
+<li><a href="http://ivaynberg.github.io/select2/">Select2</a></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>Install <strong>Karma</strong>, <strong>Grunt</strong> and <strong>Bower</strong>
+<code>$ npm install -g karma grunt-cli bower</code></li>
+<li>Install development dependencies
+<code>$ npm install</code></li>
+<li>Install components
+<code>$ bower install</code></li>
+<li>???</li>
+<li>Profit!</li>
+</ol>
+<h2 id="testing">Testing</h2>
+<p>We use <a href="http://gruntjs.com/">Grunt</a> to check for JavaScript syntax errors and execute all unit tests. To run Grunt, simply execute:</p>
+<p><code>$ grunt</code></p>
+<p>This will lint and test the code, then exit. To have Grunt stay open and automatically lint and test your files whenever you make a code change, use:</p>
+<p><code>$ grunt karma:server watch</code></p>
+<p>This will start a Karma server in the background and run unit tests in Firefox and PhantomJS whenever the source code or spec file is saved.</p>
+<h1 id="usage">Usage</h1>
+<p>We use <a href="https://github.com/bower/bower">bower</a> for dependency management. Install AngularUI Select2 into your project by running the command</p>
+<p><code>$ bower install angular-ui-select2</code></p>
+<p>If you use a <code>bower.json</code> file in your project, you can have Bower save ui-select2 as a dependency by passing the <code>--save</code> or <code>--save-dev</code> flag with the above command.</p>
+<p>This will copy the ui-select2 files into your <code>bower_components</code> folder, along with its dependencies. Load the script files in your application:</p>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;bower_components/select2/select2.css&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/jquery/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/select2/select2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/angular-ui-select2/src/select2.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>(Note that <code>jquery</code> must be loaded before <code>angular</code> so that it doesn&#39;t use <code>jqLite</code> internally)</p>
+<p>Add the select2 module as a dependency to your application module:</p>
+<pre><code class="lang-javascript">var myAppModule = angular.module(&#39;MyApp&#39;, [&#39;ui.select2&#39;]);
+</code></pre>
+<p>Apply the directive to your form elements:</p>
+<pre><code class="lang-html">&lt;select ui-select2 ng-model=&quot;select2&quot; data-placeholder=&quot;Pick a number&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;&lt;/option&gt;
+    &lt;option value=&quot;one&quot;&gt;First&lt;/option&gt;
+    &lt;option value=&quot;two&quot;&gt;Second&lt;/option&gt;
+    &lt;option value=&quot;three&quot;&gt;Third&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h2 id="options">Options</h2>
+<p>All the select2 options can be passed through the directive. You can read more about the supported list of options and what they do on the <a href="http://ivaynberg.github.com/select2/">Select2 Documentation Page</a></p>
+<pre><code class="lang-javascript">myAppModule.controller(&#39;MyController&#39;, function($scope) {
+    $scope.select2Options = {
+        allowClear:true
+    };
+});
+</code></pre>
+<pre><code class="lang-html">&lt;select ui-select2=&quot;select2Options&quot; ng-model=&quot;select2&quot;&gt;
+    &lt;option value=&quot;one&quot;&gt;First&lt;/option&gt;
+    &lt;option value=&quot;two&quot;&gt;Second&lt;/option&gt;
+    &lt;option value=&quot;three&quot;&gt;Third&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<p>Some time it may make sense to specify the options in the template file.</p>
+<pre><code class="lang-html">&lt;select ui-select2=&quot;{ allowClear: true}&quot; ng-model=&quot;select2&quot;&gt;
+    &lt;option value=&quot;one&quot;&gt;First&lt;/option&gt;
+    &lt;option value=&quot;two&quot;&gt;Second&lt;/option&gt;
+    &lt;option value=&quot;three&quot;&gt;Third&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h2 id="working-with-ng-model">Working with ng-model</h2>
+<p>The ui-select2 directive plays nicely with ng-model and validation directives such as ng-required.</p>
+<p>If you add the ng-model directive to same the element as ui-select2 then the picked option is automatically synchronized with the model value.</p>
+<h2 id="working-with-dynamic-options">Working with dynamic options</h2>
+<p><code>ui-select2</code> is incompatible with <code>&lt;select ng-options&gt;</code>. For the best results use <code>&lt;option ng-repeat&gt;</code> instead.</p>
+<pre><code class="lang-html">&lt;select ui-select2 ng-model=&quot;select2&quot; data-placeholder=&quot;Pick a number&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;&lt;/option&gt;
+    &lt;option ng-repeat=&quot;number in range&quot; value=&quot;{{number.value}}&quot;&gt;{{number.text}}&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h2 id="working-with-placeholder-text">Working with placeholder text</h2>
+<p>In order to properly support the Select2 placeholder, create an empty <code>&lt;option&gt;</code> tag at the top of the <code>&lt;select&gt;</code> and either set a <code>data-placeholder</code> on the select element or pass a <code>placeholder</code> option to Select2.</p>
+<pre><code class="lang-html">&lt;select ui-select2 ng-model=&quot;number&quot; data-placeholder=&quot;Pick a number&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;&lt;/option&gt;
+    &lt;option value=&quot;one&quot;&gt;First&lt;/option&gt;
+    &lt;option value=&quot;two&quot;&gt;Second&lt;/option&gt;
+    &lt;option value=&quot;three&quot;&gt;Third&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h2 id="ng-required-directive">ng-required directive</h2>
+<p>If you apply the required directive to element then the form element is invalid until an option is selected.</p>
+<p>Note: Remember that the ng-required directive must be explicitly set, i.e. to &quot;true&quot;.  This is especially true on divs:</p>
+<pre><code class="lang-html">&lt;select ui-select2 ng-model=&quot;number&quot; data-placeholder=&quot;Pick a number&quot; ng-required=&quot;true&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;&lt;/option&gt;
+    &lt;option value=&quot;one&quot;&gt;First&lt;/option&gt;
+    &lt;option value=&quot;two&quot;&gt;Second&lt;/option&gt;
+    &lt;option value=&quot;three&quot;&gt;Third&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h2 id="using-simple-tagging-mode">Using simple tagging mode</h2>
+<p>When AngularJS View-Model tags are stored as a list of strings, setting
+the ui-select2 specific option <code>simple_tags</code> will allow to keep the model
+as a list of strings, and not convert it into a list of Select2 tag objects.</p>
+<pre><code class="lang-html">&lt;input
+    type=&quot;text&quot;
+    ui-select2=&quot;select2Options&quot;
+    ng-model=&quot;list_of_string&quot;
+    &gt;
+</code></pre>
+<pre><code class="lang-javascript">myAppModule.controller(&#39;MyController&#39;, function($scope) {
+    $scope.list_of_string = [&#39;tag1&#39;, &#39;tag2&#39;]
+    $scope.select2Options = {
+        &#39;multiple&#39;: true,
+        &#39;simple_tags&#39;: true,
+        &#39;tags&#39;: [&#39;tag1&#39;, &#39;tag2&#39;, &#39;tag3&#39;, &#39;tag4&#39;]  // Can be empty list.
+    };
+});
+</code></pre>

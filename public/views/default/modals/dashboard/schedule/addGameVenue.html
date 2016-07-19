@@ -1,0 +1,107 @@
+<md-dialog aria-label="Add venue modal" id="add-venue-modal" class="dialog-page add-venue">
+    <form action="#" ng-submit="addGameVenueInModal(addVenueForm)" onsubmit="return false;" novalidate name="addVenueForm">
+        <md-dialog-content>
+            <md-content>
+                <p class="md-title">Add Venue <md-button ng-click="closeModal()" class="md-icon-button"><md-icon>close</md-icon></md-button></p>
+
+                <div class="form">
+                    <div class="row" layout="row">
+                        <div flex="">
+                            <md-input-container class="md-block">
+                                <input type="text" ng-model="$addVenue.game_venue.location.name" name="name" required placeholder="Facility Name">
+                                <div ng-messages="addVenueForm['name'].$error">
+                                    <div ng-message="required">Name is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="row" layout="row">
+                        <div flex="">
+                            <md-input-container class="md-block">
+                                <input type="text" ng-model="$addVenue.game_venue.location.street" name="street" required placeholder="Street Address">
+                                <div ng-messages="addVenueForm['street'].$error">
+                                    <div ng-message="required">Street is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="row" layout="row">
+                        <div flex="">
+                            <md-select-container class="md-block">
+                                <md-select class="country" ng-model="$addVenue.game_venue.location.country_id" name="country" required placeholder="Country">
+                                    <md-option ng-repeat="country in countries" value="{{country.id}}" ng-selected="{{ country.id === defaultCountry ? 'true' : 'false' }}">{{country.name}}</md-option>
+                                </md-select>
+                                <div ng-messages="addVenueForm['country'].$error">
+                                    <div ng-message="required">Country is required.</div>
+                                </div>
+                            </md-select-container>
+                        </div>
+                    </div>
+                    <div class="row" layout="row">
+                        <div flex="30">
+                            <md-input-container class="md-block">
+                                <input type="text" ng-model="$addVenue.game_venue.location.city_name" name="city_name" required placeholder="City">
+                                <div ng-messages="addVenueForm['city_name'].$error">
+                                    <div ng-message="required">City is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div flex="20">
+                            <md-input-container class="md-block">
+                                <input type="text" ng-model="$addVenue.game_venue.location.flat" placeholder="Flat">
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block">
+                                <input type="text" mask="@@" clean="true" ng-model="$addVenue.game_venue.location.state" placeholder="State">
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block">
+                                <input type="text" mask="99999" clean="true" required ng-model="$addVenue.game_venue.location.zip" name="zip" placeholder="Zip Code">
+                                <div ng-messages="addVenueForm['zip'].$error">
+                                    <div ng-message="required">Zip is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div class="row" layout="row" layout-align="start center">
+                        <div flex="75">
+                            <p>How many courts at this facility?</p>
+                        </div>
+                        <div flex="25">
+                            <md-select-container class="md-block">
+                                <label style="display: none !important;">NO.</label>
+                                <md-select ng-model="$addVenue.game_venue.number_of_courts" name="number_of_courts">
+                                    <md-option ng-repeat="a in range(1, 10)" value="{{a}}">{{a}}</md-option>
+                                </md-select>
+                            </md-select-container>
+                        </div>
+                    </div>
+                </div>
+            </md-content>
+
+        </md-dialog-content>
+        <md-dialog-actions>
+            <md-button ng-click="hideModal()">Cancel</md-button>
+            <md-button type="submit" class="md-primary">Add</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
+
+<style>
+    #add-venue-modal {
+        width : 500px;
+    }
+    
+    #add-venue-modal md-content {
+        padding : 15px;
+    }
+    
+    .country .md-select-value , md-select.country.ng-invalid.ng-dirty .md-select-value {
+        color: #555 !important;
+        border-bottom: 1px solid !important;
+        border-bottom-color: rgba(0,0,0,0.12) !important;
+    }
+</style>

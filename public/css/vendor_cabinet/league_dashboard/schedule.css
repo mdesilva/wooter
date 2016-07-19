@@ -1,0 +1,132 @@
+.main {
+  font-family: 'Roboto';
+  background-color: #f2f2f2;
+}
+
+.main .md-fab {
+  background-color: #EF5350;
+}
+
+.main .md-button.md-fab:not([disabled]):hover {
+  background-color: #EF5350;
+}
+
+.main .new_teambtn {
+  color: #EF5350;
+}
+
+.hero_header {
+  color: #fff;
+  background-color: #024F7E;
+}
+
+.hero_header p {
+  opacity: 0.7;
+}
+
+.hero_header .leagueHead {
+  height: calc(162px - 48px);
+  max-width: 1280px;
+  width: 100%;
+}
+
+.main_tabs {
+  background-color: #024F7E;
+}
+
+.main_tabs .vendor_tabs {
+  max-width: 1280px;
+}
+
+.main_tabs .vendor_tabs .md-tab {
+  color: rgba(255, 255, 255, 0.702);
+}
+
+.main_tabs .vendor_tabs .md-tab .md-active {
+  color: white;
+}
+
+.schedule_content {
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  overflow: visible;
+}
+
+.schedule_content md-list {
+  background-color: #fff;
+  padding: 0;
+  box-shadow: 0px 2px 7.84px 0.16px rgba(0, 0, 0, 0.16);
+}
+
+.schedule_content md-input-container {
+  font-size: 16px;
+  margin: 0;
+}
+
+.schedule_content md-select-value, .schedule_content md-select.md-default-theme:not([disabled]):focus .md-select-value, .schedule_content md-select:not([disabled]):focus .md-select-value {
+  border: none;
+  text-transform: capitalize;
+}
+
+.schedule_content md-checkbox.md-default-theme.md-checked .md-ink-ripple, .schedule_content md-checkbox.md-checked .md-ink-ripple {
+  color: #EF5350 !important;
+}
+
+.separator {
+  height: 32px;
+  width: 1px;
+  display: inline-block;
+  padding: 0 !important;
+  background: #e0e0e0;
+  margin: 0 12px;
+}
+
+.schedule_tabs .md-tab.md-active {
+  color: rgba(0, 0, 0, 0.871);
+  background-color: #fff;
+  box-shadow: 0px 6px 9.4px 0.6px rgba(0, 0, 0, 0.24);
+}
+
+.schedules_list {
+  font-family: "Roboto";
+  text-transform: capitalize;
+}
+
+.schedules_list .schedule_date {
+  display: flex;
+  margin: 16px 0;
+  padding: 0 16px;
+  background-color: #f2f2f2;
+}
+
+.schedules_list .schedule_date p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.541);
+}
+
+.schedules_list .time {
+  text-transform: capitalize;
+  opacity: 0.541;
+  font-size: 16px;
+}
+
+.schedules_list .league_img {
+  width: 24px !important;
+  height: 24px !important;
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.schedules_list .md-secondary {
+  width: 24px;
+}
+
+.schedules_list .location {
+  opacity: 0.541;
+  font-size: 16px;
+}
+
+md-tab-item span {
+  width: 100px;
+}

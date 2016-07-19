@@ -1,0 +1,35 @@
+<style>
+ 
+.inner .reset{   
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    font-size: 24px;
+}
+
+.inner .custom_hr{
+    width: 70%;
+    margin: 6% 15% 2%;
+    height: 1.5px;
+    background: white;
+}
+
+</style>
+
+<div class="fullpage exc" layout="column" ng-cloak>
+    <div layout="row" class="fullpage exc" layout-align-xs="center start" layout-align-gt-xs="center center">
+        <div md-theme="auth-form" class="loginForm md-whiteframe-7dp form" flex-xs="100" flex-gt-xs="50" style='min-height: auto!important; padding: 10px 0px 20px;'>
+            <div class="inner">
+                <h1 class='reset'>Reset Password</h1>
+                <div class="custom_hr"></div>
+                <form ng-submit="loginForm.submitHandler()" autocomplete="off" ng-cloak>
+                    <formly-form model="loginForm.model" fields="loginForm.fields" novalidate ng-cloak>
+                        <div layout="row" layout-align="end">
+                            <md-button id="login-button" type="submit" class="top-space submit full-btn no-margin">Reset Password</md-button>
+                        </div>
+                    </formly-form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

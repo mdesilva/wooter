@@ -1,0 +1,58 @@
+<md-dialog aria-label="Add time slot modal" class="dialog-page add-venue">
+    <form action="#" ng-submit="addPrice(addPriceForm)" onsubmit="return false;" novalidate name="addPriceForm">
+        <md-dialog-content>
+            <md-content>
+                <p ng-if='$addPrice.edit === false' class="md-title">Add Price <md-button ng-click="closeModal()" class="md-icon-button"><md-icon>close</md-icon></md-button></p>
+                <p ng-if='$addPrice.edit === true' class='md-title'>Edit Price <md-button ng-click='closeModal()' class='md-icon-button'><md-icon>close</md-icon></md-button></p>
+
+                <div class="form">
+                    <div class="row" style="margin: 0 !important;" layout-xs="column" layout-gt-xs="row">
+                        <div flex-xs="100" flex-gt-xs="60">
+                            <md-input-container class="md-block">
+                                <label>Price Name</label>
+                                <input type="text" ng-model="$addPrice.name" name="name" required>
+                                <div class="hint" ng-if="count(addPriceForm['name'].$error) == 0 && addPriceForm['name'].$touched || addPriceForm['name'].$untouched">eg: Returning team</div>
+                                <div ng-messages="addPriceForm['name'].$error">
+                                    <div ng-message="required">Price Name is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div flex-xs="100" flex-gt-xs="40">
+                            <md-input-container class="md-block">
+                                <label>Price</label>
+                                <md-icon>attach_money</md-icon>
+                                <input type="text" ng-model="$addPrice.price" name="price" required>
+                                <div ng-messages="addPriceForm['price'].$error">
+                                    <div ng-message="required">Price is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class='row' style="margin: 0 !important;" layout-xs="column" layout-gt-xs="row">
+                        <div flex-xs="100" flex-gt-xs="60">
+                            <md-input-container class="md-block">
+                                <label>Description</label>
+                                <input type='text' ng-model='$addPrice.description' name='description'>
+                            </md-input-container>
+                        </div>
+                        <div flex-xs="100" flex-gt-xs="40">
+                            <md-input-container class="md-block">
+                                <label>URL</label>
+                                <input type='text' ng-model='$addPrice.url' name='url'>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        
+                    </div>
+                </div>
+            </md-content>
+
+        </md-dialog-content>
+        <md-dialog-actions>
+            <md-button ng-click="closeModal()">Cancel</md-button>
+            <md-button ng-if="$addPrice.edit === false" type="submit" class="md-primary">Add</md-button>
+            <md-button ng-if="$addPrice.edit === true" type='submit' class='md-primary'>Save Changes</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,24 @@
+<div id="team-logo-editor">
+    <div ng-show="show_main">
+        <h1>Change Cover Photo</h1>
+        <img src="{{img}}">
+
+        <form id="edit-logo-form">
+            <div>
+                <input type="file">
+            </div>
+            <div>
+                <button id="edit-logo-submit" ng-click="editLogo(); show_main = !show_main">Submit</button>
+            </div>
+            <div>
+                <button id="team-logo-cancel" ng-click="hideModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="edit-logo-success" ng-show="!show_main">
+        <p>Success!</p>
+        <button id="logo-editor-close-btn" ng-click="hideModal(); show_main = !show_main">Close</button>
+    </div>
+    
+</div>

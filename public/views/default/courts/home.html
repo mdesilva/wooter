@@ -1,0 +1,79 @@
+<div class="row map-holder relative-position">
+  <div class="col-md-4 col-xs-12 map-holder pad-right-0" ng-hide="home.mapHidden">
+    <leaflet defaults="home.map.defaults" center="home.map.center" markers="home.map.markers" height="100%" width="100%"></leaflet>
+  </div>
+  <div class="col-xs-12 item-list-view pad-right-0" ng-class="{'col-md-8': !home.mapHidden, 'col-md-12': home.mapHidden}">
+    <div class="row">
+      <div class="breadcrumb-holder">
+        <span class="pull-right text-normal text-cursor-pointer margin-right-10 margin-top-10" ng-click="home.mapHidden = !home.mapHidden">
+          {{!home.mapHidden ? 'Hide': 'Show'}} Map
+        </span>
+        <ol class="breadcrumb">
+          <li>City</li>
+          <li ng-class="{'active': !home.selectedItem, 'text-cursor-pointer': home.selectedItem}" ng-click="home.selectedItem = undefined;">{{home.city}}</li>
+          <li class="active" ng-show="home.selectedItem">{{home.selectedItem.name}}</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row" ng-hide="home.selectedItem">
+      <div class="col-xs-12 filter-box">
+        <ul class="list-inline">
+          <li>
+            <label class="text-muted text-bold">Text</label>
+            <input placeholder="Search for item" class="form-control" ng-model="home.searchObj.searchText"/>
+          </li>
+          <li>
+            <span class="pull-right text-small text-muted">
+              <span ng-click="home.toggleAgeGroupSelection(1)" ng-class="{'text-cursor-pointer text-primary': !home.searchObj.selectAgeGroup}">Selection</span> |
+              <span ng-click="home.toggleAgeGroupSelection(2)" ng-class="{'text-cursor-pointer text-primary': !home.searchObj.selectAgeRange}">Range</span>
+            </span>
+            <label class="text-muted text-bold">Age Group</label>
+            <div ng-show="home.searchObj.selectAgeGroup">
+              <ui-select multiple ng-model="home.searchObj.selectedAgeGroup" style="width: 175px;">
+                <ui-select-match placeholder="Select Age Group(s)">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="ageGroup in home.ageGroups | filter: $select.search">
+                  <span ng-bind-html="ageGroup.name | highlight: $select.search"></span>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+            <div class="form-inline" ng-show="home.searchObj.selectAgeRange">
+              <input placeholder="From" class="form-control small-range-box" ng-model="home.searchObj.fromAge"/> to
+              <input placeholder="To" class="form-control small-range-box" ng-model="home.searchObj.toAge"/>
+            </div>
+          </li>
+          <li>
+            <label class="text-muted text-bold">Gender</label>
+            <ui-select ng-model="home.searchObj.selectedGender" style="width: 175px;">
+              <ui-select-match placeholder="Select Gender">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="gender in home.genders | filter: $select.search">
+                <span ng-bind-html="gender.name | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </li>
+          <li>
+            <label class="text-muted text-bold">Distance</label>
+            <ui-select ng-model="home.searchObj.selectedDistance" style="width: 175px;">
+              <ui-select-match allow-clear="true" placeholder="Select Distance">
+                {{$select.selected.name}}
+              </ui-select-match>
+              <ui-select-choices repeat="distance in home.distances | filter: $select.search">
+                <span ng-bind-html="distance.name | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row items-holder" ng-hide="home.selectedItem">
+      <div class="col-xs-12 text-right pad-right-5">
+        <span class="text-muted">Total {{home.items ? home.items.length : 0}} Items</span>
+      </div>
+      <div class="col-xs-12 pad-5"  ng-class="{'col-md-6': !home.mapHidden, 'col-md-4': home.mapHidden}" ng-repeat="item in (home.filteredItems = (home.items | ItemFilter:home.searchObj:['name','slug', 'timezone']))">
+        <w-item ng-click="home.selectedItem = item;" ng-model="item" is-details="false"/>
+      </div>
+    </div>
+    <div class="row items-details-view" ng-show="home.selectedItem">
+      <w-item ng-model="home.selectedItem" is-details="true"/>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1317 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: Dashboard/videos styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+/**
+ * Profile default sizes
+ */
+/**
+ * Retrieves a color value from the $material-colors Sass map
+ * Inspired by https://github.com/nilskaspersson/Google-Material-UI-Color-Palette/
+ *
+ * @function
+ * @param {string} color-name             - quoted, lower-case, dasherized color
+ *                                          name (e.g. 'pink', 'amber')
+ * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
+ *                                          '200', 'a100')
+ */
+/*! 
+ * angular-loading-bar v0.8.0
+ * https://chieffancypants.github.io/angular-loading-bar
+ * Copyright (c) 2015 Wes Cruver
+ * License: MIT
+ */
+/* Make clicks pass-through */
+#loading-bar,
+#loading-bar-spinner {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  -webkit-transition: 350ms linear all;
+  -moz-transition: 350ms linear all;
+  -o-transition: 350ms linear all;
+  transition: 350ms linear all;
+}
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active,
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave,
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave {
+  opacity: 1;
+}
+
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+  background: #29d;
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  -moz-box-shadow: #29d 1px 0 6px 1px;
+  -ms-box-shadow: #29d 1px 0 6px 1px;
+  -webkit-box-shadow: #29d 1px 0 6px 1px;
+  box-shadow: #29d 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+#loading-bar-spinner {
+  display: block;
+  position: fixed;
+  z-index: 10002;
+  top: 10px;
+  left: 10px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation: loading-bar-spinner 400ms linear infinite;
+  -ms-animation: loading-bar-spinner 400ms linear infinite;
+  -o-animation: loading-bar-spinner 400ms linear infinite;
+  animation: loading-bar-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes loading-bar-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes loading-bar-spinner {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes loading-bar-spinner {
+  0% {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes loading-bar-spinner {
+  0% {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/*
+ * Created by Dumitrana Alinus.
+ * User: alin.designstudio
+ * For: Dashboard/players styles
+ * License: Wooter LLC.
+ * Date: 2016.02.11
+ * Description: Dashboard player styles
+ *
+ */
+/**
+ * Profile default sizes
+ */
+/**
+ * Retrieves a color value from the $material-colors Sass map
+ * Inspired by https://github.com/nilskaspersson/Google-Material-UI-Color-Palette/
+ *
+ * @function
+ * @param {string} color-name             - quoted, lower-case, dasherized color
+ *                                          name (e.g. 'pink', 'amber')
+ * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
+ *                                          '200', 'a100')
+ */
+/*! 
+ * angular-loading-bar v0.8.0
+ * https://chieffancypants.github.io/angular-loading-bar
+ * Copyright (c) 2015 Wes Cruver
+ * License: MIT
+ */
+/* Make clicks pass-through */
+#loading-bar,
+#loading-bar-spinner {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  -webkit-transition: 350ms linear all;
+  -moz-transition: 350ms linear all;
+  -o-transition: 350ms linear all;
+  transition: 350ms linear all;
+}
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active,
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave,
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave {
+  opacity: 1;
+}
+
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+  background: #29d;
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  -moz-box-shadow: #29d 1px 0 6px 1px;
+  -ms-box-shadow: #29d 1px 0 6px 1px;
+  -webkit-box-shadow: #29d 1px 0 6px 1px;
+  box-shadow: #29d 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+#loading-bar-spinner {
+  display: block;
+  position: fixed;
+  z-index: 10002;
+  top: 10px;
+  left: 10px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation: loading-bar-spinner 400ms linear infinite;
+  -ms-animation: loading-bar-spinner 400ms linear infinite;
+  -o-animation: loading-bar-spinner 400ms linear infinite;
+  animation: loading-bar-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes loading-bar-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes loading-bar-spinner {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes loading-bar-spinner {
+  0% {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes loading-bar-spinner {
+  0% {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/*
+ * Created by Alinus
+ * User: alin.designstudio
+ * For: dashboard/styles
+ * License: Wooter LLC.
+ * Date: 2016.02.11
+ * Description: here are stored all shared styles into dashboard styles
+ *
+ */
+html, body {
+  background: #eee;
+}
+
+@media only screen and (max-width: 959px) {
+  .mobile_hidden_959 {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile_hidden_600 {
+    display: none !important;
+  }
+}
+
+.md-body-2 {
+  font-size: 16px !important;
+}
+
+@media only screen and (min-width: 1366px) {
+  .container {
+    width: 1080px !important;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .container {
+    width: 600px !important;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .container {
+    width: 100% !important;
+  }
+}
+
+md-sidenav {
+  z-index: 20 !important;
+}
+
+#dashboardHeader {
+  background: #303030;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+}
+
+#dashboardHeader .info {
+  padding: 27px 0;
+}
+
+#dashboardHeader .info .league-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+#dashboardHeader .info .league-subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#dashboardHeader .nav-bar {
+  position: relative;
+}
+
+#dashboardHeader .nav-bar:after, #dashboardHeader .nav-bar:before {
+  display: table;
+  content: " ";
+}
+
+#dashboardHeader .nav-bar:after {
+  clear: both;
+}
+
+#dashboardHeader .nav-bar ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+#dashboardHeader .nav-bar ul:after, #dashboardHeader .nav-bar ul:before {
+  display: table;
+  content: " ";
+}
+
+#dashboardHeader .nav-bar ul:after {
+  clear: both;
+}
+
+#dashboardHeader .nav-bar ul li {
+  line-height: 0 !important;
+  margin: 0 15px;
+  float: left;
+}
+
+#dashboardHeader .nav-bar ul li > .md-button {
+  line-height: 48px !important;
+  padding: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  min-width: 0 !important;
+  min-height: 48px !important;
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid transparent;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  transition: all 300ms;
+}
+
+#dashboardHeader .nav-bar ul li > .md-button:hover {
+  background: transparent;
+  color: #fff;
+  border-bottom-color: #ef5350;
+}
+
+#dashboardHeader .nav-bar ul li > .md-button .md-ripple-container {
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+#dashboardHeader .nav-bar ul li.active .md-button {
+  color: #fff;
+  border-bottom-color: #ef5350;
+}
+
+@media only screen and (max-width: 959px) {
+  #dashboardHeader .nav-bar ul {
+    width: 100%;
+    margin: 0 !important;
+  }
+  #dashboardHeader .nav-bar ul li {
+    width: 50%;
+    text-align: center;
+    margin: 0 !important;
+  }
+  #dashboardHeader .nav-bar ul li .md-button {
+    text-align: center;
+  }
+}
+
+#dashboardHeader .nav-bar .left {
+  float: left;
+  display: inline-block;
+  min-width: 800px;
+}
+
+#dashboardHeader .nav-bar .left ul {
+  margin-left: -12px !important;
+}
+
+@media only screen and (max-width: 959px) {
+  #dashboardHeader .nav-bar .left {
+    width: 100%;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+  #dashboardHeader .nav-bar .left ul {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}
+
+#dashboardHeader .nav-bar .left .separator {
+  height: 17px;
+  width: 2px;
+  display: inline-block;
+  padding: 0 !important;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 16px 12px;
+}
+
+@media only screen and (max-width: 959px) {
+  #dashboardHeader .nav-bar .left .separator {
+    margin-left: 35px;
+    margin-right: 12px;
+  }
+}
+
+#dashboardHeader .nav-bar .right {
+  float: right;
+  padding-left: 100px;
+}
+
+@media only screen and (max-width: 959px) {
+  #dashboardHeader .nav-bar .right {
+    width: 100%;
+    float: none;
+    padding-left: 0 !important;
+  }
+}
+
+#dashboardHeader .nav-bar .right .fab-button {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 72px;
+  height: 72px;
+}
+
+@media only screen and (max-width: 959px) {
+  #dashboardHeader .nav-bar .right .fab-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    left: auto;
+    top: auto;
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+#dashboardHeader .nav-bar .right .fab-button .md-trigger {
+  margin: 0 !important;
+  line-height: 56px !important;
+  height: 56px !important;
+  width: 56px !important;
+  -webkit-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+  -ms-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+}
+
+#dashboardHeader .nav-bar .right .fab-button .md-trigger md-icon {
+  font-size: 22px !important;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  transition: all 300ms;
+}
+
+#dashboardHeader .nav-bar .right .fab-button .md-trigger:hover {
+  background: #fff;
+}
+
+#dashboardHeader .nav-bar .right .fab-button .md-trigger:hover md-icon {
+  color: #ef5350;
+}
+
+#dashboardHeader .nav-bar .right .fab-button md-fab-actions {
+  pointer-events: none !important;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  transition: all 300ms;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+#dashboardHeader .nav-bar .right .fab-button md-fab-actions md-icon {
+  color: #ef5350 !important;
+}
+
+#dashboardHeader .nav-bar .right .fab-button md-fab-speed-dial {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+@media only screen and (max-width: 959px) {
+  #dashboardHeader .nav-bar .right .fab-button md-fab-speed-dial {
+    bottom: 0;
+    top: auto;
+  }
+}
+
+#dashboardHeader .nav-bar .right .fab-button md-fab-speed-dial.md-is-open md-fab-actions {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  pointer-events: all !important;
+}
+
+#dashboardHeader .nav-bar .right .view-controls {
+  float: left;
+}
+
+@media only screen and (max-width: 959px) {
+  #dashboardHeader .nav-bar .right .view-controls {
+    width: 100%;
+    float: none;
+  }
+}
+
+body, html {
+  background: #eeeeee;
+}
+
+.players-content {
+  margin-bottom: 0%;
+  z-index: 2;
+  position: relative;
+}
+
+@media only screen and (max-width: 959px) {
+  .players-content {
+    padding: 0 !important;
+  }
+}
+
+.players-content md-content {
+  overflow: hidden !important;
+}
+
+.players-content md-content > .header {
+  background: #f5f5f5;
+  color: #212121;
+  text-align: center;
+  padding: 12px 0;
+  margin: 0;
+}
+
+.players-content md-content > .header p {
+  width: 100%;
+  text-align: center;
+  margin: 0 !important;
+}
+
+.players-content md-content > .header md-menu {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.players-content md-content .filter_borders {
+  border-bottom-width: 0px !important;
+}
+
+.players-content md-content .hidden_filters {
+  border-top-width: 0px !important;
+}
+
+@media only screen and (max-width: 959px) {
+  .players-content md-content .hidden_filters {
+    height: 120px !important;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .players-content md-content .hidden_filters {
+    height: 180px !important;
+  }
+}
+
+.players-content md-content .controls {
+  padding: 7px 0;
+  border-color: #e0e0e0;
+  border-style: solid;
+  border-width: 1px 0;
+  height: 48px;
+  background-color: #f5f5f5;
+}
+
+.players-content md-content .controls .filters md-input-container {
+  min-height: 32px !important;
+  margin: 0 !important;
+  padding: 0 20px;
+}
+
+.players-content md-content .controls .filters md-input-container * {
+  border-color: transparent !important;
+}
+
+.players-content md-content .controls .filters .select {
+  border-right: 1px solid #e0e0e0;
+  margin-right: 12px;
+}
+
+.players-content md-content .controls .filters, .players-content md-content .controls .buttons, .players-content md-content .controls .select, .players-content md-content .controls .search {
+  max-height: 32px !important;
+}
+
+.players-content md-content .controls .md-errors-spacer {
+  display: none;
+}
+
+.players-content md-content .controls .separator {
+  height: 32px;
+  width: 1px;
+  display: inline-block;
+  padding: 0 !important;
+  background: #e0e0e0;
+  margin: 0 12px;
+}
+
+@media only screen and (max-width: 959px) {
+  .players-content md-content .controls .separator {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+
+.players-content md-content .controls .buttons {
+  text-align: right;
+  padding-right: 12px;
+}
+
+.players-content md-content .controls .search md-input-container {
+  padding-left: 32px;
+}
+
+@media only screen and (max-width: 959px) {
+  .players-content md-content .controls .search md-input-container {
+    padding-left: 44px;
+  }
+  .players-content md-content .controls .search md-input-container md-icon {
+    margin-left: 12px !important;
+  }
+}
+
+.players-content md-content .controls .search md-icon {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  transition: all 300ms;
+  line-height: 24px !important;
+  font-size: 20px !important;
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+.players-content md-content .controls .search input {
+  height: 32px;
+}
+
+.players-content md-content .controls .md-button {
+  margin: 0 !important;
+  max-height: 32px !important;
+  line-height: 32px !important;
+  font-size: 14px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.players-content md-content .controls .md-button md-icon {
+  margin-right: 6px;
+  line-height: 32px !important;
+  height: 32px !important;
+  font-size: 20px !important;
+}
+
+.players-content md-content .controls .md-button, .players-content md-content .controls .md-button md-icon {
+  color: #ef5350 !important;
+}
+
+.players-content md-content .players-list {
+  position: relative;
+  min-height: 285px;
+  max-height: 570px;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.players-content md-content .players-list .message-error {
+  text-align: center;
+  padding: 0 !important;
+}
+
+@media only screen and (max-width: 959px) {
+  .players-content md-content .players-list .message-error p {
+    line-height: 48px !important;
+  }
+}
+
+.players-content md-content .players-list md-list {
+  padding: 0 !important;
+  position: relative;
+}
+
+.players-content md-content .players-list md-list md-checkbox {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin: 0 !important;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.players-content md-content .players-list md-list .header-row {
+  background: #f5f5f5;
+}
+
+.players-content md-content .players-list md-list .header-row .md-list-item-inner {
+  min-height: 48px;
+}
+
+@media only screen and (max-width: 959px) {
+  .players-content md-content .players-list md-list .header-row .md-list-item-inner {
+    min-height: 48px !important;
+  }
+}
+
+.players-content md-content .players-list md-list .header-row .s-all {
+  display: none;
+  padding-left: 32px;
+}
+
+.players-content md-content .players-list md-list .header-row md-checkbox {
+  right: -10px !important;
+}
+
+.players-content md-content .players-list md-list md-list-item {
+  color: #9a9a9a;
+}
+
+.players-content md-content .players-list md-list md-list-item .md-list-item-inner {
+  min-height: 48px;
+  padding: 12px 24px !important;
+}
+
+@media only screen and (max-width: 599px) {
+  .players-content md-content .players-list md-list md-list-item .md-list-item-inner {
+    padding: 12px 12px !important;
+  }
+}
+
+.players-content md-content .players-list md-list md-list-item .player {
+  height: 100%;
+  position: relative;
+  padding-left: 64px !important;
+}
+
+.players-content md-content .players-list md-list md-list-item .player .img {
+  display: block;
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  margin-left: 64px !important;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+@media only screen and (max-width: 959px) {
+  .players-content md-content .players-list md-list md-list-item .player {
+    padding-left: 40px !important;
+  }
+  .players-content md-content .players-list md-list md-list-item .player .img {
+    left: 0px;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .players-content md-content .players-list md-list md-list-item .player {
+    padding-left: 40px !important;
+  }
+}
+
+/*
+ * Created by Carlos Marra.
+ * User: alin.designstudio
+ * For: Mobilization of Dashboard
+ * License: Wooter LLC.
+ * Date: 2016.04.7
+ * Description: Dashboard player mobile styles
+ *
+ */
+.checking_boxes {
+  left: 0;
+  width: 60px;
+}
+
+@media only screen and (max-width: 599px) {
+  .checking_boxes {
+    width: 20px;
+  }
+}
+
+.teams_table_info {
+  min-width: 42px;
+  padding: 0 0px 0 0 !important;
+}
+
+.team_display {
+  min-height: 56px;
+}
+
+.team_display .md-list-item-inner {
+  min-height: 56px !important;
+  padding: 12px 24px !important;
+}
+
+@media only screen and (max-width: 599px) {
+  .team_display .md-list-item-inner {
+    padding: 16px 12px !important;
+  }
+}
+
+.team_display .teams_table_name {
+  min-width: 250px;
+}
+
+.team_display .teams_table_name .team_image {
+  margin: 2px 0px;
+  margin-left: 60px;
+  width: 44px !important;
+  height: 44px !important;
+}
+
+@media only screen and (max-width: 959px) {
+  .team_display .teams_table_name .team_image {
+    margin-left: 30px;
+  }
+}
+
+.team_display .teams_table_info p {
+  font-size: 16px;
+}
+
+.team_display .teams_table_options {
+  min-width: 120px;
+  padding: 0 0px 0 0 !important;
+}
+
+@media only screen and (max-width: 959px) {
+  .team_display .teams_table_options {
+    max-width: 120px;
+  }
+}
+
+.team_display .teams_table_options .pencils {
+  width: 58px;
+  float: left;
+  padding: 2px 20px;
+}
+
+@media only screen and (max-width: 959px) {
+  .team_display .teams_table_options .pencils {
+    width: 48px;
+    padding: 2px 15px;
+  }
+}
+
+.team_display .teams_table_options .garbages {
+  width: 54px;
+  float: left;
+  padding: 2px 20px;
+}
+
+@media only screen and (max-width: 959px) {
+  .team_display .teams_table_options .garbages {
+    width: 44px;
+    padding: 2px 15px;
+  }
+}
+
+.team_display .team_name {
+  margin-left: 60px;
+  color: black;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 599px) {
+  .mobile_fits {
+    width: 145px !important;
+  }
+  .mobile_fits_video {
+    width: 120px !important;
+  }
+  .mobile_fits_cats {
+    width: 160px !important;
+  }
+  .mobile_fits_cats .switching_management.md-button.md-ink-ripple.md-wooter-black-theme {
+    padding: 0px !important;
+  }
+}
+
+.players_modals {
+  min-width: 400px;
+}
+
+.players_modals md-dialog-content .modal_header {
+  padding: 20px 0;
+}
+
+.players_modals md-dialog-content .modal_header h4 {
+  margin: 0;
+}
+
+.players_modals md-dialog-content form .modal_field md-select-value span {
+  tranform: translate3d(0, 0px, 0) !important;
+}
+
+.players_modals md-dialog-content form .modal_button_div {
+  width: 90%;
+  margin: 20px 5% 0;
+}
+
+.players_modals md-dialog-content form .modal_button_div .modal_buttons {
+  float: right;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.players_modals md-dialog-content form .modal_button_div .left_button {
+  margin-right: 5px;
+}
+
+.players_modals md-dialog-content form .modal_button_div .right_button {
+  margin-left: 5px;
+}
+
+.players_modals md-dialog-content form .modal_info .modal_field {
+  margin: 10px 0 0;
+}
+
+.player_results {
+  width: 100%;
+  overflow-x: scroll;
+  min-height: 50vh;
+}
+
+.player_results .photos {
+  width: 100%;
+  padding: 35px 40px;
+}
+
+.player_results .photos .limit {
+  width: 100%;
+}
+
+.player_results .photos .limit .images {
+  width: 100%;
+  height: 210px;
+  margin: 5px;
+  background: #eee;
+  float: left;
+  position: relative;
+}
+
+.player_results .photos .limit .images .results {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: blue;
+  z-index: 5;
+}
+
+.player_results .photos .limit .images .hovering {
+  position: absolute;
+  color: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  text-align: center;
+}
+
+.player_results .photos .limit .images .hovering .play, .player_results .photos .limit .images .hovering .delete {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 10px;
+}
+
+.player_results .photos .limit .images .hovering .play {
+  color: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  text-align: center;
+}
+
+.player_results .photos .limit .images .hovering .play i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+}
+
+.player_results .photos .limit .images .hovering .play:hover {
+  color: white;
+}
+
+.player_results .photos .limit .images .hovering .delete {
+  top: 0;
+  right: 0;
+}
+
+.player_results .photos .limit .images .hovering:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.labels {
+  width: 96%;
+  margin: 0% 2%;
+}
+
+.labels p {
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 5px;
+}
+
+.images {
+  width: 96%;
+  height: 180px;
+  margin: 4% 2%;
+  background: #eee;
+  float: left;
+  position: relative;
+}
+
+.images .results {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.images .hovering {
+  position: absolute;
+  color: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  text-align: center;
+}
+
+.images .hovering .options, .images .hovering options2 {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 10px;
+}
+
+.images .hovering .options {
+  top: 0;
+  right: 0;
+}
+
+.images .hovering .options2 {
+  top: 100%;
+  left: 0;
+  margin-top: -30px;
+}
+
+.images .hovering .options2 p {
+  float: left;
+  padding-left: 15px;
+}
+
+.images .hovering .edit, .images .hovering .delete {
+  float: right;
+}
+
+.images .hovering .delete {
+  margin: -1px 0px 0px 10px;
+}
+
+.images .hovering:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.images .bulkSelect{
+    z-index: 20;
+    top:10px;
+}
+
+.images .bulkSelect md-checkbox .md-container::before{
+    background-color: #fff;
+}
+md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple {
+  color: #ed514f !important;
+}
+
+#file {
+  display: none;
+}
+
+.inspection_modals {
+  min-width: 400px;
+}
+
+.inspection_modals md-dialog-content .modal_header {
+  padding: 20px 0;
+}
+
+.inspection_modals md-dialog-content .modal_header h4 {
+  margin: 0;
+}
+
+.inspection_modals md-dialog-content .modal_drag .drag_center {
+  background: #f5f5f5;
+  border: 4px dashed #eee;
+  height: 200px;
+}
+
+.inspection_modals md-dialog-content .modal_drag .drag_center form {
+  padding: 50px;
+}
+
+.inspection_modals md-dialog-content .modal_drag .drag_center form .boxes {
+  width: 190px;
+  margin: 0 auto;
+}
+
+.inspection_modals md-dialog-content .modal_drag .drag_center form .boxes .file_drop {
+  display: none !important;
+}
+
+.inspection_modals md-dialog-content .custom_hr {
+  margin: 20px 5%;
+  width: 90%;
+  background: #eee;
+  height: 2px;
+}
+
+.inspection_modals md-dialog-content form .modal_info .add_thumbnails {
+  background: #eee;
+}
+
+.inspection_modals md-dialog-content form img.add_thumbnails {
+  width: 240px;
+  height: auto;
+}
+
+.inspection_modals md-dialog-content form .modal_button_div {
+  width: 90%;
+  margin: 20px 5% 0;
+}
+
+.inspection_modals md-dialog-content form .modal_button_div .modal_buttons {
+  float: right;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.inspection_modals md-dialog-content form .modal_button_div .left_button {
+  margin-right: 5px;
+}
+
+.inspection_modals md-dialog-content form .modal_button_div .right_button {
+  margin-left: 5px;
+}
+
+.inspection_modals #edit_photo {
+  min-width: 600px;
+}

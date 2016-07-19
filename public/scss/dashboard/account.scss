@@ -1,0 +1,479 @@
+/*
+ * Created by Alinus
+ * User: alin.designstudio
+ * For: Dashboard/player styles
+ * License: Wooter LLC.
+ * Date: 2016.02.11
+ * Description: Dashboard Player Styles
+ */
+ 
+@import "../engine/_init";
+@import "shared";
+ 
+
+/*
+ * Carlos Front-End Additions
+ * For: Dashboard/player styles
+ */
+
+
+/* structure for angular material tabs - sales dashboard */
+.clear{
+	clear:both;
+}
+.hide{
+	display:none;
+}
+
+.sales_dashboard{
+ 	md-content{
+ 		md-tabs{
+ 			min-height: 100vh!important;
+
+ 			md-tabs-wrapper{
+ 				background-color: #303030;
+ 				
+ 				md-tabs-canvas{
+ 					width: 392px!important;
+ 					margin: 0 auto;
+
+ 					md-pagination-wrapper{
+
+ 						md-tab-item{
+ 							color: white!important;
+ 							-webkit-user-select: none;  
+							-moz-user-select: none;     
+							-ms-user-select: none;     
+							user-select: none;     
+ 						}
+ 					}
+ 				}
+ 			}
+ 			md-tabs-content-wrapper{
+ 				min-height: calc(100vh - 49px);
+
+ 				md-tab-content{
+ 					background-color: #eee;
+ 					min-height: calc(100vh - 49px);
+ 					
+ 					.ng-scope.ng-isolate-scope{
+ 						min-height: calc(100vh - 49px);
+ 						
+ 						md-content{
+ 							background-color: #eee;	
+ 							min-height: calc(100vh - 49px);
+ 						} 					
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
+}
+
+/* innards of the the sales dashboard */
+.container_special{
+	width: 40%;
+	min-width: 500px;
+	margin: 0 auto;
+
+    @media screen and (max-width: 959px) {
+   		width:100%;
+  		min-width: auto;
+   	}
+}
+
+.sales_innards{
+
+	background-color: white;
+	padding: 0px;
+
+	.basics_title, .hq_title, .about_title, .social_title{
+		position: relative;
+		height: 48px;
+		background-color: #f5f5f5;
+
+		img{
+			width: 30px;
+			float: left;
+			margin: 9px 20px;
+		}
+
+		h1{
+		    font-size: 20px;
+		    margin: 0px;
+		    padding: 13px 0px 10px 70px;
+		}
+	}
+
+	.mobile_title, .pass_title{
+		position: relative;
+		height: 48px;
+		background-color: #f5f5f5;
+
+		h1{
+		    font-size: 20px;
+		    margin: 0px;
+		    padding: 13px 0px 10px 30px;
+		}
+
+	}
+
+	.basics_innards{
+		background-color: white;
+		
+		.company_details{
+			width: 100%;
+
+			.company_image{		
+				img{
+				    width: 270px;
+				    height: 270px;
+				    padding: 25px 0px;
+				    margin-left: -10px;
+				}
+		    	@media screen and (max-width: 959px) {
+		          -webkit-flex: 1 1 100%!important;
+		          -ms-flex: 1 1 100%!important;
+		          flex: 1 1 100%!important;
+		          max-width: 100%!important;
+		        }								
+			}
+
+			.company_info{
+		    	@media screen and (max-width: 959px) {
+		          -webkit-flex: 1 1 100%!important;
+		          -ms-flex: 1 1 100%!important;
+		          flex: 1 1 100%!important;
+		          max-width: 100%!important;
+		        }	
+
+				form{
+				    width: 95%;
+				    margin-right: 5%;
+				    padding-top: 34px;		
+    				
+    				@media screen and (max-width: 959px) {
+    					width:95%;
+    					margin-right: 0%;
+    					margin: 0 auto;
+    				}
+					.thirdMIC{
+						width: 30.33333%;
+    					@media screen and (max-width: 959px) {
+    						width:97%;
+    					}
+					}
+					.halfMIC{
+						width: 47%;
+    					@media screen and (max-width: 959px) {
+    						width:97%;
+    					}
+   					}
+
+					.mic{
+					    height: 48px;
+					    margin: 15px 1.5%;
+					    float: left;
+
+						label{
+							top: -30px;
+						}					
+					}
+				}
+			}
+		}
+	}
+
+	.hq_innards{
+		background-color: white;
+		
+		.hq_details{
+			width: 100%;
+
+			.hq_info{
+				
+				form{
+				    width: 98%;
+				    margin: 20px auto;		
+
+					.thirdMIC{
+						width: 30.33333%;
+    					@media screen and (max-width: 959px) {
+    						width:97%;
+    					}
+					}
+					.halfMIC{
+						width: 47%;
+    					@media screen and (max-width: 959px) {
+    						width:97%;
+    					}
+					}
+
+					.mic{
+					    height: 30px;
+					    margin: 25px 1.5%;
+					    float: left;
+
+						label{
+							top: -30px;
+						}					
+					}
+				}
+			}
+		}
+	}
+
+	.about_innards{
+		background-color: white;
+		
+		.about_details{
+			width: 100%;
+
+			.about_info{
+				
+				form{
+				    width: 98%;
+				    margin: 20px auto 0px;	
+
+
+					.wholeMIC{
+						width: 97%;
+					}
+
+					.mic{
+						height: 30px;
+						margin: 20px 1.5%;
+						float: left;
+
+						label{
+							top: -30px;
+						}					
+					}
+				}
+			}
+		}
+	}
+
+	.social_innards{
+		background-color: white;
+		
+		.social_details{
+			width: 100%;
+
+			.social_info{
+				
+				form{
+				    width: 95%;
+				    margin: 0 auto;		
+
+					.halfMIC{
+						width: 47%;
+    					@media screen and (max-width: 959px) {
+    						width:100%;
+    					}
+						
+						p{
+							float:left;
+							width: 25%;
+							margin: 0px;
+							height: 20px;
+							padding: 5px 0px;
+							text-align: right;
+    						@media screen and (max-width: 959px) {
+    							width:100px;
+    							margin-bottom: 10px;
+    							text-align: left;
+    						}
+
+						}
+
+						input{
+							float: left;
+							width: 75%;
+    						@media screen and (max-width: 959px) {
+    							width:100%;
+    							min-width: 200px;
+    						}
+						}
+					}
+
+
+					.mic{
+						height: 30px;
+						margin: 30px 1.5%;
+						float: left;
+
+						label{
+							top: -30px;
+						}					
+					}
+				}
+			}
+		}
+	}
+
+	.mobile_innards{
+		background-color: white;
+		
+		.mobile_details{
+			width: 100%;
+		   	
+		   	@media screen and (max-width: 959px) {
+				padding-top: 30px;
+			}
+			
+			.mobile_image{
+				padding: 20px 30px;
+		    	
+		    	@media screen and (max-width: 959px) {
+		          -webkit-flex: 1 1 100%!important;
+		          -ms-flex: 1 1 100%!important;
+		          flex: 1 1 100%!important;
+		          max-width: 100%!important;
+		          height: 100px;
+		        }		
+				
+				.disable{
+					color: rgba(0,0,0,.3);
+				}
+
+				p{
+					text-align: left;
+					width: 100%;
+					font-weight: bold;
+					font-size: 16px;
+					font-weight: 400;
+				}
+
+				img{
+				    width: 300px;
+				    height: 300px;
+				    padding: 30px;
+				}			
+			}
+
+			.mobile_info{
+				padding: 20px 30px;
+				
+		    	@media screen and (max-width: 959px) {
+		          -webkit-flex: 1 1 100%!important;
+		          -ms-flex: 1 1 100%!important;
+		          flex: 1 1 100%!important;
+		          max-width: 100%!important;
+		        }		
+
+				p{
+				    top: 0;
+				    text-align: left;
+				    padding-top: 20px;    
+				    position: absolute;
+				    font-weight: bold;
+					font-size: 16px;
+					font-weight: 400;
+
+			    	@media screen and (max-width: 959px) {
+			          position: relative;
+			        }		
+
+				}
+
+				.mobile_checking{
+					width: 100%;
+
+
+					span{
+						font-size: 16px;
+						font-weight: 400;
+					}
+				}
+			}
+
+			.mobile_hr{
+				padding: 0px;
+				
+				hr{
+					width: 95%;
+				    margin: 10px auto 0px;
+				    padding: 0px 0px 0px;
+				    height: 1px;
+				    background: #eee;
+				    border: none;
+				}
+			}			
+		}
+	}
+
+	.pass_innards{
+		background-color: white;
+		
+		.pass_details{
+			width: 100%;
+
+			.pass_info{
+				
+				form{
+				    width: 90%;
+				    margin: 0 auto;		
+
+					.wholeMIC{
+						width: 100%;
+						
+						p{
+							float:left;
+							width: 30%;
+							margin: 0px;
+							height: 20px;
+							padding: 5px 0px;
+							text-align: left;
+							font-size: 16px;
+							font-weight: 400!important;
+						}
+
+						input{
+							float: left;
+							width: 70%;
+						}
+					}
+
+					.mic{
+						height: 30px;
+						margin: 20px auto;
+						float: left;
+
+						label{
+							top: -30px;
+						}					
+					}
+
+					p{
+						width: 100%; 
+						text-align: center; 
+						margin: 50px 0px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.mic{
+	input, label{
+		font-size: 16px;
+		font-weight: 400!important;
+	}
+}
+
+.notify{
+	padding: 0px 30px 30px!important;
+	margin-top: -15px;
+}
+
+//other staff ef5350 949494
+
+md-checkbox{
+    margin: 5px 0px!important;
+}
+
+md-checkbox:not([disabled]).md-primary.md-checked .md-icon {
+    background-color: #ee514f;
+}

@@ -1,0 +1,26 @@
+<div id="messenger">
+    <h1>Send a Message</h1>
+    <form id="messenger-form" data-layout="column" ng-show="show_messenger">
+        <div>
+            <label for="messenger-message-title">Title:</label>
+            <input id="messenger-message-title" type="text" name="title" ng-model="title">
+        </div>
+        
+        <div>
+            <label for="messenger-message">Message:</label>
+            <textarea id="messenger-message" ng-model="message">
+            
+            </textarea>
+        </div>
+        
+        <div data-layout="row">
+            <button id="messenger-send-btn" data-flex="50" ng-click="sendMessage(title, message); show_messenger = !show_messenger">Send</button>
+            <button id="messenger-cancel-btn" data-flex="50" ng-click="hideMessenger()">Cancel</button>
+        </div>
+    </form>
+    
+    <div id="message-sent-success" ng-show="!show_messenger">
+        <p>Success!</p>
+        <button id="messenger-close-btn" ng-click="hideMessenger(); show_messenger = !show_messenger">Close</button>
+    </div>
+</div>

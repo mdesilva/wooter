@@ -1,0 +1,1 @@
+all css for vendor-cabinet pages goes here

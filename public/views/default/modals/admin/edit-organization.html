@@ -1,0 +1,27 @@
+<div id="organization-page-editor">
+    <div ng-show="show_main">
+        <h1>Edit Organization Information</h1>
+        <form id="organization-page-editor-form">
+            <ul>
+                <li>
+                    <label for="edit-name">Name</label>
+                    <input id="edit-name" type="text" name="name" value="{{organization.name}}">
+                </li>
+                <li>
+                    <label for="edit-lastname">Email</label>
+                    <input id="edit-lastname" type="text" name="email" value="{{organization.email}}">
+                </li>
+                <li>
+                    <label for="edit-gender">Phone</label>
+                    <input id="edit-gender" type="text" name="phone" value="{{organization.phone}}">
+                </li>
+                <li>
+                    <button id="edit-submit" ng-click="editOrganizationInModal($event, organization);">Edit</button>
+                </li>
+                <li>
+                    <button id="edit-cancel" ng-click="hideModal()">Cancel</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

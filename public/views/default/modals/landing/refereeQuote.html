@@ -1,0 +1,166 @@
+<md-dialog class='modal custom' aria-label='get a quote'>
+	<md-toolbar>
+		<div class='md-toolbar-tools'>
+			<h1>Wooter Referees</h1>
+		</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+		<form ng-submit='submitRequest()'>
+			<!-- USER DETAILS -->
+			<div layout='row' layout-align='start center' class='titleDiv'>
+				<h2 style='margin-left: 20px; font-weight: 500'>Step 1: Tell Us About Yourself</h2>
+				<!-- <div layout='column' flex='5'>
+				</div>
+				<div layout='column' flex='90' style='width: 100%'>
+					<h2>Step 1: Tell Us About Yourself</h2>
+				</div>
+				<div layout='column' flex='5'>
+				</div> -->
+			</div>
+
+			<!-- USER FIELDS -->
+			<div class='userFields inputField'>
+				<!-- FIRST ROW -->
+				<div layout='row' class='rowField'>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Full Name</label>
+							<input required type="text" ng-model="request.name">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Email</label>
+							<input type='text' ng-pattern="/^.+@.+\..+$/" ng-model='request.email'>
+							<div ng-messages='' role='alert'>
+								<div ng-message-exp="['required', 'pattern']">
+									Your email must be a valid email address
+								</div>
+							</div>
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Phone Number</label>
+							<input type="text" ng-model="request.phone">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+				</div>
+				<!-- SECOND ROW -->
+				<div layout='row' class='rowField'>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Address One</label>
+							<input type="text" ng-model="request.address_1">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Address Two</label>
+							<input type="text" ng-model="request.address_2">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+				</div>
+			</div>
+			<!-- LEAGUE DETAILS -->
+			<div layout='row' layout-align='start center' class='titleDiv'>
+				<h2 style='margin-left: 20px; font-weight: 500'>Step 2: Tell Us About Your League</h2>
+				<!-- <div layout='column' flex='5'>
+				</div>
+				<div layout='column' flex='90'>
+					<h2>Step 2: Tell Us About Your League</h2>
+				</div> -->
+			</div>
+
+			<!-- LEAGUE FIELDS -->
+			<div class='leagueField inputField'>
+				<div layout='row' class='rowField'>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Organization Name</label>
+							<input type="text" ng-model="request.organizationName">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Sport</label>
+							<input type="text" ng-model="request.sport">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+				</div>
+
+				<div layout='row' class='rowField'>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Number of Players</label>
+							<input type="number" ng-model="request.number_of_players">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Number of Teams</label>
+							<input type="number" ng-model="request.number_of_teams">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+					<div layout='column' flex='26'>
+						<md-input-container>
+							<label>Games Per Team</label>
+							<input type="number" ng-model="request.number_of_games_per_team">
+						</md-input-container>
+					</div>
+					<div layout='column' flex='5'>
+					</div>
+				</div>
+			</div>
+
+			<div layout='row' style='height: 63px;'>
+			</div>
+
+			<!-- MODAL BUTTONS -->
+			<div class='modal_buttons'>
+				<div class='buttons' style='float: right; margin-right: 10px;'>
+					<md-button class='md-secondary' ng-click='hideModal()'>Cancel</md-button>
+					<!-- <md-button class='md-raised wooter-btn-primary' ng-click='submitRequest()'>Submit</md-button> -->
+					<md-button class='md-raised wooter-btn-primary' type='submit' aria-label='send request'>Submit</md-button>
+				</div>
+				<!-- <md-button class='md-raised wooter-btn-primary right_button' style='float: right; margin-right: 5px;' ng-click='submitRequest()'>Submit</md-button>
+				<md-button class='md-secondary' style='float: right' ng-click='hideModal()'>Cancel</md-button> -->
+			</div>
+		</form>
+	</md-dialog-content>
+</md-dialog>

@@ -1,0 +1,14 @@
+/**
+ * Created by {your name}.
+ * User: {slack, skype}
+ * For: {package}
+ * License: Wooter LLC.
+ * Date: {{date}}
+ * Description:
+ *
+ */
+__Wooter.directive('{{name}}', ['$scope',function ($scope) {
+	return {
+		restrict: ''
+	};
+}]);

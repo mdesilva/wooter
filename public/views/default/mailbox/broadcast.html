@@ -1,0 +1,106 @@
+<style>
+    .active {
+        background-color: yellow;
+    }
+</style>
+<div id="chatroom" style="height:1000px;">
+    
+    <!-- Mailbox head START -->
+    
+    <div id="chatroom-head" data-layout="row" data-flex="100">
+        <h1 id="chatroom-heading" data-flex="40">Broadcast</h1>
+        <ul id="chatroom-messengers" data-layout="row" data-flex="60">
+            <li data-layout="column" data-flex="33">
+                <div>
+                    <button ng-click="mailbox.openMailer()">Send Email</button>
+                </div>
+            </li>
+            <li data-layout="column" data-flex="33">
+                <div>
+                    <button ng-click="mailbox.openTextMessenger()">Send Text</button>
+                </div>
+            </li>
+            <li data-layout="column" data-flex="33">
+                <div>
+                    <button ng-click="mailbox.openMessenger([6], 'player', 'broadcast')">Create Broadcast</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Mailbox head END -->
+    
+    <!-- Mailbox Navigation START -->
+    
+    <div id="chatroom-navigation" data-layout="row" data-flex="100">
+        <ul data-layout="row" data-flex="100">
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/inbox/conversations">
+                    All Messages
+                </a>
+            </li>
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/sent/conversations">
+                    Sent Messages
+                </a>
+            </li>
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/inbox/broadcasts">
+                    Broadcasts
+                </a>
+            </li>
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/trash/conversations">
+                    Trash
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Mailbox Navigation END -->
+    
+    <!-- Broadcast START -->
+        
+    <div>
+        <div id="broadcast-head" data-layout="row" data-flex="100">
+            <h1 id="broadcast-title" data-layout="column" data-flex="70">{{broadcast.title}}</h1>
+            <div data-layout="column" data-flex="30">
+                <ul id="broadcast-actions" data-layout="row">
+                    <li data-layout="column">
+                        <button ng-click="openFullscreen()">
+                            <i class="fa fa-arrows-alt"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-layout="row">
+            <div data-flex="20">
+                <img src="{{broadcast.preview_author_img}}">
+            </div>
+            <div data-flex="40">
+                <p>{{broadcast.preview_author}}</p>
+            </div>
+            <div data-flex="20">
+                <p>{{broadcast.preview_date}}</p>
+            </div>
+            <div data-flex="20">
+                <div>
+                    <button ng-click="mailbox.openRecycler('broadcast', 10)">
+                        <i class="fa fa-trash-o"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <p>{{broadcast.message}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    <!-- Broadcast END -->
+    
+</div>

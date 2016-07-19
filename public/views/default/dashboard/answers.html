@@ -1,0 +1,59 @@
+<div id="answers" data-layout="row">
+    <section ng-include="logicTemplate('dashboard/layout/navigation')" data-layout="column"></section>
+    
+    <div id="answers-display" data-layout="column">
+        <div id="answers-head" data-layout="row">
+            <h1 id="answers-heading">Questions</h1>
+            
+            <div id="answers-sorter">
+                <button ng-click="sortPlayersByName = !sortPlayersByName; leagues.sortPlayersByName(request, sortPlayersByName)"
+                        id="answers-sorter-btn">{{sortPlayersByName ? 'down' : 'up'}}</button>
+            </div>
+            
+            <form id="answers-search-form">
+                <input ng-model="player_name" 
+                       ng-change="leagues.getPlayersByName(request, player_name)" 
+                       type="text" 
+                       name="search_term">
+            </form>
+            
+            <div id="answers-exporter">
+                <button ng-click="exportAnswersAsCsv(answersRequest)" 
+                        id="answers-exporter-btn" >
+                    Export as CSV
+                </button>
+            </div>
+            
+            <div id="answers-navigator">
+                <button ng-click="playersOffset = 0; navFirst(request, playersOffset)"
+                        ng-disabled="firstPage">
+                    <<
+                </button>
+                <button ng-click="playersOffset = playersOffset - 10; navBefore(request, playersOffset)"
+                        ng-disabled="firstPage">
+                    <
+                </button>
+                <button ng-click="playersOffset = playersOffset + 10; navNext(request, playersOffset)"
+                        ng-disabled="lastPage">
+                    >
+                </button>
+                <button ng-click="playersOffset = pages * 10; navLast(request, playersOffset)"
+                        ng-disabled="lastPage">
+                    >>
+                </button>
+            </div>
+            
+            <p id="playersIndex">{{currentIndex}} of {{playerPages}}</p>
+        </div>
+        
+        <table id="answers-table">
+            <tr ng-repeat="player in leagues.players">
+                <td>{{player.name}}</td>
+                <td>{{player.type}}</td>
+                <td>
+                    <button ng-click="viewFullDetails(answersRequest, player)">View Full Details</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

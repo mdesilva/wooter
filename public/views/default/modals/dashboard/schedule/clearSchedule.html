@@ -1,0 +1,26 @@
+<md-dialog class='clear_schedule' aria-label='clearSchedule'>
+	<md-toolbar style='background-color: white; color: black'>
+		<div class='md-toolbar-tools'>
+			<h4>Clear Schedule</h4>
+		</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+		<div layout='row'>
+			<div layout='column' flex='5'>
+			</div>
+			<div layout='column' flex='90'>
+				<p>
+					Are you sure you want to clear your existing schedule and start over?
+				</p>
+			</div>
+			<div layout='column' flex='5'>
+			</div>
+		</div>
+
+		<div class='modal_buttons' style="text-align:right;">
+                    <md-buttons class='md-secondary' ng-click='clearScheduleInModal()'>CONFIRM</md-buttons>
+	            <md-button ng-click='hideModal()'>CANCEL</md-button>
+		</div>
+	</md-dialog-content>
+</md-dialog>

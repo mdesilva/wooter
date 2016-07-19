@@ -1,0 +1,504 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 ng-show="league.name" class="md-title league-title">{{league.name}}</h1>
+            <p class="md-body-1 league-subtitle">{{season.starts_at | carbonToMMM }} - {{season.ends_at | carbonToMMM }} {{season.ends_at | carbonToyyyy }}</p>
+
+            <md-progress-circular md-mode="indeterminate" ng-hide="league.name" class="white-loader" md-diameter="94"></md-progress-circular>
+        </div>
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+
+</header>
+
+<div id="stats-container" class="container">
+    <md-content class="md-whiteframe-1dp">
+        <div id="stats-heading">
+
+        </div>
+    </md-content>
+    
+    <md-content class="md-whiteframe-1dp" style="margin-bottom:50px;padding:20px;">
+        <div class="stats-table">
+            <div data-layout="row" class="stats-heading">
+                <div flex="50" data-layout="row" style="text-align:left;">
+                    <p style="margin:auto 20px auto 0px;">Team</p>
+                </div>
+                <div flex="50" data-layout="row" style="text-align:right;">
+                    <div flex="90"></div>
+                    <div flex="10" style="text-align:center;margin:auto;">
+                        <p>Final</p>
+                    </div>
+                </div>
+            </div>
+            <div data-layout="row" class="stats-row" ng-repeat="team in teams">
+                <div flex="50" style="text-align:left;">
+                    
+                    <div data-layout="row" style="margin-left:20px;">
+                        <img class="game-team-logo-small" src="{{game[team.playing_as + '_team_logo']}}" alt="">
+                        <p class="team-name-text">{{team.name}}</p>
+                    </div>
+                </div>
+                <div flex="50" data-layout="row" style="text-align:right;">
+                    <div flex="90"></div>
+                    <div flex="10" style="text-align:center;"> 
+                        <md-input-container>
+                            <label style="display:none;">Ends</label> 
+                            <input class="stat-value stat-input" ng-if="team.playing_as === 'home'" ng-model="game.home_team_score" type="text" name="home_team_points" ng-blur="setScore(game.home_team_score, game.visiting_team_score)" placeholder="0">
+                            <input class="stat-value stat-input" ng-if="team.playing_as === 'visiting'" ng-model="game.visiting_team_score" type="text" name="visiting_team_points" ng-blur="setScore(game.home_team_score, game.visiting_team_score)" placeholder="0">
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+    
+    
+    <div ng-repeat="team in teams">
+        <md-content class="md-whiteframe-1dp" style="margin-bottom:50px;padding:20px;overflow:hidden;">
+        <div>
+            <div style="text-align:center;">
+                <img class="game-team-logo-large" src="{{game[team.playing_as + '_team_logo']}}" alt="">
+                <p class="team-name-text">{{team.name}}</p>
+                <md-button style="color:red;" ng-show="!selectedTeam"  ng-click="showTeamStats(team.playing_as)">Edit Player Stats</md-button>
+            </div>
+        </div>
+            
+        <div ng-show="selectedTeam == team.playing_as">
+            <md-button style="color:red;" ng-click="saveStats(stats, game.id, game.home_team_id, game.visiting_team_id, game.sport)">Save Changes</md-button>
+            <md-button style="color:red;" ng-click="hideTeamStats()">Hide</md-button>  
+            <md-button style="color:red;float:right;" data-team-id="{{team.id}}" ng-hide="hideUploads" ng-click="uploadStats(team.id)">Upload Stats</md-button>
+        </div>
+        
+        <div ng-repeat="(statsType, statsSet) in sportStats[game.sport]" ng-show="selectedTeam == team.playing_as">
+            
+            
+            <div class="stats-table">
+                <div data-layout="row" class="stats-heading">
+                    <div flex="30" data-layout="row">
+                        <div flex="10">
+                            
+                        </div>
+                        <div flex="65" style="margin:auto;">
+                            <p>{{sportStatsAliases[game.sport][statsType].alias.charAt(0).toUpperCase() + sportStatsAliases[game.sport][statsType].alias.slice(1)}}</p>
+                        </div>
+                        <div flex="25" style="text-align:center;margin:auto;">
+                            <p style="margin:auto;">Player#</p>
+                        </div>
+                    </div>
+                    <div flex="70" data-layout="row">
+                        <div flex ng-repeat="statName in statsSet" style="text-align:center;margin:auto;">
+                            <p>{{statName}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="player-category-heading">
+                    <div>
+                        <md-checkbox ng-checked="checked == team.playing_as + statsType" style="text-align:center;width:100%;margin:0px;" data-playing-as="{{team.playing_as + statsType}}" ng-click="toggleAllRosterPlayers(team.playing_as, statsType, game.sport);">
+                            <p>ROSTER</p>
+                        </md-checkbox>
+                    </div>
+                </div>
+                <div data-layout="row" class="stats-row" ng-repeat="(player_key, player_stats) in stats[team.playing_as + '_team_stats'][statsType]" ng-if="(player_stats.player_id && player_stats.player_id != 0)" data-team-stats-id="{{team.playing_as + statsType}}" data-player-stats-id="{{team.playing_as + statsType + player_key}}">
+                    <div flex="30" data-layout="row">
+                        <div flex="10" style="height:36px;">
+                            <md-checkbox 
+                                         style="margin-top:6px;"
+                                         ng-checked="checkIfPlayerIsActive(team.playing_as, statsType, player_key)"
+                                         data-playing-as="{{team.playing_as + statsType}}" 
+                                         data-btn-id="{{team.playing_as + statsType + player_key}}" 
+                                         ng-click="toggleRosterPlayer(team.playing_as, statsType, player_key, game.sport)">
+                                             
+                            </md-checkbox>
+                        </div>
+                        <div flex="65" style="text-align:center;">
+                            <p flex style="height:35px;padding-top:7px;" class="stats-name" ng-if="(player_stats.active != 0 && player_stats.active)">{{player_stats.name}}</p>
+                            <p flex style="height:35px;padding-top:7px;" class="stats-name inactive-name" ng-if="(player_stats.active == 0 || !player_stats.active)">{{player_stats.name}}</p>
+                        </div>
+                        <div flex="25" style="text-align:center;">
+                            <md-input-container style="height:35px;">
+                                <label style="display:none;">Ends</label>
+                                <input class="stat-input inactive-jersey" type="text" disabled ng-model="player_stats.jersey">
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div flex="70" data-layout="row">
+                        <div flex ng-repeat="(key, sportStat) in sportStats[game.sport][statsType]" style="text-align:center;">
+                            <md-input-container ng-if="(player_stats.active != 0 && player_stats.active)" style="height:35px;">
+                                <label style="display:none;">Ends</label>
+                                <input class="stat-value stat-input" type="text" ng-if="!immutableSportStats[game.sport][statsType][key]" ng-model="stats[team.playing_as + '_team_stats'][statsType][player_key][key]" title="" placeholder="0">
+                                <input class="stat-value stat-input immutable-stat" type="text" ng-if="immutableSportStats[game.sport][statsType][key]" ng-model="stats[team.playing_as + '_team_stats'][statsType][player_key][key]" placeholder="0" disabled>
+                            </md-input-container>
+                            <md-input-container ng-if="(player_stats.active == 0 || !player_stats.active)" style="height:35px;">
+                                <label style="display:none;">Ends</label>
+                                <input class="stat-value stat-input" type="text" ng-if="!immutableSportStats[game.sport][statsType][key]" ng-model="stats[team.playing_as + '_team_stats'][statsType][player_key][key]" title="" placeholder="0" disabled>
+                                <input class="stat-value stat-input immutable-stat" type="text" ng-if="immutableSportStats[game.sport][statsType][key]" ng-model="stats[team.playing_as + '_team_stats'][statsType][player_key][key]" placeholder="0" disabled>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-table">
+                <div class="player-category-heading">
+                    <div>
+                        <md-checkbox ng-checked="checkedForDeletion == team.playing_as + statsType" style="text-align:center;width:100%;margin:0px;" data-playing-as="{{team.playing_as + statsType}}" ng-click="toggleAllPlayers(team.playing_as, statsType)">
+                            <p>FREE AGENTS</p>
+                        </md-checkbox>
+                    </div>
+                </div>
+                <div data-layout="row" class="stats-row" ng-repeat="(player_key, player_stats) in stats[team.playing_as + '_team_stats'][statsType]" ng-if="(!player_stats.player_id || player_stats.player_id == 0)">
+                    <div flex="30" data-layout="row">
+                        <div flex="10" style="height:36px;">
+                            <md-checkbox
+                                         style="margin-top:6px;"
+                                         ng-checked="checkIfPlayerIsMarkedForDeletion(team.playing_as, statsType, player_key)"
+                                         data-playing-as="{{team.playing_as + statsType}}" 
+                                         data-btn-id="{{team.playing_as + statsType + player_key}}" 
+                                         ng-click="togglePlayer(player_key, team.playing_as, statsType, player_key)">
+                                             
+                            </md-checkbox>
+                        </div>
+                        <div flex="65">
+                            <md-input-container style="width:100%;height:35px;">
+                                <input class="stat-input" type="text" ng-model="player_stats.name">
+                            </md-input-container>
+                        </div>
+                        <div flex="25" style="text-align:center;">
+                            <md-input-container style="height:35px;">
+                                <label style="display:none;">Ends</label>
+                                <input class="stat-value stat-input" type="text" ng-model="player_stats.jersey" placeholder="0">
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div flex="70" data-layout="row">
+                        <div flex ng-repeat="(key, sportStat) in sportStats[game.sport][statsType]" style="text-align:center;">
+                            <md-input-container style="height:35px;">
+                                <label style="display:none;">Ends</label>
+                                <input class="stat-value stat-input" type="text" ng-if="!immutableSportStats[game.sport][statsType][key]" ng-model="stats[team.playing_as + '_team_stats'][statsType][player_key][key]" title="" placeholder="0">
+                                <input class="stat-value stat-input immutable-stat" type="text" ng-if="immutableSportStats[game.sport][statsType][key]" ng-model="stats[team.playing_as + '_team_stats'][statsType][player_key][key]" placeholder="0" disabled>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="totals-table">
+                <div data-layout="row">
+                    <div flex="30" data-layout="row">
+                        <div flex="10"></div>
+                        <div flex="65">Total</div>
+                        <div flex="25"></div>
+                    </div>
+                    <div flex="70" data-layout="row">
+                        <div flex ng-repeat="statName in statsSet" style="text-align:center;">
+                            <p>{{getTotal(statName, statsType, team.playing_as)}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="inner footer" layout="row" flex="100" layout-align="center center">
+                    <md-button ng-click="addPlayerStats(team.playing_as, statsType, game.sport)" style="color:#003300;"><i class="fa fa-plus" aria-hidden="true"></i> Add Player</md-button>
+                    <md-button ng-click="removeSelectedPlayers(team.playing_as, statsType)" style="color:#4d0000;"><i class="fa fa-minus" aria-hidden="true"></i> Remove Selected Players</md-button>
+                </div>
+            </div>
+        </div>
+          </md-content>  
+    </div>
+    <div class="utilis" style="display:none;">
+        <form id="stats-upload-form">
+            <input type="file" id="files">
+            <input type="hidden" name="team_id">
+        </form>
+        <form id="game-info-form">
+            <input type="hidden" name="game_id" value="{{game.id}}">
+            <input type="hidden" name="sport" value="{{game.sport}}">
+        </form>
+    </div>
+</div>
+
+
+
+<style>
+    
+    .stats-table .stats-heading {
+        background-color : #EAEAEA;
+        border : 1px solid #E0E0E0;
+        color : #989898;
+        font-weight : 300;
+        height : 40px;
+    }
+    
+    .stats-table .player-category-heading {
+        border-bottom : 1px solid #E0E0E0;
+        color : #989898;
+    }
+    
+    .stats-table .stats-row {
+        border-bottom : 1px solid #E0E0E0;
+        
+    }
+    
+    .totals-table {
+        color : #989898;
+    }
+    
+    #team-stats #team-name-heading,
+    #team-stats #team-name {
+        text-align : left;
+        padding-left : 20px;
+    }
+    
+    #team-stats #team-score-heading,
+    #team-stats #team-score {
+        text-align : right;
+        padding-right : 20px;
+    }
+    
+    .game-team-logo-small {
+        width : 50px;
+        height : 50px;
+        border-radius : 25px;
+    }
+    
+    .game-team-logo-large {
+        width : 100px;
+        height : 100px;
+        border-radius : 50px;
+    }
+    
+    .team-name-text {
+        margin : auto 0px auto 0px;
+    }
+    
+    md-input-container {
+        width : 50px;
+        margin : auto;
+    }
+    
+    md-input-container .stat-input {
+        position: relative;
+        border: 1px solid #e0e0e0; // !important;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        border-radius: 3px;
+        text-align : center;
+    }
+    
+    
+    .immutable-stat {
+        border : none !important;
+    }
+    
+    .stat-column {
+        text-align : center;
+    }
+    
+    .player-name-head,
+    .player-name {
+        width : 20%;
+    }
+    
+    .stats-jersey {
+        text-align :center;
+    }
+    
+    .inactive-name {
+        font-style : italic;
+        color : #989898;
+    }
+    
+    .inactive-jersey {
+        font-style : italic;
+        color : #989898;
+        border : none;
+    }
+    
+    .inactive-input {
+        //
+    }
+    
+    ::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}
+</style>
+
+<script>
+    $(document).ready(function(){
+        $('#files').change(function(){
+            if (!window.FileReader) {
+                alert('Your browser is not supported')
+            }
+            document.body.classList.add('page--loading');
+        
+            var input = $('#files')[0];
+            current_league_id = $(this).attr("data-league-id")
+            current_match_id = $(this).attr("data-match-id")
+            current_team_id = $(this).attr("data-team-id")
+            // Create a reader object
+            var reader = new FileReader();
+            if (input.files.length) {
+                var textFile = input.files[0];
+                reader.readAsText(textFile);
+                $(reader).on('load', processFile);
+            } else {
+                alert('Please upload a file before continuing')
+            }
+        });
+
+        
+        function processFile(e) {
+            var file = e.target.result,
+            results;
+    
+            //console.log("file",file)
+            stats = Stats(file);
+            var player_stats = {};
+            var stats_ = stats;
+     
+            for(var x in stats['scoring']){
+              //jQuery.extend(stats['scoring'][x], stats['getNonScoringTable'][x]);
+              var playerName = stats_['scoring'][x]['Player']
+              delete stats_['scoring'][x]['Player'];
+              for(var b in stats['getNonScoringTable']){
+                if(stats['getNonScoringTable'][b]['Player'] === playerName){
+                  jQuery.extend(stats['scoring'][x], stats['getNonScoringTable'][b])
+                }
+              }
+              player_stats[playerName] = stats_['scoring'][x]
+            }
+      
+            stats_['stats'] = player_stats
+ 
+            /*if(stats.scoring.length < 1){
+              swal({
+                   title: "Parsing Error",
+                   text: "HTML cannot be parsed correctly. Make sure you're using an official sportsngin html export and try again. ",
+                   type: 'error',
+                   timer: 5000,
+                   showConfirmButton:true
+               });
+              return 
+            }*/
+     
+            if( stats.teamScores[0] > stats.teamScores[1] ){
+              $(".team_1_score").addClass("winner")
+              $(".team_2_score").removeClass("winner")
+            }else{
+              $(".team_2_score").addClass("winner")
+              $(".team_1_score").removeClass("winner")
+            }
+          
+            $(".team_1_score").html( stats.teamScores[0]);
+            $(".team_2_score").html( stats.teamScores[1]);
+            
+            var obj = {};
+            obj.stats = stats;
+            obj.team_id = $("#stats-upload-form input[name='team_id']").val();
+            obj.season_id = 1;
+            obj.game_id = $("#game-info-form input[name='game_id']").val(); 
+            obj.sport = $("#game-info-form input[name='sport']").val();
+           
+            var scope = angular.element(document.getElementById('stats-container')).scope();
+      
+            scope.$apply(function(){
+                /*scope.gamePlayerStatsApi.deleteByGameId({
+                                gameId : obj.game_id,
+                                sport : obj.sport
+                            }, function(response) {
+                                scope.gamePlayerStatsApi.save({
+                                        gameId : obj.game_id,
+                                        teamId : obj.team_id,
+                                        sport : obj.sport,
+                                        method : 'upload',
+                                        stats : stats
+                                }, scope.displayStats);
+                            });*/
+        
+                scope.gamePlayerStatsApi.save({
+                                        gameId : obj.game_id,
+                                        teamId : obj.team_id,
+                                        sport : obj.sport,
+                                        method : 'upload',
+                                        stats : stats
+                                }, scope.displayStats);
+            });
+        }
+
+function Stats(html){
+
+  //$("#upload-stat-tables").empty()
+
+  var html = $("<div></div>").append(html).find("table")
+  //$("#upload-stat-tables").append(html)
+  
+  function getScoringTable(){
+    var table = html.eq(2);
+    table.find(".stathead").remove();
+    var scoring_table = table.tableToJSON({ 
+      ignoreHiddenRows:false 
+    });
+    return scoring_table
+  }
+
+  function getTeam(){
+    return html.eq(0).find(".stathead").text()
+  }
+  
+  function getTotalScores(){
+    var object = {}
+    var table = html.eq(1)
+    object[table.find("tr").eq(2).find("th").eq(0).text()] = table.find("tr").eq(2).find("th").eq(3).text()
+    object[table.find("tr").eq(3).find("th").eq(0).text()] =table.find("tr").eq(3).find("th").eq(3).text()
+    return object
+  }
+  function getTeamScores(){
+    var object = {}
+    var table = html.eq(1)
+    object[0] = table.find("tr").eq(2).find("th").eq(3).text()
+    object[1] = table.find("tr").eq(3).find("th").eq(3).text()
+    return object
+  }
+  function getNonScoringTable(){
+    var table = html.eq(3)
+    table.find(".stathead").remove()
+    var scoring_table = table.tableToJSON({ 
+      ignoreHiddenRows:false 
+    })
+    return scoring_table
+  }
+  function getGameDate(){
+    return html.eq(0).find("tr").eq(1).find("th").last().text()
+  }
+  function stats(){
+    return {
+      "scoring": getScoringTable(),
+      "getTeam":getTeam(),
+      "getTotalScores":getTotalScores(),
+      "teamScores":getTeamScores(),
+      "getNonScoringTable":getNonScoringTable(),
+      "getGameDate":getGameDate(),
+      "league_id":current_league_id,
+      "team_id":current_team_id,
+      "match_id":current_match_id,
+
+    }
+  }
+  return stats();
+}
+
+});
+</script>

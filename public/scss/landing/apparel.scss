@@ -1,0 +1,312 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */ 
+
+@import "shared";
+
+.hero_image{
+	background: url('/img/landings/hero-apparel.png') center center fixed;
+    background-size: cover !important;
+    background-position: 50% 100%;
+
+
+	button{
+		width: 140px!important;
+		margin: 30px calc(50% - 70px) 0px!important;
+	}
+}
+
+.commissioners, .athletes{
+	padding: 48px 0px 112px;
+	width: 900px!important;
+	margin: 0 auto;
+
+	@media only screen and (max-width: 959px) {
+	    width: 600px!important;
+	}	
+
+	@media only screen and (max-width: 599px) {
+	    width: 150px!important;
+	    margin-bottom: -20px;
+	    padding-top: 0px!important;
+	}	
+
+	.red_pics{
+		width: 300px;
+		float: left;
+	
+		@media only screen and (max-width: 959px) {
+		    width: 200px;
+		    margin-top: 30px;
+	   	}
+	
+		@media only screen and (max-width: 599px) {
+		    width: 150px;
+	   	}
+
+		.image{
+			width: 60px;
+			margin: 0 auto;
+			padding: 0px 0px 10px;
+
+			img{
+				height: 60px;
+			}
+		}
+
+		.faq{
+			p{
+				margin: 0 0 3px;
+				font-size: 24px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+			}
+		}		
+	}
+}
+
+.pricing_text{
+	padding-bottom: 20px;
+	
+	h1{
+		font-size: 24px;
+		color: #212121;
+		text-align: center;
+		margin: 40px 0px 20px;
+	}
+
+	.custom_hr{
+		width: 60px;
+	    height: 3px;
+	    margin: 30px calc(50% - 30px) 30px;
+	    background: #ef5350;
+	}
+
+	p{
+		text-align: center;
+		font-size: 16px;
+		padding: 0px 185px;
+		color: rgba(0,0,0,.54);
+		margin-bottom: 0px;
+	}
+}
+
+.strategy{
+	@media only screen and (max-width: 1359px) {
+	    width: 600px!important;
+	    margin: 0 calc(50% - 300px)!important;
+	}	
+	@media only screen and (max-width: 599px) {
+	    width: 300px!important;
+	    margin: 0 calc(50% - 150px)!important;
+	}	
+}
+
+.selection_4{
+	width: 1050px;
+	margin: 0 auto 15px;
+
+	@media only screen and (max-width: 1359px) {
+	    width: 930px;
+	}	
+
+	@media only screen and (max-width: 959px) {
+	    width: 525px;
+	}	
+
+	@media only screen and (max-width: 599px) {
+	    width: 300px;
+	}	
+
+	.jersey{
+		width: 230px;
+		float: left;
+		margin: 0 16.25px;
+
+		@media only screen and (max-width: 1359px) {
+			width: 200px;
+		}	
+		
+		@media only screen and (max-width: 959px) {
+			margin: 0 16.25px 20px;
+		}	
+
+		@media only screen and (max-width: 599px) {
+			width: 250px;
+			float: left;
+			margin: 0 25px 25px;
+		}	
+
+		
+		.image{
+			width: 100%;
+
+			img{
+				width: 100%;
+			}
+		}
+		.text{
+			h1{
+				font-size: 16px;
+				color: #212121;
+				text-align: center;
+				margin: 20px 0px 15px;
+			}
+
+			.custom_hr{
+				width: 20px;
+			    height: 3px;
+			    margin: 0px calc(50% - 10px) 10px;
+			    background: #ef5350;
+			}
+
+			p{
+				text-align: center;
+				font-size: 14px;
+				color: rgba(0,0,0,.54);
+				margin-bottom: 0px;
+			}		
+		}
+	}
+}
+
+.selection_3{
+	width: 900px;
+	margin: 0 auto 50px;
+
+	@media only screen and (max-width: 959px) {
+	    width: 600px;
+	}	
+
+	@media only screen and (max-width: 599px) {
+	    width: 300px;
+	    margin-bottom: 25px;
+	}	
+
+	.jersey{
+		width: 250px;
+		float: left;
+		margin: 0 25px;
+
+		@media only screen and (max-width: 959px) {
+			width: 180px;
+			margin: 10px 10px;
+		}	
+
+		@media only screen and (max-width: 599px) {
+			width: 250px;
+			margin: 0px 25px 25px;
+		}	
+
+		.image{
+			width: 100%;
+
+			img{
+				width: 100%;
+			}
+		}
+		.text{
+			h1{
+				font-size: 16px;
+				color: #212121;
+				text-align: center;
+				margin: 20px 0px 15px;
+			}
+
+			.custom_hr{
+				width: 20px;
+			    height: 3px;
+			    margin: 0px calc(50% - 10px) 10px;
+			    background: #ef5350;
+			}
+
+			p{
+				text-align: center;
+				font-size: 14px;
+				color: rgba(0,0,0,.54);
+				margin-bottom: 0px;
+			}		
+		}
+	}
+}
+
+.selection_2{
+	width: 525px;
+	margin: 0 auto 15px;
+
+	@media only screen and (max-width: 599px) {
+		width: 300px;
+		margin: 0px;
+	}	
+
+	.jersey{
+		width: 230px;
+		float: left;
+		margin: 0 16.25px;
+
+		@media only screen and (max-width: 1359px) {
+			width: 200px;
+		}	
+
+		@media only screen and (max-width: 599px) {
+			width: 250px;
+			margin: 25px 25px;
+		}	
+
+		.image{
+			width: 100%;
+	
+			img{
+				width: 100%;
+			}
+		}
+		.text{
+			h1{
+				font-size: 16px;
+				color: #212121;
+				text-align: center;
+				margin: 20px 0px 15px;
+			}
+
+			.custom_hr{
+				width: 20px;
+			    height: 3px;
+			    margin: 0px calc(50% - 10px) 10px;
+			    background: #ef5350;
+			}
+
+			p{
+				text-align: center;
+				font-size: 14px;
+				color: rgba(0,0,0,.54);
+				margin-bottom: 0px;
+			}		
+		}
+	}
+}
+
+.splits{
+	top: -27px!important;
+}
+
+.white_separator_origin{
+	padding-bottom: 54px;
+
+	.white_separator_2{
+		top: 10px!important;
+	}
+}
+
+.gradient {
+    background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.01), rgba(0,0,0,.01), rgba(0,0,0,.1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.01), rgba(0,0,0,.01), rgba(0,0,0,.1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.01), rgba(0,0,0,.01), rgba(0,0,0,.1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.01), rgba(0,0,0,.01), rgba(0,0,0,.1)); /* Standard syntax (must be last) */
+}

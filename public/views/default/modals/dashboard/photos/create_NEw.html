@@ -1,0 +1,129 @@
+<md-dialog class='inspection_modals' aria-label='inspectPhoto'  id="addVideoModal">
+    <md-dialog-content>
+        <!-- Header -->
+        <div class='modal_header' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div layout='column' flex='90'>
+                <h4>Add Photo(s)</h4>
+            </div>
+            <div layout='column' flex='5'></div>
+        </div>
+
+        <div class='modal_drag' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div layout='column' flex='90' class='drag_center'>
+                <form method='post' action='{{ photoUploadAction  }}' enctype='multipart/form-data' novalidate class="box">
+                    <div class='boxes'>
+                        <input type='file' name='photo[]' id='file' class='file_drop' data-multiple-caption='{count} files selected' multiple />
+                        <label for='file' class='raised'><img style='width: 100%;' src='../img/dashboard/select_photos.png' /></label>
+                        <input type="hidden" name="league_id" value="{{ leagueId }}">
+                    </div>
+                        <p style="color: #989898; font-size: 12px; text-align: center; width: 100%; margin-bottom: 5px;"><span>or</span></p>
+                        <p style="color: #989898; text-align: center; font-size: 14px; width: 100%;">Drag & Drop</p>
+                </form>
+            </div>
+            <div layout='column' flex='5'>
+            </div>
+        </div>
+
+        <div class='custom_hr'></div>
+
+        <form ng-submit='publishPhoto()'>
+
+
+
+        <div class='modal_info' layout='row' ng-repeat = "photo in photos track by $index" >
+                <div layout='column' flex='5'></div>
+
+                <div layout='column' flex='40' class='add_thumbnails'>
+                    <img src='{{ photo.thumbnail_path }}' alt='' class='add_thumbnails' title="{{ photo.file_name }}" alt="{{ photo.file_name }}"/>
+                </div>
+
+                <div layout='column' flex='50'>
+                    <md-input-container class='modal_field' id='addPhotoTitle'>
+                        <label>Title</label>
+                        <input name='photoName' ng-model='uploadVideo[$index].photoName' ng-init = "uploadVideo[$index].photoName = photo.file_name"  value="{{ photo.file_name }}"required >
+                    </md-input-container>
+
+                    <md-input-container class='modal_field' id='setAlbum'>
+                        <label>Album</label>
+                        <md-select ng-model='uploadVideo[$index].album_id' aria-label='albumName'>
+                            <md-option ng-repeat='album in albums' value='{{album.id}}'>
+                                {{ album.name }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class='modal_field' id='setGame'>
+                        <label>Games</label>
+                        <md-select ng-model='uploadVideo[$index].game_id' aria-label='game'>
+                            <md-option ng-repeat='game in games' value='{{game.id}}'>
+                                {{ game.home_team }}_{{ game.visiting_team }}_{{ game.datetime | dateFormat: " " }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+
+
+
+
+                    <input type="hidden" name='photoId' ng-model='uploadVideo[$index].photoId'  ng-init="uploadVideo[$index].photoId = photo.id " aria-label='' >
+                </div>
+
+                <div layout='column' flex='5'></div>
+            </div>
+    <div layout="row">
+        <div layout='column' flex='5'></div>
+        <div layout='column' flex='90'>
+
+            <md-input-container class='modal_field' id='setTeam'>
+                <label>Tag Team:</label>
+                <md-chips ng-model="selectedTeams[$index]" md-autocomplete-snap="" md-transform-chip="transformChip($chip)" md-require-match="autocompleteDemoRequireMatch">
+
+                    <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="team in querySearch(searchText)" md-item-text="team.name" >
+                        <span md-highlight-text="searchText">{{team.name}}</span>
+                    </md-autocomplete>
+
+                    <md-chip-template>
+                                        <span>
+                                          <strong>{{$chip.name}}</strong>
+
+                                        </span>
+                    </md-chip-template>
+                </md-chips>
+
+            </md-input-container>
+            <md-input-container></md-input-container>
+            <md-input-container class='modal_field' id='setPlayer'>
+                <label>Tag Player:</label>
+                <md-chips ng-model="selectedPlayers[$index]" md-autocomplete-snap="" md-transform-chip="playerTransformChip($chip)" md-require-match="autocompletePlayerRequireMatch">
+                    <md-autocomplete md-selected-item="selectedPlayer" md-search-text="searchPlayer" md-items="player in playerSearchQuery(searchPlayer)" md-item-text="player.first_name" >
+                        <span md-highlight-text="searchPlayer"> {{player.first_name}} {{player.last_name}} </span>
+                    </md-autocomplete>
+
+                    <md-chip-template>
+                         <span>
+                             <strong>{{$chip.first_name}}</strong>
+                             <strong>{{$chip.last_name}}</strong>
+                         </span>
+                    </md-chip-template>
+                </md-chips>
+
+            </md-input-container>
+
+        </div>
+        <div layout='column' flex='5'></div>
+    </div>
+            <!-- buttons -->
+            <div class='modal_button_div'>
+                <md-button class='modal_buttons right_button' type="submit">
+                    Add Photo(s)
+                </md-button>
+                <md-button class='modal_buttons left_button' ng-click="remove();">
+                    Cancel
+                </md-button>
+            </div>
+
+        </form>
+    </md-dialog-content>
+</md-dialog>

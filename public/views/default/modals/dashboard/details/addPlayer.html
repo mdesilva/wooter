@@ -1,0 +1,89 @@
+<md-dialog class='addplayer_MODAL players_modals' aria-label='addPlayer' style='min-width: 400px;'>
+    <md-dialog-content>
+
+        <!-- Header -->
+        <div class='modal_header' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div layout='column' flex='90'>
+                <h4>Add Player</h4>
+            </div>
+            <div layout='column' flex='5'></div>
+        </div>   
+        
+        <form ng-submit='submit()' ng-controller='Dashboard/PlayersController'>          
+
+            <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='addPlayerFName'>
+                        <label>First Name</label>
+                        <input name='playerFname' type="text" ng-model='playerFname' required>
+                    </md-input-container>
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+
+            <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='addPlayerLName'>
+                        <label>Last Name</label>
+                        <input name='playerLname' type="text" ng-model='playerLname' required>
+                    </md-input-container>
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+
+            <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='addPlayerEmail'>
+                        <label>Email</label>
+                        <input name='playerEmail' ng-model='playerEmail' type="email">
+                    </md-input-container>
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+
+            <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='addPlayerPhone'>
+                        <label>Phone Number</label>
+                        <input name='playerPhone' ng-model='playerPhone' type="phone">
+                    </md-input-container>
+                </div>
+                <div layout='column' flex='5'>
+                </div>
+            </div>
+
+
+           <!--  <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='setTeam'>
+                        <label>Select Team</label>
+                        <md-select ng-model='newVenue' aria-label=''>
+                            <md-option ng-repeat='venue in venues' value='{{venue}}'>
+                                {{ venue.name }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout='column' flex='5'>
+                </div>
+            </div> -->
+
+            <!-- buttons -->
+            <div class='modal_button_div'>
+                <md-button type='submit' class='modal_buttons right_button'>
+                    Add Player Request
+                </md-button>                            
+                <md-button class='modal_buttons left_button' ng-click="cancel();">
+                    Cancel
+                </md-button>   
+            </div>                        
+
+        </form>
+    </md-dialog-content>
+</md-dialog>

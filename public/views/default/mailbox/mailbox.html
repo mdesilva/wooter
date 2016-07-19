@@ -1,0 +1,144 @@
+<div id="mailbox" data-layout="row">
+    <div data-layout="row" data-flex>
+        
+        <!-- Menu START -->
+        
+        <div id="mailbox-menu" data-layout="column" data-flex="20" style="height:1000px;">
+
+            <!-- Mailbox Filter START -->
+            
+            <form id="mailbox-filter-form">
+                <select ng-init="club = clubs[0]"
+                        ng-model="club"
+                        ng-options="club.name for club in clubs"
+                        ng-change="mailbox.filterByClub(request, club)"
+                        id="mailbox-filter">
+                </select>
+            </form>
+            
+            <!-- Mailbox Filter END -->
+            
+            <!-- Navigation START -->
+            
+            <ul id="mailbox-navigation">
+                <li>
+                    <a href="/#/inbox/inbox/conversations">
+                        <i class="fa fa-inbox"></i>
+                        Inbox
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/#/inbox/inbox/conversations">
+                                Messages
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/inbox/inbox/broadcasts">
+                                Broadcasts
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/#/inbox/sent/conversations">
+                        <i class="fa fa-paper-plane"></i>
+                        Sent
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/#/inbox/sent/conversations">
+                                Messages
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/inbox/sent/broadcasts">
+                                Broadcasts
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/#//inbox/trash/conversations">
+                        <i class="fa fa-trash-o"></i>
+                        Trash
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/#/inbox/trash/conversations">
+                                Messages
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/inbox/trash/broadcasts">
+                                Broadcasts
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Navigation END -->
+        </div>
+        
+        <!-- Menu END -->
+        
+        <!-- Main Content START -->
+        
+        <div id="messages" data-layout="column" data-flex="80">
+            
+            <!-- Main Content Filters START -->
+            
+            <form id="messages-filter-form" data-layout="row">
+                <div data-flex="50">
+                    <select ng-init="timeframe = mailbox.timeframes[0]"
+                            ng-model="timeframe"
+                            ng-options="timeframe.title for timeframe in mailbox.timeframes"
+                            ng-change="mailbox.filterByTimeframe(request, timeframe)"
+                            id="messages-timeframe-filter">
+                    </select>
+                </div>
+                
+                <div data-layout="row" data-layout-align="end" data-flex="50">
+                    <input ng-model="keywords" 
+                           ng-change="mailbox.filterByKeywords(request, keywords)" 
+                           id="messages-keyword-filter" 
+                           type="text">
+                </div>
+            </form>
+            
+            <!-- Main Content Filters END -->
+            
+            <!-- Messages List START -->
+            
+            <div id="messages-navigation" data-layout="row">
+                <ul id="messages-list" data-layout="column">
+                    <li ng-repeat="date in mailbox.dates">
+                        <div>
+                            <div ng-repeat="mail in mailbox.mailbox" class="conv" data-id="{{mail.id}}">
+                                <div ng-if="date == mail.preview_date"> 
+                                    <h1>{{mail.date_label}}</h1>
+                                    <a href="/#/inbox/{{request.container}}/{{request.mail_type}}/{{mail.id}}">
+                                        <img src="{{mail.preview_author_img}}">
+                                        <h2>{{mail.title}}</h2>
+                                        <p>{{mail.preview}}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div data-layout="column">
+                    
+                </div>
+            </div>
+            
+            <!-- Messages List END -->
+            <div>
+                <button ng-click="mailbox.loadMore(request)">Load more</button>
+            </div>
+        </div>
+        
+        <!-- Main Content END -->
+       
+    </div>
+</div>

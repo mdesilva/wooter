@@ -1,0 +1,74 @@
+/*
+Error: Undefined mixin 'min-screen'.
+        on line 17 of public/scss/styles/Ui/Notify.scss, in `min-screen'
+        from line 17 of public/scss/styles/Ui/Notify.scss
+
+12:     width: 100%;
+13:     background: transparent;
+14:     padding: 20px;
+15:     max-width: 320px !important;
+16:     pointer-events: none !important;
+17:     @include min-screen(768px) {
+18:         position: fixed;
+19:         z-index: 9000;
+20:         top: 0;
+21:         right: 0;
+22:     }
+
+Backtrace:
+public/scss/styles/Ui/Notify.scss:17:in `min-screen'
+public/scss/styles/Ui/Notify.scss:17
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:349:in `block in visit_mixin'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:98:in `with_mixin'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:347:in `visit_mixin'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:79:in `with_base'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `map'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/stack.rb:79:in `with_base'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/engine.rb:378:in `_render_with_sourcemap'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/engine.rb:295:in `render_with_sourcemap'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:471:in `on_file_changed'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:328:in `block in watch'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/listen-2.10.0/lib/listen/listener.rb:291:in `call'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/listen-2.10.0/lib/listen/listener.rb:291:in `_process_changes'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/listen-2.10.0/lib/listen/listener.rb:255:in `block in _wait_for_changes'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/listen-2.10.0/lib/listen/listener.rb:238:in `loop'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/listen-2.10.0/lib/listen/listener.rb:238:in `_wait_for_changes'
+/Users/ericrho/.rvm/gems/ruby-2.2.0/gems/listen-2.10.0/lib/listen/listener.rb:327:in `block in _start_wait_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'min-screen'.\A         on line 17 of public/scss/styles/Ui/Notify.scss, in `min-screen'\A         from line 17 of public/scss/styles/Ui/Notify.scss\A \A 12:     width: 100%;\A 13:     background: transparent;\A 14:     padding: 20px;\A 15:     max-width: 320px !important;\A 16:     pointer-events: none !important;\A 17:     @include min-screen(768px) {\A 18:         position: fixed;\A 19:         z-index: 9000;\A 20:         top: 0;\A 21:         right: 0;\A 22:     }"; }

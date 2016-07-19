@@ -1,0 +1,26 @@
+<div id="answers-details">
+    <ul id="player-details">
+        <li>Name: {{player.name}}</li>
+        <li>
+            Teams:
+            <ul>
+                <li ng-repeat="team in player.teams">
+                    {{team.name}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+    
+    <ul id="questions-answers">
+        <li class="answer" ng-repeat="answer in leagues.registrationAnswers">
+            <div>
+                <p class="question">{{answer.question}}</p>
+            </div>
+            <div>
+                <p class="answer">{{answer.answer}}</p>
+            </div>
+        </li>
+    </ul>
+    <button ng-click="hideDetails()">Close</button>
+</div>
+

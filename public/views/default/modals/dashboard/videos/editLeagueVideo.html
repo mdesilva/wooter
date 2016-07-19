@@ -1,0 +1,129 @@
+<md-dialog class='modal_AV' aria-label='createMatch' style='min-width: 600px;' >
+
+    <md-toolbar style='background-color: white; color: black'>
+        <div class='md-toolbar-tools'>
+            <h4>Edit Video</h4>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <form name="uploadForm" ng-submit="publishVideo()">
+            <div layout='row'>
+                <div layout='column' flex='5'></div>
+
+                <div layout='column' flex='40'>
+                    <video width="227" height="160" controls poster="{{ trusted(videoToEdit.thumbnail_path) }}" ng-show = "( videoToEdit.thumbnail_path != null )  && (angular.isUndefined(videoToEdit.youtube_video_thumb) || videoToEdit.youtube_video_thumb === '')">
+                        <source src="{{ trusted(videoToEdit.file_path)}}" type="{{ videoToEdit.mime_type}}">
+                    </video>
+                    <video width="227" height="160" controls poster="{{ trusted(videoToEdit.youtube_video_thumb) }}"  ng-show = "(angular.isDefined(videoToEdit.youtube_video_thumb) || videoToEdit.youtube_video_thumb != '')">
+                        <source src="{{ trusted(videoToEdit.file_path)}}" type="{{ videoToEdit.mime_type}}">
+                    </video>
+                     <video width="227" height="160" controls poster="{{asset('img/landings/logo-v2.png')}}"  ng-show = "videoToEdit.thumbnail_path === null  && (angular.isUndefined(videoToEdit.youtube_video_thumb) || videoToEdit.youtube_video_thumb === '')  ">
+                        <source src="{{ trusted(videoToEdit.file_path)}}" type="{{ videoToEdit.mime_type}}">
+                    </video>
+                </div>
+
+                <div layout='column' flex='50'>
+                    <md-input-container class='modal_field' id='addVideoName'>
+                        <label>Title</label>
+                        <input name='videoName' ng-model='uploadVideo[0].videoName' ng-init="uploadVideo[0].videoName = videoToEdit.file_name " value="{{ uploadVideo[0].videoName }}" required aria-label=''>
+                        </md-input-container>
+
+                    <md-input-container class='modal_field' id='setCategory'>
+                        <label>Category</label>
+                        <md-select ng-model='uploadVideo[0].videoCategory' name="videoCategory" aria-label=''>
+                            <md-option ng-repeat='label in labels' value='{{label.id}}' ng-selected = " label.id ==  videoToEdit.label_id">
+                                {{ label.name }}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                    <md-input-container class='modal_field' id='setGame'>
+                        <label>Game</label>
+                        <md-select ng-model='uploadVideo[0].videoGame' name="videoGame" aria-label=''>
+                            <md-option ng-repeat='game in games ' value='{{game.id}}' ng-selected = " game.id ==  videoToEdit.game_id">
+                                {{ game.date | carbonToMMM }} {{ game.date | dateFormat: "/" }}, {{ game.date | carbonToyyyy }} ( {{ game.home_team | limitString:true:5:'...' }} vs {{ game.visiting_team | limitString:true:5:'...'}} )
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class='modal_field hide' id='videoID'>
+                        <label></label>
+                        <input type="hidden" name='videoId' ng-model='uploadVideo[0].videoId'  ng-init="uploadVideo[0].videoId = videoToEdit.id " aria-label='' >
+
+                    </md-input-container>
+
+                    <md-input-container class='modal_field hide' id='action'>
+                        <label></label>
+                        <input type="hidden" name='action' ng-model='uploadVideo[0].action'  ng-init="uploadVideo[0].action = 'edit' " aria-label='' >
+
+                    </md-input-container>
+
+                    <md-input-container class='modal_field hide'  id='videoID'>
+
+                        <input type="hidden" name='edit' ng-model='edit'  ng-init="edit = true " aria-label='false' >
+                    </md-input-container>
+
+                </div>
+
+                <div layout='column' flex='5'></div>
+            </div>
+            <div layout="row">
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='setTeam'>
+                        <label>Tag Team:</label>
+                        <md-chips ng-model="selectedTeams" md-autocomplete-snap="" md-transform-chip="transformChip($chip)" md-require-match="autocompleteDemoRequireMatch">
+                            <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="team in querySearch(searchText)" md-item-text="team.name" >
+                                <span md-highlight-text="searchText">{{team.name}}</span>
+                            </md-autocomplete>
+
+                            <md-chip-template>
+                                        <span>
+                                          <strong>{{$chip.name}}</strong>
+                                        </span>
+                            </md-chip-template>
+                        </md-chips>
+
+                    </md-input-container>
+                    <!-- <md-input-container class='modal_field'></md-input-container> -->
+                    <md-input-container class='modal_field' id='setPlayer'>
+                        <label>Tag Player:</label>
+                        <md-chips ng-model="selectedPlayers" md-autocomplete-snap="" md-transform-chip="playerTransformChip($chip)" md-require-match="autocompletePlayerRequireMatch">
+                            <md-autocomplete md-selected-item="selectedPlayer" md-search-text="searchPlayer" md-items="player in playerSearchQuery(searchPlayer)" md-item-text="player.first_name" >
+                                <span md-highlight-text="searchPlayer"> {{player.first_name}} {{player.last_name}} </span>
+                            </md-autocomplete>
+
+                            <md-chip-template>
+                         <span>
+                             <strong>{{$chip.first_name}}</strong>
+                             <strong>{{$chip.last_name}}</strong>
+                         </span>
+                            </md-chip-template>
+                        </md-chips>
+
+                    </md-input-container>
+                    <!--ng-init="uploadVideo[0].youTubeUrl = videoToEdit.file_name "
+                    {{ uploadVideo[0].videoName }}
+                    -->
+
+                    <md-input-container class='modal_field' id='addYoutubeVideo'>
+                        <label>Upload Youtube Video (Optional)</label>
+                        <input name='youTubeUrl' ng-model='uploadVideo[0].youTubeUrl' ng-init="uploadVideo[0].youTubeUrl = videoToEdit.youtube_video_src " value="videoToEdit.youtube_video_src"  aria-label=''>
+                    </md-input-container>
+
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+            <div class='modal_button_div'>
+                <!-- <md-button style='margin-right: 8%; margin-top: 10px!important;' class='modal_buttons right_button' type="submit"> -->
+                <md-button style='float: right;' class='modal_buttons right_button' type='submit'>
+                    Save Edits
+                </md-button>
+                <!-- <md-button style='margin-top: 10px!important;' class='modal_buttons' ng-click="closeModal()"> -->
+                <md-button style='float: right;' class='modal_buttons left_button' ng-click='closeModal()'>
+                    Cancel
+                </md-button>
+            </div>
+        </form>
+    </md-dialog-content>
+</md-dialog>

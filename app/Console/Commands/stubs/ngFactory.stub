@@ -1,0 +1,18 @@
+/**
+ * Created by {your name}.
+ * User: {slack, skype}
+ * For: {package}
+ * License: Wooter LLC.
+ * Date: {{date}}
+ * Description:
+ *
+ */
+__Wooter.factory('{{name}}', ['$window', '$http', '$q', function($window, $http, $q){
+    var theFactory = {};
+
+    theFactory.init = function (){
+        return 'something'
+    };
+
+    return theFactory;
+}]);

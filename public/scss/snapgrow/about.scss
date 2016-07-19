@@ -1,0 +1,586 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+//HOMEPAGE SCSS
+
+.hero_image{
+	background: url('/img/snapgrow/hero-about.png') center center fixed;
+    background-size: cover !important;
+ 	@media only screen and (max-width: 1359px) {
+	   height: 592px!important;
+    }	   
+}
+
+
+
+.strategy{
+	padding: 0px;
+
+	@media only screen and (max-width: 1359px) {
+	    max-width: 960px!important;
+	    width: 960px!important;
+	    margin: 0 calc(50% - 480px)!important;
+    }	
+
+	@media only screen and (max-width: 959px) {
+	    max-width: 600px!important;
+	    width: 600px!important;
+	    margin: 0 calc(50% - 300px)!important;
+    }	
+
+	@media only screen and (max-width: 599px) {
+	    max-width: 300px!important;
+	    width: 300px!important;
+	    margin: 0 calc(50% - 150px)!important;
+    }	
+
+	.strategy_text{
+
+		h1{
+			font-size: 24px;
+			color: #212121;
+			text-align: center;
+			margin: 30px 0px;
+			@media only screen and (max-width: 599px) {
+				padding: 0px 15px;
+		    }	
+		}
+
+		.custom_hr{
+			width: 50px;
+		    height: 2px;
+		    margin: 0 calc(50% - 25px) 30px;
+		    background: rgba(0, 0, 0, 0.25);
+		}
+
+		p{
+			text-align: center;
+			font-size: 18px;
+			padding: 0px 190px;
+			color: rgba(0,0,0,.54);
+			margin-bottom: 32px;
+			
+			@media only screen and (max-width: 1359px) {
+				padding: 0px 130px;
+		    }	
+
+			@media only screen and (max-width: 959px) {
+				padding: 0px 70px;
+		    }	
+
+			@media only screen and (max-width: 599px) {
+				padding: 0px 15px;
+		    }	
+		}
+	}
+
+	.pricing_text{
+
+		h1{
+			font-size: 24px;
+			color: #212121;
+			text-align: center;
+			margin: 30px 0px;
+		}
+
+		.custom_hr{
+			width: 50px;
+		    height: 2px;
+		    margin: 0 calc(50% - 25px) 30px;
+		    background: rgba(0, 0, 0, 0.25);
+		}
+
+		p{
+			text-align: center;
+			font-size: 18px;
+			padding: 0px 185px;
+			color: rgba(0,0,0,.54);
+			margin-bottom: 32px;
+		}
+	}
+
+	.pricing_pictures{
+		width: 1080px;
+		margin-bottom: 40px;
+		padding: 0px 15px;
+		
+		@media only screen and (max-width: 1359px) {   
+		    width: 960px!important;  
+	    }	
+
+		@media only screen and (max-width: 959px) {
+		    width: 600px!important;
+	    }	
+
+		@media only screen and (max-width: 599px) {
+		    width: 300px!important;
+		    margin-bottom: 0px;
+	    }	
+
+		.pricing_image_left,
+		.pricing_image_center,
+		.pricing_image_right{
+			width: 350px;
+			padding: 0px 7.5px;
+			float: left;
+			position: relative;
+
+			@media only screen and (max-width: 1359px) {   
+			    width: 310px!important;  
+		    }	
+
+			@media only screen and (max-width: 959px) {
+			    width: 190px!important;
+		    }	
+
+			@media only screen and (max-width: 599px) {
+			    width: 270px!important;
+			    margin-bottom: 40px;
+			    padding: 0px;
+		    }
+
+			img{
+				width: 54px;
+				margin: 0 calc(50% - 27px);
+				margin-bottom: 20px;
+			}
+
+			p{
+				width: 275px;
+				margin: 0 auto;
+				font-size: 18px;
+				text-align: center;
+				color: rgba(0,0,0,.75);
+				
+				@media only screen and (max-width: 1359px) {   
+				    width: 310px!important;  
+			    }	
+
+				@media only screen and (max-width: 959px) {
+				    width: 180px!important;
+			    }	
+
+				@media only screen and (max-width: 599px) {
+				    width: 270px!important;
+				    margin-bottom: 40px
+			    }			
+
+			}
+		}
+	}
+
+	.pricing_pictures_two{
+		width: 730px;
+		margin: 64px calc(50% - 350px);
+		padding: 0px 15px;
+
+		@media only screen and (max-width: 959px) {
+		    width: 530px!important;
+			margin: 50px calc(50% - 250px);
+	    }	
+
+		@media only screen and (max-width: 599px) {
+		    width: 300px!important;
+			margin: 0px calc(50% - 150px);
+			margin-top: -30px;
+	    }	
+
+
+		.pricing_image_left,
+		.pricing_image_center,
+		.pricing_image_right{
+			width: 350px;
+			padding: 0px 7.5px;
+			float: left;
+			position: relative;
+			margin-bottom: 40px;
+
+			@media only screen and (max-width: 959px) {
+			    width: 250px!important;
+		    }	
+
+			@media only screen and (max-width: 599px) {
+			    width: 270px!important;
+		    }	
+
+			img{
+				width: 54px;
+				margin: 0 calc(50% - 27px);
+				margin-bottom: 20px;
+			}
+			
+			p{
+				width: 280px;
+				margin: 0 auto;
+				font-size: 18px;
+				text-align: center;
+				color: rgba(0,0,0,.75);
+			
+				@media only screen and (max-width: 959px) {
+				    width: 200px!important;
+			    }	
+
+				@media only screen and (max-width: 599px) {
+				    width: 230px!important;
+			    }	
+			}
+		}
+	}
+
+}
+
+.white_separator_origin{
+	padding-bottom: 64px;
+
+	.white_separator_2{
+
+		@media only screen and (max-width: 1359px) {
+		    max-width: 960px!important;
+		    width: 960px!important;
+		    margin: 0 calc(50% - 480px)!important;
+	    }	
+
+		@media only screen and (max-width: 959px) {
+		    max-width: 600px!important;
+		    width: 600px!important;
+		    margin: 0 calc(50% - 300px)!important;
+	    }	
+
+		@media only screen and (max-width: 599px) {
+		    max-width: 300px!important;
+		    width: 300px!important;
+		    margin: 0 calc(50% - 150px)!important;
+	    }			
+
+		.white_separator_left{
+
+			.strategy_text{
+
+				h1{
+					font-size: 24px;
+					color: #212121;
+					text-align: center;
+					margin: 30px 0px;		
+				}
+
+				.custom_hr{
+					width: 50px;
+				    height: 2px;
+				    margin: 0 calc(50% - 25px) 30px;
+				    background: rgba(0, 0, 0, 0.25);
+				}
+
+				img{
+				    width: 340px;
+				    margin: 20px calc(50% - 170px) 31px;
+
+					@media only screen and (max-width: 1359px) {
+    					margin: 10px calc(50% - 170px) -22px;
+				    }	
+
+					@media only screen and (max-width: 959px) {
+				    	margin: 20px calc(50% - 170px) 31px;
+				    }	
+
+					@media only screen and (max-width: 599px) {
+					    width: 280px;
+    					margin: 30px calc(50% - 140px) 55.5px;
+				    }	
+   
+				}
+
+				p{
+				    text-align: center;
+				    font-size: 18px;
+				    padding: 0px 35px;
+				    color: rgba(0, 0, 0, 0.54);
+				    margin-bottom: 28px;
+				    line-height: 1.8;
+
+					@media only screen and (max-width: 1359px) {
+				   	 	margin-bottom: 45px;
+					    margin-top: 46px;
+				    }	
+
+					@media only screen and (max-width: 959px) {
+				   	 	margin-bottom: 32px;
+					    margin-top: 0px;
+				    }					
+				}
+			}	
+		}
+		
+		.white_separator_right{
+
+			.strategy_text{
+
+				h1{
+					font-size: 24px;
+					color: #212121;
+					text-align: center;
+					margin: 30px 0px 0px;
+				
+					@media only screen and (max-width: 599px) {
+						padding: 0 15px;
+				 	}	
+			
+					br{
+						@media only screen and (max-width: 599px) {
+							display: none!important;
+				 	    }				
+					}			
+				} 
+
+				.custom_hr{
+					width: 50px;
+				    height: 2px;
+				    margin: 30px calc(50% - 25px) 30px;
+				    background: rgba(0, 0, 0, 0.25);
+				}
+
+				img{
+   	 				width: 200px;
+				    margin: 20px calc(50% - 100px) 40px;
+				}
+
+				p{
+				    text-align: center;
+				    font-size: 18px;
+				    padding: 0px 35px;
+				    color: rgba(0, 0, 0, 0.54);
+				    margin-bottom: 32px;
+				    line-height: 1.8;
+				}
+			}	
+		}
+	}
+}
+
+.followers{
+	padding: 12px 0px 72px;
+	width: 100%;
+
+	.people{
+		width: 75px;
+		margin: 0 auto;
+		padding: 0px 0px 40px;
+
+		img{
+			width: 75px;
+		}
+	}
+
+	.build{
+		
+		h1{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 500;
+			margin: 0px 0px 30px;
+		}
+
+		.build_text{
+			margin-bottom: 30px;
+		}
+
+		p{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 500;
+
+			@media only screen and (max-width: 699px) {
+				padding: 0 30px;
+		 	}	
+
+			br{
+				@media only screen and (max-width: 699px) {
+					display: none!important;
+		 	    }				
+			}
+		}
+	}
+}
+
+
+.growth {
+	
+	width: 640px;
+	margin: 0 auto;
+
+	@media only screen and (max-width: 639px) {
+	   	width: 300px;
+	}	
+
+	.strategy_text {
+		padding: 0 30px;
+
+		@media only screen and (max-width: 1359px) {
+		   	padding: 0 20px;
+		}	
+
+		@media only screen and (max-width: 959px) {
+		   	padding: 0 30px;
+		}	
+
+
+		h1 {
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			padding: 30px 0;
+			margin: 0;
+		}
+
+		.custom_hr {
+			width: 50px;
+			height: 2px;
+			margin: 0 calc(50% - 25px) 30px;
+			background: white;
+		}
+		
+		p {
+			text-align: left;
+			font-size: 18px;
+			color: white;
+			margin-bottom: 32px;
+			font-weight: 600;
+				
+			@media only screen and (max-width: 639px) {
+		   		text-align: center;
+			}	
+			
+			br{
+				display: none;
+				@media only screen and (max-width: 639px) {
+		   			display: block!important;
+				}	
+			}
+
+		}
+
+		.red_number {
+			font-size: 30px;
+			color: #ef5653;
+			font-weight: 700;
+		}
+		.p_three {
+			padding-bottom: 40px;
+			p {
+				margin: 0;
+			}
+		}
+
+		.p_two p {
+			margin: 0 0 10px;
+			@media only screen and (max-width: 639px) {
+		   		margin: 0 0 30px;
+			}	
+		}
+	}
+}
+
+.testimonial{
+	padding: 48px 0px 112px;
+	
+	.quote{
+		margin: 0px 0px 40px;
+
+		p{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 600;
+
+			@media only screen and (max-width: 959px) {
+				padding: 0 30px;
+		 	}	
+
+			br{
+				@media only screen and (max-width: 959px) {
+					display: none!important;
+		 	    }				
+			}
+		}
+	}
+
+	.person{
+		width: 340px;
+		margin: 0 auto;
+
+		@media only screen and (max-width: 599px) {
+			width: 170px;
+   		}		
+
+		.company{
+			float: left;
+			
+			img{
+				width: 150px;
+				padding-right: 10px;
+				
+				@media only screen and (max-width: 599px) {
+				    width: 210px;
+				    margin-bottom: 20px;
+		   		}		
+			}
+		}
+
+		.title{
+			width: 170px;
+			padding-left: 10px;
+			float: left;
+
+			p{
+				text-align: left;
+				color: white;
+				font-size: 24px;
+				margin: 0px;
+				font-weight: 600;
+			}
+
+			.shift{
+				margin-left: 16px;
+				font-size: 20px!important;
+				font-weight: normal!important;
+			}
+		}
+	}
+}
+
+	.ayyy{
+		
+		.red_number {
+			font-size: 30px;
+			color: #ef5653;
+			font-weight: 700;
+		}
+
+		.white_separator_left{
+
+			.strategy_text{
+
+				p{
+					margin-bottom: 32px!important;
+   					margin-top: 0px!important;
+				}
+
+				.custom_hr{
+					width: 50px;
+				    height: 2px;
+				    margin: 0 calc(50% - 25px) 30px!important;
+				    background: rgba(0, 0, 0, 0.25);
+				}
+			}	
+		}
+	}

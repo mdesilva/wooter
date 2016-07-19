@@ -1,0 +1,26 @@
+<div class="fullpage exc" layout="column" ng-cloak>
+    <div layout="row" class="fullpage exc" layout-align-xs="center start" layout-align-gt-xs="center center">
+
+        <div md-theme="auth-form" class="registerForm md-whiteframe-7dp form" flex-xs="100" flex-gt-xs="50">
+            <form ng-submit="registerForm.submitHandler()" id="{{registerForm.name}}" autocomplete="off">
+                <formly-form model="registerForm.model" fields="registerForm.fields" novalidate>
+                    <div class="inner no-pdt clearfix">
+                        <div layout="row" layout-align="end">
+                            <md-button type="submit" class="top-space submit full-btn no-margin">Sign Up</md-button>
+                        </div>
+                        <div layout="row" class="top-space" layout-align="center">
+                            <div flex="60">
+                                <p class="question-text">Already have an account?</p>
+                            </div>
+                            <div flex="10"><div class="md-btn-sep"></div></div>
+                            <div flex="40">
+                                <md-button class="options full-btn no-margin" ui-sref="login">Sign in</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </formly-form>
+            </form>
+        </div>
+
+    </div>
+</div>

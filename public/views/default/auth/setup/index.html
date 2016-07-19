@@ -1,0 +1,146 @@
+<div class="fullpage exc" layout="column">
+    <div layout="row" class="fullpage exc" layout-align="center start">
+        <div md-theme="auth-form" class="authForm setupForm md-whiteframe-7dp form" flex="50">
+            <div class="inner no-pdr no-pdl">
+                <form id="logo-form-dropzone" ng-submit="setupForm.submitHandler()" model="setupForm.model" novalidate name="setupFormName"  autocomplete="off">
+                    <div class="forms-slider">
+
+                        <div class="item">
+                            <div class="inner no-pdt">
+                                <div class="fform inner no-pdt no-pdb">
+                                    <h1 class="title">{{ setupForm.slides[0].title }}</h1>
+
+                                    <div class="small-errors material-input-full" style="margin-bottom: 5px;" ng-repeat="(key, value) in setupForm.slides[0].fields">
+                                        <md-input-container class="md-block">
+
+                                            <label>{{ value.label }}</label>
+
+                                            <input type="{{ value.type }}" ng-required="value.required" name="{{key}}" ng-if="value.element == 'input' && ! value.mask" ng-model="setupForm.model[key]">
+
+                                            <input type="{{ value.type }}" ng-required="value.required" clean="true" mask="{{ value.mask }}" name="{{key}}" ng-if="value.element == 'input' && value.mask" ng-model="setupForm.model[key]">
+
+                                            <textarea name="{{key}}" ng-if="value.element == 'textarea'" cols="1" rows="10" ng-model="setupForm.model[key]"></textarea>
+
+                                            <div ng-messages="setupFormName[key].$error">
+                                                <div ng-message="required">This is required.</div>
+                                                <div ng-message="email">This not a valid email.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+
+                                    <div class="no-errors material-input-full">
+                                        <md-button class='btn-red full-btn no-margin next-slide' data-slide="2">Next <md-icon>arrow_forward</md-icon></md-button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="inner no-pdt">
+                                <div class="fform inner no-pdt no-pdb">
+                                    <h1 class="title">{{ setupForm.slides[1].title }}</h1>
+
+                                    <div class="small-errors material-input-full">
+                                        <div class="upload-support row"><md-button ng-click="uploadActionClick()" class="md-fab btn-red" aria-label="Eat cake"><md-icon>file_upload</md-icon></md-button></div>
+                                    </div>
+
+                                    <div class="small-errors material-input-full">
+                                        <div class="drop-area">
+                                            <input type="text" class="hide hidden image-state" name="newImage" ng-model="setupForm.model.newImage">
+                                            <input type="file" name="file" accept="image/*" />
+                                            <div class="success message"><md-icon>check</md-icon></div>
+                                            <div class="error message"><md-icon>error_outline</md-icon></div>
+                                            <div class="loading message"><md-progress-circular md-mode="indeterminate" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="no-errors material-input-full hidden-flow">
+                                        <md-button class='top-space btn-red full-btn no-margin next-slide' data-slide="3">Next <md-icon>arrow_forward</md-icon></md-button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="inner no-pdt">
+                                <div class="fform inner no-pdt no-pdb">
+                                    <h1 class="title">{{ setupForm.slides[2].title }}</h1>
+
+                                    <div class="small-errors material-input-full" style="margin-bottom: 5px;" ng-repeat="(key, value) in setupForm.slides[2].fields">
+                                        <md-input-container class="md-block">
+
+                                            <label>{{ value.label }}</label>
+
+                                            <input type="{{ value.type }}" ng-required="value.required" name="{{key}}" ng-if="value.element == 'input' && ! value.mask" ng-model="setupForm.model[key]">
+
+                                            <input type="{{ value.type }}" ng-required="value.required" clean="true" mask="{{ value.mask }}" name="{{key}}" ng-if="value.element == 'input' && value.mask" ng-model="setupForm.model[key]">
+
+                                            <textarea name="{{key}}" ng-if="value.element == 'textarea'" cols="1" rows="10" ng-model="setupForm.model[key]"></textarea>
+
+                                            <div ng-messages="setupFormName[key].$error">
+                                                <div ng-message="required">This is required.</div>
+                                                <div ng-message="email">This not a valid email.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+
+                                    <div class="no-errors material-input-full">
+                                        <md-button class='btn-red full-btn no-margin next-slide' data-slide="4">Next <md-icon>arrow_forward</md-icon></md-button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="inner no-pdt">
+                                <div class="fform inner no-pdt no-pdb">
+                                    <h1 class="title">{{ setupForm.slides[3].title }}</h1>
+
+                                    <div class="small-errors no-pdt material-input-full" style="margin-bottom: 5px;" ng-repeat="(key, value) in setupForm.slides[3].fields">
+                                        <md-input-container class="md-block">
+
+                                            <label>{{ value.label }}</label>
+
+                                            <input type="{{ value.type }}" ng-required="value.required" name="{{key}}" ng-if="value.element == 'input' && ! value.mask" ng-model="setupForm.model[key]">
+
+                                            <input type="{{ value.type }}" ng-required="value.required" clean="true" mask="{{ value.mask }}" name="{{key}}" ng-if="value.element == 'input' && value.mask" ng-model="setupForm.model[key]">
+
+                                            <textarea name="{{key}}" ng-if="value.element == 'textarea'" cols="10" rows="10" md-maxlength="{{ value.maxlength }}" maxlength="{{ value.maxlength }}" ng-model="setupForm.model[key]"></textarea>
+
+                                            <div ng-messages="setupFormName[key].$error">
+                                                <div ng-message="required">This is required.</div>
+                                                <div ng-message="email">This not a valid email.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+
+                                    <div class="no-errors material-input-full">
+                                        <md-button type="submit" class='btn-red full-btn no-margin next-slide'>Finish <md-icon>check</md-icon></md-button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="pagination">
+                        <ul>
+                            <li><a href="#" data-slide="1"></a></li>
+                            <li><a href="#" data-slide="2"></a></li>
+                            <li><a href="#" data-slide="3"></a></li>
+                            <li><a href="#" data-slide="4"></a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

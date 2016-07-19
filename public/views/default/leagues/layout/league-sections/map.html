@@ -1,0 +1,22 @@
+<div class="header">
+    <p class="section-title">Map</p>
+</div>
+<div class="map-holder">
+    <div class="location-box md-whiteframe-3dp">
+        <div class="header">
+            <p class="md-title">Game Venues</p>
+        </div>
+        <!--<md-content layout="row">
+            <div class="icon" cssbg="{{ asset('img/icons/court.png') }}"></div>
+            <div class="details">
+                <p class="street">{{ leagueGameVenue.game_venue.location.street }}</p>
+                <p class="city-state">{{ leagueGameVenue.game_venue.location.city }}, {{ leagueGameVenue.game_venue.location.state }}</p>
+            </div>
+        </md-content>-->
+    </div>
+    <ui-gmap-google-map options="map.options" center="leagueGameVenue.center" zoom="map.zoom">
+        <ui-gmap-marker ng-repeat="marker in markers" coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+        </ui-gmap-marker>
+    </ui-gmap-google-map>
+</div>
+

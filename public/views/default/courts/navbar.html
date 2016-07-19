@@ -1,0 +1,125 @@
+<header class="site_header" ng-controller="navsearchController as ctrl">
+    <div class="md-toolbar-tools app" layout="column">
+        <md-button class="md-icon-button md-primary menu_icon" aria-label="menu" ng-click="toggleLeft()" ng-controller="SideNavCtrl" hide-gt-sm>
+            <md-icon>menu</md-icon>
+        </md-button>
+        <span flex hide-gt-sm></span>
+        <div>
+            <a href="" class="site_logo">
+                <img src="assets/images/wooter-courts.png" alt="">
+            </a>
+        </div>
+        <md-list layout="row" style="margin-left: 30px;margin-right: 20px" hide-xs hide-sm>
+
+            <md-list-item class="section_separator"><span></span></md-list-item>
+
+        </md-list>
+        <!--search section-->
+        <div class="header_search" layout="row" hide-xs hide-sm style="position: relative;">
+            <!--<md-icon class="search_icon" style="padding: 0; height: 40px; margin: 0; width: 40px; line-height: 40px; color: #ccc !important; font-size: 22px !important; text-align: center; position: absolute; pointer-events: none; top: 20px; left: 0; z-index: 2;">search</md-icon>
+             <form ng-submit="$event.preventDefault()">
+                <md-input-container>
+                    <label style="display: none !important;">Search</label>
+                    <input type="text" ng-model="searchCourt" placeholder="Search Courts" style="padding-left: 40px; font-size: 14px; height: 40px; border: none !important;">
+                </md-input-container>
+            </form> -->
+            <md-icon class="search_icon" style="padding: 0; height: 40px; margin: 0; width: 40px; line-height: 40px; color: #ccc !important; font-size: 22px !important; text-align: center; position: absolute; pointer-events: none; top: 0px; left: 0; z-index: 2;">search</md-icon>
+            <md-autocomplete style="width:300px; position:relative" class="headerSearch"
+                  md-no-cache="true"
+                  md-selected-item="selectedItem"
+                  md-search-text-change="searchTextChange(searchText)"
+                  md-search-text="ctrl.searchText"
+                  md-selected-item-change="selectedItemChange(item)"
+                  md-items="item in ctrl.querySearch(ctrl.searchText)"
+                  md-item-text="item.name"
+                  md-min-length="0"
+                  placeholder="Search by court name or city"
+                  md-menu-class="autocomplete-custom-template">
+
+                    <md-item-template>
+                      <md-list-item class="md-2-line">
+                        <img ng-src="assets/images/5592f31a0983f.png" class="md-avatar" />
+                        <div class="md-list-item-text" layout="column">
+                          <h3>{{ item.name | limitTo:20 }}</h3>
+                          <h4>{{ item.city }}, {{ item.state }}</h4>
+                        </div>
+                      </md-list-item>
+                    </md-item-template>
+                    <md-not-found>
+                      No states matching "{{searchText}}" were found.
+                    </md-not-found>
+            </md-autocomplete>
+
+        </div>
+        <span flex></span>
+        <!--menu section -->
+        <div class="header_menu" hide-xs hide-sm layout="row">
+            <md-list layout="row">
+                <md-list-item ng-controller="DropDwn" class="custom_dropdown_outer">
+                    <md-button dropdown-menu="athletesdropdownlist"
+                               dropdown-model="ddMenuSelected"
+                               dropdown-disabled="dropdownsDisabled"
+                               class="btn-menu">Athletes<md-icon aria-label="arrowdropdown" class="material-icons step ng-binding ng-isolate-scope md-24" ng-class="it.size">
+                        arrow_drop_down
+                    </md-icon></md-button>
+                </md-list-item>
+                <md-list-item ng-controller="DropDwn" class="custom_dropdown_outer">
+                    <md-button dropdown-menu="comissionerdropdownlist"
+                               dropdown-model="ddMenuSelected"
+                               dropdown-disabled="dropdownsDisabled"
+                               class="btn-menu">Comissioners <md-icon aria-label="arrowdropdown" class="material-icons step ng-binding ng-isolate-scope md-24" ng-class="it.size">
+                        arrow_drop_down
+                    </md-icon></md-button>
+                </md-list-item>
+                <md-list-item><md-button ng-href="" target="_blank">Blog</md-button></md-list-item>
+                <md-list-item><md-button ng-href="" target="_blank">Contact</md-button></md-list-item>
+            </md-list>
+            <md-list layout="row">
+                <md-list-item class="section_separator"><span></span></md-list-item>
+            </md-list>
+            <md-list layout="row">
+                <md-list-item>
+                    <md-button class="md-warn login">Login</md-button>
+                </md-list-item>
+                <md-list-item>
+                    <md-button class='md-raised signup'>Sign Up</md-button>
+                </md-list-item>
+            </md-list>
+            <md-list layout="row" class="user_section" style="display: none">
+                <md-list-item>
+                    <md-button class="md-icon-button">
+                        <md-icon aria-label="arrowdropdown" class="material-icons step ng-binding ng-isolate-scope md-24" ng-class="it.size">
+                            notifications_none
+                        </md-icon>
+                    </md-button>
+                </md-list-item>
+                <md-list-item>
+                    <md-button class="md-icon-button">
+                        <md-icon aria-label="arrowdropdown" class="material-icons step ng-binding ng-isolate-scope md-24" ng-class="it.size">
+                            mail_outline
+                        </md-icon>
+                    </md-button>
+                </md-list-item>
+                <md-list-item>
+                    <img class="md-avatar user_profile_img" src="images/header/menu.svg" alt="">
+                </md-list-item>
+            </md-list>
+        </div>
+        <!--end of the mobile section-->
+        <md-button class="md-icon-button md-primary header_search" aria-label="search"  ng-click="mobilesearch=!mobilesearch" hide-gt-sm>
+            <md-icon class="search_icon">search</md-icon>
+        </md-button>
+    </div>
+
+    <!--end of md-toolbar-->
+    <div layout="row" class="md-toolbar-tools" ng-hide="mobilesearch" flex="100" style="position: relative;">
+        <md-icon class="search_icon" style="padding: 0; height: 40px; margin: 0; width: 40px; line-height: 40px; color: #ccc !important; font-size: 22px !important; text-align: center; position: absolute; top: 0; left: 0; z-index: 2;">search</md-icon>
+        <form ng-submit="$event.preventDefault()">
+            <md-input-container>
+                <label style="display: none !important;">Search</label>
+                <input type="text" placeholder="Search Courts" ng-model="searchCourt" style="padding-left: 40px; font-size: 14px; height: 40px; border: none !important;">
+            </md-input-container>
+        </form>
+    </div>
+</header>
+<div ng-include="'scripts/shared/navbar/mobilenav.html'"></div>

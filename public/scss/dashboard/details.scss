@@ -1,0 +1,170 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: Dashboard/details styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "../engine/_init";
+@import "media";
+
+.md-body-1.info{
+	text-align: center!important;
+}
+
+.header{
+	width: 100%;
+	padding: 0px 15px!important;
+	background: white!important;
+	height: 72px;
+
+	.back{
+		float: left;
+		padding: 14px 12px;
+		width: 38px;
+	}
+	
+	.team_icon{
+		float: left;
+		height: 48px;
+		margin: 12px 0px;
+	}
+
+	.credentials{
+		float: left;
+		padding-left: 15px;
+
+		h4{
+			text-align: left;
+			margin: 5px 0px!important;
+			font-size: 24px;
+		}
+		
+		p{
+			text-align: left;
+			margin: 4px 0px!important;
+			font-size: 14px;
+			color: rgba(0,0,0,.44);
+		}
+	}
+	
+	.clear{
+		clear: both;
+	}
+	
+	.buttons{
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin-top: 27px;
+	    margin-right: -5px;
+	}
+
+	.md-menu{
+		margin-top: -15px;
+	}
+}
+
+.section_name{
+    text-align: left;
+    height: 48px;
+    padding: 14px 0px 14px 17px;
+}
+
+.section_add{
+    text-align: right;
+    width: 100%;
+    padding: 0 13px 0 0;
+    color: #ef5350;
+}
+
+.inner{
+	position: relative;
+	
+	.standing{
+		overflow-x:hidden;
+	}
+
+	.back, .back2{
+		position: absolute;
+		left: 0;
+		padding: 65px 0px;
+	   	margin-left: -25px;
+		height: 60px;
+		z-index: 20;
+		top: 0;
+
+		img{
+			width: 60px;
+			height: 60px;
+		}
+	}
+
+	.forth, .forth2{
+		position: absolute;
+		right: 0;
+		padding: 65px 0px;
+	   	margin-right: -25px;
+		height: 60px;
+		z-index: 20;
+		top: 0;
+
+		img{
+			width: 60px;
+			height: 60px;
+		}
+	}
+}
+
+.pages_team{
+	position: relative;
+	height: 80px;
+
+	img{
+		width:100px;
+		height: 80px;
+		padding: 10px 20px;
+		float: left;
+	}
+
+	.credentials{
+		padding: 10px 100px;
+		position: absolute;
+
+		h4{
+			text-align: left;
+			margin: 0px;
+			padding: 2px 0px;
+			font-size: 22px;	
+			color: #444;		
+		}
+
+		p{
+			text-align: left;
+			margin: 0px;
+			padding: 5px 0px;
+			color: #9a9a9a;
+		}		
+	}
+	
+	.buttons{
+		position: absolute;
+		right: 0;
+
+		img{
+		    width: 40px;
+			height: 60px;
+		    border-radius: 0%;
+		    padding: 20px 10px;
+		    margin-right: 11px;					
+		}
+	}
+}
+
+//other stuff
+md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
+    color: #ed514f!important;
+}

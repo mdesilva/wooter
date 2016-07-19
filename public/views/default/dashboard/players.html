@@ -1,0 +1,172 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 ng-show="league.name" class="md-title league-title">{{league.name}}</h1>
+            <p class="md-body-1 league-subtitle">{{season.starts_at | carbonToMMM }} - {{season.ends_at | carbonToMMM }} {{season.ends_at | carbonToyyyy }}</p>
+        </div>
+
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+
+</header>
+
+<div class="container players-content">
+
+    <md-content class="md-whiteframe-2dp">
+        <header class="header">
+
+            <p class="md-body-2">Players - {{ leagueSubtitle }}</p>
+
+        </header>
+
+        <div class="controls" layout="column" layout-gt-sm="row">
+            <div class="filters" flex="100" flex-gt-sm="60" layout="row">
+                <div class="select mobile_hidden_600">
+                    <md-input-container>
+                        <label style="display: none !important;">Teams</label>
+                        <md-select ng-model="teamId" ng-change="getPlayersByTeamId(teamId)">
+                            <md-option value="all">All teams</md-option>
+                            <md-option value="{{team.id}}" ng-repeat="team in teams">{{team.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="search">
+                    <md-input-container>
+                        <label style="display: none !important;">Search</label>
+                        <md-icon>search</md-icon>
+                        <input type="text" ng-model="search" placeholder="Search Players" ng-keyup="$event.keyCode == 13 ? searchPlayers() : null">
+                    </md-input-container>
+                    <span>|</span>
+                    <md-button class='modal_buttons right_button' ng-click="searchPlayers()">
+                        Search
+                    </md-button>
+                </div>
+            </div>
+            <div class="buttons mobile_hidden_600" flex="100" flex-gt-sm="40" layout-align="start center" layout-align-gt-sm="end center" layout="row">
+                <md-button ng-click="addPlayer($event)"> <md-icon>person_add</md-icon> Add Player</md-button>
+            </div>
+        </div>
+
+        <div class="players-list">
+            <md-list ng-cloak>
+                <md-list-item class="" layout="row" style='background: white;border-bottom: 1px solid #eee;'>
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="player" layout="row" flex="100" flex-gt-sm="35">
+                            <md-checkbox class='checking_boxes'
+                                         ng-checked="isChecked()"
+                                         md-indeterminate="isIndeterminate()"
+                                         ng-click="toggleAll()"
+                                         aria-label="Select all players">
+
+                            </md-checkbox>
+                            <p class="md-body-1 name">Player</p>
+                        </div>
+                        <div class="stand" layout="row" flex="100" flex-gt-sm="65">
+                            <div class="jersey mobile_hidden_600 mobile_hidden_959" flex="20">
+                                <p class="md-body-1 info">#</p>
+                            </div>
+                            
+                            <div class="team mobile_hidden_600 mobile_hidden_959" flex="20">
+                                <p class="md-body-1 info">Team</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="20">
+                                <p class="md-body-1 info">Email</p>
+                            </div>
+
+                            <div class="payment-status mobile_hidden_600" flex="20" flex-md='80'>
+                                <p class="md-body-1 info" style='text-align: center!important;'>Payment Status</p>
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+ 
+                <md-list-item layout="row" ng-repeat="player in players" style='border-bottom: 1px solid #eee;'>
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="player teams_table_name" layout="row" flex="100" flex-gt-sm="35" style="position: relative;">
+                            <md-checkbox class='checking_boxes'
+                                         aria-label="Select team"
+                                         ng-checked="exists(player.id, selected)"
+                                         ng-click="toggle(player.id, selected)"></md-checkbox>
+                            <span class="img team_image" flex-offset="5" cssbg="{{player.picture}}"></span>
+                            <p class="md-body-1 name team_name" style="margin-left: 48px;">{{ player.name }}</p>
+                        </div>
+
+                        <div class="stand"  layout="row" flex="100" flex-gt-sm="65">
+                            <div class="jersey teams_table_info mobile_hidden_600 mobile_hidden_959" flex="20" flex-md="10">
+                                <p class="md-body-1 info" ng-show="player.player_info.jersey">{{ player.player_info.jersey  }}</p>
+                                <p class="md-body-1 info" ng-show="!player.player_info.jersey">-</p>
+                            </div>
+                            
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="20" flex-md="10">
+                                <p class="md-body-1 info" ng-show="player.current_team">{{ player.current_team.name }}</p>
+                                <p class="md-body-1 info" ng-show="!player.current_team">-</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="20" flex-md="10">
+                                <p class="md-body-1 info">{{ player.email }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="20" flex-md="50">
+                                <p class="md-body-1 info" style='text-align: center!important;'>Unpaid</p>
+                            </div>
+                            <div class="team teams_table_options mobile_hidden_600" flex="20" flex-md="75">
+
+                                <img src="../img/dashboard/move.png" 
+                                     alt="Move Can"
+                                     style="width: 58px; float:left; padding: 2px 18px;"
+                                     ng-click="movePlayer($event, player)">
+
+                                <img ng-if="player.current_team" src="../img/dashboard/pencil.png"
+                                     alt="Edit Can"
+                                     style="width: 58px; float:left; padding: 2px 19px;"
+                                     ng-click="editPlayer($event, player)">
+
+                                <img src="../img/dashboard/garbage.png" 
+                                 alt="Delete Can"   
+                                 style="width: 55px; float:right; padding: 2.5px 20px; position:absolute;"
+                                 ng-click="removePlayer($event, player)">
+
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="count(players) == 0">
+
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">No players found</p>
+                    </div>
+
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+
+
+<div class="check_select">
+    <ul>
+        <li>
+            <div>
+                <p>({{count(selected)}}) <span ng-if="count(selected)>1">Players</span><span ng-if="count(selected)==0">Players</span><span ng-if="count(selected)==1">Player</span> Selected</p>
+            </div>
+        </li>
+        <li style='padding: 2px 0px;'>
+            <div>
+                <md-button ng-if="count(selected) > 0" ng-click="movePlayers($event)" style='color: #ed514f'><img style='width: 16px; margin-top: 10px;' src="../img/dashboard/move.png" alt=""> MOVE</md-button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="container game-pagination" style="text-align:center">
+    <div class="inner">
+        <md-button ng-click="navFirst()" ng-disabled="!(playersIndex > 1)" class="md-icon-button"><md-icon>skip_previous</md-icon></md-button>
+        <md-button ng-click="navPrev()" ng-disabled="!(playersIndex > 1)" class="md-icon-button"><md-icon>chevron_left</md-icon></md-button>
+        <md-button class="disabled-button"><b>{{ playersIndex }}</b> / {{ pages }}</md-button>
+        <md-button ng-click="navNext()" ng-disabled="playersIndex == pages" class="md-icon-button"><md-icon>chevron_right</md-icon></md-button>
+        <md-button ng-click="navLast()" ng-disabled="playersIndex == pages" class="md-icon-button"><md-icon>skip_next</md-icon></md-button>
+    </div>
+</div>

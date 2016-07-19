@@ -1,0 +1,121 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+//HOMEPAGE SCSS
+
+.hero_image{
+	background: #303030;
+	height: 290px;
+
+    .hero_text{
+    	top: 40%!important
+    }
+
+    img{
+    	width: 60px;
+		margin: 0 calc(50% - 30px);
+		margin-bottom: 20px;
+    }
+
+	h1{
+		margin: 0px!important;
+	}
+}
+
+.pricing_title{
+	padding: 10px 0px;
+	
+	h1{
+		font-size: 24px;
+		color: #212121;
+		text-align: center;
+		margin: 30px 0px;
+	}
+
+	.custom_hr{
+		width: 70px;
+	    height: 3px;
+	    margin: 0 calc(50% - 35px) 60px;
+	    background: #ef5653;
+	}
+
+	p{
+		text-align: justify;
+		font-size: 18px;
+		padding: 0px 90px;
+		color: rgba(0,0,0,.54);
+		margin-bottom: 32px;
+		line-height: 1.8;
+		@media only screen and (max-width: 959px) {
+			padding: 0px 45px;
+		}	
+		@media only screen and (max-width: 599px) {
+			padding: 0px 15px;
+		}	
+	}
+}
+
+.pricing_text{
+	padding: 10px 0px;
+	
+	h1{
+		font-size: 18px;
+		color: #212121;
+		text-align: center;
+		margin: 30px 0px 20px;
+	}
+
+	.custom_hr{
+		width: 40px;
+	    height: 2px;
+	    margin: 0 calc(50% - 20px) 20px;
+	    background: #ef5653;
+	}
+
+	p{
+		text-align: justify;
+		font-size: 18px;
+		padding: 0px 90px;
+		color: rgba(0,0,0,.54);
+		margin-bottom: 32px;
+		line-height: 1.8;
+		@media only screen and (max-width: 959px) {
+			padding: 0px 45px;
+		}	
+		@media only screen and (max-width: 599px) {
+			padding: 0px 15px;
+		}		
+	}
+
+	.bold{
+		font-weight: 700;
+	}
+}
+
+.strategy{
+	
+	@media only screen and (max-width: 1359px) {
+		max-width: 960px!important;
+    	width: 960px!important;
+    	margin: 0 calc(50% - 480px)!important;
+	}	
+	@media only screen and (max-width: 959px) {
+		max-width: 600px!important;
+    	width: 600px!important;
+    	margin: 0 calc(50% - 300px)!important;
+	}	
+	@media only screen and (max-width: 599px) {
+		max-width: 300px!important;
+    	width: 300px!important;
+    	margin: 0 calc(50% - 150px)!important;
+	}		
+}

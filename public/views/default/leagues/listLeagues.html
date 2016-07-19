@@ -1,0 +1,47 @@
+<md-toolbar class="league-list-tabs" layout="row" layout-align="center center">
+    <md-button ng-click="action('setList','active')" ng-class="{active: isTab('active')}" ng-disabled="isTab('active')">Active</md-button>
+    <md-button ng-click="action('setList','past')" ng-class="{active: isTab('past')}" ng-disabled="isTab('past')">Past</md-button>
+    <md-button ng-click="action('setList','archives')" ng-class="{active: isTab('archives')}" ng-disabled="isTab('archives')">Archived</md-button>
+</md-toolbar>
+<div class="container">
+    <div class="leagues-list" style="display: none;">
+        <div class="item">
+            <md-card class="create-league" ui-sref="dashboardLeagueCreate">
+                <md-button>
+                    <div class="inner">
+                        <md-icon>add_circle_outline</md-icon>
+                        <p class="md-body-2">Create a league</p>
+                    </div>
+                </md-button>
+            </md-card>
+        </div>
+        <div class="item" data-league-id="{{ league.id }}" ng-repeat="league in leagues[activeTab]">
+            <md-card>
+                <div class="league-image cover-background" cssbg="{{league.image}}">
+                    <md-menu md-offset="-24 56" md-position-mode="target-right target">
+                        <md-button aria-label="Open league options" class="md-icon-button" ng-click="showMenu($mdOpenMenu, $event)">
+                            <md-icon md-menu-origin>more_vert</md-icon>
+                        </md-button>
+                        <md-menu-content width="2">
+                            <md-button ng-click="action('archive', league)" ng-if="activeTab != 'archives'">Archive</md-button>
+                            <md-button ng-click="action('unarchive', league)" ng-if="activeTab == 'archives'">Unarchive</md-button>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+                <md-card-content>
+                    <div class="content">
+                        <div class="text">
+                            <p class="md-title">{{league.name}}</p>
+                            <p class="md-subtitle">{{league.season}}</p>
+                        </div>
+
+                        <div class="buttons">
+                            <md-button ng-click="action('manage', league.id)">Manage</md-button>
+                            <md-button ng-click="action('edit', league.id)">Edit</md-button>
+                        </div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</div>

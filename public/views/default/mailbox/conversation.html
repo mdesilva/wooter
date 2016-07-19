@@ -1,0 +1,189 @@
+<style>
+    .active {
+        background-color: yellow;
+    }
+</style>
+<div id="chatroom" style="height:1000px;">
+    
+    <!-- Mailbox head START -->
+    
+    <div id="chatroom-head" data-layout="row" data-flex="100">
+        <h1 id="chatroom-heading" data-flex="40">Messages</h1>
+        <ul id="chatroom-messengers" data-layout="row" data-flex="60">
+            <li data-layout="column" data-flex="33">
+                <div>
+                    <button ng-click="mailbox.openMailer()">Send Email</button>
+                </div>
+            </li>
+            <li data-layout="column" data-flex="33">
+                <div>
+                    <button ng-click="mailbox.openTextMessenger()">Send Text</button>
+                </div>
+            </li>
+            <li data-layout="column" data-flex="33">
+                <div>
+                    <button ng-click="mailbox.openMessenger([6], 'player', 'broadcast')">Create Broadcast</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Mailbox head END -->
+    
+    <!-- Mailbox Navigation START -->
+    
+    <div id="chatroom-navigation" data-layout="row" data-flex="100">
+        <ul data-layout="row" data-flex="100">
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/inbox/conversations">
+                    All Messages
+                </a>
+            </li>
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/sent/conversations">
+                    Sent Messages
+                </a>
+            </li>
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/inbox/broadcasts">
+                    Broadcasts
+                </a>
+            </li>
+            <li data-layout="column" data-flex="25">
+                <a href="/#/inbox/trash/conversations">
+                    Trash
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Mailbox Navigation END -->
+    
+    <!-- Chat Room Messages START -->
+   
+    <div id="chatroom-messages">
+        <div>
+            
+            <!-- Messages Head START -->
+            
+            <div id="messages-head" data-layout="row" data-flex="100">
+                <div data-layout="column" data-flex="20">
+                    <div>
+                        <select>
+                            <option>one</option>
+                            <option>two</option>
+                            <option>three</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Club Filter START -->
+
+                <form data-layout="column" data-flex="20" id="club-filter-form">
+                    <div>
+                        <select ng-init="club = clubs[0]"
+                                ng-model="club"
+                                ng-options="club.name for club in clubs"
+                                ng-change="mailbox.filterByClub(mailboxRequest, club)"
+                                id="club-filter">
+                        </select>
+                    </div>
+                </form>
+
+                <!-- Club Filter END -->
+                
+                <!-- Time frame Filter START -->
+                
+                <form data-layout="column" data-flex="20" id="timeframe-filter-form">
+                    <div>
+                        <select ng-init="timeframe = mailbox.timeframes[0]"
+                                ng-model="timeframe"
+                                ng-options="timeframe.title for timeframe in mailbox.timeframes"
+                                ng-change="mailbox.filterByTimeframe(mailboxRequest, timeframe)"
+                                id="timeframe-filter"
+                                class="pull-left">
+                        </select>
+                    </div>
+                </form>
+                
+                <!-- Time frame Filter END -->
+                
+                <div data-layout="column" data-flex="40">
+                    <div data-layout="row" data-layout-align="end" data-flex="100" >
+                        <button ng-click="mailbox.openRecycler('conversation', 10)">Trash</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messages Head END -->
+     
+            <!-- Chat Box START -->
+            
+            <div id="chatroom-chatbox" data-layout="row" data-flex="100">
+                
+                <!-- Chat Box Conversations START -->
+                
+               <div data-layout="column" data-flex="25">
+                    <div id="conversations" style="height:400px;overflow:scroll;">
+                        <ul id="conversations-list" style="min-height:800px;">
+                            
+                            <li ng-repeat="mail in mailbox.mailbox" 
+                                ng-class="{active : mail.id == conversation_id}" 
+                                ng-click="highlightConversation(mail.id); resetState(mail.id); getMessagesById(messagesRequest, mail.id)"
+                                data-id="{{mail.id}}"
+                                class="conv">
+                                    <p>{{mail.date_label}}</p>
+                                    <img src="{{mail.preview_author_img}}">
+                                    <div>
+                                        <h1>{{mail.title}}</h1>
+                                        <p>Last message by <strong>{{mail.preview_author}}</strong></p>
+                                        <p>{{mail.preview}}</p>
+                                    </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-layout="column" data-flex="50">
+                        <input ng-model="keywords" 
+                               ng-change="mailbox.filterByKeywords(mailboxRequest, keywords)" 
+                               id="messages-keyword-filter" 
+                               type="text">
+                    </div>
+                </div>
+                
+                <!-- Chat Box Conversations END -->
+                
+                <!-- Conversation Messages START -->
+                
+                <div id="conversation-messages" data-layout="column" data-flex="75">
+                    <div id="messages-head">
+                        
+                    </div>
+                    <div id="messages-scroll" style="height:400px;overflow:scroll;">
+                        <ul id="messages-list" style="min-height:420px;">
+                            <li ng-repeat="message in messages" class="message">
+                                <img src="{{message[0].author_img}}">
+                                <p>{{message[0].message}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <form id="messenger">
+                        <textarea ng-model="message" 
+                                  ng-keyup="($event.keyCode == 13 && !$event.shiftKey) ? reply(message, messagesRequest) : null"
+                                  id="message">
+                        </textarea>
+                        <input type="submit" value="Send" ng-click="reply(message, messagesRequest)">
+                    </form>
+                </div> 
+                
+                <!-- Conversation Messages END -->
+                
+            </div>
+            
+            <!-- Chat Box END -->
+            
+        </div>
+    </div>
+    
+    <!-- Chat room Messages END -->
+    
+</div>

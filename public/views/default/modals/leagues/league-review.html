@@ -1,0 +1,41 @@
+<md-dialog aria-label="Add review modal" class="dialog-page add-venue">
+    <form action="#" ng-submit="addLeagueReview(addLeagueForm)" onsubmit="return false;" novalidate name="addLeagueForm">
+        <md-dialog-content>
+            <md-content>
+                <p class="md-title">Add Review </p>
+                
+                <div class="form">
+                    <div class="row">
+                        <div flex-xs="120" flex-gt-xs="120">
+                            <md-input-container class="md-block">
+                                <label>Review</label>
+                                <input class='name_input' name='league_review' ng-model='league_review' type="text" required>
+                                <div ng-messages="addLeagueForm['league_review'].$error">
+                                    <div ng-message="required">League Review is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="row" layout="row">
+                        <div flex="">
+                            <md-input-container class="md-block">
+                                <label>Select Stars</label>
+                                <md-select name="review_stars" ng-model="review_stars" required="">
+                                    <md-option ng-repeat="star in stars" value="{{star.id}}">{{star.value}}</md-option>
+                                </md-select>
+                                <div ng-messages="addLeagueForm['review_stars'].$error">
+                                    <div ng-message="required">Review star is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </md-content>
+
+        </md-dialog-content>
+        <md-dialog-actions>
+            <md-button type="submit" class="md-primary">Add</md-button>
+            <md-button ng-click="closeModal()">Cancel</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

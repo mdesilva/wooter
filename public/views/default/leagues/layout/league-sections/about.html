@@ -1,0 +1,22 @@
+<div class="header">
+    <p class="section-title">About</p>
+</div>
+<div class="section-content-holder">
+    <md-content>
+        <p class="md-body-1 info">{{ $step.description }}</p>
+    </md-content>
+    <md-button class="read-button" ng-click="toggle_less_more($event)">Read more</md-button>
+</div>
+<div class="details-list">
+    <div class="ng-loader" ng-show="!(loaded.details && loaded.seasons)">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <ul ng-show="loaded.details && loaded.seasons">
+        <li ng-repeat="item in aboutDetails">
+            <ul>
+                <li>{{ item.name }}</li>
+                <li>{{ item.value }}</li>
+            </ul>
+        </li>
+    </ul>
+</div>

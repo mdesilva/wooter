@@ -1,0 +1,253 @@
+.main {
+  font-family: 'Roboto';
+  background-color: #f2f2f2;
+}
+
+.main .md-fab {
+  background-color: #EF5350;
+}
+
+.main .md-button.md-fab:not([disabled]):hover {
+  background-color: #EF5350;
+}
+
+.main .new_teambtn {
+  color: #EF5350;
+}
+
+.hero_header {
+  color: #fff;
+  background-color: #024F7E;
+}
+
+.hero_header p {
+  opacity: 0.7;
+}
+
+.hero_header .leagueHead {
+  height: calc(162px - 48px);
+  max-width: 1280px;
+  width: 100%;
+}
+
+.main_tabs {
+  background-color: #024F7E;
+}
+
+.main_tabs .vendor_tabs {
+  max-width: 1280px;
+}
+
+.main_tabs .vendor_tabs .md-tab {
+  color: rgba(255, 255, 255, 0.702);
+}
+
+.main_tabs .vendor_tabs .md-tab .md-active {
+  color: white;
+}
+
+/* innards of the the sales dashboard */
+.sales_innards {
+  background-color: white;
+  padding: 0px;
+}
+
+.sales_innards .pages_team {
+  position: relative;
+  height: 80px;
+}
+
+.sales_innards .pages_team img {
+  width: 100px;
+  height: 80px;
+  padding: 10px 20px;
+  float: left;
+}
+
+.sales_innards .pages_team .credentials {
+  padding: 10px 100px;
+  position: absolute;
+}
+
+.sales_innards .pages_team .credentials h4 {
+  text-align: left;
+  margin: 0px;
+  padding: 5px 0px;
+}
+
+.sales_innards .pages_team .credentials p {
+  text-align: left;
+  margin: 0px;
+  padding: 5px 0px;
+}
+
+.sales_innards .pages_team .buttons {
+  position: absolute;
+  right: 0;
+}
+
+.sales_innards .pages_team .buttons img {
+  width: 40px;
+  height: 60px;
+  border-radius: 0%;
+  padding: 20px 10px;
+  margin-right: 11px;
+}
+
+.sales_innards .pages_players {
+  position: relative;
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.sales_innards .pages_players .pages {
+  position: absolute;
+  width: 50%;
+  left: 0;
+  z-index: 10;
+}
+
+.sales_innards .pages_players .pages h4 {
+  text-align: left;
+  margin: 0px;
+  padding: 20px;
+  font-weight: normal;
+}
+
+.sales_innards .pages_players .pages_add {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  z-index: 10;
+}
+
+.sales_innards .pages_players .pages_add h4 {
+  text-align: right;
+  color: #ed514f;
+  margin: 0px;
+  padding: 20px;
+  font-weight: normal;
+}
+
+.sales_innards .player_results {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.sales_innards .player_results table {
+  width: 100%;
+  min-width: 970px;
+}
+
+.sales_innards .player_results table tbody .table_header {
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.sales_innards .player_results table tbody .table_header th {
+  width: 125px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.sales_innards .player_results table tbody .table_header th md-checkbox {
+  width: 0px;
+  height: 30px;
+  margin: 15px;
+  padding: 0px;
+}
+
+.sales_innards .player_results table tbody .table_header .team_name {
+  width: 300px;
+}
+
+.sales_innards .player_results table tbody .table_lists {
+  height: 60px;
+  background-color: white;
+}
+
+.sales_innards .player_results table tbody .table_lists td {
+  padding: 0px;
+  margin: 0px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.sales_innards .player_results table tbody .table_lists td md-checkbox {
+  width: 0px;
+  height: 30px;
+  margin: 15px;
+  padding: 0px;
+}
+
+.sales_innards .player_results table tbody .table_lists td img {
+  width: 40px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 10px 0px;
+}
+
+.sales_innards .player_results table tbody .table_lists .team_name {
+  text-align: left;
+}
+
+.sales_innards .player_results table tbody .table_lists .email_message img {
+  width: 20px;
+  height: 60px;
+  border-radius: 0%;
+  padding: 20px 0px;
+}
+
+.sales_innards .player_results table .icons_checks {
+  width: 60px !important;
+  text-align: center;
+}
+
+.sales_innards .slider {
+  width: 100%;
+  background-color: white;
+  height: 300px;
+  position: relative;
+}
+
+.sales_innards .slider .back {
+  position: absolute;
+  left: 0;
+  padding-left: 50px;
+  top: 35%;
+  z-index: 20;
+}
+
+.sales_innards .slider .forth {
+  position: absolute;
+  right: 0;
+  padding-right: 50px;
+  top: 35%;
+  z-index: 20;
+}
+
+.sales_innards .slider .photos {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0px 80px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.sales_innards .slider .photos .limit {
+  width: 100%;
+}
+
+.sales_innards .slider .photos .limit .images {
+  width: 320px;
+  height: 255px;
+  margin: 20px 10px;
+  background: #eee;
+  display: inline-block;
+}
+
+md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple {
+  color: #ed514f !important;
+}

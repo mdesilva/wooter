@@ -1,0 +1,169 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: Dashboard/albums,categories,divisions styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ */
+
+@import "players";
+
+.md-body-1.info{
+    text-align: left!important;
+}
+
+.black_placeholder{
+    md-select-value{
+        color: black!important;
+    }
+}
+
+.check_select{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+    z-index: 74;
+    height: 48px;
+
+    ul{
+        padding: 0px;
+        width: 355px;
+        margin: 0 auto;
+        height: 48px;
+
+        li{
+            display: inline-block;
+            height: 48px;
+            padding: 15px 0px;
+            margin: 0px 20px;
+
+            div{
+                float: left;
+                img, p{
+                    float: left
+                }
+                img{
+                    margin: 0px 5px; 
+                }
+                p{
+                    font-size: 15px;
+                    font-weight: 500;                
+                }
+            }
+        }
+    }
+}
+
+.manage_listing{
+	md-content{
+		width: 600px;
+		margin: 0 auto;
+		
+		@media only screen and (max-width: 599px){
+		    width: 300px!important;
+		} 
+
+		.md-body-1.name{
+			padding: 14px;
+			height: 20px;
+			width: 100%;
+	
+			@media only screen and (max-width: 599px){
+				padding: 0px;
+			} 
+
+		}
+	
+		.header{
+			p{
+    			text-align: left!important;
+    			padding-left: 30px;
+			}
+		}
+
+		.controls{
+			p{
+				color: #9a9a9a;
+			    margin: 0px;
+			    padding: 4.5px 0px 4.5px 30px;				
+			}
+		}
+		.hr_custom{
+			background: #eee;
+			width: 85%;
+			margin: -5px auto 0px;
+			height: 1.5px;
+		}
+	}
+}
+
+.m_buttons{
+	width: 600px;
+	margin: 0px auto;
+
+	@media only screen and (max-width: 599px){
+	    width: 300px!important;
+	} 
+
+	.modal_buttons{
+		float: right;
+		margin:  10px 0px;
+		padding: 0px 0px;
+	}
+
+	.left_button{
+		margin-right: 5px;
+	}
+				
+	.right_button{
+		margin-left: 5px;
+	}
+}	
+
+.md-dialog-container.ng-scope{
+	position: fixed;
+}
+
+.management_modals {
+	min-width: 400px;
+	
+	md-dialog-content {
+	
+		.modal_header {
+			padding: 20px 0;
+	
+			h4 {
+				margin: 0;
+			}
+		}
+	
+		form {
+	
+			.modal_button_div {
+				width: 90%;
+				margin: 20px 5% 0;
+	
+				.modal_buttons {
+					float: right;
+					margin: 10px 0;
+					padding: 0;
+				}
+	
+				.left_button {
+					margin-right: 5px;
+				}
+	
+				.right_button {
+					margin-left: 5px;
+				}
+	
+			}
+	
+			.modal_info .modal_field {
+				margin: 10px 0 0;
+			}
+		}
+	}
+}

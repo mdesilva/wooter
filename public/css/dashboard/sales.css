@@ -1,0 +1,498 @@
+/*
+ * Created by Alinus
+ * User: alin.designstudio
+ * For: Dashboard/player styles
+ * License: Wooter LLC.
+ * Date: 2016.02.11
+ * Description: Dashboard Player Styles
+ */
+/**
+ * Profile default sizes
+ */
+/**
+ * Retrieves a color value from the $material-colors Sass map
+ * Inspired by https://github.com/nilskaspersson/Google-Material-UI-Color-Palette/
+ *
+ * @function
+ * @param {string} color-name             - quoted, lower-case, dasherized color
+ *                                          name (e.g. 'pink', 'amber')
+ * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
+ *                                          '200', 'a100')
+ */
+/*! 
+ * angular-loading-bar v0.8.0
+ * https://chieffancypants.github.io/angular-loading-bar
+ * Copyright (c) 2015 Wes Cruver
+ * License: MIT
+ */
+/* Make clicks pass-through */
+#loading-bar,
+#loading-bar-spinner {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  -webkit-transition: 350ms linear all;
+  -moz-transition: 350ms linear all;
+  -o-transition: 350ms linear all;
+  transition: 350ms linear all; }
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active,
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0; }
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave,
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave {
+  opacity: 1; }
+
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+  background: #29d;
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px; }
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  -moz-box-shadow: #29d 1px 0 6px 1px;
+  -ms-box-shadow: #29d 1px 0 6px 1px;
+  -webkit-box-shadow: #29d 1px 0 6px 1px;
+  box-shadow: #29d 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%; }
+
+#loading-bar-spinner {
+  display: block;
+  position: fixed;
+  z-index: 10002;
+  top: 10px;
+  left: 10px; }
+
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation: loading-bar-spinner 400ms linear infinite;
+  -ms-animation: loading-bar-spinner 400ms linear infinite;
+  -o-animation: loading-bar-spinner 400ms linear infinite;
+  animation: loading-bar-spinner 400ms linear infinite; }
+
+@-webkit-keyframes loading-bar-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-moz-keyframes loading-bar-spinner {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-o-keyframes loading-bar-spinner {
+  0% {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-ms-keyframes loading-bar-spinner {
+  0% {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg); } }
+/*
+ * Created by Alinus
+ * User: alin.designstudio
+ * For: dashboard/styles
+ * License: Wooter LLC.
+ * Date: 2016.02.11
+ * Description: here are stored all shared styles into dashboard styles
+ *
+ */
+html, body {
+  background: #eee; }
+
+@media only screen and (max-width: 959px) {
+  .mobile_hidden_959 {
+    display: none !important; } }
+@media only screen and (max-width: 600px) {
+  .mobile_hidden_600 {
+    display: none !important; } }
+.md-body-2 {
+  font-size: 16px !important; }
+
+@media only screen and (min-width: 1366px) {
+  .container {
+    width: 1080px !important; } }
+@media only screen and (max-width: 959px) {
+  .container {
+    width: 600px !important; } }
+@media only screen and (max-width: 630px) {
+  .container {
+    width: 100% !important; } }
+md-sidenav {
+  z-index: 20 !important; }
+
+#dashboardHeader {
+  background: #303030;
+  color: #fff;
+  position: relative;
+  z-index: 10; }
+  #dashboardHeader .info {
+    padding: 27px 0; }
+    #dashboardHeader .info .league-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 12px;
+      margin-top: 0; }
+    #dashboardHeader .info .league-subtitle {
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.7); }
+  #dashboardHeader .nav-bar {
+    position: relative; }
+    #dashboardHeader .nav-bar:after, #dashboardHeader .nav-bar:before {
+      display: table;
+      content: " "; }
+    #dashboardHeader .nav-bar:after {
+      clear: both; }
+    #dashboardHeader .nav-bar ul {
+      list-style-type: none;
+      padding: 0;
+      width: 100%; }
+      #dashboardHeader .nav-bar ul:after, #dashboardHeader .nav-bar ul:before {
+        display: table;
+        content: " "; }
+      #dashboardHeader .nav-bar ul:after {
+        clear: both; }
+      #dashboardHeader .nav-bar ul li {
+        line-height: 0 !important;
+        margin: 0 15px;
+        float: left; }
+        #dashboardHeader .nav-bar ul li > .md-button {
+          line-height: 48px !important;
+          padding: 0 !important;
+          -webkit-border-radius: 0 !important;
+          -moz-border-radius: 0 !important;
+          -ms-border-radius: 0 !important;
+          border-radius: 0 !important;
+          margin: 0 !important;
+          font-family: "Roboto", sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          text-transform: uppercase;
+          min-width: 0 !important;
+          min-height: 48px !important;
+          color: rgba(255, 255, 255, 0.7);
+          border-bottom: 2px solid transparent;
+          -webkit-transition: all 300ms;
+          -moz-transition: all 300ms;
+          -ms-transition: all 300ms;
+          transition: all 300ms; }
+          #dashboardHeader .nav-bar ul li > .md-button:hover {
+            background: transparent;
+            color: #fff;
+            border-bottom-color: #ef5350; }
+          #dashboardHeader .nav-bar ul li > .md-button .md-ripple-container {
+            -webkit-border-radius: 0 !important;
+            -moz-border-radius: 0 !important;
+            -ms-border-radius: 0 !important;
+            border-radius: 0 !important; }
+        #dashboardHeader .nav-bar ul li.active .md-button {
+          color: #fff;
+          border-bottom-color: #ef5350; }
+      @media only screen and (max-width: 959px) {
+        #dashboardHeader .nav-bar ul {
+          width: 100%;
+          margin: 0 !important; }
+          #dashboardHeader .nav-bar ul li {
+            width: 50%;
+            text-align: center;
+            margin: 0 !important; }
+            #dashboardHeader .nav-bar ul li .md-button {
+              text-align: center; } }
+    #dashboardHeader .nav-bar .left {
+      float: left;
+      display: inline-block;
+      min-width: 800px; }
+      #dashboardHeader .nav-bar .left ul {
+        margin-left: -12px !important; }
+      @media only screen and (max-width: 959px) {
+        #dashboardHeader .nav-bar .left {
+          width: 100%;
+          min-width: 0 !important;
+          margin: 0 !important; }
+          #dashboardHeader .nav-bar .left ul {
+            width: 100%;
+            margin-left: 0 !important; } }
+      #dashboardHeader .nav-bar .left .separator {
+        height: 17px;
+        width: 2px;
+        display: inline-block;
+        padding: 0 !important;
+        background: rgba(255, 255, 255, 0.5);
+        margin: 16px 12px; }
+        @media only screen and (max-width: 959px) {
+          #dashboardHeader .nav-bar .left .separator {
+            margin-left: 35px;
+            margin-right: 12px; } }
+    #dashboardHeader .nav-bar .right {
+      float: right;
+      padding-left: 100px; }
+      @media only screen and (max-width: 959px) {
+        #dashboardHeader .nav-bar .right {
+          width: 100%;
+          float: none;
+          padding-left: 0 !important; } }
+      #dashboardHeader .nav-bar .right .fab-button {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 72px;
+        height: 72px; }
+        @media only screen and (max-width: 959px) {
+          #dashboardHeader .nav-bar .right .fab-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            left: auto;
+            top: auto;
+            -webkit-transform: translate(0, 0);
+            -moz-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0); } }
+        #dashboardHeader .nav-bar .right .fab-button .md-trigger {
+          margin: 0 !important;
+          line-height: 56px !important;
+          height: 56px !important;
+          width: 56px !important;
+          -webkit-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+          -moz-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+          -ms-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+          -o-box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.25); }
+          #dashboardHeader .nav-bar .right .fab-button .md-trigger md-icon {
+            font-size: 22px !important;
+            -webkit-transition: all 300ms;
+            -moz-transition: all 300ms;
+            -ms-transition: all 300ms;
+            transition: all 300ms; }
+          #dashboardHeader .nav-bar .right .fab-button .md-trigger:hover {
+            background: #fff; }
+            #dashboardHeader .nav-bar .right .fab-button .md-trigger:hover md-icon {
+              color: #ef5350; }
+        #dashboardHeader .nav-bar .right .fab-button md-fab-actions {
+          pointer-events: none !important;
+          -webkit-transition: all 300ms;
+          -moz-transition: all 300ms;
+          -ms-transition: all 300ms;
+          transition: all 300ms;
+          opacity: 0;
+          filter: alpha(opacity=0); }
+          #dashboardHeader .nav-bar .right .fab-button md-fab-actions md-icon {
+            color: #ef5350 !important; }
+        #dashboardHeader .nav-bar .right .fab-button md-fab-speed-dial {
+          position: absolute;
+          right: 0;
+          left: 0;
+          top: 0; }
+          @media only screen and (max-width: 959px) {
+            #dashboardHeader .nav-bar .right .fab-button md-fab-speed-dial {
+              bottom: 0;
+              top: auto; } }
+          #dashboardHeader .nav-bar .right .fab-button md-fab-speed-dial.md-is-open md-fab-actions {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            pointer-events: all !important; }
+      #dashboardHeader .nav-bar .right .view-controls {
+        float: left; }
+        @media only screen and (max-width: 959px) {
+          #dashboardHeader .nav-bar .right .view-controls {
+            width: 100%;
+            float: none; } }
+
+/*
+ * Carlos Front-End Additions
+ * For: Dashboard/player styles
+ */
+/* structure for angular material tabs - sales dashboard */
+.clear {
+  clear: both; }
+
+.hide {
+  display: none; }
+
+.sales_dashboard md-content md-tabs {
+  min-height: 80vh !important; }
+  .sales_dashboard md-content md-tabs md-tabs-wrapper {
+    background-color: #004d7b; }
+    .sales_dashboard md-content md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item {
+      color: white !important;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+  .sales_dashboard md-content md-tabs md-tabs-content-wrapper {
+    height: calc(100% - 49px); }
+    .sales_dashboard md-content md-tabs md-tabs-content-wrapper md-tab-content {
+      background-color: #eee;
+      height: 100%; }
+      .sales_dashboard md-content md-tabs md-tabs-content-wrapper md-tab-content .ng-scope.ng-isolate-scope {
+        height: 100%; }
+        .sales_dashboard md-content md-tabs md-tabs-content-wrapper md-tab-content .ng-scope.ng-isolate-scope md-content {
+          background-color: #eee;
+          height: 100%; }
+
+/* innards of the the sales dashboard */
+.sales_innards {
+  background-color: white;
+  padding: 0px; }
+  .sales_innards .pages_ndots {
+    position: relative;
+    height: 60px; }
+    .sales_innards .pages_ndots .pages {
+      position: absolute;
+      background-color: #f5f5f5;
+      width: 100%;
+      z-index: 10; }
+      .sales_innards .pages_ndots .pages p {
+        text-align: center;
+        margin: 0px;
+        padding: 20px 0px;
+        font-weight: bold; }
+    .sales_innards .pages_ndots .dots {
+      position: absolute;
+      width: 100%;
+      z-index: 20; }
+      .sales_innards .pages_ndots .dots p {
+        text-align: right;
+        margin: 0px;
+        padding: 20px 0px;
+        margin-right: 20px;
+        font-weight: bold; }
+  .sales_innards .pages_search {
+    position: relative;
+    height: 60px;
+    background-color: white;
+    width: 100%; }
+    .sales_innards .pages_search .player_drops {
+      width: 20%;
+      float: left;
+      height: 100%;
+      border-right: 1px solid #eee;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+      @media screen and (max-width: 959px) {
+        .sales_innards .pages_search .player_drops {
+          width: 100%; } }
+      .sales_innards .pages_search .player_drops p {
+        padding: 20px 0px 20px 20px;
+        margin: 0px;
+        font-weight: bold; }
+      .sales_innards .pages_search .player_drops .player_menu {
+        position: absolute;
+        background-color: white;
+        width: 100%;
+        z-index: 30; }
+        .sales_innards .pages_search .player_drops .player_menu ul {
+          padding: 0px;
+          width: 100%;
+          margin: 0px; }
+          .sales_innards .pages_search .player_drops .player_menu ul a {
+            text-decoration: none;
+            color: black; }
+            .sales_innards .pages_search .player_drops .player_menu ul a li {
+              text-align: left;
+              width: 100%;
+              list-style-type: none;
+              padding: 10px 0px 10px 20px; }
+          .sales_innards .pages_search .player_drops .player_menu ul a:hover {
+            background-color: #eee; }
+    .sales_innards .pages_search .player_search {
+      width: 80%;
+      float: left;
+      height: 100%; }
+      @media screen and (max-width: 959px) {
+        .sales_innards .pages_search .player_search {
+          width: 100%;
+          padding-left: 20px; } }
+      .sales_innards .pages_search .player_search p {
+        width: 5%;
+        text-align: center;
+        height: 100%;
+        padding: 20px 0px;
+        margin: 0px;
+        float: left; }
+      .sales_innards .pages_search .player_search input[type='text'] {
+        width: 95%;
+        height: 100%;
+        border: none; }
+  .sales_innards .player_results {
+    width: 100%;
+    overflow-x: scroll; }
+    .sales_innards .player_results table {
+      width: 100%;
+      min-width: 970px; }
+      .sales_innards .player_results table tbody .table_header {
+        height: 60px;
+        background-color: #f5f5f5; }
+        .sales_innards .player_results table tbody .table_header th {
+          padding: 20px 0px;
+          text-align: center;
+          margin: 0px;
+          font-weight: normal; }
+      .sales_innards .player_results table tbody .table_lists {
+        height: 60px;
+        background-color: white; }
+        .sales_innards .player_results table tbody .table_lists td {
+          padding: 20px 0px;
+          margin: 0px;
+          font-weight: normal; }
+          .sales_innards .player_results table tbody .table_lists td img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; }
+      .sales_innards .player_results table .icons_checks {
+        width: 60px;
+        text-align: center; }
+
+/*# sourceMappingURL=sales.css.map */

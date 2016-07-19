@@ -1,0 +1,104 @@
+<h1 id="ui-calendar-directive-build-status-https-travis-ci-org-angular-ui-ui-calendar-svg-branch-master-https-travis-ci-org-angular-ui-ui-calendar-">ui-calendar directive <a href="https://travis-ci.org/angular-ui/ui-calendar"><img src="https://travis-ci.org/angular-ui/ui-calendar.svg?branch=master" alt="Build Status"></a></h1>
+<p><a href="https://gitter.im/angular-ui/ui-calendar?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/angular-ui/ui-calendar"></a></p>
+<p>A complete AngularJS directive for the Arshaw FullCalendar.</p>
+<h1 id="requirements">Requirements</h1>
+<ul>
+<li>(<a href="http://code.angularjs.org/1.2.1/angular.js">AngularJS</a>)</li>
+<li>(<a href="http://arshaw.com/fullcalendar/download/">fullcalendar.js 2.0 and it&#39;s dependencies</a>)</li>
+<li>optional - (<a href="http://arshaw.com/js/fullcalendar-1.5.3/fullcalendar/gcal.js">gcal-plugin</a>)</li>
+</ul>
+<h1 id="usage">Usage</h1>
+<p>Using <a href="http://bower.io">bower</a> run:</p>
+<pre><code>bower install --save angular-ui-calendar
+</code></pre><p>Alternatively you can add it to your <code>bower.json</code> like this:</p>
+<pre><code>dependencies: {
+    &quot;angular-ui-calendar&quot;: &quot;latest&quot;
+}
+</code></pre><p>And then run</p>
+<pre><code>bower install
+</code></pre><p>This will copy the ui-calendar files into your <code>components</code> folder, along with its dependencies. Load the script and style files in your application:</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;bower_components/fullcalendar/dist/fullcalendar.css&quot;/&gt;
+&lt;!-- jquery, moment, and angular have to get included before fullcalendar --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/moment/min/moment.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/angular-ui-calendar/src/calendar.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/fullcalendar/dist/fullcalendar.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/fullcalendar/dist/gcal.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>Add the calendar module as a dependency to your application module:</p>
+<pre><code>var app = angular.module(&#39;App&#39;, [&#39;ui.calendar&#39;])
+</code></pre><p>Apply the directive to your div elements. The calendar must be supplied an array of documented event sources to render itself:</p>
+<pre><code>&lt;div ui-calendar ng-model=&quot;eventSources&quot;&gt;&lt;/div&gt;
+</code></pre><p>Define your model in a scope e.g.</p>
+<pre><code>$scope.eventSources = [];
+</code></pre><h2 id="options">Options</h2>
+<p>All the Arshaw Fullcalendar options can be passed through the directive. This even means function objects that are declared on the scope.</p>
+<pre><code>myAppModule.controller(&#39;MyController&#39;, function($scope) {
+    /* config object */
+    $scope.uiConfig = {
+      calendar:{
+        height: 450,
+        editable: true,
+        header:{
+          left: &#39;month basicWeek basicDay agendaWeek agendaDay&#39;,
+          center: &#39;title&#39;,
+          right: &#39;today prev,next&#39;
+        },
+        dayClick: $scope.alertEventOnClick,
+        eventDrop: $scope.alertOnDrop,
+        eventResize: $scope.alertOnResize
+      }
+    };
+});
+
+&lt;div ui-calendar=&quot;uiConfig.calendar&quot; ng-model=&quot;eventSources&quot;&gt;
+</code></pre><h2 id="working-with-ng-model">Working with ng-model</h2>
+<p>The ui-calendar directive plays nicely with ng-model.</p>
+<p>An Event Sources objects needs to be created to pass into ng-model. This object&#39;s values will be watched for changes. If a change occurs, then that specific calendar will call the appropriate fullCalendar method.</p>
+<p>The ui-calendar directive expects the eventSources object to be any type allowed in the documentation for the fullcalendar. <a href="http://arshaw.com/fullcalendar/docs/event_data/Event_Source_Object/">docs</a>
+Note that all calendar options which are functions that are passed into the calendar are wrapped in an apply automatically.</p>
+<h2 id="accessing-the-calendar-object">Accessing the calendar object</h2>
+<p>It is possible to access a specific calendar object by declaring a name for it on the uiCalendar directive. In this next line we are naming the calendar &#39;myCalendar&#39;. This will be attached to the uiCalendarConfig constant object, that can be accessed via DI.</p>
+<pre><code>&lt;div ui-calendar=&quot;calendarOptions&quot; ng-model=&quot;eventSources&quot; calendar=&quot;myCalendar&quot;&gt;
+</code></pre><p>Now the calendar object is available in uiCalendarConfig.calendars:</p>
+<pre><code>uiCalendarConfig.calendars.myCalendar
+</code></pre><p>This allows you to declare any number of calendar objects with distinct names.</p>
+<h2 id="custom-event-rendering">Custom event rendering</h2>
+<p>You can use fullcalendar&#39;s <code>eventRender</code> option to customize how events are rendered in the calendar.
+However, only certain event attributes are watched for changes (they are <code>id</code>, <code>title</code>, <code>url</code>, <code>start</code>, <code>end</code>, <code>allDay</code>, and <code>className</code>).</p>
+<p>If you need to automatically re-render other event data, you can use <code>calendar-watch-event</code>.
+<code>calendar-watch-event</code> expression must return a function that is passed <code>event</code> as argument and returns a string or a number, for example:</p>
+<pre><code>$scope.extraEventSignature = function(event) {
+   returns &quot;&quot; + event.price;
+}
+
+&lt;ui-calendar calendar-watch-event=&quot;extraEventSignature(event)&quot; ... &gt;
+// will now watch for price
+</code></pre><h3 id="adding-new-events-issue">Adding new events issue</h3>
+<p>When adding new events to the calendar they can disappear when switching months. To solve this add <code>stick: true</code> to the event object being added to the scope.</p>
+<h2 id="watching-the-displayed-date-range-of-the-calendar">Watching the displayed date range of the calendar</h2>
+<p>There is no mechanism to $watch the displayed date range on the calendar due to the JQuery nature of fullCalendar.  If you want
+to track the dates displayed on the calendar so you can fetch events outside the scope of fullCalendar (Say from a caching store
+in a service, instead of letting fullCalendar pull them via AJAX), you can add the viewRender callback to the calendar config.</p>
+<pre><code>$scope.calendarConfig = {
+    calendar:{
+        height: &quot;100%&quot;,
+        ...
+        viewRender: function(view, element) {
+            $log.debug(&quot;View Changed: &quot;, view.visStart, view.visEnd, view.start, view.end);
+        }
+    }
+};
+</code></pre><h1 id="minify">Minify</h1>
+<pre><code>grunt minify
+</code></pre><h2 id="documentation-for-the-calendar">Documentation for the Calendar</h2>
+<p>The calendar works alongside of all the documentation represented <a href="http://arshaw.com/fullcalendar/docs">here</a></p>
+<h2 id="pr-s-r-always-welcome">PR&#39;s R always Welcome</h2>
+<p>Make sure that if a new feature is added, that the proper tests are created.</p>
+<h1 id="testing">Testing</h1>
+<p>We use karma and grunt to ensure the quality of the code.</p>
+<pre><code>npm install -g grunt-cli
+npm install
+bower install
+grunt
+</code></pre>

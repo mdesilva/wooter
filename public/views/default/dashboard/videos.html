@@ -1,0 +1,247 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 ng-show="league.name" class="md-title league-title">{{league.name}}</h1>
+            <p class="md-body-1 league-subtitle">{{season.starts_at | carbonToMMM }} - {{season.ends_at | carbonToMMM }} {{season.ends_at | carbonToyyyy }}</p>
+        </div>
+
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+
+</header>
+
+<div class="container players-content main_listing">
+    <md-content class="md-whiteframe-2dp">
+        <header class="header">
+            <p class="md-body-2">Videos</p>
+        </header>
+        <div class="controls show_filters" layout-gt-sm="row">
+            <div class="filters mobile_fits_video" flex="100" flex-md='30' flex-gt-md="60" layout="row" style='float:left;'>
+
+                <!--<div class="filter_expand">
+                <md-button style='color: black!important; margin-top: -.5px!important;margin-left: 11px!important;'>Add Filters</md-button></div>-->
+            </div>
+            <div class="buttons mobile_fits_cats" flex="100" flex-md='70' flex-gt-md="40" layout-align="start left" layout-align-gt-sm="end center" layout="row">
+                <md-button class='switching_management'>Manage Categories</md-button>
+                <span class="separator mobile_hidden_600"></span>
+                <md-button class='mobile_hidden_600' ng-click="createVideo($event)">Add Videos</md-button>
+            </div>
+        </div>
+
+
+        <div class="controls hidden_filters" layout="column" layout-gt-sm="row">
+            <div class="filters" flex="100" flex-md='100' flex-gt-md="100" layout="row" layout-wrap>
+                <div class="select" flex='25' flex-md='40' flex-sm='100'>
+                    <md-input-container>
+                        <label style="display: none !important;">Created At</label>
+                        <md-select ng-model="dateCreated">
+
+                            <md-option value="date">Order By Old Videos</md-option>
+                            <md-option value="-date">Order By Latest Videos</md-option>
+
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <div class="select" flex='20' flex-md='40' flex-sm='100'>
+                    <md-input-container>
+                        <label style="display: none !important;">Filter By Categories</label>
+                        <md-select ng-model="FilterByLabel">
+                            <md-option  value="0">Filter By Categories</md-option>
+                            <md-option ng-repeat="label in labels" value="{{ label.id }}">{{ label.name }}</md-option>
+
+                        </md-select>
+                    </md-input-container>
+                </div>
+               <!-- <div class="select" flex='20' flex-md='40' flex-sm='100'>
+                    <md-input-container>
+                        <label style="display: none !important;">Filter By Game</label>
+                        <md-select ng-model="FilterByGame">
+                            <md-option  value="0">Filter By Game</md-option>
+                            <md-option ng-repeat='game in games ' value='{{game.id}}' >
+                                {{ game.home_team }}_{{ game.visiting_team }}_{{ game.datetime | dateFormat: " " }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>-->
+
+
+                <div class="select" flex='15' flex-md='40' flex-sm='100'>
+                    <md-input-container>
+                        <label style="display: none !important;">All Videos</label>
+                        <md-select ng-model="filterVideos" ng-change="getVideosByType(filterVideos)">
+                            <md-option  value="All">All Videos</md-option>
+                            <md-option value="Qnap">Wooter Services Videos</md-option>
+                            <md-option value="Wooter">Uploaded videos</md-option>
+
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="players-list">
+            <md-list ng-cloak>
+
+                 <md-list-item  class="" id="leagueVideo" layout="row">
+
+                     <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row" >
+
+                         <div class="stand" layout-wrap layout="row" flex="100" flex-gt-sm="100">
+
+
+
+                            <div class="team" flex-sm='100' flex-md='33' flex="20" ng-repeat="video in filtered = leagueVideos | vidoeLabelFilter:FilterByLabel | leagueGameFilter:FilterByGame |  orderBy : dateCreated" >
+
+                                <div class="images">
+                                    <video ng-show = "(angular.isUndefined(video.thumbnail_path) || video.thumbnail_path === null) && (angular.isUndefined(video.youtube_video_thumb) || video.youtube_video_thumb === '')  " width="100%" height="100%" id='myVideo' class='add_thumbnails' style='position: absolute;' preload='metadata'>
+                                        <source src="{{ trusted(video.file_path)}}" type="{{ video.mime_type}}">
+                                     </video>
+                                    <img class='results' ng-src="{{ trusted(video.thumbnail_path) }}" alt="{{ video.file_name }}" title="{{ video.file_name }}" ng-show = "( video.thumbnail_path != null ) && (angular.isUndefined(video.youtube_video_thumb) || video.youtube_video_thumb === '')">
+                                    <img class='results' ng-src="{{ trusted(video.youtube_video_thumb) }}" alt="{{ video.file_name }}" title="{{ video.file_name }}" ng-show = "(angular.isDefined(video.youtube_video_thumb) || video.youtube_video_thumb != '')">
+                                    <img class='results' ng-src="{{asset('img/landings/logo-v2.png')}}" alt="{{ video.file_name }}" title="{{ video.file_name }}" ng-show = "( video.thumbnail_path === null ) && (angular.isUndefined(video.youtube_video_thumb) || video.youtube_video_thumb === '')">
+                                    
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="deleteVideo($event, video)" class='delete' ng-show="video.type !=2">
+                                                <i class="fa fa-trash"></i>
+                                            </p>
+                                            <p ng-click="editVideo($event, video)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="playVideo($event, video)"><i class="fa fa-play"></i></p>
+                                        </div>
+                                    </div>
+                                    <div class="bulkSelect">
+                                        <md-checkbox class='checking_boxes' aria-label="Select Photo" ng-checked="exists(video, selected)" ng-click="toggle(video, selected)" ></md-checkbox>
+
+                                    </div>
+                                </div>
+                                <div class="labels">
+                                    <p>{{video.file_name}}</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="count(leagueVideos) == 0">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">Upload a Video.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+<div class="check_select">
+    <ul class="threeOptions">
+        <li>
+            <div>
+                <p>({{count(selected)}}) <span ng-if="count(selected)>1">Videos</span><span ng-if="count(selected)==0">Videos</span><span ng-if="count(selected)==1">Videos</span> Selected</p>
+            </div>
+        </li>
+        <li style='padding: 2px 0px;'>
+            <div>
+                <md-button ng-if="count(selected) > 0"  style='color: #ed514f' ng-click="editBulk($event)"><i class="fa fa-edit"></i> Edit</md-button>
+
+            </div>
+        </li>
+        <li style='padding: 2px 0px;'>
+            <div>
+                <md-button  ng-if="count(selected) > 0" style='color: #ed514f' ng-click="deleteBulk($event)"><i class="fa fa-trash"></i> Delete</md-button>
+
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="container players-content manage_listing hide">
+    <md-content class="md-whiteframe-2dp">
+        <header class="header">
+            <p class="md-body-2"> <md-button style='margin: 0px; padding: 0px; min-width: 36px;border-radius: 3px;'> <md-icon class='switching_mains' md-svg-src="../../img/dashboard/back1.svg" aria-label="android " style='width: 20px; margin-top: -2px;'></md-icon> </md-button>  &nbsp;&nbsp;Manage Categories</p>
+        </header>
+        <div class="controls mobile_hidden_600" layout="column" layout-gt-sm="row" style="border-bottom: none; background: white;">
+            <div class="filters" flex="100" flex-gt-sm="60" layout="row">
+                <p>Create, edit, or delete video categories.</p>
+            </div>
+            <div class="buttons" flex="100" flex-gt-sm="40" layout-align="start center" layout-align-gt-sm="end center" layout="row">
+                <md-button ng-click="createCategory($event)">New Category</md-button>
+            </div>
+        </div>
+
+        <div class="hr_custom"></div>
+
+        <div class="players-list">
+            <md-list ng-cloak>
+
+
+                <md-list-item layout="row" ng-repeat="label in labels">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="player" layout="row" flex="100" flex-gt-sm="80">
+                            <p class="md-body-1 name">{{ label.name }}</p>
+                        </div>
+                        <div class="team">
+                            <p class="md-body-1 info">
+                            <img src="../img/dashboard/pencil.png"
+                                 alt="Edit Can"
+                                 class='mobile_hidden_600'                                       
+                                 style="width: 18px; height: 47px; padding: 14px 0px; margin-right: 30px;"
+                                 ng-click="editCategory($event, label)">
+                             <img src="../img/dashboard/garbage.png"
+                                 alt="Delete Can"
+                                 class='mobile_hidden_600'  
+                                 style="width: 14px; height: 47px; padding: 14px 0px; margin-right: 30px;"
+                                 ng-click="removeCategory($event, label)">
+                        </div>
+                    </div>
+                    <!-- <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="player" layout="row" flex="100" flex-gt-sm="80">
+                            <img src="../img/dashboard/garbage.png"
+                                 alt="Delete Can"
+                                 class='mobile_hidden_600'  
+                                 style="width: 14px; height: 47px; padding: 14px 0px;"
+                                 ng-click="removeCategory($event, label)">
+                            <p class="md-body-1 name">{{ label.name }}</p>
+                        </div>
+                        <div class="stand"  layout="row" flex="100" flex-gt-sm="20">
+                            <div class="team" flex="100">
+                                <p class="md-body-1 info">
+                                <img src="../img/dashboard/pencil.png"
+                                     alt="Edit Can"
+                                     class='mobile_hidden_600'                                       
+                                     style="width: 18px; height: 47px; padding: 14px 0px;"
+                                     ng-click="editCategory($event, label)">
+                            </div>
+                        </div>
+                    </div> -->
+
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="labels.length == 0"
+                style="border-bottom: none;">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">Create Your First Video Category.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+
+<div class="container game-pagination" style="text-align:center">
+    <div class="inner">
+        <md-button ng-click="navFirst()" ng-disabled="!(videosIndex > 1)" class="md-icon-button"><md-icon>skip_previous</md-icon></md-button>
+        <md-button ng-click="navPrev()" ng-disabled="!(videosIndex > 1)" class="md-icon-button"><md-icon>chevron_left</md-icon></md-button>
+        <md-button class="disabled-button"><b>{{ videosIndex }}</b> / {{ pages }}</md-button>
+        <md-button ng-click="navNext()" ng-disabled="videosIndex == pages" class="md-icon-button"><md-icon>chevron_right</md-icon></md-button>
+        <md-button ng-click="navLast()" ng-disabled="videosIndex == pages" class="md-icon-button"><md-icon>skip_next</md-icon></md-button>
+    </div>
+</div>
+<script>document.getElementById("myVideo").controls = false;</script>

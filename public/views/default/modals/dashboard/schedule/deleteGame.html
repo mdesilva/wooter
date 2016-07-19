@@ -1,0 +1,30 @@
+<md-dialog class='delete_game_modal' aria-label='deleteGame'>
+    <md-toolbar style='background-color: white; color: black'>
+        <div class='md-toolbar-tools'>
+            <h4>Delete Game</h4>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div layout='row'>
+            <div layout='column' flex='5'>
+            </div>
+
+            <div layout='column' flex='90'>
+                <p>Are you sure you want to delete this game?</p>
+            </div>
+
+            <div layout='column' flex='5'>
+            </div>
+        </div>
+
+        <div class='modal_buttons' style="text-align:right;">
+            <md-button class='modal_buttons right_button' ng-click='deleteGameInModal(gameIdToDelete)'>
+                CONFIRM
+            </md-button>
+            <md-button ng-click='hideModal()'>CANCEL</md-button>
+        </div>
+    </md-dialog-content>
+
+</md-dialog>

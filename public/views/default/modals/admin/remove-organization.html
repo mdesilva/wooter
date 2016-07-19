@@ -1,0 +1,25 @@
+<md-dialog class='players_modals' aria-label='removeOrganization'>
+    <md-dialog-content>
+
+        <!-- Header -->
+        <div class='modal_header' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div layout='column' flex='90'>
+                <h4>Are you sure you want to remove {{organizationToDelete.name}}?</h4>
+            </div>
+            <div layout='column' flex='5'></div>
+        </div>                   
+
+        <form ng-submit='$event'>          
+            <!-- buttons -->
+            <div class='modal_button_div'>
+                <md-button class='modal_buttons right_button' ng-click="removeOrganizationInModal(organizationToDelete)">
+                    Remove Organization
+                </md-button>                            
+                <md-button class='modal_buttons left_button' ng-click="cancel();">
+                    Cancel
+                </md-button>   
+            </div>
+        </form>
+    </md-dialog-content>
+</md-dialog>

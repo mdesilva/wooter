@@ -1,0 +1,627 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+.review-container {
+  position: relative;
+}
+
+.filters md-select md-select-value, .filters md-select md-select-value:focus, .filters md-select md-select-value span, .filters md-select md-select-value:focus span {
+  background-color: transparent !important;
+  color: #212121 !important;
+}
+
+.review-container .header {
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.review-container .header .md-button {
+  margin: 3px 0 !important;
+  color: #00bfa5;
+}
+
+.review-container .reviews {
+  position: relative;
+  padding: 0;
+}
+
+.review-container .reviews ul.items {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 100%;
+}
+
+.review-container .reviews ul.items li.item {
+  position: relative;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.review-container .reviews ul.items li.item .image {
+  width: 80px;
+  height: 80px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+
+.review-container .reviews ul.items li.item .image img {
+  width: 106%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.review-container .reviews ul.items li.item .txt {
+  width: calc(100% - 80px);
+  float: left;
+  padding-left: 20px;
+}
+
+.review-container .reviews ul.items li.item .txt .md-title {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 30px;
+  height: 30px;
+}
+
+.review-container .reviews ul.items li.item .txt .md-title .stars {
+  padding-left: 15px;
+}
+
+.review-container .reviews ul.items li.item .txt .md-title .stars md-icon {
+  line-height: 26px !important;
+  font-size: 16px !important;
+  display: inline-block;
+  width: auto;
+  height: 30px !important;
+  color: #00bfa5;
+}
+
+.item-stars {
+  display: inline-block;
+  float: right;
+}
+
+.item-stars md-icon {
+  width: 20px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.item-preview-details {
+  width: 100%;
+  position: relative;
+  min-height: 420px;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+}
+
+.item-preview-details .watch-live-button {
+  background: #00bfa5;
+  line-height: 24px;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.item-preview-details .watch-live-button md-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  line-height: 16px;
+}
+
+.item-preview-details .content-details {
+  width: 100%;
+  background: rgba(66, 66, 66, 0.75);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.item-preview-details .title {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.item-preview-details .title .stars {
+  margin-left: 15px;
+}
+
+.item-preview-details .address-description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.item-booking-details {
+  position: relative;
+  width: 100%;
+  padding: 0 30px;
+}
+
+.item-booking-details .header {
+  padding: 30px 0;
+  width: 100%;
+}
+
+.item-booking-details .header .right {
+  text-align: right;
+}
+
+.item-booking-details .header .right .price {
+  position: relative;
+  padding-left: 8px;
+  display: inline-block;
+}
+
+.item-booking-details .header .right .price .dolar {
+  line-height: 1;
+  position: absolute;
+  display: inline-block;
+  top: 5px;
+  left: 0;
+}
+
+.item-booking-details .header .right .price .dolar md-icon {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  font-size: 16px;
+  color: #212121;
+}
+
+.item-booking-details .header .right .price .price {
+  font-weight: 500;
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  color: #00bfa5;
+  margin-right: -5px;
+}
+
+.item-booking-details .header .right .price .per {
+  font-weight: 500;
+  color: #212121;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
+
+.item-booking-details .selects {
+  width: 100%;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+}
+
+.item-booking-details .selects md-input-container {
+  margin: 0;
+}
+
+.item-booking-details .selects input, .item-booking-details .selects select, .item-booking-details .selects md-select, .item-booking-details .selects md-select-value {
+  border-color: transparent !important;
+}
+
+.item-booking-details .selects .box {
+  margin: 12px 0;
+  padding: 0 30px;
+  float: left;
+  min-width: 200px;
+  border-left: 1px solid #dedede;
+  border-right: 1px solid #dedede;
+}
+
+@media screen and (max-width: 1100px) {
+  .item-booking-details .selects .box {
+    width: 100%;
+    display: block;
+    padding: 0;
+    border: none !important;
+  }
+}
+
+.item-booking-details .selects .box:first-child {
+  padding-left: 0 !important;
+}
+
+.item-booking-details .selects .box:first-child, .item-booking-details .selects .box:nth-child(3) {
+  border: none !important;
+}
+
+.item-booking-details .selects .box md-select md-select-value, .item-booking-details .selects .box md-select md-select-value:focus, .item-booking-details .selects .box md-select md-select-value span, .item-booking-details .selects .box md-select md-select-value:focus span {
+  background-color: transparent !important;
+  color: #212121 !important;
+}
+
+.item-booking-details .selects .box .md-datepicker-button, .item-booking-details .selects .box .md-datepicker-button md-icon {
+  color: #212121 !important;
+}
+
+.item-booking-details .selects .box .md-datepicker-expand-triangle {
+  border-top-color: #212121;
+}
+
+.item-booking-details .selects .box .md-datepicker-input-container {
+  border: none !important;
+}
+
+.item-booking-details .booking {
+  position: relative;
+  height: 48px;
+  border-bottom: 1px solid #7f7f7f;
+  border-left: 1px solid #7f7f7f;
+  border-right: 1px solid #7f7f7f;
+  margin: 50px 0 30px 0;
+}
+
+.item-booking-details .booking:before, .item-booking-details .booking:after {
+  content: attr(data-start);
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  position: absolute;
+  height: 20px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+  top: -25px;
+  left: -1px;
+}
+
+.item-booking-details .booking:after {
+  content: attr(data-end);
+  left: auto;
+  right: -1px;
+}
+
+.item-booking-details .booking .hour {
+  height: 24px;
+  margin-top: 24px;
+  border-top: 1px solid #7f7f7f;
+  border-left: 1px solid #7f7f7f;
+  position: relative;
+}
+
+.item-booking-details .booking .hour:first-child {
+  border-left: none;
+}
+
+.item-booking-details .booking .hour:first-child:before {
+  display: none !important;
+}
+
+.item-booking-details .booking .hour.noon {
+  position: relative;
+}
+
+.item-booking-details .booking .hour.noon:before {
+  content: '';
+  display: block !important;
+  height: 48px;
+  width: 1px;
+  position: absolute;
+  left: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  background: #7f7f7f !important;
+}
+
+.item-booking-details .booking .hour.noon:after {
+  content: 'NOON';
+  display: block;
+  position: absolute;
+  color: #7f7f7f;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  top: -49px;
+  left: -1px;
+}
+
+.item-booking-details .booking .hour:before {
+  content: attr(data-hour);
+  display: block;
+  position: absolute;
+  color: #9a9a9a;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  top: -20px;
+  left: 0;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.item-booking-details .booking .hour .minutes {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 22px;
+  float: left;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.item-booking-details .booking .hour .minutes.is-selected {
+  background: rgba(0, 191, 165, 0.24);
+}
+.item-booking-details .booking .hour .minutes.is-booked {
+  background: #d9534f;
+}
+.item-booking-details .booking .hour .minutes.is_not_available {
+  background: #ccc;
+}
+
+.item-booking-details .booking .hour .minutes:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.item-booking-details .booking-container {
+  margin-bottom: 30px;
+}
+
+.item-booking-details .book-btn, .item-booking-details .book-btn:focus {
+  width: 100%;
+  background: #00bfa5;
+  padding: 3px 0 !important;
+  color: #000;
+  margin: 0 !important;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.item-booking-details .book-btn span {
+  padding: 0 10px;
+}
+
+.item-booking-details .book-btn:hover {
+  background: #fff;
+  color: #00bfa5;
+}
+
+.show-list-button {
+  line-height: 24px;
+  color: #fff;
+  z-index: 100;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  min-width: 0px;
+}
+
+.show-list-button md-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  color: #000;
+  line-height: 16px;
+}
+
+.all-details {
+  background: #eeeeee;
+  padding: 30px;
+}
+
+.details-item {
+  position: relative;
+  border-bottom: 1px solid #d1d1d1;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.details-item .section-title {
+  margin: 0 !important;
+  position: relative;
+  padding: 3px 0;
+  font-size: 20px;
+}
+
+.details-item .section-title:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  height: 2px;
+  left: 0;
+  width: 20px;
+  background: #00bfa5;
+}
+
+.details-item md-content {
+  background-color: transparent;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.details-item.features {
+  position: relative;
+}
+
+.details-item.features .feature-item {
+  width: 25%;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+@media screen and (max-width: 8980px) {
+  .details-item.features .feature-item {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .details-item.features .feature-item {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.details-item.features .feature-item img {
+  float: left;
+  height: 24px;
+  width: auto;
+  margin-right: 15px;
+}
+
+.details-item.leagues .league-item {
+  display: block;
+  float: left;
+  width: 33.3333%;
+  padding: 12px;
+}
+
+@media screen and (max-width: 898px) {
+  .details-item.leagues .league-item {
+    width: 100%;
+  }
+}
+
+.details-item.leagues .league-item .inner {
+  display: block;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 898px) {
+  .details-item.leagues .league-item .inner {
+    padding-bottom: 50%;
+  }
+}
+
+.details-item.leagues .league-item .inner .content {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  background: rgba(66, 66, 66, 0.75);
+  width: 100%;
+  padding: 10px 0;
+}
+
+.details-item.leagues .league-item .inner .content .logo, .details-item.leagues .league-item .inner .content .txt {
+  float: left;
+}
+
+.details-item.leagues .league-item .inner .content .logo {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+}
+
+.details-item.leagues .league-item .inner .content .logo .img {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.details-item.leagues .league-item .inner .content .logo .img img {
+  width: 110%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.details-item.leagues .league-item .inner .content .txt {
+  width: calc(100% - 60px);
+  padding-left: 5px;
+}
+
+.details-item.leagues .league-item .inner .content .txt p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.details-item.leagues .league-item .inner .content .txt p.md-title {
+  padding-bottom: 5px;
+}
+
+.filters .md-datepicker-button {
+  display: none !important;
+}
+
+.md-dd-picker {
+  padding: 0;
+}
+
+.md-dd-picker label {
+  font-size: 12px;
+  top: -4px;
+  position: relative;
+  margin: 0 !important;
+}
+
+.md-dd-picker md-datepicker {
+  padding: 0;
+  display: block;
+  margin-top: 2px !important;
+  width: 100%;
+}
+
+@media screen and (max-width: 1300px) {
+  .md-dd-picker {
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+  .md-dd-picker md-datepicker {
+    padding: 0;
+    margin-top: 2px !important;
+    display: block;
+    width: 100%;
+  }
+  .md-dd-picker .md-datepicker-input-container {
+    margin: 0 !important;
+  }
+}
+
+.md-dd-picker .md-datepicker-input-container {
+  width: 100%;
+  margin: 0 !important;
+}
+
+.md-dd-picker .md-datepicker-input {
+  width: 100%;
+}

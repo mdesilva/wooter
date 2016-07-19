@@ -1,0 +1,21 @@
+/**
+ * Created by {your name}.
+ * User: {slack, skype}
+ * For: {package}
+ * License: Wooter LLC.
+ * Date: {{date}}
+ * Description:
+ *
+ */
+"use strict";
+function {{name}} (argument) {
+    var $this;
+
+    $this = {
+        init: function(data){
+            return data;
+        }
+    };
+
+    return $this.init(argument);
+}

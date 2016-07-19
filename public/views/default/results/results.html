@@ -1,0 +1,61 @@
+<div id="resultPage">
+	<section id="filterSection" class="md-whiteframe-2dp" ng-include="logicTemplate('results/layout/filters')"></section>
+	<div class="relativeBox">
+		<section id="resultsSection">
+			<div class="results">
+				<md-content class="container">
+
+					<a href="javascript:void(0)" class="item" ng-repeat="item in results" ng-click="openLeague(item.id)">
+						<md-card class="result-item">
+							<md-card-header>
+								<md-card-avatar>
+									<img ng-src="{{ asset('img/test/profile.png') }}"/>
+								</md-card-avatar>
+								<md-card-header-text>
+									<span class="md-title" ng-bind="item.organization_name"></span>
+									<span class="md-subhead" ng-bind="item.locations[0].city"></span>
+									<span class="distance-indicator"><md-icon aria-label="map">place</md-icon><span ng-bind="getDistanceOf(item.locations[0].latitude, item.locations[0].longitude)"></span></span>
+								</md-card-header-text>
+							</md-card-header>
+
+							<div class="img-container">
+								<div class="img" cssbg="{{ asset('img/test/league-image-gallery.jpg') }}"></div>
+							</div>
+
+							<md-card-content layout="column">
+                                <div flex="100" layout="row">
+                                    <p class="first-line" ng-bind="item.name" title="{{item.name}}"></p>
+                                </div>
+                                <div flex="100" layout="row" layout-xs="column">
+                                    <div class="left" flex="70" flex-xs="65">
+                                        <p class="second-line" ng-bind="getDeadlineOf(item.seasons.ends_at)"></p>
+                                    </div>
+                                    <div class="right" flex="30" flex-xs="100">
+                                        <p class="second-line" ng-bind="getAgesOf(item.basics.min_age, item.basics.max_age)"></p>
+                                    </div>
+                                </div>
+							</md-card-content>
+						</md-card>
+					</a>
+
+				</md-content>
+			</div>
+			<section class="loader">
+				<md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
+			</section>
+		</section>
+		<section id="messageErrorSection" class="can-no-z" style="display: none;">
+			<md-content class="container md-whiteframe-2dp">
+				
+				<p class="md-title">Your search <span>{{ search.params.search }}</span> did not match any activities listed on this site.</p>
+				<p class="tips">Tips:</p>
+				<ul>
+					<li>Make sure all words are spelled correctly.</li>
+					<li>Try changing any of the filters above (Sports, Gender, Age, or Distance).</li>
+					<li>Try more general keywords.</li>
+				</ul>
+
+			</md-content>
+		</section>
+	</div>
+</div>

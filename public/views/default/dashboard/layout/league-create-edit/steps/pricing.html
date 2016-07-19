@@ -1,0 +1,38 @@
+<div class="row" layout="row">
+    <div flex="100">
+        <div class="fk-line no-margin">
+            <p class="md-body tx">List all your prices for this league.</p>
+            <md-button ng-click="showModal($event, 'add-price')">Add Price</md-button>
+        </div>
+    </div>
+</div>
+
+<div class="row list-holder" layout="row">
+    <div flex="100">
+        <div class="mdin" ng-show="prices && count(prices) > 0">
+            <md-progress-circular md-mode="indeterminate" md-theme="wooter-red" class="center-loader" md-diameter="94" ng-class="{show:pricesLoading}"></md-progress-circular>
+            <ul class="items animated" ng-if="prices && count(prices) > 0" ng-class="{show: !pricesLoading}">
+                <li ng-repeat="val in prices track by val.id" class="price-{{ val.id }}">
+                    <div class="item">
+                        <md-button class="md-fab delete-button" ng-click="action('delete', 'price', {id: val.id})"><md-icon>delete</md-icon></md-button>
+                        <div class="info">
+                            <p class="md-title"><i class="fa fa-dollar"></i>{{ val.price }}</p>
+                            <p class="md-subtitle">{{ val.name }}</p>
+                        </div>
+                        <md-button class="md-fab edit-button" ng-click="action('edit', 'price', {id: val.id, event: $event})"><md-icon>mode_edit</md-icon></md-button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="msg" ng-if="count(prices) == 0 && (!pricesError || !pricesLoading)">
+            <p class="md-body-1">No Prices</p>
+        </div>
+        <div class="msg error" ng-if="pricesError" ng-class="{small: !prices && count(prices) == 0}">
+            <div class="msg-inner">
+                <p class="md-body-1">Can't update prices</p>
+                <md-button ng-click="action('update', 'price')">try again!</md-button>
+            </div>
+        </div>
+    </div>
+</div>
+

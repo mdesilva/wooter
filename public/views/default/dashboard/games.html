@@ -1,0 +1,239 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 ng-show="league.name" class="md-title league-title">{{league.name}}</h1>
+            <p class="md-body-1 league-subtitle">{{season.starts_at | carbonToMMM }} - {{season.ends_at | carbonToMMM }} {{season.ends_at | carbonToyyyy }}</p>
+
+            <md-progress-circular md-mode="indeterminate" ng-hide="league.name" class="white-loader" md-diameter="94"></md-progress-circular>
+        </div>
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+
+</header>
+
+<div class="container games-content">
+    <md-content class="md-whiteframe-1dp">
+        <header class="header">
+            <p class="md-body-2">Score/Stats</p>
+        </header>
+
+        <div class="controls" layout="column" layout-gt-sm="row" style="margin:0px;">
+            <div class="filters" flex="100" flex-gt-sm="60" layout="row">
+                <div class="select mobile_hidden_600">
+                    <md-input-container>
+                        <label style="display: none !important;">Entire League</label>
+                        <md-select ng-model="competitionType" ng-change="getGamesByCompetitionType(competitionType)">
+                            <md-option value="">Entire League</md-option>
+                            <md-option value="season">Seasons</md-option>
+                            <md-option value="tournament">Tournaments</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <div class="select mobile_hidden_600" ng-show="competition_type == 'season'">
+                    <md-input-container>
+                        <label>Season</label>
+                        <md-select ng-model="seasonId" ng-change="getGamesBySeasonId(seasonId);">
+                            <md-option value="{{season.id}}" ng-repeat="season in seasons">{{season.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <!--<div class="select mobile_hidden_600" ng-show="competition_type == 'season'">
+                    <md-input-container>
+                        <label>Division</label>
+                        <md-select ng-model="divisionId" ng-change="getGamesByDivisionId(divisionId)">
+                            <md-option value="{{division.id}}" ng-repeat="division in divisions">{{division.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>-->
+
+                <div class="select mobile_hidden_600" ng-show="competition_type == 'season' && showWeeks === true">
+                    <md-input-container>
+                        <label>Week</label>
+                        <md-select ng-model="weekId" ng-change="getGamesByWeekId(weekId)">
+                            <md-option value="{{week.id}}" ng-repeat="week in week_filters">{{week.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+        <div layout-gt-xs="row" id="game-data-heading">
+            <div flex-gt-xs="15" class="game-data-column">
+                <p class="game-date">Date</p>
+            </div>
+            <div flex-xs="100" flex-gt-xs="5" class="game-data-column">
+              
+            </div>
+            <div flex-gt-xs="20" class="game-data-column">
+                <p class="game-home-team">Home Team</p>
+            </div>
+            <div flex-gt-xs="10" class="game-data-column">
+                <p class="game-final-scores">Final Scores</p>
+            </div>
+            <div flex-gt-xs="20" class="game-data-column">
+                <p class="game-away-team">Away Team</p>
+            </div>
+            <div flex-xs="100" flex-gt-xs="5" class="game-data-column">
+                    
+            </div>
+            <div flex-gt-xs="25" class="game-data-column">
+                <p class="game-venue">Game Venue</p>
+            </div>
+        </div>
+    </md-content>
+</div>
+
+<div class="container games-list" ng-hide="games.length">
+    <p class="date md-body-1 full">No games to show</p>
+</div>
+
+<div class="container games-list" ng-repeat="date in dates" ng-if="competition_type == ''">
+
+    <p class="date md-body-1">{{ cleanDate(date) }}</p>
+
+    <md-content class="md-whiteframe-2dp">
+        <md-list ng-cloak class="list">
+            <md-list-item style="padding:0px;" class="item" data-game-id="{{game.id}}" layout-xs="column" layout-gt-xs="row" ng-repeat="game in games" ng-if="game.date == date">
+                    <div flex-xs="100" flex-gt-xs="15" class="game-data-column">
+                        <p class="game-date">{{ cleanTime(game.datetime.date) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5" class="game-data-column">
+                        <img class="game-team-logo" src="{{game.home_team_logo}}" alt="">
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="20" class="game-data-column">
+                        <p class="game-home-team">{{ formatGameDataText(game.home_team) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="10" class="game-data-column">
+                        <p class="game-final-score">
+                            <span class="home_team_score">{{ game.home_team_score }}</span>
+                                - 
+                            <span class="visiting_team_score">{{ game.visiting_team_score }}</span>
+                        </p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="20" class="game-data-column">
+                        <p class="game-away-team">{{ formatGameDataText(game.visiting_team) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5" class="game-data-column">
+                        <img class="game-team-logo" src="{{game.visiting_team_logo}}" alt="">
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="15" class="game-data-column">
+                        <p class="game-venue">{{ formatGameDataText(game.location) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5">
+                        <md-button class="md-icon-button"><a href="{{'dashboard/games/' + game.id + '/stats'}}" target="_blank"><md-icon>mode_edit</md-icon></a></md-button>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5">
+                        <md-icon class='material_icons md-secondary' aria-label='deleteGame' ng-click='deleteGame($event, game.id)'>
+                            delete
+                        </md-icon>
+                    </div>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>
+
+<div class="weeks games-list" ng-repeat="week in weeks" ng-if="competition_type == 'season'">
+    <div class="container">
+        <p class="week-title md-title">{{week.name}} ({{ cleanDateWeek(week.starts_at) }} - {{ cleanDateWeek(week.ends_at) }})</p>
+    </div>
+    <div class="container games-list" ng-repeat="date in dates" ng-if="matchDateAndWeek(date, week.starts_at, week.ends_at)">
+        <p class="date md-body-1">{{ cleanDate(date) }}</p>
+
+        <md-content class="md-whiteframe-2dp">
+             <md-list ng-cloak class="list">
+                <md-list-item style="padding:0px;" class="item" data-game-id="{{game.id}}" layout-xs="column" layout-gt-xs="row" ng-repeat="game in games" ng-if="game.date == date">
+                    <div flex-xs="100" flex-gt-xs="15" class="game-data-column">
+                        <p class="game-date">{{ cleanTime(game.datetime.date) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5" class="game-data-column">
+                        <img class="game-team-logo" src="{{game.home_team_logo}}" alt="">
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="20" class="game-data-column">
+                        <p class="game-home-team">{{ formatGameDataText(game.home_team) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="10" class="game-data-column">
+                        <p class="game-final-score">
+                            <span class="home_team_score">{{ game.home_team_score }}</span>
+                               - 
+                            <span class="visiting_team_score">{{ game.visiting_team_score }}</span>
+                        </p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="20" class="game-data-column">
+                        <p class="game-away-team">{{ formatGameDataText(game.visiting_team) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5" class="game-data-column">
+                        <img class="game-team-logo" src="{{game.visiting_team_logo}}" alt="">
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="15" class="game-data-column">
+                        <p class="game-venue">{{ formatGameDataText(game.location) }}</p>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5">
+                        <md-button class="md-icon-button"><a href="{{'dashboard/games/' + game.id + '/stats'}}" target="_blank"><md-icon>mode_edit</md-icon></a></md-button>
+                    </div>
+                    <div flex-xs="100" flex-gt-xs="5">
+                        <md-icon class='material_icons md-secondary' aria-label='deleteGame' ng-click='deleteGame($event, game.id)'>
+                            delete
+                        </md-icon>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+</div>
+
+<div class="container game-pagination">
+    <div class="inner">
+        <md-button ng-click="navFirst()" ng-disabled="!(gamesIndex > 1)" class="md-icon-button"><md-icon>skip_previous</md-icon></md-button>
+        <md-button ng-click="navPrev()" ng-disabled="!(gamesIndex > 1)" class="md-icon-button"><md-icon>chevron_left</md-icon></md-button>
+        <md-button class="disabled-button"><b>{{ gamesIndex }}</b> / {{ pages }}</md-button>
+        <md-button ng-click="navNext()" ng-disabled="gamesIndex == pages" class="md-icon-button"><md-icon>chevron_right</md-icon></md-button>
+        <md-button ng-click="navLast()" ng-disabled="gamesIndex == pages" class="md-icon-button"><md-icon>skip_next</md-icon></md-button>
+    </div>
+</div>
+
+<style>
+    #game-data-heading {
+        width : 100%;
+        height : 50px;
+        color : red;
+    }
+    
+    .game-data-column {
+        margin : auto;
+    }
+    
+    .game-date,
+    .game-home-team,
+    .game-venue {
+        margin-left : 20px;
+    }
+    
+    .game-away-team {
+        text-align : right;
+        margin-right : 20px;
+    }
+    
+    .games-list .game-home-team,
+    .games-list .game-away-team,
+    .games-list .home_team_score,
+    .games-list .visiting_team_score {
+        color : #4d4d4d;
+    }
+    
+    .games-list .game-date,
+    .games-list .game-venue {
+        color : #8c8c8c;
+    }
+    
+    .game-team-logo {
+        width : 40px;
+        height : 40px;
+        border-radius : 20px;
+    }
+    
+    .game-final-score {
+        text-align : center;
+    }
+</style>

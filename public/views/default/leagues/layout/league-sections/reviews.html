@@ -1,0 +1,26 @@
+<div class="header">
+    <p class="section-title">Reviews</p>
+    <md-button ng-click="addReview()" class="review-button">Add Review</md-button>
+</div>
+<div class="section-content-holder">
+
+    <ul class="items">
+        <li ng-repeat="leagueReview in leagueReviews" class="item" layout="row">
+            <div class="image" cssbg="{{league_logo}}"></div>
+            <!-- <div ng-if="leagueReview.reviewer.picture.file_path != null" class="image" cssbg="{{leagueReview.reviewer.picture.file_path}}"></div> -->
+            <!-- <div ng-if="leagueReview.reviewer.picture.file_path == null" class="image" cssbg="img/landings/logo-v2.png"></div> -->
+            <div class="text">
+                <p class="md-title">
+                    <span>{{ leagueReview.reviewer.first_name }} {{ leagueReview.reviewer.last_name }}</span>
+                    <stars amount="5"></stars>
+                </p>
+                <p class="description">{{ leagueReview.review }}</p>
+            </div>
+        </li>
+    </ul>
+
+    <p class="text-center no-margin">
+        <md-button class="seeall-button">See All</md-button>
+    </p>
+
+</div>

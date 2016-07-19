@@ -1,0 +1,40 @@
+<div id="league-edit-page" ng-class="actualStep" ng-cloak>
+    <div class="page-header md-whiteframe-2dp" ng-include="logicTemplate('dashboard/layout/league-create-edit/steps.html')" ng-cloak=""></div>
+
+    <form name="StepForm" class="dropzone" id="add-photos-dropzone" enctype="multipart/form-data" ng-cloak="">
+        <div class="content-holder">
+            <div class="container content-keeper md-whiteframe-2dp" ng-cloak="">
+                <div class="left info">
+                    <div class="inner" ng-cloak="">
+                        <p class="md-title">{{ $step.title }}</p>
+                        <p class="md-body-1">{{ $step.description }}</p>
+                    </div>
+                </div>
+                <div class="right content">
+                    <ng-include class="inner" src="$step.content" ng-cloak></ng-include>
+                </div>
+            </div>
+            <div class="container controls-holder" ng-cloak="" layout="row">
+                <div class="prev" flex="50" layout="row" layout-align="start center">
+                    <md-button class="md-whiteframe-3dp" ng-if="stepID > 0" ng-click="$steps.prevStep()">Back</md-button>
+                </div>
+                <div class="next" flex="50" layout="row" layout-align="end center">
+                    <md-button class="md-whiteframe-3dp" ng-disabled="!showControls()" ng-click="$steps.nextStep(StepForm)">{{ (actualStep != finalStep())?'Next':'Finish' }}</md-button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="photoLoader" ng-show="$photoLoader.show" class="md-whiteframe-3dp" ng-class="{done: $photoLoader.done, success: $photoLoader.success, error: $photoLoader.error}" ng-cloak>
+    <p class="md-title">{{$photoLoader.message}}</p>
+    <div class="inner">
+        <md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
+        <md-icon ng-show="$photoLoader.success">check</md-icon>
+        <md-icon ng-show="$photoLoader.error">error_outline</md-icon>
+    </div>
+    <md-progress-linear md-mode="determinate" value="{{ $photoLoader.value }}"></md-progress-linear>
+</div>
+
+
+

@@ -1,0 +1,328 @@
+/*
+ * Created by Dumitrana Alinus.
+ * User: alin.designstudio (skype)
+ * For: Result page
+ * License: Wooter LLC.
+ * Date: 2016.01.01
+ * Description: CSS file of Auth Pages
+ *
+ */
+@import 'engine/_init';
+body, html{
+	background: #eeeeee;
+}
+#resultPage{
+	min-height: 100%;
+	#filterSection{
+		padding: 30px 0;
+		width: 100%;
+		background: #ffffff;
+		md-content{
+			overflow: hidden !important;
+		}
+		.filters{
+			.box{
+				padding: 0;
+				md-input-container{
+					width: 100%;
+				}
+				input{
+					border-bottom-width: 2px !important;
+					@include transition();
+				}
+				md-select-value{
+					padding-bottom: 6px !important;
+					border-bottom-width: 2px !important;
+					@include transition();
+					span{
+						width: 100% !important;
+					}
+				}
+			}
+		}
+	}
+	
+	#resultsSection{
+		position: relative;
+		min-height: 100vh;
+		.loader{
+			position: absolute;
+			z-index: 1000;
+			background: transparentize(#212121, .4);
+			top: 0;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			@include transition(500ms);
+
+			@include opacity(0);
+			pointer-events: none !important;
+
+			&.show{
+				@include opacity(100);
+				pointer-events: all !important;
+			}
+			md-progress-circular{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				@include translate();
+				z-index: 1002;
+				.md-left{
+					.md-half-circle{
+						border-top-color: #fff !important;
+						border-left-color: #fff !important;
+					}
+				}
+				.md-right{
+					.md-half-circle{
+						border-top-color: #fff !important;
+						border-right-color: #fff !important;
+					}
+				}
+			}
+		}
+		.container{
+			padding-top: 10px;
+			padding-bottom: 40px;
+			background: transparent;
+			.item{
+				display: block;
+				$w: (100/3)/100;
+				width: percentage($w);
+				@include mq($max-width: 767px) {
+			        width: 100%;
+			    }
+			    @include mq($min-width: 768px, $max-width: 1119px) {
+			        width: 50%;
+			    }
+				float: left;
+				padding: 10px;
+				@include mq($max-width: 360px){
+					padding: 5px;
+				}
+				md-card{
+					margin: 0;
+					position: relative;
+					display: block;
+					@include transition();
+					@include radius(3px);
+					overflow: hidden;
+					&:hover{
+						-webkit-box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+						-moz-box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+						box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+						.img-container{
+							.img{
+								@include scale(1.2)
+							}
+						}
+						.img-container:after, md-card-header:after{
+							@include opacity(0);
+						}
+					}
+					md-card-header{
+						position: absolute;
+						z-index: 3;
+						top: 0;
+						width: 100%;
+						left: 0;
+						right: 0;
+						&:after{
+							@include transition();
+							z-index: 1;
+							content: '';
+							display: block;
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							background-image: -moz-linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+							background-image: -o-linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+							background-image: -webkit-linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+							background-image: linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+						}
+
+						span{
+							z-index: 2;
+							position: relative;
+							color: #fff !important;
+							&.distance-indicator{
+								position: absolute;
+								top: 0;
+								right: 0;
+								&, md-icon{
+									font-size: 14px;
+									line-height: 20px;
+									color: #adadad !important;
+								}
+								md-icon{
+									width: auto;
+									height: auto;
+									margin: -4px 5px 0 0;
+								}
+							}
+						}
+						md-card-avatar{
+							z-index: 2;
+							position: relative;
+							border: 2px solid transparentize(#fff, .3);
+							overflow: hidden;
+							@include radius(50%);
+							img{
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								min-width: 50px;
+								@include translate();
+							}
+						}
+					}
+					.img-container{
+						z-index: 2;
+						width: 100%;
+						display: block;
+						position: relative;
+						padding-bottom: 65%;
+						overflow: hidden !important;
+						.img{
+							position: absolute;
+							background-position: center center;
+							-webkit-background-size: cover;
+							-moz-background-size: cover;
+							background-size: cover;
+							@include transition();
+							top: 0;
+							padding: 0;
+							right: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+						}
+						
+						&:after{
+							content: '';
+							display: block;
+							@include transition();
+							background-image: -moz-linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+							background-image: -o-linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+							background-image: -webkit-linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+							background-image: linear-gradient(bottom, rgba(33, 33, 33, 0), rgba(33, 33, 33, 0.7));
+							width: 100%;
+							height: 72px;
+							position: absolute;
+							left: 0;
+							right: 0;
+							bottom: 0;
+							@include rotate(180deg);
+						}
+					}
+					md-card-content{
+						.first-line{
+							font-size: 16px;
+							color: transparentize(#000, .46);
+							font-family: "Roboto", sans-serif;
+							font-weight: 500;
+							margin-bottom: 12px;
+						}
+						.second-line{
+							font-size: 16px;
+							color: transparentize(#000, .5);
+							font-family: "Roboto", sans-serif;
+							font-weight: 400;
+							margin: 0;
+						}
+						.first-line, .second-line{
+							width: 100%;
+							position: relative;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+						}
+						.left{
+							padding-right: 8px;
+						}
+						.right{
+							text-align: right;
+							@include mq($max-width: 599px){
+								text-align: left;
+								padding-top: 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#messageErrorSection{
+		z-index: 10;
+		padding-top: 20px;
+		@include transition(500ms);
+		@include opacity(0);
+		position: absolute;
+		top: 0;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		//background: transparentize(#212121, .4);
+		pointer-events: none !important;
+		&.db{
+			display: block !important;
+		}
+		&.no-z{
+			z-index: 10 !important;
+		}
+		&.show{
+			@include opacity(100);
+			pointer-events: all !important;
+		}
+		.container{
+			@include radius(3px);
+			padding: 30px;
+			p{
+				font-family: "Roboto", sans-serif;
+				&.md-title{
+					color: #878787 !important;
+					font-weight: 300;
+					font-size: 24px;
+					margin-bottom: 30px;
+					span{
+						color: transparentize($md-wooter-red, .5);
+						border-bottom: 1px solid;
+					}
+				}
+				&.tips{
+					color: #aaa !important;
+					font-weight: 300;
+					font-size: 18px;
+					margin-bottom: 15px;
+				}
+			}
+			ul{
+				padding-left: 30px;
+				li{
+					color: #aaa !important;
+					font-weight: 300;
+					font-size: 14px;
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+}
+.filter-select[selected]{
+	background: #fff !important;
+	color: #00adf2 !important;
+}
+
+.md-select-menu-container{
+	z-index: 1005 !important;
+}

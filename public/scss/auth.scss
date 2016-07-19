@@ -1,0 +1,570 @@
+/*
+ * Created by Dumitrana Alinus.
+ * User: alin.designstudio (skype)
+ * For: Forms
+ * License: Wooter LLC.
+ * Date: 2016.01.01
+ * Description: CSS file of Auth Pages
+ *
+ */
+@import 'engine/_init';
+
+.fullpage{
+    min-height: 100%;
+    min-height: 100vh;
+    background: #303030;
+    @include mq($max-width: 500px) {
+        min-height: 600px !important;
+    }
+    &.exc{
+        min-height: calc(100% - 56px) !important;
+        min-height: calc(100vh - 56px) !important;
+    }
+}
+
+md-toolbar, .md-toolbar-tools{
+    min-height: 56px !important;
+    height: 56px !important;
+}
+
+.brand-img{
+    height: 26px;
+}
+
+.registerForm{
+    min-height: 570px !important;
+}
+
+.loginForm{
+    min-height: 391px !important;
+}
+
+.verifyForm, .setupForm{
+    min-height: 260px !important;
+    margin-top: 64px !important;
+}
+
+.loginForm, .registerForm, .authForm{
+    max-width: 400px !important;
+    background: #444;
+    min-height: 470px;
+    margin-top: -64px;
+    @include mq($max-width: 599px){
+        margin-top: 0;
+        max-width: 100% !important;
+    }
+    .title{
+        font-weight: 300;
+        font-family: "Roboto", sans-serif;
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+    header{
+        background: #2a2a2a;
+        padding: 10px;
+        text-align: center;
+        img{
+            height: 40px;
+        }
+        p{
+            color: #fff;
+            line-height: 40px;
+            font-size: 18px;
+
+        }
+    }
+    .or{
+        position: relative;
+        margin: 20px 0 0 0;
+        padding: 0;
+        width: 100%;
+        line-height: 21px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        text-align: center;
+        text-shadow: 0 0 0 15px #434343;
+        color: transparentize(#fff, .30);
+        &:after{
+            content: '';
+            background: transparentize(#fff, .30);
+            display: block;
+            height: 1px;
+            width: 25%;
+            position: absolute;
+            top: 50%;
+            right: 20%;
+        }
+        &:before{
+            content: '';
+            background: transparentize(#fff, .30);
+            display: block;
+            height: 1px;
+            width: 25%;
+            position: absolute;
+            left: 20%;
+            top: 50%;
+        }
+    }
+    .forms-slider{
+        @include clearfix();
+    }
+    .md-button.fb{
+        background: $facebook-color !important;
+        color: #ecf0f1 !important;
+        position: relative;
+        height: 40px;
+        padding: 0 !important;
+        line-height: 40px;
+        i{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+        }
+    }
+    .md-button.top-space, .top-space{
+        margin-top: 20px !important;
+    }
+
+    .md-button.submit{
+        background: $md-wooter-red;
+        color: #fff;
+        md-icon{
+            font-size: 18px;
+            color: #fff;
+            line-height: 22px;
+        }
+        &:hover{
+            background: transparentize($md-wooter-red, .25);
+        }
+        &:disabled, &[disabled]{
+            background: transparentize($md-wooter-red, .5) !important;
+        }
+    }
+    .btn-red{
+        background: $md-wooter-red !important;
+        color: #fff !important;
+        @include transition();
+        md-icon{
+            @include transition();
+            color: #fff !important;
+            font-size: 18px;
+            line-height: 22px;
+        }
+        &:hover{
+            background: #fff !important;
+            color: $md-wooter-red !important;
+            md-icon{
+                color: $md-wooter-red !important;
+            }
+        }
+        &:disabled, &[disabled]{
+            background: transparentize($md-wooter-red, .5) !important;
+        }
+    }
+
+    .upload-support{
+        @include clearfix();
+        position: relative;
+        &:before{
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #626262;
+            border-top: 1px solid #383838;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            @include translate(0, -50%);
+        }
+        .md-button{
+            float: right;
+            position: relative;
+            z-index: 2;
+            margin-right: 60px !important;
+        }
+    }
+    .row{
+        @include clearfix();
+        position: relative;
+        display: block;
+        margin-left: -60px;
+        margin-right: -60px;
+    }
+    .material-input-full{
+        background: #444;
+        input, textarea{
+            background: #444;
+        }
+    }
+    .drop-area{
+        position: relative;
+        width: 100%;
+        background: #353535;
+        border: 2px dashed #2a2a2a;
+        @include radius(5px);
+        padding-bottom: 75%;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        @include transition();
+        overflow: hidden;
+        @include shadow(inset 0 0 0 transparentize(#000, .7));
+        &:hover, &.active, &.dropping, &.dz-drag-hover{
+            background: #383838;
+            border: 2px solid transparentize(#000, .7);
+            @include shadow(inset 0 0 30px transparentize(#000, .7));
+        }
+
+        .message{
+            $success: #43A047;
+            $error: #D84315;
+            background: #fff;
+            position: absolute;
+            z-index: 100;
+            @include size(100%);
+            top: 50%;
+            left: 50%;
+            pointer-events: none !important;
+            @include translate();
+            @include opacity(0);
+            @include radius(0);
+            &.show{
+                @include opacity(100);
+                @include radius(100%);
+                @include size(64px);
+                pointer-events: all !important;
+            }
+            md-icon{
+                position: absolute;
+                font-size: 42px;
+                @include size(80px);
+                line-height: 80px;
+                display: inline-block;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                @include translate();
+            }
+            md-progress-circular{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                @include translate();
+            }
+            &.success{
+                md-icon{
+                    color: $success;
+                }
+            }
+            &.error{
+                md-icon{
+                    color: $error;
+                }
+            }
+        }
+
+        input{display: none}
+        .dz-preview{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            .dz-details{
+                @include radius(5px);
+                overflow: hidden;
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                left: 50%;
+                @include translate();
+                img{
+                    @include blur(6);
+                }
+            }
+        }
+
+        &:before{
+            content: 'Drag and drop photo.';
+            margin: 0;
+            color: transparentize(#fff, .6);
+            font-size: 14px;
+            padding: 0;
+            position: absolute;
+            display: inline-block;
+            top: 50%;
+            left: 50%;
+            @include translate();
+
+        }
+
+        &.active, &.dropping, &.dz-drag-hover{
+            &:before{
+                content: "Now drop.";
+            }
+        }
+        &.dz-started{
+            border: none;
+            &:before{
+                content: "";
+            }
+        }
+    }
+    .md-button.options{
+        font-size: 12px;
+        color: #999;
+        font-family: 'Roboto', sans-serif;
+        letter-spacing: 1px;
+        text-transform: capitalize !important;
+        position: relative;
+        &:last-child{
+        }
+    }
+    .md-btn-sep{
+        display: inline-block;
+        width: 1px;
+        height: 60%;
+        background: #999;
+        position: absolute;
+        top: 20%;
+        bottom: 20%;
+        left: 50%;
+    }
+    .inner{
+        padding: 30px 30px 20px 30px;
+        display: block;
+        background: #444;
+        md-input-container, md-input-container{
+            label, input, textarea, .md-char-counter{
+                color: transparentize(#fff, .30);
+            }
+            input, textarea{
+                border-color: transparentize(#fff, .88);
+            }
+        }
+    }
+    .md-auth-form-theme:not(.md-input-invalid).md-input-has-value label{
+        color: transparentize(#fff, .30) !important;
+    }
+    md-datepicker{
+        width: 100%;
+        padding: 5px 0;
+        margin: 18px 0;
+        height: 36px;
+        line-height: 36px;
+        display: block;
+        position: relative;
+        background: transparent !important;
+        border-bottom: 1px solid transparentize(#fff, .88) !important;
+        .md-datepicker-triangle-button{
+            display: none;
+            @include opacity(0);
+        }
+        .md-datepicker-button{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0;
+            color: transparent !important;
+            z-index: 1;
+            height: 34px;
+            width: 34px;
+            text-align: center !important;
+            line-height: 34px !important;
+            margin: 0 !important;
+            path{
+                fill: transparentize(#fff, .60) !important;
+            }
+        }
+        .md-datepicker-input-container{
+            border: none !important;
+            input, &{
+                width: 100%;
+                color: transparentize(#fff, .30) !important;
+                background-color: transparent;
+                height: 33px;
+                margin: 0 !important;
+            }
+            input{
+                @include placeholder(transparentize(#fff, .30));
+            }
+        }
+    }
+    .md-input-has-value md-select-value, md-select-value{
+        border-color: transparentize(#fff, .88) !important;
+        color: transparentize(#fff, .30) !important;
+        height: 30px;
+        width: 100% !important;
+        font-size: 15px !important;
+    }
+    md-input-container{
+        width: 100%;
+    }
+    .no-label{
+        md-input-container{
+            margin: 0 !important;
+        }
+        label{
+            display: none !important;
+        }
+    }
+    .radio-header-box{
+        width: 100%;
+        position: relative;
+        @include clearfix();
+        min-height:64px;
+        display: block;
+        background: #212121;
+        md-radio-button{
+            margin: 0 !important;
+            display: inline-block;
+            width: 50%;
+            height: 64px;
+            line-height: 62px;
+            border-bottom: 2px solid transparent !important;
+            font-size: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #ccc;
+            @include transition();
+            &.md-checked, &:checked, &[checked="true"]{
+                border-bottom-color: $md-wooter-red !important;
+                color: #fff;
+            }
+            .md-ink-ripple{
+                display: none !important;
+                @include opacity(0);
+            }
+            .md-label{
+                margin: 0 !important;
+            }
+        }
+    }
+    .question-text{
+        margin: 0;
+        font-size: 12px;
+        line-height: 36px;
+        color: #999;
+        width: 100%;
+        text-align: center;
+        cursor: default;
+    }
+    .loader{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -25px;
+        margin-top: -25px;
+        display: inline-block;
+    }
+    .messages{
+        position: absolute;
+        display: inline-block;
+        width: 90%;
+        top: 50%;
+        left: 50%;
+        border: none !important;
+        @include translate();
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .fform{
+        textarea{
+            min-height: 120px;
+        }
+    }
+    .forms-slider{
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        .item{
+            margin-left: 100%;
+            @include opacity(0);
+            width: 100%;
+            @include transition();
+            display:none;
+            &.loaded{
+                display: block;
+            }
+            &.show{
+                margin-left: 0;
+                @include opacity(100);
+            }
+
+        }
+    }
+    .pagination{
+        margin: 0 !important;
+        display: block;
+        @include clearfix();
+        width: 100%;
+        ul{
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            @include clearfix();
+            list-style-type: none;
+            li{
+                display: inline-block;
+                a{
+                    display: block;
+                    @include size(8px);
+                    @include transition();
+                    color: #fff;
+                    border: 1px solid #fff;
+                    margin: 2px;
+                    background: transparent;
+                    @include radius(4px);
+                    @include opacity(75);
+                    &.active, &:hover{
+                        background: #fff;
+                    }
+                    &:hover{
+                        @include opacity(100);
+                    }
+                }
+                &.active{
+                    a{
+                        background: #fff;
+                        @include opacity(100);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.md-datepicker-input-mask{
+    display: none;
+}
+.md-calendar-date.md-focus span{
+    background-color: transparent !important;
+}
+.md-calendar-date-today span{
+    border-color: $md-wooter-red !important;
+}
+.md-calendar-selected-date.md-focus span{
+    background: $md-wooter-red !important;
+    color: #fff !important;
+}
+.md-wooter-black-theme .md-calendar-day-header{
+    background: $md-wooter-red !important;
+    color: #fff !important;
+}

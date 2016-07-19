@@ -1,0 +1,41 @@
+<md-dialog class='management_modals' aria-label='addCategory'>
+    <md-dialog-content>
+
+        <!-- Header -->
+        <div class='modal_header' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div layout='column' flex='90'>
+                <h4>Add Category</h4>
+            </div>
+            <div layout='column' flex='5'></div>
+        </div>
+
+        <form  ng-submit="createLabels()">
+            <!-- Division -->
+            <div class='modal_info' layout='row'>
+                <div layout='column' flex='5'></div>
+                <div layout='column' flex='90'>
+                    <md-input-container class='modal_field' id='addCategory'>
+                        <label>Category Name</label>
+                        <input name='label_name' ng-model='data.label_name' required aria-label=''>
+
+                    </md-input-container>
+
+                    <input type="hidden" name='league_id' ng-model='data.league_id' ng-init="data.league_id= leagueId " value="{{ leagueId }}" required aria-label=''>
+                </div>
+                <div layout='column' flex='5'></div>
+            </div>
+
+            <!-- buttons -->
+            <div class='modal_button_div'>
+                <md-button class='modal_buttons right_button' type="submit" >
+                    Add Category
+                </md-button>
+                <!-- <md-button class='modal_buttons left_button' ng-click="cancel();"> -->
+                <md-button class='modal_buttons left_button' ng-click='closeModal()'>
+                    Cancel
+                </md-button>
+            </div>
+        </form>
+    </md-dialog-content>
+</md-dialog>

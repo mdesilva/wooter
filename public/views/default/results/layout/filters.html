@@ -1,0 +1,61 @@
+<div class="filters">
+	<md-content class="container" layout-gt-sm="row" layout-sm="column">
+	    <div flex-gt-sm="30" flex="100"  layout="row">
+	    	<div class="box no-errors" flex="45">
+		    	<md-input-container>
+		    		<label>Location</label>
+		    		<input type="text" ng-blur="Input.leave($event)" ng-focus="Input.open($event)" ng-keyup="Input.key($event)" ng-model="search.params.location">
+		    	</md-input-container>
+		    </div>
+			<div flex="10"></div>
+		    <div class="box no-errors" flex="45">
+				<md-input-container>
+					<label>Sports</label>
+			    	<md-select ng-model="search.params.sport" md-on-close="execSearch()">
+			    		<md-option class="filter-select" ng-value="opt.val" ng-repeat="opt in filters.sports">{{ capitalize(opt.text) }}</md-option>
+			    	</md-select>
+				</md-input-container>
+		    </div>
+	    </div>
+		<div flex="5"></div>
+	    <div flex-gt-sm="30" flex="100"  layout="row">
+	    	<div class="box no-errors" flex="45">
+				<md-input-container>
+			    	<label>Gender</label>
+			    	<md-select ng-model="search.params.gender" md-on-close="execSearch()">
+			    		<md-option class="filter-select" ng-value="opt.val" ng-repeat="opt in filters.genders">{{ capitalize(opt.text) }}</md-option>
+			    	</md-select>
+				</md-input-container>
+		    </div>
+			<div flex="10"></div>
+		    <div class="box no-errors" flex="45">
+				<md-input-container>
+			    	<label>Ages</label>
+			    	<md-select ng-model="search.params.ages" md-on-close="execSearch()">
+			    		<md-option class="filter-select" ng-value="opt.val" ng-repeat="opt in filters.ages">{{ capitalize(opt.text) }}</md-option>
+			    	</md-select>
+				</md-input-container>
+		    </div>
+	    </div>
+		<div flex="5"></div>
+		<div flex-gt-sm="30" flex="100"  layout="row">
+		    <div class="box no-errors" flex="45">
+				<md-input-container>
+			    	<label>Distance</label>
+			    	<md-select ng-model="search.params.distance" md-on-close="execSearch()">
+			    		<md-option class="filter-select" ng-value="opt.val" ng-repeat="opt in filters.distances">{{ capitalize(opt.text) }}</md-option>
+			    	</md-select>
+				</md-input-container>
+		    </div>
+			<div flex="10"></div>
+		    <div class="box no-errors" flex="45">
+				<md-input-container>
+			    	<label>Sort by</label>
+			    	<md-select ng-model="search.params.sort" md-on-close="execSearch()">
+			    		<md-option class="filter-select" ng-value="opt.val" ng-repeat="opt in filters.sort">{{ capitalize(opt.text) || html }}</md-option>
+			    	</md-select>
+				</md-input-container>
+		    </div>
+		</div>
+	</md-content>
+</div>

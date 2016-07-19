@@ -1,0 +1,15 @@
+<div id="mail-recycler">
+    <div ng-show="show_dialogue">
+        <p id="recycler-message">Are you sure you want to move this {{mail_type}} to the trash bin?</p>
+        
+        <div data-layout="row">
+            <button id="recycler-confirm-btn" ng-click="recycle(); show_dialogue = !show_dialogue">Yes</button>
+            <button id="recycler-cancel-btn" ng-click="hideRecycler()">No</button>
+        </div>
+    </div>
+    
+    <div ng-show="!show_dialogue">
+        <p>Success!</p>
+        <button id="recycler-close-btn" ng-click="hideRecycler(); show_dialogue = !show_dialogue">Close</button>
+    </div>
+</div>

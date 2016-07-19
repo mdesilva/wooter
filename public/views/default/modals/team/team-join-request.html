@@ -1,0 +1,23 @@
+<div id="team-join-request">
+    <div ng-show="show_main">
+        <h1>Join Team</h1>
+        
+        <form id="join-request-form">
+            <div>
+                <label>Email:</label>
+                <input type="text" name="email" placeholder="Enter your email">
+            </div>
+            <div>
+                <button id="send-join-request" ng-click="sendJoinRequest(); show_main = !show_main">Send</button>
+            </div>
+            <div>
+                <button id="cancel-join-request" ng-click="hideModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="join-request-success" ng-show="!show_main">
+        <p>Success!</p>
+        <button id="join-request-close" ng-click="hideModal(); show_main = !show_main">Close</button>
+    </div>
+</div>

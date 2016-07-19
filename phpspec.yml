@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Wooter
+        psr4_prefix: Wooter
+        src_path: app

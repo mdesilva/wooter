@@ -1,0 +1,23 @@
+<div id="player-invitation">
+    <div ng-show="show_main">
+        <h1>Invite Player</h1>
+        
+        <form id="player-invitation-form">
+            <div>
+                <label>Email</label>
+                <input type="text" name="player_email">
+            </div>
+            <div>
+                <button id="send-invitation" ng-click="invitePlayer(); show_main = !show_main">Send Invitation</button>
+            </div>
+            <div>
+                <button id="cancel-invitation" ng-click="hideModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="player-invitation-success" ng-show="!show_main">
+        <p>Success</p>
+        <button id="player-invitation-close" ng-click="hideModal()">Close</button>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="row">
+    <md-input-container class="md-block">
+        <label>Season name</label>
+        <input ng-model="$step.model.season.name" name="name" required ng-blur="cacheLeagueData()">
+        <div ng-messages="StepForm['name'].$error">
+            <div ng-message="required">Season name is required!</div>
+        </div>
+    </md-input-container>
+</div>
+
+<div class="row no-errors" layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="45">
+        <label class="md-caption" ng-show="$step.model.season.start_label">Season Start Date (required)</label>
+        <md-datepicker class="md-block season-datepicker" ng-change="cacheLeagueData()" ng-model="$step.model.season.starts_at" name="starts_at" required md-placeholder="Season Start Date (required)"></md-datepicker>
+        <div ng-messages="StepForm['starts_at'].$error" class="validation-message" ng-if="StepForm['starts_at'].$touched">
+            <div ng-message="required">Season starts is required!</div>
+        </div>
+    </div>
+    <div flex="10"></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <label class="md-caption" ng-show="$step.model.season.end_label">Season End Date (required)</label>
+        <md-datepicker class="md-block season-datepicker" ng-change="cacheLeagueData()" ng-model="$step.model.season.ends_at" name="ends_at" required md-placeholder="Season End Date (required)"></md-datepicker>
+        <div ng-messages="StepForm['ends_at'].$error" class="validation-message" ng-if="StepForm['ends_at'].$touched">
+            <div ng-message="required">Season ends is required!</div>
+        </div>
+    </div>
+</div>
+
+<div class="row " layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="45">
+        <label class="md-caption" ng-show="$step.model.season.registration_open_label">Registration Start Date (required)</label>
+        <md-datepicker class="md-block season-datepicker" ng-change="cacheLeagueData()" ng-model="$step.model.season.registration_opens_at" name="registration_opens_at" required md-placeholder="Registration Start Date (required)"></md-datepicker>
+        <div ng-messages="StepForm['registration_opens_at'].$error" class="validation-message" ng-if="StepForm['registration_opens_at'].$touched">
+            <div ng-message="required">Registration opens is required!</div>
+        </div>
+    </div>
+    <div flex="10"></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <label class="md-caption" ng-show="$step.model.season.registration_close_label">Registration End Date (required)</label>
+        <md-datepicker class="md-block season-datepicker" ng-change="cacheLeagueData()" ng-model="$step.model.season.registration_closes_at" name="registration_closes_at" required md-placeholder="Registration End Date (required)"></md-datepicker>
+        <div ng-messages="StepForm['registration_closes_at'].$error" class="validation-message" ng-if="StepForm['registration_closes_at'].$touched">
+            <div ng-message="required">Registration closes is required!</div>
+        </div>
+    </div>
+</div>
+
+<div class="row no-errors" layout-xs="column" layout-gt-xs="row">
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Max Teams <small>(optional)</small></label>
+            <md-select ng-model="$step.model.season.max_teams" ng-change="cacheLeagueData()">
+                <md-option ng-repeat="i in range(1, 12)" value="{{ i }}">{{ i }} {{ (i>1)?'teams':'team' }}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div flex="10"></div>
+    <div flex-xs="100" flex-gt-xs="45">
+        <md-input-container class="md-block">
+            <label>Max Free Agents <small>(optional)</small></label>
+            <md-select ng-model="$step.model.season.max_free_agents" ng-change="cacheLeagueData()">
+                <md-option ng-repeat="i in range(1, 6)" value="{{ i }}">{{ i }}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>
+

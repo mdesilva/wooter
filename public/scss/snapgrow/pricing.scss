@@ -1,0 +1,356 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+//HOMEPAGE SCSS
+
+.hero_image{
+	background: url('/img/snapgrow/hero-about.png') center center fixed;
+    background-size: cover !important;
+}
+
+.white_separator_3{
+
+	@media only screen and (max-width: 1359px) {
+	    max-width: 960px!important;
+	    width: 960px!important;
+	    margin: 0 calc(50% - 480px)!important;
+    }	
+
+	@media only screen and (max-width: 959px) {
+	    max-width: 600px!important;
+	    width: 600px!important;
+	    margin: 0 calc(50% - 300px)!important;
+    }	
+
+	@media only screen and (max-width: 599px) {
+	    max-width: 300px!important;
+	    width: 300px!important;
+	    margin: 0 calc(50% - 150px)!important;
+    }	
+
+	.ws{
+		margin: 40px 0px 32px;
+	}
+	.pricing_image_left,
+	.pricing_image_center,
+	.pricing_image_right{
+		width: 350px;
+		padding: 0px 7.5px;
+		float: left;
+		position: relative;
+
+		@media only screen and (max-width: 1359px) {
+			width: 310px;
+	    }	
+
+		@media only screen and (max-width: 959px) {
+			width: 600px;
+	    }	
+
+		@media only screen and (max-width: 599px) {
+			width: 300px;
+	    }	
+
+		img{
+			width: 54px;
+			margin: 0 calc(50% - 27px);
+			margin-bottom: 20px;
+		}
+
+		.social_label{
+			color: #212121;
+			font-weight: 500;
+			text-align: center;
+		}
+
+		.price{
+			text-align: center;
+		}
+
+		p{
+			width: 310px;
+			margin: 0 auto;
+			font-size: 18px;
+			text-align: center;
+			color: rgba(0,0,0,.6);
+			line-height: 1.8;
+		
+			@media only screen and (max-width: 1359px) {
+				width: 280px;
+		    }	
+
+			@media only screen and (max-width: 959px) {
+				width: 440px;
+		    }	
+
+			@media only screen and (max-width: 599px) {
+				width: 280px;
+		    }		
+
+		    br{
+				@media only screen and (max-width: 959px) {
+					display: none;
+			    }	
+
+				@media only screen and (max-width: 599px) {
+					display: block;
+			    }	 	
+		    }	
+
+		}
+
+		.red_number{
+			font-size: 24px;
+			font-weight: 500;
+			color: #ef5653;
+	    	font-weight: 700;
+		}
+
+		.prices{
+			padding: 0 20px;
+			margin: 30px 0px;
+			p{
+				width: 45%;
+				float: left;
+				text-align: center;
+			}	
+			
+			button{
+				width: 50%;
+
+				@media only screen and (max-width: 1359px) {
+					width: 55%;
+			    }	
+
+				@media only screen and (max-width: 959px) {
+					width: 45%;
+			    }	
+
+				@media only screen and (max-width: 599px) {
+					width: 55%;
+			    }	
+
+			}
+
+		}
+
+	}
+
+	.pricing_image_right{
+		
+		.special{
+			margin-bottom: 64px;
+
+				@media only screen and (max-width: 959px) {
+					margin-bottom: 0px;
+			    }	
+
+		}
+	}
+
+
+}
+
+.strategy{
+	
+	@media only screen and (max-width: 1359px) {
+	    max-width: 960px!important;
+	    width: 960px!important;
+	    margin: 0 calc(50% - 480px)!important;
+    }	
+
+	@media only screen and (max-width: 959px) {
+	    max-width: 600px!important;
+	    width: 600px!important;
+	    margin: 0 calc(50% - 300px)!important;
+    }	
+
+	@media only screen and (max-width: 599px) {
+	    max-width: 300px!important;
+	    width: 300px!important;
+	    margin: 0 calc(50% - 150px)!important;
+    }	    
+
+	.common_text{
+
+		h1{
+			font-size: 24px;
+			color: #212121;
+			text-align: center;
+			margin: 30px 15px;
+		}
+
+		.custom_hr{
+			width: 50px;
+		    height: 2px;
+		    margin: 0 calc(50% - 25px) 30px;
+		    background: rgba(0, 0, 0, 0.25);
+		}
+		
+		p{
+			text-align: center;
+			font-size: 18px;
+			padding: 0px 210px;
+			color: rgba(0,0,0,.54);
+			margin-bottom: 64px;
+			@media only screen and (max-width: 1359px) {
+				padding: 0px 130px;
+	 	    }		
+			@media only screen and (max-width: 959px) {
+				padding: 0px 30px;
+	 	    }		
+			@media only screen and (max-width: 599px) {
+				padding: 0px 20px;
+	 	    }		
+	 	    br{
+				@media only screen and (max-width: 959px) {
+					display: none!important;
+		 	    }			 	    	
+	 	    }
+		}
+	}	
+
+	.content{
+		text-align: center;
+		font-size: 18px;
+		padding: 0px 210px;
+		color: rgba(0,0,0,.54);
+		
+		@media only screen and (max-width: 959px) {
+			padding: 0px 30px;
+	 	}	
+		
+		.red_number{
+			font-size: 24px;
+			font-weight: 500;
+			color: #ef5653;
+		   	font-weight: 700;
+		}
+
+	}
+
+	.prices{
+		width: 49%;
+		padding: 0 20px;
+		margin: 30px 0px;
+		float: left;
+		
+		@media only screen and (max-width: 599px) {
+			width: 100%;
+	 	}			
+
+	 	p{
+			width: 100%;
+			float: left;
+			text-align: center;
+			margin: 10px 0px;
+		}	
+			
+		button{
+			width: 50%;
+			margin: 0 25%;
+
+			@media only screen and (max-width: 959px) {
+				width: 95%;			
+				margin: 0 2.5%;
+	 	    }	
+
+		}
+	}
+
+	.separator{
+		width: 2%;
+		float: left;
+
+		.line{
+			width: 2px;
+			margin: 40px calc(50% - 1px) 0px;
+			background: #eee;
+			height: 64px;
+		}
+			
+		@media only screen and (max-width: 599px) {
+			display: none!important
+	 	}	
+	}
+}
+
+.white_button{
+	padding: 40px 0px;
+	p{
+		color: #212121;
+		font-size: 24px;
+		text-align: center;
+		padding: 10px 0px!important;
+		font-weight: 500;
+
+		br{
+			display: none;
+			
+			@media only screen and (max-width: 599px) {
+				display: block!important
+		 	}				
+		}
+	}
+	button{
+		margin: 10px 0px!important;
+	}
+}
+
+
+.followers{
+	padding: 48px 0px 96px;
+	width: 100%;
+
+	.people{
+		width: 75px;
+		margin: 0 auto;
+		padding: 0px 0px 40px;
+
+		img{
+			width: 75px;
+		}
+	}
+
+	.build{
+		
+		h1{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 500;
+			margin: 0px 0px 30px;
+		}
+
+		.build_text{
+			margin-bottom: 30px;
+		}
+
+		p{
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			font-weight: 500;
+			margin: 0px;
+
+			@media only screen and (max-width: 959px) {
+				padding: 0 30px;
+		 	}	
+
+			br{
+				@media only screen and (max-width: 959px) {
+					display: none!important;
+		 	    }				
+			}
+		}
+	}
+}

@@ -1,0 +1,146 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 class="md-title league-title">Admin Panel</h1>
+            <!-- <p class="md-body-1 league-subtitle">Admin Panel</p> -->
+        </div>
+
+        <div class="nav-bar" ng-include="logicTemplate('admin/layout/internal-nav-bar')"></div>
+    </div>
+
+</header>
+
+<div class="container players-content">
+
+    <md-content class="md-whiteframe-2dp">
+
+
+        <!-- <div class="controls" layout="column" layout-gt-sm="row">
+            <div class="filters" flex="100" flex-gt-sm="60" layout="row">
+                <div class="select mobile_hidden_600">
+                    <md-input-container>
+                        <label style="display: none !important;">Teams</label>
+                        <md-select ng-model="teamToFilter" ng-change="filterTeam()">
+                            <md-option value="all">All teams</md-option>
+                            <md-option value="{{team.id}}" ng-repeat="team in teams">{{team.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="search">
+                    <md-input-container>
+                        <label style="display: none !important;">Search</label>
+                        <md-icon>search</md-icon>
+                        <input type="text" ng-model="filters.search" placeholder="Search players">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="buttons mobile_hidden_600" flex="100" flex-gt-sm="40" layout-align="start center" layout-align-gt-sm="end center" layout="row">
+                <md-button ng-click="addPlayer($event)"> <md-icon>person_add</md-icon> Add Player</md-button>
+            </div>
+        </div> -->
+
+        <div class="">
+            <md-list ng-cloak>
+                <md-list-item class="" layout="row" style='background: white;border-bottom: 1px solid #eee;'>
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                       <div class="stand"  layout="row" flex="100" flex-gt-sm="50">
+                            <div class="team mobile_hidden_600 mobile_hidden_959" flex="25">
+                                <p class="md-body-1 info">Package</p>
+                            </div>
+                            <div class="team mobile_hidden_600 mobile_hidden_959" flex="50">
+                                <p class="md-body-1 info">Email</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="25">
+                                <p class="md-body-1 info">Name</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="25">
+                                <p class="md-body-1 info">Phone</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="25">
+                                <p class="md-body-1 info">Sport</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="10">
+                                <p class="md-body-1 info">Players</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="10">
+                                <p class="md-body-1 info">Teams</p>
+                            </div>
+
+                            <div class="payment-status mobile_hidden_600" flex="25" flex-md='10'>
+                                <p class="md-body-1 info">Game/ Team</p>
+                            </div>
+
+                            <!-- <div class="division mobile_hidden_600 mobile_hidden_959" flex="10">
+                                <p class="md-body-1 info">Players</p>
+                            </div>
+
+                            <div class="division mobile_hidden_600 mobile_hidden_959" flex="10">
+                                <p class="md-body-1 info">Game/Team</p>
+                            </div> -->
+
+                            <!-- <div class="payment-status mobile_hidden_600" flex="50" flex-md='50'>
+                                <p class="md-body-1 info">Actions</p>
+                            </div> -->
+                        </div>
+                    </div>
+                </md-list-item>
+ 
+                <md-list-item layout="row" ng-repeat="package in packages" style='border-bottom: 1px solid #eee;'>
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="stand"  layout="row" flex="100" flex-gt-sm="50">
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="25" flex-md="25">
+                                <p class="md-body-1 info">{{ package.package_name }}</p>
+                            </div>
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="50" flex-md="25">
+                                <p class="md-body-1 info">{{ package.email }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600 mobile_hidden_959" flex="25" flex-md="25">
+                                <p class="md-body-1 info">{{ package.name }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="25" flex-md="25">
+                                <p class="md-body-1 info">{{ package.phone }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="25" flex-md="25">
+                                <p class="md-body-1 info">{{ package.sport }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="10" flex-md="10">
+                                <p class="md-body-1 info">{{ package.players }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="10" flex-md="10">
+                                <p class="md-body-1 info">{{ package.teams }}</p>
+                            </div>
+
+                            <div class="team teams_table_info mobile_hidden_600" flex="10" flex-md="10">
+                                <p class="md-body-1 info">{{ package.games }}</p>
+                            </div>
+                            <!-- <div class="team teams_table_info mobile_hidden_600" flex="50" flex-md="50">
+                                <md-button ng-click="action('edit', organization.id)">Edit</md-button>
+                                <md-button ng-click="action('delete', organization.id)">Delete</md-button>
+                            </div> -->
+                        </div>
+                    </div>
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="count(packages) == 0">
+
+                    <div class="message-error" flex="500">
+                        <p class="md-body-1 name">No package request found</p>
+                    </div>
+
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+

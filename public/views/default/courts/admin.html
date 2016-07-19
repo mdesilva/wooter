@@ -1,0 +1,83 @@
+<div class="container">
+  <button class="btn btn-primary" ng-click="createCourt()">Create new court</button><br><br><br>
+    <div class="form-group col-md-12">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search by name" ng-model="search.name" style="width:150px; float:left; margin-right:20px">
+        <input type="text" class="form-control" placeholder="Search by address" ng-model="search.address" style="width:150px; float:left; margin-right:20px">
+        <input type="text" class="form-control" placeholder="Search by city" ng-model="search.city" style="width:150px; float:left; margin-right:20px">
+        <input type="text" class="form-control" placeholder="Search by Zip code" ng-model="search.zip" style="width:150px; float:left; margin-right:20px">
+        <select class="form-control" ng-model="search.court_privacy_type" style="width:150px; float:left; margin-right:20px">
+          <option value=''>Any Privacy</option>
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+        </select>
+      </div>    
+      <button class="btn btn-success" ng-click="resetFilters()">Reset</button>  
+      <!-- <button class="btn btn-success" ng-click="addZip()">Add zip</button>   -->
+    </div>
+  <div style="clear:both"></div>
+  <div class="col-md-6">
+    
+  <b>Total: {{totalItems}}</b>
+  </div>
+  <table class="table table-bordered table-striped" ng-show="Locations.length">
+    <thead>
+      <tr>
+        <td>
+          <a  ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            Court Name 
+            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a ng-click="sortType = 'address'; sortReverse = !sortReverse">
+          Address 
+            <span ng-show="sortType == 'address' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'address' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a  ng-click="sortType = 'city'; sortReverse = !sortReverse">
+          City
+            <span ng-show="sortType == 'city' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'city' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a  ng-click="sortType = 'city'; sortReverse = !sortReverse">
+          Zip code
+            <span ng-show="sortType == 'zip' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'zip' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a>
+          Edit
+          </a>
+        </td>
+        <td>
+          <a>
+          Delete
+          </a>
+        </td>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <!-- <tr ng-repeat="location in Locations.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:sortType:sortReverse | filter:searchLocation"> -->
+        <tr ng-repeat="location in filtered = Locations | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+        <td>{{ location.name }}</td>
+        <td>{{ location.address }}</td>
+        <td>{{ location.city }}</td>
+        <td>{{ location.zip }}</td>
+        <td><button class="btn btn-primary" ng-click="editLocation(location.sr_no)">Edit</button></td>
+        <td><button class="btn btn-primary delete_court" ng-click="deleteCourt(location.sr_no)">Delete</button></td>
+      </tr>
+    </tbody>
+    
+  </table>
+   <!-- <pagination ng-show="Locations.length" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination> -->
+   <uib-pagination ng-show="Locations.length" page="currentPage" total-items="totalItems" ng-model="currentPage" items-per-page="entryLimit" class="pagination-sm" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></uib-pagination>
+  </div>

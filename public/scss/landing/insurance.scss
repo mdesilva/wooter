@@ -1,0 +1,136 @@
+/*
+ * Created by Carlos Marra
+ * User: loslambda, los_lambdas
+ * For: snapgrow/homepage styles
+ * License: Wooter LLC.
+ * Date: 2016.03.18
+ * Description: videos tab in league dashboard
+ *
+ */
+
+@import "shared";
+
+.hero_image{
+	background: url('/img/landings/hero-insurance.jpg') center center fixed;
+    background-size: cover !important;
+    background-position: 62% 100%;
+}
+
+.commissioners, .athletes{
+	padding: 48px 0px 112px;
+	width: 100%;
+	margin: 0 auto;
+	
+	.red_pics{
+		width: 100%;
+		.image{
+			width: 40px;
+			margin: 0 auto;
+			padding: 0px 0px 15px;
+
+			img{
+				height: 60px;
+			}
+		}
+
+		.faq{
+			p{
+				max-width: 900px;
+				margin: 0 calc(50% - 450px) 3px;
+				font-size: 24px;
+				color: white;
+				text-align: center;
+				font-weight: 500;
+				
+				@media only screen and (max-width: 1359px) {
+					max-width: 720px;
+					margin: 0 calc(50% - 360px) 3px;
+			   	}
+			
+				@media only screen and (max-width: 959px) {
+					max-width: 570px;
+					margin: 0 calc(50% - 285px) 3px;
+			   	}
+
+				@media only screen and (max-width: 599px) {
+					max-width: 300px;
+					margin: 0 calc(50% - 150px) 3px;
+			   	}
+
+			}
+		}		
+	}
+	
+}
+
+.pricing_text{
+	padding-bottom: 40px;
+	
+	h1{
+		font-size: 24px;
+		color: #212121;
+		text-align: center;
+		margin: 40px 0px 20px;
+		@media only screen and (max-width: 599px) {
+			margin: 40px 20px 20px;
+	   	}	
+	}
+
+	.custom_hr{
+		width: 60px;
+	    height: 2px;
+	    margin: 30px calc(50% - 30px) 30px;
+	    background: #ef5350;
+	}
+
+	p{
+		text-align: center;
+		font-size: 14px;
+		padding: 0px 185px;
+		color: rgba(0,0,0,.54);
+		margin-bottom: 0px;
+	
+		@media only screen and (max-width: 959px) {
+			padding: 0px 60px;
+	   	}
+
+		@media only screen and (max-width: 599px) {
+			padding: 0px 15px;
+	   	}	
+	}
+}
+
+.sports_list{
+	width: 720px;
+	margin: 0 auto;
+
+	p{
+		width: 240px;
+		text-align: center;
+		float: left;
+		font-size: 18px;
+		color: #212121;
+		margin-bottom: 15px;
+	}
+}
+
+.strategy{
+
+	@media only screen and (max-width: 1359px) {
+	    max-width: 750px!important;
+		width: 750px!important;
+		margin: 0 calc(50% - 375px)!important;
+   	}
+	
+	@media only screen and (max-width: 959px) {
+	    max-width: 600px!important;
+		width: 600px!important;
+		margin: 0 calc(50% - 300px)!important;
+   	}
+
+	@media only screen and (max-width: 599px) {
+	    max-width: 300px!important;
+		width: 300px!important;
+		margin: 0 calc(50% - 150px)!important;
+   	}
+}

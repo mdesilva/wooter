@@ -1,0 +1,50 @@
+<md-dialog aria-label="Add time slot modal" class="dialog-page add-venue">
+    <form action="#" ng-submit="addQuestion(addQuestionForm)" onsubmit="return false;" novalidate name="addQuestionForm">
+        <md-dialog-content>
+            <md-content>
+                <p class="md-title">Add Question <md-button ng-click="closeModal()" class="md-icon-button"><md-icon>close</md-icon></md-button></p>
+
+                <div class="form">
+                    <div class="row" layout="row">
+                        <div flex="">
+                            <md-input-container class="md-block">
+                                <label>Question Title</label>
+                                <input type="text" ng-model="$addQuestion.title" name="title" required>
+                                <div ng-messages="addVenueForm['title'].$error">
+                                    <div ng-message="required">Title is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="row" layout="row">
+                        <div flex="">
+                            <md-input-container class="md-block">
+                                <label>Question</label>
+                                <input type="text" ng-model="$addQuestion.question" name="question" required>
+                                <div ng-messages="addVenueForm['question'].$error">
+                                    <div ng-message="required">Question is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="row" layout="row">
+                        <div flex="">
+                            <p class="md-body-1">Question Type</p>
+                            <md-radio-group ng-model="$addQuestion.type">
+                                <md-radio-button value="text">Normal</md-radio-button>
+                                <md-radio-button value="select">Select from List</md-radio-button>
+                                <md-radio-button value="radio">Select single</md-radio-button>
+                                <md-radio-button value="checkbox">Select multiple</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                </div>
+            </md-content>
+
+        </md-dialog-content>
+        <md-dialog-actions>
+            <md-button ng-click="closeModal()">Cancel</md-button>
+            <md-button type="submit" class="md-primary">Add</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

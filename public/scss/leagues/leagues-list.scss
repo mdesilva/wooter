@@ -1,0 +1,166 @@
+/*
+ * Created by Alinus.
+ * User: alin.designstudio
+ * For: Leagues List Page
+ * License: Wooter LLC.
+ * Date: 2016.02.27
+ * Description: Leagues List Page Styles
+ *
+ */
+
+@import "../engine/_init";
+body, html{
+    background: #f2f2f2;
+}
+.league-list-tabs{
+    margin-bottom: 20px;
+    padding: 0 !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    .md-button{
+        margin: 0 !important;
+        @include radius(0 !important);
+        min-height: 48px !important;
+        height: 48px !important;
+        line-height: 48px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        &, &[disabled]{
+            color: #fff !important;
+        }
+        &.active{
+            cursor: pointer !important;
+            &:after{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                position: absolute;
+                background: $md-wooter-red;
+            }
+        }
+    }
+    &{
+        line-height: 1 !important;
+    }
+}
+.leagues-list{
+    position: relative;
+    @include clearfix();
+    .item{
+        width: 25%;
+        display: inline-block;
+        float: left;
+        @include mq($max-width: 1365px){
+            width: 33.33334%;
+        }
+        @include mq($max-width: 989px){
+            width: 50%;
+        }
+        @include mq($max-width: 619px){
+            width: 100%;
+        }
+        md-card{
+            min-height: 260px;
+            display: block;
+            margin: 12px !important;
+            position: relative;
+            @include transition();
+            &.create-league{
+                @include transition();
+                &:hover{
+                    .md-button, md-icon{
+                        color: $md-wooter-red !important;
+                    }
+                }
+                .md-button{
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    text-transform: none !important;
+                    background: transparent !important;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    &,md-icon{
+                        @include transition();
+                    }
+                }
+            }
+            .inner{
+                position: absolute;
+                display: inline-block;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                @include translate();
+                md-icon{
+                    width: 36px !important;
+                    line-height: 36px !important;
+                    height: 36px !important;
+                    font-size: 36px;
+                }
+            }
+            .md-title{
+                font-size: 16px;
+                font-weight: 400;
+                color: #444;
+            }
+            .md-subtitle{
+                font-size: 12px;
+                min-height: 18px;
+                line-height: 18px;
+                color: #aaa;
+            }
+            md-card-content{
+                padding-bottom: 0 !important;
+            }
+            .buttons{
+                margin-left: -8px;
+                padding: 6px 0;
+                .md-button, .md-button:focus{
+                    margin: 0 !important;
+                    min-width: 10px !important;
+                    display: inline-block;
+                    padding: 0 8px !important;
+                    color: $md-wooter-red !important;
+                    &:hover{
+                        color: #555;
+                        background: transparent !important;
+                    }
+                }
+            }
+            .league-image{
+                width: 100%;
+                padding-bottom: 60%;
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                @include setupBG(#ecf0f1);
+                md-menu{
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    display: block;
+                }
+                .md-button{
+                    position: absolute;
+                    top: 6px;
+                    right: 0;
+                    md-icon{
+                        color: #fff !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,207 @@
+<header id="dashboardHeader" class="md-whiteframe-2dp">
+
+    <div class="container">
+        <div class="info">
+            <h1 ng-show="league.name" class="md-title league-title">{{league.name}}</h1>
+            <p class="md-body-1 league-subtitle">{{season.starts_at | carbonToMMM }} - {{season.ends_at | carbonToMMM }} {{season.ends_at | carbonToyyyy }}</p>
+        </div>
+
+        <div class="nav-bar" ng-include="logicTemplate('dashboard/layout/nav-bar')"></div>
+    </div>
+
+</header>
+
+<div class="container players-content main_listing">
+    <md-content class="md-whiteframe-2dp">
+        <header class="header">
+            <p class="md-body-2">Photos</p>
+        </header>
+        <div class="controls show_filters"  layout-gt-sm="row">
+            <div class="filters mobile_fits" flex="100" flex-md='30' flex-gt-md="60" layout="row" style='float:left;'>
+               <!-- <div class="filter_expand">
+                <md-button style='color: black!important; margin-top: -.5px!important;margin-left: 11px!important;'>Add Filters</md-button></div>-->
+            </div>
+            <div class="buttons mobile_fits" flex="100" flex-md='70' flex-gt-md="40" layout-align="start left" layout-align-gt-sm="end center" layout="row">
+                <md-button class='switching_management'>Manage Albums</md-button>
+                <span class="separator mobile_hidden_600"></span>
+                <md-button class='mobile_hidden_600' ng-click="createPhotos($event)">Add Photos</md-button>
+            </div>
+        </div>
+
+        <div class="controls hidden_filters show" layout="column" layout-gt-sm="row">
+            <div class="filters" flex="100" flex-md='100' flex-gt-md="60" layout="row" layout-wrap>
+                <div class="select" flex='20' flex-md='40' flex-sm='100'>
+                    <md-input-container>
+                        <label style="display: none !important;">Created At</label>
+                        <md-select ng-model="dateCreated">
+
+                            <md-option value="date">Old Photos</md-option>
+                            <md-option value="-date">Latest Photos</md-option>
+
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="select" flex='20' flex-md='40' flex-sm='100'>
+                    <md-input-container>
+                        <label style="display: none !important;">All Albums</label>
+                        <md-select ng-model='FilterByAlbum' aria-label='albumName'>
+                            <md-option  value="0">All Albums</md-option>
+                            <md-option ng-repeat='album in albums' value='{{album.id}}'>
+                                {{ album.name }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+
+               
+
+                <div class="select" flex='20' flex-md='40' flex-sm='100'>
+                    <md-input-container>
+                        <label style="display: none !important;">All Teams</label>
+                        <md-select ng-model='FilterByTeam' aria-label='game'>
+                            <md-option  value="0">All Teams</md-option>
+                            <md-option ng-repeat="team in teams" value='{{team.id}}' >
+                                {{ team.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="players-list">
+            <md-list ng-cloak>
+
+                <md-list-item class="" layout="row">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="stand" layout-wrap layout="row" flex="100" flex-gt-sm="100">
+                            <div class="team" flex-sm='100' flex-md='33' flex="20" ng-repeat="photo in filtered = leaguePhotos | photoTeamFilter:FilterByTeam | photoDivisionFilter:FilterByDivision | photoAlbumFilter:FilterByAlbum | leagueGameFilter:FilterByGame | orderBy:dateCreated | unique:'id'">
+
+                                <div class="images">
+                                    <img class='results' ng-src="{{ photo.thumbnail_path }}" alt="{{ photo.file_name }}" title="{{ photo.file_name }}">
+                                    <div class="hovering">
+                                        <div class="options">
+                                            <p ng-click="removePhotos($event, photo)" class='delete'>
+                                                <i class="fa fa-trash"></i>
+                                            </p>        
+                                            <p ng-click="editPhotos($event, photo)" class='edit'>Edit</p>
+                                        </div>
+                                        <div class="options2">
+                                            <p ng-click="viewPhotos($event, photo)"><strong>Click To View</strong></p>
+                                        </div> 
+                                    </div>
+                                    <div class="bulkSelect">
+                                        <md-checkbox class='checking_boxes' aria-label="Select Photo" ng-checked="exists(photo, selected)" ng-click="toggle(photo, selected)" ></md-checkbox>
+
+                                    </div>
+                                </div>
+                                <div class="labels">
+                                    <p>{{ photo.file_name| limitString:true:20:'...' }}</p>
+
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </md-list-item> 
+
+
+
+                <md-list-item class="no-players" layout="row" ng-if="count(leaguePhotos) == 0">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">Upload A Photo.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+<div class="check_select">
+    <ul class="threeOptions">
+        <li>
+            <div>
+                <p>({{count(selected)}}) <span ng-if="count(selected)>1">Photos</span><span ng-if="count(selected)==0">Photos</span><span ng-if="count(selected)==1">Photos</span> Selected</p>
+            </div>
+        </li>
+        <li style='padding: 2px 0px;'>
+            <div>
+                <md-button ng-if="count(selected) > 0"  style='color: #ed514f' ng-click="editBulk($event)"><i class="fa fa-edit"></i> Edit</md-button>
+
+            </div>
+        </li>
+        <li style='padding: 2px 0px;'>
+            <div>
+                <md-button  ng-if="count(selected) > 0" style='color: #ed514f' ng-click="deleteBulk($event)"><i class="fa fa-trash"></i> Delete</md-button>
+
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="container players-content manage_listing hide">
+    <md-content class="md-whiteframe-2dp">
+        <header class="header">
+            <p class="md-body-2"> <md-button style='margin: 0px; padding: 0px; min-width: 36px;border-radius: 3px;'> <md-icon class='switching_mains' md-svg-src="../../img/dashboard/back1.svg" aria-label="android " style='width: 20px; margin-top: -2px;'></md-icon> </md-button> &nbsp;&nbsp;Manage Albums</p>
+        </header>
+        <div class="controls mobile_hidden_600" layout="column" layout-gt-sm="row" style="border-bottom: none; background: white;">
+            <div class="filters" flex="100" flex-gt-sm="60" layout="row">
+                <p>Create, edit, or delete photo albums.</p>
+            </div>
+            <div class="buttons" flex="100" flex-gt-sm="40" layout-align="start center" layout-align-gt-sm="end center" layout="row">
+                <md-button ng-click="createAlbum($event)">New Album</md-button>
+            </div>
+        </div>
+
+        <div class="hr_custom"></div>
+
+        <div class="players-list">
+            <md-list ng-cloak>
+
+
+                <md-list-item layout="row" ng-repeat="album in albums">
+                    <div class="inner" layout-xs="column" flex="100" layout-gt-sm="row">
+                        <div class="player" layout="row" flex="100" flex-gt-sm="80">
+                            <p class="md-body-1 name">{{ album.name }}</p>
+                        </div>
+                        <div class="stand"  layout="row" flex="100" flex-gt-sm="20">
+                            <div class="team" flex="100">
+                                <p class="md-body-1 info">
+                                <img src="../img/dashboard/pencil.png" 
+                                     alt="Edit Can"   
+                                     class='mobile_hidden_600'  
+                                     style="width: 18px; height: 47px; padding: 14px 0px; margin-right: 30px;"
+                                     ng-click="editAlbum($event, album)">
+                                 <img src="../img/dashboard/garbage.png" 
+                                 alt="Delete Can"
+                                 class='mobile_hidden_600'
+                                 style="width: 14px; height: 47px; padding: 14px 0px; margin-right: 30px;"
+                                 ng-click="removeAlbum($event, album)">
+                            </div>
+                        </div>
+                    </div>
+
+                </md-list-item>
+
+                <md-list-item class="no-players" layout="row" ng-if="count(albums) == 0"
+                style="border-bottom: none;">
+                    <div class="message-error" flex="100">
+                        <p class="md-body-1 name">Create Your First Album.</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>
+
+<div class="container game-pagination" style="text-align:center">
+    <div class="inner">
+        <md-button ng-click="navFirst()" ng-disabled="!(photosIndex > 1)" class="md-icon-button"><md-icon>skip_previous</md-icon></md-button>
+        <md-button ng-click="navPrev()" ng-disabled="!(photosIndex > 1)" class="md-icon-button"><md-icon>chevron_left</md-icon></md-button>
+        <md-button class="disabled-button"><b>{{ photosIndex }}</b> / {{ pages }}</md-button>
+        <md-button ng-click="navNext()" ng-disabled="photosIndex == pages" class="md-icon-button"><md-icon>chevron_right</md-icon></md-button>
+        <md-button ng-click="navLast()" ng-disabled="photosIndex == pages" class="md-icon-button"><md-icon>skip_next</md-icon></md-button>
+    </div>
+</div>

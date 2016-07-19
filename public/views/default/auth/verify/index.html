@@ -1,0 +1,28 @@
+<div class="fullpage exc" layout="column">
+    <div layout="row" class="fullpage exc" layout-align="center start">
+        <div md-theme="auth-form" class="authForm verifyForm md-whiteframe-7dp form" flex="50">
+            <header ng-show="showHeader" layout-align="center center">
+                <p>Verify Account</p>
+            </header>
+            <div class="inner">
+                <form ng-submit="verifyForm.submitHandler()" id="{{verifyForm.name}}" autocomplete="off">
+                    <formly-form model="verifyForm.model" fields="verifyForm.fields" novalidate>
+                        <div layout="row" layout-align="end">
+                            <md-button type="submit" class="top-space submit full-btn no-margin">Verify</md-button>
+                        </div>
+                    </formly-form>
+                </form>
+            </div>
+
+            <div class="loader hide" layout="column" layout-align="center center">
+                <md-progress-circular md-mode="indeterminate">
+            </div>
+
+            <div class="messages inverse" ng-show="verify.messageState" layout="row" layout-padding="30px" theme="{{verify.theme}}" layout-align="center center">
+                <p ng-bind="verify.message"></p>
+                <md-button ng-show="verify.theme == 'error'" ng-click="rld()">Try with other</md-button>
+            </div>
+
+        </div>
+    </div>
+</div>

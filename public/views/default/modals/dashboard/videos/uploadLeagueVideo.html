@@ -1,0 +1,146 @@
+<md-dialog class='inspection_modals' aria-label='uploadVideo' style='min-width: 600px;' id="addVideoModal">
+    <md-dialog-content>
+        <!-- Header -->
+        <div class='modal_header' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div layout='column' flex='90'>
+                <h4>Add Videos(s)</h4>
+            </div>
+            <div layout='column' flex='5'></div>
+        </div>
+
+        <div class='modal_drag' layout='row'>
+            <div layout='column' flex='5'></div>
+            <div class="resumable-drop" ondragenter="jQuery(this).addClass('resumable-dragover');" ondragend="jQuery(this).removeClass('resumable-dragover');" ondrop="jQuery(this).removeClass('resumable-dragover');">
+                Drop video files here to upload or <md-button class="resumable-browse" >select from your computer</md-button>
+            </div>
+
+            <div layout='column' flex='5'></div>
+        </div>
+
+        <div layout='row'>
+            <div layout='column' flex='5'>
+            </div>
+
+            <div class="resumable-progress" layout='column' flex='50'>
+                <div class="progress-container">
+                    <div class="progress-bar">        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='custom_hr'>
+        </div>
+
+        <form  ng-submit="publishVideo()">
+            <div ng-repeat = "movie in movies track by $index" >
+                <div layout='row'>
+                    <div layout='column' flex='5'></div>
+
+                    <div layout='column' flex='40'>
+                        <video width="233" height="150" controls id="myVideo" class='add_thumbnails'>
+                            <source src="{{ movie.file_path}}" type="{{ movie.mime_type}}">
+                        </video>
+                    </div>
+
+                    <div layout='column' flex='50'>
+                        <md-input-container class='modal_field' id='addTeamName'>
+                            <label>Title</label>
+                            <input name='videoName' ng-model='uploadVideo[$index].videoName' required >
+                        </md-input-container>
+                        <md-input-container class='modal_field' id='setDivision'>
+                            <label>Category</label>
+                            <md-select ng-model='uploadVideo[$index].videoCategory' name="videoCategory" aria-label=''>
+                                <md-option ng-repeat='label in labels' value='{{label.id}}'>
+                                    {{ label.name }}
+                                </md-option>
+                                <md-option ng-if='count(labels) == 0' value='1'>
+                                  General
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <md-input-container class='modal_field' id='setGame'>
+                            <label>Game</label>
+                            <md-select ng-model='uploadVideo[$index].videoGame' name="videoGame" aria-label=''>
+                                <md-option ng-repeat='game in games ' value='{{game.id}}'>
+                                    {{ game.date | carbonToMMM }} {{ game.date | dateFormat: "/" }}, {{ game.date | carbonToyyyy }} ( {{ game.home_team | limitString:true:5:'...' }} vs {{ game.visiting_team | limitString:true:5:'...'}} )
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <md-input-container class='modal_field hide' id='videoID'>
+
+                            <input type="hidden" name='videoId' ng-model='uploadVideo[$index].videoId'  ng-init="uploadVideo[$index].videoId = movie.id " aria-label='' >
+                        </md-input-container>
+                    </div>
+
+                    <div layout='column' flex='5'></div>
+                </div>
+
+                <div layout="row">
+                    <div layout='column' flex='5'></div>
+                    <div layout='column' flex='90'>
+
+                        <md-input-container class='modal_field' id='setTeam'>
+                            <label>Tag Team:</label>
+                            <md-chips ng-model="selectedTeams[$index]"  md-autocomplete-snap="" md-transform-chip="transformChip($chip)" md-require-match="autocompleteDemoRequireMatch">
+
+                                <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="team in querySearch(searchText)" md-item-text="team.name" >
+                                    <span md-highlight-text="searchText">{{team.name}}</span>
+                                </md-autocomplete>
+
+                                <md-chip-template>
+                                        <span>
+                                          <strong>{{$chip.name}}</strong>
+                                        </span>
+                                </md-chip-template>
+                            </md-chips>
+
+                        </md-input-container>
+                        <md-input-container class='modal_field'></md-input-container>
+                        <md-input-container class='modal_field' id='setPlayer'>
+                            <label>Tag Player:</label>
+                            <md-chips ng-model="selectedPlayers[$index]" md-autocomplete-snap="" md-transform-chip="playerTransformChip($chip)" md-require-match="autocompletePlayerRequireMatch">
+                                <md-autocomplete md-selected-item="selectedPlayer" md-search-text="searchPlayer" md-items="player in playerSearchQuery(searchPlayer)" md-item-text="player.first_name" >
+                                    <span md-highlight-text="searchPlayer"> {{player.first_name}} {{player.last_name}} </span>
+                                </md-autocomplete>
+
+                                <md-chip-template>
+                                     <span>
+                                         <strong>{{$chip.first_name}}</strong>
+                                         <strong>{{$chip.last_name}}</strong>
+                                     </span>
+                                </md-chip-template>
+                            </md-chips>
+
+                        </md-input-container>
+
+                        <md-input-container class='modal_field' id='addYoutubeVideo'>
+                            <label>Upload Youtube Video (Optional)</label>
+                            <input name='youTubeUrl' ng-model='uploadVideo[$index].youTubeUrl' aria-label=''>
+                        </md-input-container>
+
+                    </div>
+                    <div layout='column' flex='5'></div>
+                </div>
+                <div class='custom_hr' ng-if = "!$last"></div>
+            </div>
+
+            <!-- buttons -->
+            <div class='modal_button_div'>
+                <md-button class='modal_buttons right_button' type="submit" id="btn_submit">
+                    Add Video(s)
+                </md-button>
+                <!--ng-click="cancel();"-->
+                <md-button class='modal_buttons left_button' id="btn_cancel" ng-click='cancel()'>
+                    Cancel
+                </md-button>
+               
+            </div>
+
+            </form>
+    </md-dialog-content>
+</md-dialog>
+
